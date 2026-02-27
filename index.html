@@ -407,46 +407,56 @@
 <!-- PRODUCT DETAIL MODAL -->
 <div id="modal-product" class="hidden fixed inset-0 z-50 bg-black/40 flex items-end md:items-center justify-center"
      onclick="if(event.target===this) closeProdModal()">
-  <div class="bg-white w-full md:max-w-xl md:rounded-xl max-h-[92vh] overflow-y-auto shadow-2xl">
-    <div id="mp-img-area" class="h-48 bg-white flex items-center justify-center p-4 md:rounded-t-xl">
-      <img id="mp-img-icon" src="" alt="" class="max-w-full max-h-full object-contain" />
-    </div>
-    <div class="sticky top-0 bg-white border-b border-gray-100 px-5 py-4 flex items-center justify-between">
-      <span id="mp-category" class="text-xs font-semibold text-gray-400 uppercase tracking-wider"></span>
-      <button onclick="closeProdModal()" class="text-gray-400 hover:text-gray-700 p-1 rounded-md hover:bg-gray-100">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <div class="px-5 py-5">
-      <div class="flex items-start justify-between gap-3 mb-1">
-        <div>
-          <p class="text-xs text-gray-400 mb-0.5" id="mp-vendor"></p>
-          <h2 class="text-xl font-bold text-gray-900 leading-snug" id="mp-name"></h2>
-        </div>
-        <span id="mp-vetted" class="hidden badge-vetted text-xs px-2.5 py-1 rounded-md font-semibold whitespace-nowrap flex items-center gap-1 mt-0.5 flex-shrink-0">
-          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-          Clinically Vetted
-        </span>
+  <div class="bg-white w-full md:max-w-2xl md:rounded-xl max-h-[92vh] shadow-2xl flex flex-col md:flex-row overflow-hidden">
+
+    <!-- LEFT/TOP: sticky image + shop button panel -->
+    <div class="md:w-52 flex-shrink-0 flex flex-col border-b md:border-b-0 md:border-r border-gray-100">
+      <div class="flex items-center justify-between px-4 py-3 border-b border-gray-100">
+        <span id="mp-category" class="text-xs font-semibold text-gray-400 uppercase tracking-wider"></span>
+        <button onclick="closeProdModal()" class="text-gray-400 hover:text-gray-700 p-1 rounded-md hover:bg-gray-100">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
       </div>
-      <div class="flex items-center gap-2.5 mt-2 mb-4">
-        <span id="mp-cov-badge" class="text-xs px-2.5 py-1 rounded-md font-semibold"></span>
-        <span class="text-gray-400 text-sm" id="mp-price"></span>
+      <div class="flex items-center justify-center p-5 bg-gray-50 flex-1">
+        <img id="mp-img-icon" src="" alt="" class="max-w-full max-h-32 md:max-h-44 object-contain" />
       </div>
-      <p class="text-gray-600 text-sm leading-relaxed mb-5" id="mp-desc"></p>
-      <div class="bg-gray-50 border border-gray-100 rounded-lg p-4 mb-4">
-        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Clinical Context</p>
-        <p class="text-gray-700 text-sm leading-relaxed" id="mp-clinical"></p>
-      </div>
-      <div id="mp-cov-section" class="mb-5"></div>
-      <div class="flex gap-3">
-        <a id="mp-buy" href="#" onclick="return false"
-           class="flex-1 bg-gray-900 hover:bg-gray-700 text-white text-center py-3 rounded-lg font-semibold text-sm transition-colors">
+      <div class="p-4 bg-white border-t border-gray-100">
+        <a id="mp-buy" href="#" target="_blank" rel="noopener noreferrer"
+           class="flex items-center justify-center gap-2 w-full bg-gray-900 hover:bg-gray-700 text-white text-center py-3 rounded-lg font-semibold text-sm transition-colors">
           Shop This Product
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
         </a>
-        <button onclick="closeProdModal()" class="px-4 py-3 border border-gray-200 text-gray-600 hover:bg-gray-50 rounded-lg text-sm font-medium">Back</button>
+        <p class="text-xs text-gray-400 text-center mt-2">May earn a small referral fee</p>
       </div>
-      <p class="text-xs text-gray-400 text-center mt-3">You'll be taken to a trusted vendor. CareShelf may earn a small referral fee at no cost to you.</p>
     </div>
+
+    <!-- RIGHT/BOTTOM: scrollable content -->
+    <div class="flex-1 overflow-y-auto min-h-0">
+      <div class="px-5 py-5">
+        <div class="flex items-start justify-between gap-3 mb-1">
+          <div>
+            <p class="text-xs text-gray-400 mb-0.5" id="mp-vendor"></p>
+            <h2 class="text-xl font-bold text-gray-900 leading-snug" id="mp-name"></h2>
+          </div>
+          <span id="mp-vetted" class="hidden badge-vetted text-xs px-2.5 py-1 rounded-md font-semibold whitespace-nowrap flex items-center gap-1 mt-0.5 flex-shrink-0">
+            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Clinically Vetted
+          </span>
+        </div>
+        <div class="flex items-center gap-2.5 mt-2 mb-4">
+          <span id="mp-cov-badge" class="text-xs px-2.5 py-1 rounded-md font-semibold"></span>
+          <span class="text-gray-400 text-sm" id="mp-price"></span>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed mb-5" id="mp-desc"></p>
+        <div class="bg-gray-50 border border-gray-100 rounded-lg p-4 mb-4">
+          <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Clinical Context</p>
+          <p class="text-gray-700 text-sm leading-relaxed" id="mp-clinical"></p>
+        </div>
+        <div id="mp-cov-section" class="mb-5"></div>
+        <button onclick="closeProdModal()" class="w-full px-4 py-3 border border-gray-200 text-gray-600 hover:bg-gray-50 rounded-lg text-sm font-medium">Close</button>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -586,83 +596,83 @@ const products = [
   { id:1,  name:'Medical Alert System',            vendor:'Bay Alarm Medical',  cat:'Fall Prevention',   price:'~$25-35/month',            bucket:'otc',          covLabel:'OTC Allowance',        vetted:true,   img:'https://www.vivehealth.com/cdn/shop/files/1c_5_5395b2d9-552f-4967-a495-74d960b45953.jpg?v=1771333270',
     covText:'Many Medicare Advantage plans include PERS (Personal Emergency Response Systems) as a supplemental or OTC benefit. Check your plan\'s Summary of Benefits for coverage amount and approved devices.',
     desc:'One-button emergency response with 24/7 professional monitoring, GPS for in-home and on-the-go use, and optional fall detection. Cellular and WiFi coverage. No landline required.',
-    clinical:'Recommended for patients with moderate-to-high fall risk, those living alone, or anyone with limited mobility. Clinical evidence shows medical alert systems meaningfully reduce time on the floor after a fall, a critical predictor of outcomes for patients who live alone.' },
+    link:'https://www.amazon.com/s?k=bay+alarm+medical+alert+system', clinical:'Recommended for patients with moderate-to-high fall risk, those living alone, or anyone with limited mobility. Clinical evidence shows medical alert systems meaningfully reduce time on the floor after a fall, a critical predictor of outcomes for patients who live alone.' },
   { id:2,  name:'Adjustable Half Bed Rail',         vendor:'Drive Medical',      cat:'Fall Prevention',   price:'$40-$65',                  bucket:'home-safety',  covLabel:'Home Safety Benefit',  vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/Image_1_64_grande.jpg?v=1664969538',
     covText:'Many Medicare Advantage plans include a Home Safety benefit that covers bed rails. No prescription needed — check your plan\'s home safety allowance and find an approved supplier.',
     desc:'Half-length bed rail that attaches to most standard frames without tools. Provides leverage for getting in and out of bed and prevents nighttime rolling. Fits twin through king.',
-    clinical:'Indicated for patients with balance deficits, post-surgical weakness, or those returning from a care facility. Not appropriate for patients at risk of entrapment; review with your clinical team if uncertain.' },
+    link:'https://www.amazon.com/s?k=drive+medical+adjustable+half+bed+rail', clinical:'Indicated for patients with balance deficits, post-surgical weakness, or those returning from a care facility. Not appropriate for patients at risk of entrapment; review with your clinical team if uncertain.' },
   { id:3,  name:'Non-Slip Bath Mat Set',            vendor:'SlipNot Safety',     cat:'Fall Prevention',   price:'$25-$45',                  bucket:'home-safety',  covLabel:'Home Safety Benefit',  vetted:false,  img:'https://www.vivehealth.com/cdn/shop/products/xl_shower_mat_blue_2_6a36cbad-6096-41d5-81b0-957ad9a9de3b.jpg?v=1623091882',
     covText:'Many Medicare Advantage plans include a Home Safety allowance that covers non-slip bath mats and safety equipment. Check your plan\'s supplemental benefits to see your allowance amount.',
     desc:'Suction-cup bath mat with anti-microbial treatment, plus a matching floor mat. Machine washable. Fits standard tubs and garden tubs.',
-    clinical:'The bathroom is the highest-risk room for falls at home. Recommended universally for any patient with fall risk or balance concerns. Low cost, high impact, and typically one of the first items assessed in any home safety evaluation.' },
+    link:'https://www.amazon.com/s?k=non+slip+bath+mat+set+shower', clinical:'The bathroom is the highest-risk room for falls at home. Recommended universally for any patient with fall risk or balance concerns. Low cost, high impact, and typically one of the first items assessed in any home safety evaluation.' },
   { id:4,  name:'ADA Grab Bars (2-Pack)',           vendor:'SecureGrip',         cat:'Home Modification', price:'$35-$80 + installation',    bucket:'home-safety',  covLabel:'Home Safety Benefit',  vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/small_silver_grab_ba_I48QL_grande.jpg?v=1620938695',
     covText:'Many Medicare Advantage plans include a Home Safety Benefit covering grab bar installation (often $200-$250/year). Check your plan or call member services to confirm your allowance.',
     desc:'ADA-compliant stainless steel grab bars, 300 lb rated. Mounting hardware for tile, drywall, and wood stud installation. Available in 12", 18", and 24" lengths. Professional installation recommended.',
-    clinical:'Among the highest-impact fall prevention interventions in the bathroom. Consistently recommended by occupational therapists for patients with any lower extremity weakness or balance deficit. The bathroom accounts for a disproportionate share of serious home falls.' },
+    link:'https://www.amazon.com/s?k=ADA+grab+bars+bathroom+stainless+steel', clinical:'Among the highest-impact fall prevention interventions in the bathroom. Consistently recommended by occupational therapists for patients with any lower extremity weakness or balance deficit. The bathroom accounts for a disproportionate share of serious home falls.' },
   { id:5,  name:'Rollator Walker (4-Wheel)',        vendor:'Medline',            cat:'Mobility',          price:'$65-$120',                 bucket:'dme',          covLabel:'DME Benefit',          vetted:true,   img:'https://www.vivehealth.com/cdn/shop/files/Untitleddesign-2024-03-04T094623.394_grande.png?v=1709563709',
     covText:'Medicare Advantage plans cover rollator walkers as standard DME. Most plans connect you with an in-network supplier — your doctor\'s recommendation is all you need to get started.',
     desc:'Four-wheeled rollator with padded seat, backrest, and storage bag. Adjustable handles (32"-38"). Loop brakes. Folds flat for transport. Indoor/outdoor wheels. 300 lb capacity.',
-    clinical:'Indicated for patients with balance deficits, lower extremity weakness, or reduced endurance. Particularly appropriate post-discharge and for COPD, Parkinson\'s, and post-orthopedic surgery patients. Requires proper sizing by a physical therapist; incorrect sizing reduces the safety benefit significantly.' },
+    link:'https://www.amazon.com/s?k=medline+rollator+walker+4+wheel', clinical:'Indicated for patients with balance deficits, lower extremity weakness, or reduced endurance. Particularly appropriate post-discharge and for COPD, Parkinson\'s, and post-orthopedic surgery patients. Requires proper sizing by a physical therapist; incorrect sizing reduces the safety benefit significantly.' },
   { id:6,  name:'Transport Wheelchair',             vendor:'Invacare',           cat:'Mobility',          price:'$100-$200',                bucket:'dme',          covLabel:'DME Benefit',          vetted:true,   img:'https://www.vivehealth.com/cdn/shop/files/1aMainImage.jpg?v=1744815744',
     covText:'Medicare Advantage plans cover manual wheelchairs when your doctor documents the need. Call your plan to locate an in-network supplier — delivery is typically arranged within a few days.',
     desc:'19" seat transport wheelchair with swing-away footrests. Lightweight aluminum frame (19 lbs). Flip-back armrests. 300 lb capacity. Folds for vehicle transport.',
-    clinical:'For patients who cannot ambulate independently for community distances. Transport chairs are caregiver-propelled, making them ideal for hospice, palliative care, and low-endurance patients. For patients with adequate upper body strength, a self-propelled standard wheelchair may be more appropriate.' },
+    link:'https://www.amazon.com/s?k=invacare+transport+wheelchair', clinical:'For patients who cannot ambulate independently for community distances. Transport chairs are caregiver-propelled, making them ideal for hospice, palliative care, and low-endurance patients. For patients with adequate upper body strength, a self-propelled standard wheelchair may be more appropriate.' },
   { id:7,  name:'Gait Belt / Transfer Belt',        vendor:'VIVE',               cat:'Mobility',          price:'$12-$25',                  bucket:'otc',          covLabel:'OTC Allowance',        vetted:false,  img:'https://www.vivehealth.com/cdn/shop/products/main_image_3cc62de6__hFR5w.jpg?v=1621973964',
     covText:'Gait belts are available through many Medicare Advantage OTC benefit catalogs. Check your plan\'s OTC allowance — this item is typically $10-25 and may be ordered through your plan\'s OTC portal or picked up at an approved retailer.',
     desc:'60" gait belt with quick-release metal buckle and six hand-hold loops. Machine washable. Used by trained caregivers during transfers and assisted walking.',
-    clinical:'Essential for caregivers assisting with bed-to-chair and standing transfers. Significantly reduces injury risk for both patient and caregiver. Caregiver training is required before use. Ask the home health team for a transfer safety demonstration.' },
+    link:'https://www.amazon.com/s?k=VIVE+gait+belt+transfer+belt', clinical:'Essential for caregivers assisting with bed-to-chair and standing transfers. Significantly reduces injury risk for both patient and caregiver. Caregiver training is required before use. Ask the home health team for a transfer safety demonstration.' },
   { id:8,  name:'Raised Toilet Seat with Handles', vendor:'Carex',              cat:'Fall Prevention',   price:'$30-$55',                  bucket:'home-safety',  covLabel:'Home Safety Benefit',  vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/toilet_safety_rail_1_1SKub_grande.jpg?v=1619201880',
     covText:'Many Medicare Advantage plans cover raised toilet seats under their Home Safety or DME supplemental benefits. Check your plan\'s Summary of Benefits or ask your discharge coordinator.',
     desc:'3.5" elevated toilet seat with removable padded armrests for safe lowering and rising. Fits most standard and elongated toilets. 300 lb capacity. Tool-free installation.',
-    clinical:'Standard recommendation post-hip replacement, for severe arthritis, or significant lower extremity weakness. One of the most commonly ordered items following orthopedic surgery, often prescribed before leaving the facility.' },
+    link:'https://www.amazon.com/s?k=carex+raised+toilet+seat+handles', clinical:'Standard recommendation post-hip replacement, for severe arthritis, or significant lower extremity weakness. One of the most commonly ordered items following orthopedic surgery, often prescribed before leaving the facility.' },
   { id:9,  name:'Remote Patient Monitoring Kit',   vendor:'BioTelemetry',       cat:'Remote Monitoring', price:'Covered when prescribed',  bucket:'dme',          covLabel:'DME Benefit',          vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/1_d9741704_2880_42bb_IEqEH_grande.jpg?v=1619125721',
     covText:'Medicare Advantage plans cover Remote Patient Monitoring when ordered by your physician. The device is typically provided at no cost through your provider\'s RPM program — no out-of-pocket expense.',
     desc:'Connected blood pressure cuff, pulse oximeter, and weight scale that automatically transmit daily readings to your care team. No app or technical setup required. Readings upload automatically over cellular.',
-    clinical:'Indicated for CHF, COPD, hypertension, or diabetes, and for post-discharge patients at risk for readmission. Studies show RPM reduces 30-day readmissions by 20-50% in high-risk populations. Must be ordered and managed by your physician.' },
+    link:'https://www.amazon.com/s?k=remote+patient+monitoring+kit', clinical:'Indicated for CHF, COPD, hypertension, or diabetes, and for post-discharge patients at risk for readmission. Studies show RPM reduces 30-day readmissions by 20-50% in high-risk populations. Must be ordered and managed by your physician.' },
   { id:10, name:'Smart Medical Alert Speaker',      vendor:'Lively',             cat:'Remote Monitoring', price:'$50 device + ~$25/month',  bucket:'otc',          covLabel:'OTC Allowance',        vetted:false,  img:'https://www.vivehealth.com/cdn/shop/files/1AMainImage_32_grande.jpg?v=1770987676',
     covText:'Some Medicare Advantage plans offer smart alert devices through their OTC (over-the-counter) benefits catalog. Check your plan\'s supplemental benefits summary.',
     desc:'Voice-activated smart speaker with one-touch 911 calling, medication reminders, and a real-time caregiver notification app. Optional fall-detection wristband available as an add-on.',
-    clinical:'Particularly useful for patients with cognitive changes or those resistant to wearing a button. Voice activation is especially helpful for patients with limited dexterity. The ambient, always-on nature of voice-activated devices improves compliance over wearable-only solutions.' },
+    link:'https://www.amazon.com/s?k=lively+smart+speaker+medical+alert', clinical:'Particularly useful for patients with cognitive changes or those resistant to wearing a button. Voice activation is especially helpful for patients with limited dexterity. The ambient, always-on nature of voice-activated devices improves compliance over wearable-only solutions.' },
   { id:11, name:'Automatic Medication Dispenser',  vendor:'Hero Health',        cat:'Remote Monitoring', price:'~$30-45/month',            bucket:'otc',          covLabel:'OTC Allowance',        vetted:true,   img:'https://www.vivehealth.com/cdn/shop/files/1-2026-01-16T142427.786_grande.jpg?v=1768590071',
     covText:'Covered by some Medicare Advantage plans as a home safety or supplemental benefit. Check your plan\'s benefits catalog by calling member services.',
     desc:'Automated dispenser holding a 90-day supply across 10 compartments. Dispenses on schedule with audible and visual alerts. Locks between doses to prevent doubling. Caregiver app for real-time adherence monitoring.',
-    clinical:'Indicated for complex medication regimens, early memory concerns, or patients who live alone. Medication non-adherence is a leading cause of avoidable hospital readmissions. Particularly valuable post-discharge when multiple new medications are introduced at once.' },
+    link:'https://www.amazon.com/s?k=hero+health+automatic+medication+dispenser', clinical:'Indicated for complex medication regimens, early memory concerns, or patients who live alone. Medication non-adherence is a leading cause of avoidable hospital readmissions. Particularly valuable post-discharge when multiple new medications are introduced at once.' },
   { id:12, name:'Portable Threshold Ramp',          vendor:'EZ-Access',          cat:'Home Modification', price:'$30-$80',                  bucket:'home-safety',  covLabel:'Home Safety Benefit',  vetted:false,  img:'https://www.vivehealth.com/cdn/shop/products/stand_assist_1_d75ca88c-af33-446a-bc78-94034ff91f56.jpg?v=1619622023',
     covText:'Many Medicare Advantage plans include a Home Safety benefit that covers threshold ramps and home access modifications. Check your plan\'s allowance and contact an approved supplier.',
     desc:'Solid rubber ramp for doorway tracks and raised thresholds. Handles up to a 2" rise. 600 lb capacity. Beveled edges on both sides. No installation or tools required.',
-    clinical:'For walker or wheelchair users encountering raised door thresholds. A simple, low-cost intervention that restores independent home access and reduces tripping risk for all household members.' },
+    link:'https://www.amazon.com/s?k=EZ+Access+portable+threshold+ramp', clinical:'For walker or wheelchair users encountering raised door thresholds. A simple, low-cost intervention that restores independent home access and reduces tripping risk for all household members.' },
   { id:13, name:'Add-On Stair Handrail',            vendor:'SecureRail',         cat:'Home Modification', price:'$45-$120 + installation',   bucket:'home-safety',  covLabel:'Home Safety Benefit',  vetted:false,  img:'https://www.vivehealth.com/cdn/shop/products/small_silver_grab_ba_I48QL_grande.jpg?v=1620938695',
     covText:'Medicare Advantage plans often include a home modification or Home Safety benefit that covers handrail installation. Contact your plan to find an approved contractor and confirm your allowance.',
     desc:'Secondary handrail installed alongside an existing staircase railing to provide bilateral support. Wall-mounted, 300 lb capacity. Available in multiple finish options.',
-    clinical:'Bilateral handrails significantly reduce stair fall risk for patients with asymmetric weakness, which is common after stroke, hip replacement, or knee surgery. A frequent OT recommendation during post-discharge home safety assessments.' },
+    link:'https://www.amazon.com/s?k=add+on+stair+handrail+indoor', clinical:'Bilateral handrails significantly reduce stair fall risk for patients with asymmetric weakness, which is common after stroke, hip replacement, or knee surgery. A frequent OT recommendation during post-discharge home safety assessments.' },
   { id:14, name:'Adjustable Overbed Table',         vendor:'ProBasics',          cat:'Comfort',           price:'$60-$120',                 bucket:'dme',          covLabel:'DME Benefit',          vetted:false,  img:'https://www.vivehealth.com/cdn/shop/files/1.2_grande.jpg?v=1724702550',
     covText:'Medicare Advantage plans cover overbed tables when ordered alongside a home hospital bed. Ask your care coordinator if you qualify for a hospital bed — they\'re typically arranged together at no extra cost.',
     desc:'Height-adjustable table (28"-45") with a tilting top for reading or working. H-style base slides under most beds and chairs. Casters with brakes. Suitable for meals, reading, and light activities.',
-    clinical:'Standard equipment for bed-bound or significantly mobility-limited patients. Essential in hospice and palliative care settings to support patient independence for meals and activities from bed.' },
+    link:'https://www.amazon.com/s?k=probasics+adjustable+overbed+table', clinical:'Standard equipment for bed-bound or significantly mobility-limited patients. Essential in hospice and palliative care settings to support patient independence for meals and activities from bed.' },
   { id:15, name:'Bed Wedge Pillow System',          vendor:'MedCline',           cat:'Comfort',           price:'$100-$200',                bucket:'otc',          covLabel:'OTC Allowance',        vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/bed_wedge_1_90240146-abc9-4335-98c5-2d83c0fa2359_grande.jpg?v=1619817309',
     covText:'Wedge pillows are often available through Medicare Advantage OTC or supplemental benefits, especially when recommended for GERD, COPD, or post-surgical positioning. Check your plan\'s OTC catalog.',
     desc:'7-piece adjustable wedge system for acid reflux, GERD, post-surgical recovery, and back pain. Memory foam topper. Machine-washable, removable cover.',
-    clinical:'Indicated for GERD, hiatal hernia, COPD with orthopnea, post-cardiac surgery, and pain management in patients with limited mobility. Can significantly improve sleep quality and reduce nighttime respiratory and reflux symptoms.' },
+    link:'https://www.amazon.com/s?k=MedCline+bed+wedge+pillow+system', clinical:'Indicated for GERD, hiatal hernia, COPD with orthopnea, post-cardiac surgery, and pain management in patients with limited mobility. Can significantly improve sleep quality and reduce nighttime respiratory and reflux symptoms.' },
   { id:16, name:'Pressure Relief Mattress Overlay', vendor:'ROHO',               cat:'Comfort',           price:'$80-$180',                 bucket:'dme',          covLabel:'DME Benefit',          vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/8inchalternatingpressuremattress_grande.jpg?v=1677613254',
     covText:'Medicare Advantage plans cover pressure-reducing mattress overlays for members at elevated risk for pressure injuries. Ask your doctor or wound care team to document the need — your plan will handle the rest.',
     desc:'Pressure-redistributing mattress overlay with alternating zones designed to reduce shear and friction. Machine-washable cover. No pump required. Fits standard and hospital beds.',
-    clinical:'Essential for immobile patients, those with circulatory compromise, or patients at elevated risk for pressure injuries. Standard of care in hospice and palliative settings. Early intervention prevents wounds that are costly, painful, and difficult to heal.' },
+    link:'https://www.amazon.com/s?k=ROHO+pressure+relief+mattress+overlay', clinical:'Essential for immobile patients, those with circulatory compromise, or patients at elevated risk for pressure injuries. Standard of care in hospice and palliative settings. Early intervention prevents wounds that are costly, painful, and difficult to heal.' },
   { id:17, name:'Home Hospital Bed (Rental)',       vendor:'Lincare DME',        cat:'Comfort',           price:'Covered / ~$50-100/month', bucket:'dme',          covLabel:'DME Benefit',          vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/main_image_c7cb0e80__E30XI_grande.jpg?v=1630608964',
     covText:'Medicare Advantage plans cover home hospital bed rentals when your doctor documents medical necessity. Your plan\'s DME coordinator will arrange delivery and setup — typically at no additional cost to you.',
     desc:'Full-electric hospital bed for home use with head/foot positioning and height adjustment. Side rails included. Delivered and set up by your DME provider on a monthly rental basis.',
-    clinical:'Indicated for mostly bed-bound patients, those with respiratory conditions requiring head elevation, wound care needs, or patients on hospice. Substantially improves patient comfort and reduces caregiver strain during daily care.' },
+    link:'https://www.amazon.com/s?k=home+hospital+bed+full+electric', clinical:'Indicated for mostly bed-bound patients, those with respiratory conditions requiring head elevation, wound care needs, or patients on hospice. Substantially improves patient comfort and reduces caregiver strain during daily care.' },
   { id:18, name:'Shower Chair / Bath Bench',        vendor:'Drive Medical',      cat:'Fall Prevention',   price:'$35-$75',                  bucket:'home-safety',  covLabel:'Home Safety Benefit',  vetted:true,   img:'https://www.vivehealth.com/cdn/shop/files/LVA1009_-_Shower_Chair_1_grande.jpg?v=1764680540',
     covText:'Many Medicare Advantage plans cover shower chairs under their Home Safety or DME supplemental benefits. Check your plan\'s Summary of Benefits or call Member Services to confirm.',
     desc:'Adjustable-height bath bench with back support, non-slip rubber tips, and drainage slots. Fits standard tubs and walk-in showers. 300 lb capacity. Tool-free height adjustment.',
-    clinical:'A foundational item for any patient who cannot safely stand through a full shower. Routinely recommended post-discharge, post-surgery, and for patients with significant lower extremity weakness, balance deficits, or fatigue from conditions like COPD and CHF.' },
+    link:'https://www.amazon.com/s?k=drive+medical+shower+chair+bath+bench', clinical:'A foundational item for any patient who cannot safely stand through a full shower. Routinely recommended post-discharge, post-surgery, and for patients with significant lower extremity weakness, balance deficits, or fatigue from conditions like COPD and CHF.' },
   { id:19, name:'Handheld Shower Head',             vendor:'Moen',               cat:'Home Modification', price:'$25-$60',                  bucket:'home-safety',  covLabel:'Home Safety Benefit',  vetted:false,  img:'https://www.vivehealth.com/cdn/shop/files/1-2025-12-30T024520.164_grande.jpg?v=1767078130',
     covText:'Many Medicare Advantage plans cover handheld shower head installation under their Home Safety benefit. It pairs with a shower chair and counts toward your plan\'s home safety allowance.',
     desc:'Wall-mounted showerhead with a 60" flexible hose and handheld option. Installs without tools in minutes. Compatible with shower chairs and bench bathing. Multiple spray settings.',
-    clinical:'Pairs with a shower chair to enable safe seated bathing. Also useful for patients with limited shoulder range of motion or those with wounds or incisions that require careful water management. Low cost, minimal installation.' },
+    link:'https://www.amazon.com/s?k=moen+handheld+shower+head+flexible+hose', clinical:'Pairs with a shower chair to enable safe seated bathing. Also useful for patients with limited shoulder range of motion or those with wounds or incisions that require careful water management. Low cost, minimal installation.' },
   { id:20, name:'Bed and Chair Exit Alarm',         vendor:'Smart Caregiver',    cat:'Remote Monitoring', price:'$30-$60',                  bucket:'otc',          covLabel:'OTC Allowance',        vetted:false,  img:'https://www.vivehealth.com/cdn/shop/products/bed_alarm_main_image.jpg?v=1623939765',
     covText:'Bed and chair exit alarms are often available through Medicare Advantage OTC benefit catalogs. Check your plan\'s OTC allowance or supplemental benefits catalog.',
     desc:'Pressure-sensitive pad placed under the mattress or seat cushion that triggers an audible alarm when the patient attempts to get up unassisted. Wireless receiver up to 200 ft. Adjustable alarm volume.',
-    clinical:'Used to alert caregivers when a fall-risk patient attempts to rise without assistance. Commonly deployed for patients with dementia, delirium, or post-operative weakness. Complements, but does not replace, caregiver supervision.' },
+    link:'https://www.amazon.com/s?k=smart+caregiver+bed+exit+alarm', clinical:'Used to alert caregivers when a fall-risk patient attempts to rise without assistance. Commonly deployed for patients with dementia, delirium, or post-operative weakness. Complements, but does not replace, caregiver supervision.' },
   { id:21, name:'Folding Cane with Wrist Strap',   vendor:'HurryCane',          cat:'Mobility',          price:'$20-$50',                  bucket:'dme',          covLabel:'DME Benefit',          vetted:true,   img:'https://www.vivehealth.com/cdn/shop/files/Black_1_grande.jpg?v=1763146941',
     covText:'Medicare Advantage plans cover canes when your doctor recommends one for balance or mobility. Ask your plan for an in-network DME supplier — it\'s a quick process and usually no cost to you.',
     desc:'Folds into 4 sections for compact storage and travel. Adjustable height (32"-38"). Non-slip rubber tip. Pivoting base for uneven terrain. Wrist strap included.',
@@ -670,39 +680,39 @@ const products = [
   { id:22, name:'Bedside Commode',                  vendor:'Carex',              cat:'Mobility',          price:'$50-$120',                 bucket:'dme',          covLabel:'DME Benefit',          vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/folding_commode_1_2ab058eb-c252-4961-a548-62317a8f487a_grande.jpg?v=1631816471',
     covText:'Medicare Advantage plans cover bedside commodes when your doctor orders one. Request it from your physician or discharge team before going home — delivery can often be arranged same-day.',
     desc:'Adjustable-height commode chair with removable bucket, splash guard, and padded armrests. Fits over most standard toilets as a raised seat. 350 lb capacity. Foldable for storage.',
-    clinical:'Reduces nighttime trips to the bathroom, which is a high-risk time for falls. Particularly important post-surgery, during acute illness, and in the immediate post-discharge period when fatigue and medication effects are most pronounced.' },
+    link:'https://www.amazon.com/s?k=hurrycane+folding+cane+wrist+strap', link:'https://www.amazon.com/s?k=carex+bedside+commode', clinical:'Reduces nighttime trips to the bathroom, which is a high-risk time for falls. Particularly important post-surgery, during acute illness, and in the immediate post-discharge period when fatigue and medication effects are most pronounced.' },
   { id:23, name:'Home Blood Pressure Monitor',      vendor:'Omron',              cat:'Remote Monitoring', price:'$40-$80',                  bucket:'otc',          covLabel:'OTC Allowance',        vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/1_d9741704_2880_42bb_IEqEH_grande.jpg?v=1619125721',
     covText:'Blood pressure monitors are commonly available through Medicare Advantage OTC benefit catalogs. Check your plan\'s OTC allowance — this is one of the most frequently covered OTC health items.',
     desc:'Upper-arm blood pressure monitor validated to clinical accuracy standards. Large display with irregular heartbeat detection. Stores up to 60 readings with date and time. Bluetooth to smartphone app.',
-    clinical:'Self-monitoring of blood pressure is recommended for patients with hypertension, CHF, or post-stroke. Home readings frequently differ from office readings and provide more representative data. Results should be logged and shared with the care team at each visit.' },
+    link:'https://www.amazon.com/s?k=omron+blood+pressure+monitor+upper+arm', clinical:'Self-monitoring of blood pressure is recommended for patients with hypertension, CHF, or post-stroke. Home readings frequently differ from office readings and provide more representative data. Results should be logged and shared with the care team at each visit.' },
   { id:24, name:'Fingertip Pulse Oximeter',         vendor:'Nonin',              cat:'Remote Monitoring', price:'$25-$50',                  bucket:'otc',          covLabel:'OTC Allowance',        vetted:true,   img:'https://www.vivehealth.com/cdn/shop/files/Image_1c_12_03a87770-f8cf-473e-b957-97ff806232b2.jpg?v=1690460301',
     covText:'Pulse oximeters are available through many Medicare Advantage OTC benefit catalogs. Check your plan\'s OTC allowance — most plans include basic monitoring equipment in their catalog.',
     desc:'Clinical-accuracy pulse oximeter measuring oxygen saturation (SpO2) and heart rate. Large LED display. Results in under 10 seconds. Runs on standard AAA batteries. Fingertip design.',
-    clinical:'Essential for patients with COPD, asthma, CHF, or post-COVID respiratory conditions. A drop in SpO2 below 92% warrants clinical attention. Home monitoring enables early detection of exacerbations before they require hospitalization.' },
+    link:'https://www.amazon.com/s?k=nonin+fingertip+pulse+oximeter', clinical:'Essential for patients with COPD, asthma, CHF, or post-COVID respiratory conditions. A drop in SpO2 below 92% warrants clinical attention. Home monitoring enables early detection of exacerbations before they require hospitalization.' },
   { id:25, name:'Medical-Grade Compression Socks',  vendor:'Sigvaris',           cat:'Comfort',           price:'$30-$60 (2 pairs)',         bucket:'otc',          covLabel:'OTC Allowance',        vetted:true,   img:'https://www.vivehealth.com/cdn/shop/files/Image1_23e9792c-c122-42b7-a544-efd194ca4b39.jpg?v=1697500342',
     covText:'Compression socks are commonly available through Medicare Advantage OTC benefit catalogs. Check your plan\'s catalog — most include graduated compression socks in the OTC allowance.',
     desc:'Graduated compression socks (15-20 mmHg or 20-30 mmHg) designed to reduce lower leg swelling and improve circulation. Available in multiple styles and sizes. Machine washable.',
-    clinical:'Recommended for patients with lower extremity edema, chronic venous insufficiency, post-surgical swelling, or DVT risk. Commonly prescribed after orthopedic surgery, cardiac procedures, and for long-term management of heart failure and lymphedema.' },
+    link:'https://www.amazon.com/s?k=sigvaris+medical+grade+compression+socks', clinical:'Recommended for patients with lower extremity edema, chronic venous insufficiency, post-surgical swelling, or DVT risk. Commonly prescribed after orthopedic surgery, cardiac procedures, and for long-term management of heart failure and lymphedema.' },
   { id:26, name:'Motion-Sensor Night Lights (4-Pack)', vendor:'Govee',           cat:'Fall Prevention',   price:'$25-$45',                  bucket:'home-safety',  covLabel:'Home Safety Benefit',  vetted:false,  img:'https://cdn.shopify.com/s/files/1/0512/3489/8105/collections/guiding-lights-295667.jpg?v=1623830586',
     covText:'Motion-sensor night lights are often covered under Medicare Advantage Home Safety benefits as a fall prevention measure. Check your plan\'s home safety allowance.',
     desc:'Plug-in LED night lights that activate automatically with motion, then turn off after 30 seconds of inactivity. Warm white light. Fits any standard outlet. Coverage radius approximately 15 ft.',
-    clinical:'Nighttime navigation without adequate lighting is a significant fall risk factor, particularly for older adults whose eyes take longer to adjust in the dark. Recommended for hallways, bathrooms, and bedroom pathways as part of any home safety assessment.' },
+    link:'https://www.amazon.com/s?k=govee+motion+sensor+night+lights+plug+in', clinical:'Nighttime navigation without adequate lighting is a significant fall risk factor, particularly for older adults whose eyes take longer to adjust in the dark. Recommended for hallways, bathrooms, and bedroom pathways as part of any home safety assessment.' },
   { id:27, name:'Reacher / Grabber Tool',           vendor:'Vive Health',        cat:'Daily Living',      price:'$12-$25',                  bucket:'otc',          covLabel:'OTC Allowance',        vetted:false,  img:'https://www.vivehealth.com/cdn/shop/products/reacher_grabber_1_aeb42f89-9e3a-4f19-9167-10f5705864d1.jpg?v=1627918986',
     covText:'Reachers and adaptive tools are available through many Medicare Advantage OTC catalogs. Check your plan\'s OTC benefit — adaptive daily living aids are commonly included.',
     desc:'32" grabber with rotating jaw and magnetic tip for picking up small items. Ergonomic pistol grip with locking mechanism. Lightweight aluminum construction.',
-    clinical:'Standard adaptive equipment for patients on hip precautions after hip replacement, those with significant bending restrictions, or patients with limited trunk mobility. Reduces fall risk from bending and reaching. Typically issued by an occupational therapist at discharge.' },
+    link:'https://www.amazon.com/s?k=vive+health+reacher+grabber+tool', clinical:'Standard adaptive equipment for patients on hip precautions after hip replacement, those with significant bending restrictions, or patients with limited trunk mobility. Reduces fall risk from bending and reaching. Typically issued by an occupational therapist at discharge.' },
   { id:28, name:'Dressing Aid Kit',                 vendor:'RMS',                cat:'Daily Living',      price:'$15-$30',                  bucket:'otc',          covLabel:'OTC Allowance',        vetted:false,  img:'https://www.vivehealth.com/cdn/shop/products/sock_assist_1_5a841c0b-9802-4933-a206-e1e0b036ce58.jpg?v=1628514737',
     covText:'Dressing aid kits are available through many Medicare Advantage OTC benefit catalogs. FSA/HSA funds also apply. Check your plan\'s OTC benefit catalog for eligible items.',
     desc:'Kit includes a long-handle shoehorn (24"), elastic shoelaces, and a sock aid to enable independent dressing without bending below 90 degrees. Lightweight and easy to store.',
-    clinical:'Essential for patients on hip precautions after hip replacement surgery. Also useful for patients with significant back pain, limited trunk mobility, or those who experience shortness of breath when bending. Typically prescribed by an occupational therapist at discharge.' },
+    link:'https://www.amazon.com/s?k=RMS+dressing+aid+kit+sock+aid', clinical:'Essential for patients on hip precautions after hip replacement surgery. Also useful for patients with significant back pain, limited trunk mobility, or those who experience shortness of breath when bending. Typically prescribed by an occupational therapist at discharge.' },
   { id:29, name:'Pressure-Relief Wheelchair Cushion', vendor:'ROHO',             cat:'Comfort',           price:'$80-$180',                 bucket:'dme',          covLabel:'DME Benefit',          vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/1_1_148e3db1-ca96-4701-a962-b69e556947e8.jpg?v=1650897760',
     covText:'Medicare Advantage plans cover pressure-relief cushions for wheelchair users at risk for skin breakdown. Ask your doctor to document the need — your plan will connect you with a supplier.',
     desc:'Interconnected air cell cushion that distributes weight and reduces interface pressure. Manual inflation with a hand pump. Cover included. Fits most standard and transport wheelchair frames.',
-    clinical:'Indicated for wheelchair users who spend extended hours seated, those with limited ability to perform weight shifts, or patients with compromised skin integrity. Significantly reduces pressure injury incidence, a major quality-of-life concern for long-term wheelchair users.' },
+    link:'https://www.amazon.com/s?k=ROHO+pressure+relief+wheelchair+cushion', clinical:'Indicated for wheelchair users who spend extended hours seated, those with limited ability to perform weight shifts, or patients with compromised skin integrity. Significantly reduces pressure injury incidence, a major quality-of-life concern for long-term wheelchair users.' },
   { id:30, name:'Waterproof PERS Wristband',        vendor:'Medical Guardian',   cat:'Fall Prevention',   price:'~$25-40/month',            bucket:'otc',          covLabel:'OTC Allowance',        vetted:true,   img:'https://www.vivehealth.com/cdn/shop/files/1c_5_5395b2d9-552f-4967-a495-74d960b45953.jpg?v=1771333270',
     covText:'Many Medicare Advantage plans include PERS (Personal Emergency Response Systems) as a supplemental benefit. Check your plan\'s Summary of Benefits for coverage amount and approved devices.',
     desc:'Waterproof wristband with one-button 911 connection to 24/7 professional monitoring. Active fall detection. GPS-enabled for indoor and outdoor use. Works in the shower. Battery lasts up to 5 days.',
-    clinical:'Recommended for adults living alone with any fall risk or chronic condition. The waterproof design is critical because a significant portion of falls occur in the bathroom, where non-waterproof devices cannot be worn. Automatic fall detection improves outcomes when patients cannot press the button.' }
+    link:'https://www.amazon.com/s?k=medical+guardian+waterproof+PERS+wristband', clinical:'Recommended for adults living alone with any fall risk or chronic condition. The waterproof design is critical because a significant portion of falls occur in the bathroom, where non-waterproof devices cannot be worn. Automatic fall detection improves outcomes when patients cannot press the button.' }
 ];
 
 let selSit = null, selUrg = null, activeCat = 'All', covFilter = 'All', visPids = [];
@@ -929,6 +939,7 @@ function openProd(pid) {
   document.getElementById('mp-desc').textContent = p.desc;
   document.getElementById('mp-clinical').textContent = p.clinical;
   document.getElementById('mp-cov-section').innerHTML = buildCovSection(p);
+  document.getElementById('mp-buy').href = p.link || '#';
   const v = document.getElementById('mp-vetted');
   p.vetted ? v.classList.remove('hidden') : v.classList.add('hidden');
   document.getElementById('modal-product').classList.remove('hidden');
