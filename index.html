@@ -202,8 +202,8 @@
           <div class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mb-3 text-gray-600">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
           </div>
-          <h3 class="font-semibold text-gray-900 text-sm mb-1">Parent or Spouse Moving In</h3>
-          <p class="text-gray-400 text-xs">Setting up for ongoing care</p>
+          <h3 class="font-semibold text-gray-900 text-sm mb-1">Becoming a Caregiver</h3>
+          <p class="text-gray-400 text-xs">Setting up to support a family member</p>
         </div>
         <div onclick="pickSituationFromLanding('fall-risk')" class="sit-card">
           <div class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mb-3 text-gray-600">
@@ -334,12 +334,12 @@
 <div id="screen-home" class="screen">
   <div class="max-w-5xl mx-auto px-6 py-12 fade-in">
     <div class="max-w-2xl mb-10">
-      <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-3">What's the care situation?</h1>
+      <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-3">What's your top priority?</h1>
       <p class="text-gray-500 text-base leading-relaxed">Choose what best describes the current need. We'll match products to your situation and show Medicare coverage on every item.</p>
     </div>
     <div class="flex items-center gap-3 mb-6 flex-wrap">
       <div class="step-dot active">1</div>
-      <span class="text-sm font-semibold text-gray-900">Care situation</span>
+      <span class="text-sm font-semibold text-gray-900">Your priority</span>
       <div class="h-px bg-gray-200 w-10"></div>
       <div class="step-dot pending">2</div>
       <span class="text-sm text-gray-400">What's most urgent</span>
@@ -441,10 +441,11 @@
         </div>
         <p class="text-gray-600 text-sm leading-relaxed mb-5" id="mp-desc"></p>
         <div class="bg-gray-50 border border-gray-100 rounded-lg p-4 mb-4">
-          <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Clinical Context</p>
-          <p class="text-gray-700 text-sm leading-relaxed" id="mp-clinical"></p>
+          <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Who is this right for?</p>
+          <div class="text-gray-700 text-sm space-y-2" id="mp-clinical"></div>
         </div>
         <div id="mp-cov-section"></div>
+        <div id="mp-related" class="mt-1"></div>
       </div>
     </div>
 
@@ -564,7 +565,7 @@ const situations = [
     icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>`,
     pids: [2,5,6,7,8,9,11,14,15,16,17,18,22,25,27,28,31,32,33,34,35,36,37,40],
     urgencyMap: { safety:[2,8,18,22,34,36], mobility:[5,6,7,22,27,28,31,32,33,35,36], monitoring:[9,11,20,23,24], comfort:[14,15,16,17,25,37,40] } },
-  { id: 'aging-in-place', label: 'Parent or Spouse Moving In', desc: 'Setting up your home to support a family member who needs ongoing daily care.',
+  { id: 'aging-in-place', label: 'Becoming a Caregiver', desc: 'Setting up your home and routine to support a family member who needs regular care.',
     icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>`,
     pids: [1,2,3,4,5,7,8,10,11,12,15,18,21,22,26,30,33,34,36,39],
     urgencyMap: { safety:[1,2,3,4,8,18,26,30,34,36], mobility:[5,7,21,22,33], monitoring:[10,11,20,23,39], comfort:[15,25] } },
@@ -587,7 +588,7 @@ const situations = [
 ];
 
 const urgencies = [
-  { id:'safety',     label:'Safety and Fall Prevention',      desc:'Reducing fall risk, securing bathrooms and high-risk areas.',        icon:`<svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>` },
+  { id:'safety',     label:'Home & Bathroom Setup',            desc:'Grab bars, shower safety, ramps, and modifications to make bathrooms and entrances safer.',        icon:`<svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>` },
   { id:'mobility',   label:'Mobility and Getting Around',      desc:'Walking aids, transfers, and equipment to move safely.',             icon:`<svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>` },
   { id:'monitoring', label:'Monitoring and Staying Connected', desc:'Remote check-ins, medication management, vitals tracking.',          icon:`<svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>` },
   { id:'comfort',    label:'Comfort and Daily Living',         desc:'Beds, positioning, skin protection, and quality of life.',           icon:`<svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>` }
@@ -979,8 +980,28 @@ function openProd(pid) {
   const cb = document.getElementById('mp-cov-badge');
   cb.textContent = p.covLabel; cb.className = `text-xs px-2.5 py-1 rounded-md font-semibold ${covClass(p.bucket)}`;
   document.getElementById('mp-desc').textContent = p.desc;
-  document.getElementById('mp-clinical').textContent = p.clinical;
+  const clinBullets = p.clinical.split(/\.\s+(?=[A-Z])/).filter(s => s.trim().length > 10);
+  document.getElementById('mp-clinical').innerHTML = clinBullets.map(b =>
+    `<div class="flex gap-2 items-start"><svg class="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>${b.trim().replace(/\.$/,'')}</span></div>`
+  ).join('');
   document.getElementById('mp-cov-section').innerHTML = buildCovSection(p);
+  const relPool = visPids.length > 0 ? visPids : products.map(x => x.id);
+  const related = products.filter(x => x.id !== p.id && relPool.includes(x.id)).slice(0, 3);
+  const relEl = document.getElementById('mp-related');
+  relEl.innerHTML = related.length > 0
+    ? `<div class="border-t border-gray-100 pt-4 mt-3">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Complete your home care setup</p>
+        <div class="flex gap-3 overflow-x-auto pb-1">
+          ${related.map(r => `<div class="flex-shrink-0 w-36 cursor-pointer group" onclick="openProd(${r.id})">
+            <div class="h-20 bg-gray-50 rounded-lg flex items-center justify-center mb-2 border border-gray-100 group-hover:border-gray-300 transition-colors">
+              <img src="${r.img}" alt="${r.name}" class="max-w-full max-h-full object-contain p-2" onerror="this.style.opacity='0.2'" />
+            </div>
+            <p class="text-xs font-semibold text-gray-900 leading-snug line-clamp-2 group-hover:text-blue-600 transition-colors">${r.name}</p>
+            <p class="text-xs text-gray-400 mt-0.5">${r.price}</p>
+          </div>`).join('')}
+        </div>
+      </div>`
+    : '';
   document.getElementById('mp-buy').href = p.link || '#';
   const v = document.getElementById('mp-vetted');
   p.vetted ? v.classList.remove('hidden') : v.classList.add('hidden');
