@@ -3,7 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CareShelf: Home Health Products, Clinically Matched</title>
+
+  <!-- Primary SEO -->
+  <title>CareShelf | Medicare Advantage Home Health Products & Covered Benefits</title>
+  <meta name="description" content="CareShelf helps Medicare Advantage members find and claim covered home health products — DME equipment, home safety modifications, and OTC allowance items. Clinically matched to your care situation." />
+  <meta name="keywords" content="Medicare Advantage covered products, Medicare Advantage OTC benefit, Medicare Advantage DME, home health equipment Medicare, Medicare Advantage home safety benefit, OTC allowance products, Medicare Advantage supplemental benefits" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://swagmeisterbb.github.io/careshelf/" />
+
+  <!-- Open Graph (social sharing) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://swagmeisterbb.github.io/careshelf/" />
+  <meta property="og:title" content="CareShelf | Medicare Advantage Home Health Products" />
+  <meta property="og:description" content="Find out which home health products your Medicare Advantage plan covers — DME, home safety modifications, and OTC allowance items. Takes under 30 seconds." />
+  <meta property="og:image" content="https://swagmeisterbb.github.io/careshelf/og-image.png" />
+  <meta property="og:site_name" content="CareShelf" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CareShelf | Medicare Advantage Home Health Products" />
+  <meta name="twitter:description" content="Find out which home health products your Medicare Advantage plan covers — DME, home safety modifications, and OTC allowance items." />
+  <meta name="twitter:image" content="https://swagmeisterbb.github.io/careshelf/og-image.png" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "CareShelf",
+    "url": "https://swagmeisterbb.github.io/careshelf/",
+    "description": "CareShelf helps Medicare Advantage members discover and claim covered home health products, including DME equipment, home safety modifications, and OTC allowance items.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://swagmeisterbb.github.io/careshelf/",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CareShelf",
+    "url": "https://swagmeisterbb.github.io/careshelf/",
+    "description": "A clinically-curated product guide for Medicare Advantage members navigating home health benefits.",
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Medicare Advantage members, caregivers, home health patients"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Medicare Advantage Home Health Product Guide",
+    "url": "https://swagmeisterbb.github.io/careshelf/",
+    "description": "Clinically matched home health products for Medicare Advantage members. Covers DME (durable medical equipment), home safety modifications, and OTC allowance items.",
+    "medicalAudience": {
+      "@type": "MedicalAudience",
+      "audienceType": "Patient"
+    },
+    "about": {
+      "@type": "MedicalCondition",
+      "name": "Home health recovery and aging in place"
+    }
+  }
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
@@ -255,12 +322,37 @@
   </div>
 
   <!-- Footer -->
-  <div class="border-t border-gray-200 bg-gray-50">
-    <div class="max-w-5xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <p class="text-xs text-gray-400">2025 CareShelf. For informational use only. Always consult your care team before purchasing medical equipment.</p>
-      <p class="text-xs text-gray-400">This site may earn a small referral fee on purchases. <a href="#" class="underline hover:text-gray-600" onclick="return false">Affiliate disclosure</a>.</p>
+  <footer class="border-t border-gray-200 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-6 py-10">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
+        <div>
+          <p class="text-xs font-semibold text-gray-700 uppercase tracking-wider mb-3">About CareShelf</p>
+          <p class="text-xs text-gray-500 leading-relaxed">CareShelf helps Medicare Advantage members find and claim home health products covered under their plan — including DME, home safety modifications, and OTC allowance benefits.</p>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-gray-700 uppercase tracking-wider mb-3">Covered Benefits</p>
+          <ul class="space-y-1.5 text-xs text-gray-500">
+            <li><button onclick="showAllProducts(); filterCov('dme')" class="hover:text-gray-700 transition-colors text-left">Medicare Advantage DME Coverage</button></li>
+            <li><button onclick="showAllProducts(); filterCov('home-safety')" class="hover:text-gray-700 transition-colors text-left">Home Safety Modification Benefit</button></li>
+            <li><button onclick="showAllProducts(); filterCov('otc')" class="hover:text-gray-700 transition-colors text-left">OTC Allowance Products</button></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs font-semibold text-gray-700 uppercase tracking-wider mb-3">Care Situations</p>
+          <ul class="space-y-1.5 text-xs text-gray-500">
+            <li><button onclick="pickSituationFromLanding('hospital-discharge')" class="hover:text-gray-700 transition-colors text-left">Hospital &amp; Rehab Discharge</button></li>
+            <li><button onclick="pickSituationFromLanding('fall-risk')" class="hover:text-gray-700 transition-colors text-left">Fall Prevention &amp; Home Safety</button></li>
+            <li><button onclick="pickSituationFromLanding('chronic')" class="hover:text-gray-700 transition-colors text-left">Chronic Condition Management</button></li>
+            <li><button onclick="pickSituationFromLanding('aging-in-place')" class="hover:text-gray-700 transition-colors text-left">Caregiver Setup</button></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p class="text-xs text-gray-400">&copy; 2026 CareShelf. For informational use only. Always consult your care team before purchasing medical equipment.</p>
+        <p class="text-xs text-gray-400">This site may earn a small referral fee on purchases. <a href="#" class="underline hover:text-gray-600" onclick="return false">Affiliate disclosure</a>.</p>
+      </div>
     </div>
-  </div>
+  </footer>
 </div>
 
 
