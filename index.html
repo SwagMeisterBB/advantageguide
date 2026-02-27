@@ -407,30 +407,22 @@
 <!-- PRODUCT DETAIL MODAL -->
 <div id="modal-product" class="hidden fixed inset-0 z-50 bg-black/40 flex items-end md:items-center justify-center"
      onclick="if(event.target===this) closeProdModal()">
-  <div class="bg-white w-full md:max-w-2xl md:rounded-xl max-h-[92vh] shadow-2xl flex flex-col md:flex-row overflow-hidden">
+  <div class="bg-white w-full md:max-w-xl md:rounded-xl max-h-[92vh] shadow-2xl flex flex-col overflow-hidden">
 
-    <!-- LEFT/TOP: sticky image + shop button panel -->
-    <div class="md:w-52 flex-shrink-0 flex flex-col border-b md:border-b-0 md:border-r border-gray-100">
-      <div class="flex items-center justify-between px-4 py-3 border-b border-gray-100">
-        <span id="mp-category" class="text-xs font-semibold text-gray-400 uppercase tracking-wider"></span>
-        <button onclick="closeProdModal()" class="text-gray-400 hover:text-gray-700 p-1 rounded-md hover:bg-gray-100">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-      </div>
-      <div class="flex items-center justify-center p-5 bg-gray-50 flex-1">
-        <img id="mp-img-icon" src="" alt="" class="max-w-full max-h-32 md:max-h-44 object-contain" />
-      </div>
-      <div class="p-4 bg-white border-t border-gray-100">
-        <a id="mp-buy" href="#" target="_blank" rel="noopener noreferrer"
-           class="flex items-center justify-center gap-2 w-full bg-gray-900 hover:bg-gray-700 text-white text-center py-3 rounded-lg font-semibold text-sm transition-colors">
-          Shop This Product
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-        </a>
-        <p class="text-xs text-gray-400 text-center mt-2">May earn a small referral fee</p>
-      </div>
+    <!-- Sticky top bar: category + close -->
+    <div class="flex-shrink-0 flex items-center justify-between px-5 py-3 border-b border-gray-100">
+      <span id="mp-category" class="text-xs font-semibold text-gray-400 uppercase tracking-wider"></span>
+      <button onclick="closeProdModal()" class="text-gray-400 hover:text-gray-700 p-1 rounded-md hover:bg-gray-100">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
     </div>
 
-    <!-- RIGHT/BOTTOM: scrollable content -->
+    <!-- Full-width product image -->
+    <div class="flex-shrink-0 h-52 bg-gray-50 flex items-center justify-center border-b border-gray-100">
+      <img id="mp-img-icon" src="" alt="" class="max-w-full max-h-full object-contain p-4" />
+    </div>
+
+    <!-- Scrollable content -->
     <div class="flex-1 overflow-y-auto min-h-0">
       <div class="px-5 py-5">
         <div class="flex items-start justify-between gap-3 mb-1">
@@ -452,9 +444,18 @@
           <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Clinical Context</p>
           <p class="text-gray-700 text-sm leading-relaxed" id="mp-clinical"></p>
         </div>
-        <div id="mp-cov-section" class="mb-5"></div>
-        <button onclick="closeProdModal()" class="w-full px-4 py-3 border border-gray-200 text-gray-600 hover:bg-gray-50 rounded-lg text-sm font-medium">Close</button>
+        <div id="mp-cov-section"></div>
       </div>
+    </div>
+
+    <!-- Sticky bottom CTA -->
+    <div class="flex-shrink-0 px-5 py-4 bg-white border-t border-gray-100">
+      <a id="mp-buy" href="#" target="_blank" rel="noopener noreferrer"
+         class="flex items-center justify-center gap-2 w-full bg-gray-900 hover:bg-gray-700 text-white py-3.5 rounded-lg font-semibold text-sm transition-colors">
+        Shop This Product
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+      </a>
+      <p class="text-xs text-gray-400 text-center mt-2">CareShelf may earn a small referral fee at no cost to you.</p>
     </div>
 
   </div>
