@@ -82,12 +82,12 @@
       <span class="font-semibold text-gray-900 text-sm tracking-tight">CareShelf</span>
     </div>
     <div class="flex items-center gap-4">
-      <button id="breadcrumb-back" onclick="goHome()"
+      <button id="breadcrumb-back" onclick="goBack()"
               class="hidden items-center gap-1.5 text-sm text-gray-500 hover:text-gray-900 transition-colors">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
         </svg>
-        Start over
+        Back
       </button>
       <button onclick="showCareTeamModal()"
               class="hidden md:block text-sm text-gray-500 hover:text-gray-900 transition-colors font-medium">
@@ -706,17 +706,31 @@ const products = [
 ];
 
 let selSit = null, selUrg = null, activeCat = 'All', covFilter = 'All', visPids = [];
+let curScreen = 'screen-landing';
 
 function goScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   const s = document.getElementById(id);
   s.classList.add('active', 'fade-in');
   setTimeout(() => s.classList.remove('fade-in'), 300);
+  curScreen = id;
   const bb = document.getElementById('breadcrumb-back');
-  const show = id !== 'screen-landing' && id !== 'screen-home' && id !== 'screen-qualifier';
+  const show = id !== 'screen-landing';
   bb.classList.toggle('hidden', !show);
   bb.classList.toggle('flex', show);
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goBack() {
+  if (curScreen === 'screen-qualifier') { goLanding(); }
+  else if (curScreen === 'screen-home') { goLanding(); }
+  else if (curScreen === 'screen-urgency') { renderSituationCards(); goScreen('screen-home'); }
+  else if (curScreen === 'screen-products') {
+    if (selSit && selUrg) { pickSituation(selSit.id); }
+    else if (selSit) { renderSituationCards(); goScreen('screen-home'); }
+    else { goHome(); }
+  }
+  else { goLanding(); }
 }
 
 function goLanding()    { selSit=null; selUrg=null; activeCat='All'; covFilter='All'; visPids=[]; goScreen('screen-landing'); }
