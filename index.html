@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareShelf: Home Health Products, Clinically Matched</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, sans-serif; background: #F9FAFB; color: #111827; }
+
+    .screen { display: none; }
+    .screen.active { display: block; }
+    .fade-in { animation: fadeIn 0.25s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    .sit-card {
+      background: white; border: 1.5px solid #E5E7EB; border-radius: 10px;
+      padding: 20px; cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .sit-card:hover { border-color: #2563EB; box-shadow: 0 2px 14px rgba(37,99,235,0.10); }
+
+    .urg-card {
+      background: white; border: 1.5px solid #E5E7EB; border-radius: 10px;
+      padding: 18px 20px; cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .urg-card:hover { border-color: #2563EB; box-shadow: 0 2px 14px rgba(37,99,235,0.10); }
+
+    .prod-card {
+      background: white; border: 1.5px solid #E5E7EB; border-radius: 10px;
+      cursor: pointer; overflow: hidden; transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .prod-card:hover { border-color: #9CA3AF; box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+
+    .badge-dme         { background:#DCFCE7; color:#15803D; }
+    .badge-home-safety { background:#DBEAFE; color:#1D4ED8; }
+    .badge-otc         { background:#F3E8FF; color:#7C3AED; }
+    .badge-oop         { background:#F3F4F6; color:#4B5563; }
+    .badge-vetted  { background:#EFF6FF; color:#1D4ED8; }
+
+    .filter-pill {
+      padding: 6px 14px; border-radius: 6px; font-size: 13px; font-weight: 500;
+      border: 1.5px solid #E5E7EB; background: white; color: #374151;
+      cursor: pointer; transition: all 0.12s;
+    }
+    .filter-pill:hover { border-color: #9CA3AF; }
+    .filter-pill.active { background: #111827; color: white; border-color: #111827; }
+
+    .step-dot {
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; flex-shrink: 0;
+    }
+    .step-dot.done { background: #111827; color: white; }
+    .step-dot.active { background: #2563EB; color: white; }
+    .step-dot.pending { background: #F3F4F6; color: #9CA3AF; }
+
+    .how-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: #EFF6FF; color: #2563EB;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700; flex-shrink: 0;
+    }
+
+    .modal-open { overflow: hidden; }
+    .line-clamp-2 { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="bg-white border-b border-gray-200 sticky top-0 z-40">
+  <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+    <div class="flex items-center gap-3 cursor-pointer select-none" onclick="goLanding()">
+      <div class="w-7 h-7 bg-gray-900 rounded-md flex items-center justify-center">
+        <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+        </svg>
+      </div>
+      <span class="font-semibold text-gray-900 text-sm tracking-tight">CareShelf</span>
+    </div>
+    <div class="flex items-center gap-4">
+      <button id="breadcrumb-back" onclick="goHome()"
+              class="hidden items-center gap-1.5 text-sm text-gray-500 hover:text-gray-900 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+        Start over
+      </button>
+      <button onclick="showCareTeamModal()"
+              class="hidden md:block text-sm text-gray-500 hover:text-gray-900 transition-colors font-medium">
+        For care teams
+      </button>
+      <button onclick="showShareModal()"
+              class="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900 border border-gray-200 hover:border-gray-400 px-3 py-1.5 rounded-lg transition-all">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+        </svg>
+        Share
+      </button>
+    </div>
+  </div>
+</header>
+
+
+<!-- SCREEN: LANDING PAGE -->
+<div id="screen-landing" class="screen active">
+
+  <!-- Hero -->
+  <div class="bg-white">
+    <div class="max-w-5xl mx-auto px-6 pt-16 pb-14">
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm2 0a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1zm-2 4a1 1 0 100 2h.01a1 1 0 100-2H7zm2 0a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1z" clip-rule="evenodd"/>
+          </svg>
+          For Medicare Advantage Members
+        </div>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-5">
+          Your Medicare Advantage<br/>plan covers more than<br/>you think.
+        </h1>
+        <p class="text-gray-500 text-lg leading-relaxed mb-8 max-w-xl">
+          Most Advantage members have an OTC allowance, a home safety benefit, and equipment coverage — and most never use them. CareShelf shows you exactly what you qualify for and the steps to get it covered.
+        </p>
+        <div class="flex flex-wrap items-center gap-3 mb-8">
+          <button onclick="goQualifier()"
+                  class="bg-gray-900 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-lg text-sm transition-colors">
+            Find My Covered Products
+          </button>
+          <button onclick="showAllProducts()"
+                  class="text-sm font-medium text-gray-600 hover:text-gray-900 border border-gray-200 hover:border-gray-400 px-5 py-3 rounded-lg transition-all">
+            Browse all products
+          </button>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xl">
+          <div class="flex items-center gap-2.5 bg-green-50 border border-green-100 rounded-lg px-3 py-2.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-green-400 flex-shrink-0"></span>
+            <div>
+              <p class="text-xs font-semibold text-green-900">DME Benefit</p>
+              <p class="text-xs text-green-700">Walkers, beds, wheelchairs</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2.5 bg-blue-50 border border-blue-100 rounded-lg px-3 py-2.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-400 flex-shrink-0"></span>
+            <div>
+              <p class="text-xs font-semibold text-blue-900">Home Safety</p>
+              <p class="text-xs text-blue-700">Grab bars, ramps, rails</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2.5 bg-purple-50 border border-purple-100 rounded-lg px-3 py-2.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-purple-400 flex-shrink-0"></span>
+            <div>
+              <p class="text-xs font-semibold text-purple-900">OTC Allowance</p>
+              <p class="text-xs text-purple-700">Health items, monitors</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- How it works -->
+  <div class="bg-gray-50 border-t border-b border-gray-200">
+    <div class="max-w-5xl mx-auto px-6 py-14">
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-10">How it works</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div>
+          <div class="how-num mb-4">1</div>
+          <h3 class="font-semibold text-gray-900 mb-2">Tell us your care situation</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Hospital discharge, fall prevention, chronic condition management. Choose what fits. Takes under 30 seconds — no account required.</p>
+        </div>
+        <div>
+          <div class="how-num mb-4">2</div>
+          <h3 class="font-semibold text-gray-900 mb-2">See which benefit covers each item</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Every product is labeled with the specific Advantage benefit that covers it — DME, Home Safety, or OTC allowance — so you know exactly what you're working with.</p>
+        </div>
+        <div>
+          <div class="how-num mb-4">3</div>
+          <h3 class="font-semibold text-gray-900 mb-2">Get exact steps to claim your coverage</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Each product includes a plain-language guide: who to call, what to ask, and how your plan delivers or reimburses it. No guessing, no runaround.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Care stage preview -->
+  <div class="bg-white border-b border-gray-200">
+    <div class="max-w-5xl mx-auto px-6 py-14">
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Organized by care stage</p>
+      <h2 class="text-2xl font-bold text-gray-900 mb-8 max-w-lg">Products matched to where you are in the care journey.</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div onclick="pickSituationFromLanding('hospital-discharge')" class="sit-card">
+          <div class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mb-3 text-gray-600">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 text-sm mb-1">Hospital or Rehab Discharge</h3>
+          <p class="text-gray-400 text-xs">Coming home after a stay</p>
+        </div>
+        <div onclick="pickSituationFromLanding('aging-in-place')" class="sit-card">
+          <div class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mb-3 text-gray-600">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 text-sm mb-1">Parent or Spouse Moving In</h3>
+          <p class="text-gray-400 text-xs">Setting up for ongoing care</p>
+        </div>
+        <div onclick="pickSituationFromLanding('fall-risk')" class="sit-card">
+          <div class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mb-3 text-gray-600">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 text-sm mb-1">Fall Risk or Home Safety</h3>
+          <p class="text-gray-400 text-xs">Preventing falls at home</p>
+        </div>
+        <div onclick="pickSituationFromLanding('chronic')" class="sit-card">
+          <div class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mb-3 text-gray-600">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 text-sm mb-1">Managing a Chronic Condition</h3>
+          <p class="text-gray-400 text-xs">COPD, CHF, diabetes, and more</p>
+        </div>
+        <div onclick="pickSituationFromLanding('hospice')" class="sit-card">
+          <div class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mb-3 text-gray-600">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 text-sm mb-1">Hospice or Palliative Care</h3>
+          <p class="text-gray-400 text-xs">Comfort and quality of life</p>
+        </div>
+        <div onclick="pickSituationFromLanding('independent')" class="sit-card">
+          <div class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mb-3 text-gray-600">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+          </div>
+          <h3 class="font-semibold text-gray-900 text-sm mb-1">Staying Independent at Home</h3>
+          <p class="text-gray-400 text-xs">Proactive aging-in-place setup</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- For care teams -->
+  <div class="bg-white">
+    <div class="max-w-5xl mx-auto px-6 py-12">
+      <div class="bg-gray-900 rounded-xl p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div>
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">For home health agencies and care coordinators</p>
+          <h3 class="text-white font-bold text-xl mb-2">Give your patients a clear path home.</h3>
+          <p class="text-gray-400 text-sm leading-relaxed max-w-lg">Partner organizations get a branded URL, your preferred product list front and center, and a dashboard showing what your patients are viewing after discharge. No EMR integration. No IT project.</p>
+        </div>
+        <button onclick="showCareTeamModal()"
+                class="flex-shrink-0 bg-white hover:bg-gray-100 text-gray-900 font-semibold text-sm px-5 py-3 rounded-lg transition-colors whitespace-nowrap">
+          Learn about partner access
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="border-t border-gray-200 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="text-xs text-gray-400">2025 CareShelf. For informational use only. Always consult your care team before purchasing medical equipment.</p>
+      <p class="text-xs text-gray-400">This site may earn a small referral fee on purchases. <a href="#" class="underline hover:text-gray-600" onclick="return false">Affiliate disclosure</a>.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- SCREEN: ADVANTAGE QUALIFIER -->
+<div id="screen-qualifier" class="screen">
+  <div class="max-w-5xl mx-auto px-6 py-16 fade-in">
+    <div class="max-w-lg mx-auto">
+      <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
+        Medicare Advantage
+      </div>
+      <h1 class="text-3xl font-extrabold text-gray-900 mb-3">Are you on a Medicare Advantage plan?</h1>
+      <p class="text-gray-500 text-base leading-relaxed mb-8">CareShelf is built for Medicare Advantage members. Most plans include three benefits most members never use — we'll show you exactly what to get and how to get it covered.</p>
+      <div class="space-y-3 mb-8">
+        <button onclick="confirmAdvantage('yes')"
+                class="w-full flex items-center justify-between bg-white border-2 border-gray-200 hover:border-blue-400 rounded-xl px-5 py-4 text-left transition-all group">
+          <div>
+            <p class="font-semibold text-gray-900">Yes, I have Medicare Advantage</p>
+            <p class="text-sm text-gray-500 mt-0.5">Humana, UnitedHealthcare, Aetna, BCBS, Cigna, or another Advantage plan</p>
+          </div>
+          <svg class="w-5 h-5 text-gray-300 group-hover:text-blue-400 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <button onclick="confirmAdvantage('unsure')"
+                class="w-full flex items-center justify-between bg-white border-2 border-gray-200 hover:border-gray-400 rounded-xl px-5 py-4 text-left transition-all group">
+          <div>
+            <p class="font-semibold text-gray-900">I'm not sure what plan I have</p>
+            <p class="text-sm text-gray-500 mt-0.5">Check your insurance card or call 1-800-MEDICARE (1-800-633-4227)</p>
+          </div>
+          <svg class="w-5 h-5 text-gray-300 group-hover:text-gray-500 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <button onclick="confirmAdvantage('no')"
+                class="w-full flex items-center justify-between bg-white border-2 border-gray-200 hover:border-gray-400 rounded-xl px-5 py-4 text-left transition-all group">
+          <div>
+            <p class="font-semibold text-gray-900">No, I have Original Medicare or other insurance</p>
+            <p class="text-sm text-gray-500 mt-0.5">You can still browse products, but coverage guidance is written for Advantage members</p>
+          </div>
+          <svg class="w-5 h-5 text-gray-300 group-hover:text-gray-500 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+      <div class="bg-gray-50 border border-gray-200 rounded-xl p-4">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">What Medicare Advantage members can access</p>
+        <div class="grid grid-cols-3 gap-3 text-center">
+          <div class="bg-white rounded-lg p-3 border border-gray-100">
+            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+            </div>
+            <p class="text-xs font-semibold text-gray-900">DME Benefit</p>
+            <p class="text-xs text-gray-500 mt-0.5 leading-relaxed">Walkers, wheelchairs, hospital beds — ordered through your plan</p>
+          </div>
+          <div class="bg-white rounded-lg p-3 border border-gray-100">
+            <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+              <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            </div>
+            <p class="text-xs font-semibold text-gray-900">Home Safety</p>
+            <p class="text-xs text-gray-500 mt-0.5 leading-relaxed">Grab bars, ramps, rails — covered up to your annual allowance</p>
+          </div>
+          <div class="bg-white rounded-lg p-3 border border-gray-100">
+            <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+              <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+            </div>
+            <p class="text-xs font-semibold text-gray-900">OTC Allowance</p>
+            <p class="text-xs text-gray-500 mt-0.5 leading-relaxed">$50–200/quarter for health items — most members never use it</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SCREEN 1: SITUATION SELECTION -->
+<div id="screen-home" class="screen">
+  <div class="max-w-5xl mx-auto px-6 py-12 fade-in">
+    <div class="max-w-2xl mb-10">
+      <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-3">What's the care situation?</h1>
+      <p class="text-gray-500 text-base leading-relaxed">Choose what best describes the current need. We'll match products to your situation and show Medicare coverage on every item.</p>
+    </div>
+    <div class="flex items-center gap-3 mb-6 flex-wrap">
+      <div class="step-dot active">1</div>
+      <span class="text-sm font-semibold text-gray-900">Care situation</span>
+      <div class="h-px bg-gray-200 w-10"></div>
+      <div class="step-dot pending">2</div>
+      <span class="text-sm text-gray-400">What's most urgent</span>
+      <div class="h-px bg-gray-200 w-10"></div>
+      <div class="step-dot pending">3</div>
+      <span class="text-sm text-gray-400">Matched products</span>
+    </div>
+    <div id="sit-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-8"></div>
+    <div class="border-t border-gray-200 pt-6 flex items-center gap-3">
+      <span class="text-sm text-gray-400">Already know what you need?</span>
+      <button onclick="showAllProducts()" class="text-sm font-medium text-gray-700 hover:text-gray-900 underline underline-offset-2">Browse all products</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- SCREEN 2: URGENCY SELECTION -->
+<div id="screen-urgency" class="screen">
+  <div class="max-w-5xl mx-auto px-6 py-12 fade-in">
+    <div class="flex items-center gap-3 mb-8 flex-wrap">
+      <div class="step-dot done">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+      </div>
+      <span id="step2-stage-label" class="text-sm text-gray-500"></span>
+      <div class="h-px bg-gray-200 w-10"></div>
+      <div class="step-dot active">2</div>
+      <span class="text-sm font-semibold text-gray-900">What's most urgent?</span>
+      <div class="h-px bg-gray-200 w-10"></div>
+      <div class="step-dot pending">3</div>
+      <span class="text-sm text-gray-400">Matched products</span>
+    </div>
+    <div class="max-w-xl mb-6">
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">What's the most pressing need right now?</h2>
+      <p class="text-gray-500 text-sm leading-relaxed">We'll prioritize the most relevant products first. You can filter by other categories once you see the results.</p>
+    </div>
+    <div id="urg-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl mb-6"></div>
+    <button onclick="showProducts(null)" class="text-sm text-gray-400 hover:text-gray-700 underline underline-offset-2">Show all products for this situation</button>
+  </div>
+</div>
+
+
+<!-- SCREEN 3: PRODUCT RESULTS -->
+<div id="screen-products" class="screen">
+  <div class="max-w-5xl mx-auto px-6 py-8 fade-in">
+    <div class="flex items-start justify-between gap-4 mb-6">
+      <div>
+        <div id="results-breadcrumb" class="flex items-center gap-1.5 text-xs text-gray-400 mb-2 flex-wrap"></div>
+        <h2 class="text-xl font-bold text-gray-900" id="results-title">Recommended Products</h2>
+        <p class="text-gray-500 text-sm mt-0.5" id="results-subtitle"></p>
+      </div>
+      <button onclick="showShareModal()"
+              class="flex-shrink-0 flex items-center gap-1.5 text-sm font-medium border border-gray-200 hover:border-gray-400 text-gray-600 hover:text-gray-900 px-3 py-2 rounded-lg transition-all">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+        Share this list
+      </button>
+    </div>
+    <div id="cov-summary" class="mb-5"></div>
+    <div class="flex flex-wrap gap-2 mb-3" id="cat-filters"></div>
+    <div id="cov-filter-row" class="mb-5"></div>
+    <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+  </div>
+</div>
+
+
+<!-- PRODUCT DETAIL MODAL -->
+<div id="modal-product" class="hidden fixed inset-0 z-50 bg-black/40 flex items-end md:items-center justify-center"
+     onclick="if(event.target===this) closeProdModal()">
+  <div class="bg-white w-full md:max-w-xl md:rounded-xl max-h-[92vh] overflow-y-auto shadow-2xl">
+    <div id="mp-img-area" class="h-48 bg-white flex items-center justify-center p-4 md:rounded-t-xl">
+      <img id="mp-img-icon" src="" alt="" class="max-w-full max-h-full object-contain" />
+    </div>
+    <div class="sticky top-0 bg-white border-b border-gray-100 px-5 py-4 flex items-center justify-between">
+      <span id="mp-category" class="text-xs font-semibold text-gray-400 uppercase tracking-wider"></span>
+      <button onclick="closeProdModal()" class="text-gray-400 hover:text-gray-700 p-1 rounded-md hover:bg-gray-100">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="px-5 py-5">
+      <div class="flex items-start justify-between gap-3 mb-1">
+        <div>
+          <p class="text-xs text-gray-400 mb-0.5" id="mp-vendor"></p>
+          <h2 class="text-xl font-bold text-gray-900 leading-snug" id="mp-name"></h2>
+        </div>
+        <span id="mp-vetted" class="hidden badge-vetted text-xs px-2.5 py-1 rounded-md font-semibold whitespace-nowrap flex items-center gap-1 mt-0.5 flex-shrink-0">
+          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          Clinically Vetted
+        </span>
+      </div>
+      <div class="flex items-center gap-2.5 mt-2 mb-4">
+        <span id="mp-cov-badge" class="text-xs px-2.5 py-1 rounded-md font-semibold"></span>
+        <span class="text-gray-400 text-sm" id="mp-price"></span>
+      </div>
+      <p class="text-gray-600 text-sm leading-relaxed mb-5" id="mp-desc"></p>
+      <div class="bg-gray-50 border border-gray-100 rounded-lg p-4 mb-4">
+        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Clinical Context</p>
+        <p class="text-gray-700 text-sm leading-relaxed" id="mp-clinical"></p>
+      </div>
+      <div id="mp-cov-section" class="mb-5"></div>
+      <div class="flex gap-3">
+        <a id="mp-buy" href="#" onclick="return false"
+           class="flex-1 bg-gray-900 hover:bg-gray-700 text-white text-center py-3 rounded-lg font-semibold text-sm transition-colors">
+          Shop This Product
+        </a>
+        <button onclick="closeProdModal()" class="px-4 py-3 border border-gray-200 text-gray-600 hover:bg-gray-50 rounded-lg text-sm font-medium">Back</button>
+      </div>
+      <p class="text-xs text-gray-400 text-center mt-3">You'll be taken to a trusted vendor. CareShelf may earn a small referral fee at no cost to you.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- SHARE MODAL -->
+<div id="modal-share" class="hidden fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4"
+     onclick="if(event.target===this) closeShareModal()">
+  <div class="bg-white rounded-xl max-w-md w-full p-6 shadow-2xl">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-base font-bold text-gray-900">Share with patient or family</h3>
+      <button onclick="closeShareModal()" class="text-gray-400 hover:text-gray-700 p-1 rounded-md hover:bg-gray-100">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <p class="text-gray-500 text-sm mb-4 leading-relaxed">Send this link to your patient or their caregiver. They can browse and purchase without creating an account.</p>
+    <div class="flex gap-2 mb-5">
+      <div class="flex-1 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2.5 text-sm text-gray-600 font-mono truncate">careshelf.com/resources</div>
+      <button onclick="copyLink()" id="copy-btn" class="bg-gray-900 hover:bg-gray-700 text-white px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors min-w-[70px]">Copy</button>
+    </div>
+    <div class="grid grid-cols-3 gap-2 mb-4">
+      <button class="flex flex-col items-center gap-1.5 p-3 rounded-lg hover:bg-gray-50 border border-gray-200 text-xs text-gray-600 font-medium transition-colors">
+        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+        SMS
+      </button>
+      <button class="flex flex-col items-center gap-1.5 p-3 rounded-lg hover:bg-gray-50 border border-gray-200 text-xs text-gray-600 font-medium transition-colors">
+        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        Email
+      </button>
+      <button class="flex flex-col items-center gap-1.5 p-3 rounded-lg hover:bg-gray-50 border border-gray-200 text-xs text-gray-600 font-medium transition-colors">
+        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        Print
+      </button>
+    </div>
+    <div class="bg-gray-50 rounded-lg p-3 border border-gray-100">
+      <p class="text-xs text-gray-500 leading-relaxed"><span class="font-semibold text-gray-700">For partner organizations:</span> Your analytics dashboard tracks which products patients view and click through after receiving this link.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- CARE TEAM MODAL -->
+<div id="modal-careteam" class="hidden fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4"
+     onclick="if(event.target===this) closeCareTeamModal()">
+  <div class="bg-white rounded-xl max-w-md w-full p-6 shadow-2xl">
+    <div class="flex items-center justify-between mb-5">
+      <h3 class="text-base font-bold text-gray-900">Partner access for care organizations</h3>
+      <button onclick="closeCareTeamModal()" class="text-gray-400 hover:text-gray-700 p-1 rounded-md hover:bg-gray-100">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="space-y-4 mb-5">
+      <div class="flex items-start gap-3">
+        <div class="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+          <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+        </div>
+        <div>
+          <p class="font-semibold text-gray-900 text-sm">Your own branded URL</p>
+          <p class="text-gray-500 text-xs mt-0.5 leading-relaxed">Patients arrive at a resource that looks like yours. Your logo, your preferred products, your welcome message.</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <div class="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+          <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        </div>
+        <div>
+          <p class="font-semibold text-gray-900 text-sm">Analytics dashboard</p>
+          <p class="text-gray-500 text-xs mt-0.5 leading-relaxed">See which products your patients are viewing and clicking after discharge, segmented by care stage.</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <div class="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+          <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        </div>
+        <div>
+          <p class="font-semibold text-gray-900 text-sm">Nothing to install</p>
+          <p class="text-gray-500 text-xs mt-0.5 leading-relaxed">Staff share a link. Patients browse without an account. No EMR integration, no IT project, no contract minimum.</p>
+        </div>
+      </div>
+    </div>
+    <div class="bg-blue-50 rounded-lg p-3 mb-5">
+      <p class="text-xs text-blue-700 leading-relaxed font-medium">We're onboarding our first partner agencies now. If you run a home health agency or work in discharge planning, we'd love to talk.</p>
+    </div>
+    <div class="flex gap-2">
+      <input type="email" placeholder="Your work email" class="flex-1 border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400" />
+      <button class="bg-gray-900 hover:bg-gray-700 text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors">Get in touch</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+
+const catStyles = {
+  'Fall Prevention':   { bg: '#F0F9FF', color: '#38BDF8', icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>` },
+  'Home Modification': { bg: '#F0FDF4', color: '#4ADE80', icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>` },
+  'Mobility':          { bg: '#F5F3FF', color: '#A78BFA', icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>` },
+  'Remote Monitoring': { bg: '#FFFBEB', color: '#FBBF24', icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>` },
+  'Comfort':           { bg: '#FFF1F2', color: '#FB7185', icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>` },
+  'Daily Living':      { bg: '#FFF7ED', color: '#FB923C', icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"/>` }
+};
+
+const situations = [
+  { id: 'hospital-discharge', label: 'Hospital or Rehab Discharge', desc: 'Coming home after a hospital stay, surgery, or short-term rehab facility.',
+    icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>`,
+    pids: [2,5,6,7,8,9,11,14,15,16,17,18,22,25,27,28],
+    urgencyMap: { safety:[2,8,18,22], mobility:[5,6,7,22,27,28], monitoring:[9,11,20,23,24], comfort:[14,15,16,17,25] } },
+  { id: 'aging-in-place', label: 'Parent or Spouse Moving In', desc: 'Setting up your home to support a family member who needs ongoing daily care.',
+    icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>`,
+    pids: [1,2,3,4,5,7,8,10,11,12,15,18,21,22,26,30],
+    urgencyMap: { safety:[1,2,3,4,8,18,26,30], mobility:[5,7,21,22], monitoring:[10,11,20,23], comfort:[15,25] } },
+  { id: 'hospice', label: 'Hospice or Palliative Care', desc: 'Focused on comfort, dignity, and quality of life at home.',
+    icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>`,
+    pids: [6,7,14,15,16,17,20,25,29],
+    urgencyMap: { safety:[6,7,20], mobility:[6,7], monitoring:[17,20], comfort:[14,15,16,17,25,29] } },
+  { id: 'chronic', label: 'Managing a Chronic Condition', desc: "Long-term care for COPD, CHF, diabetes, Parkinson's, or similar conditions.",
+    icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>`,
+    pids: [1,5,9,10,11,15,16,17,21,23,24,25],
+    urgencyMap: { safety:[1,5,21], mobility:[5,21], monitoring:[9,10,11,23,24], comfort:[15,16,17,25] } },
+  { id: 'fall-risk', label: 'Fall Risk or Home Safety', desc: 'Preventing falls and making the home environment safer for someone at risk.',
+    icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
+    pids: [1,2,3,4,5,8,12,13,18,21,22,26,30],
+    urgencyMap: { safety:[1,2,3,4,8,18,22,26,30], mobility:[5,13,21,22], monitoring:[1,10,20,30], comfort:[3,18] } },
+  { id: 'independent', label: 'Staying Independent at Home', desc: 'Proactive setup for someone aging in place who wants to stay self-sufficient.',
+    icon: `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>`,
+    pids: [3,4,9,10,11,12,13,21,23,24,26,30],
+    urgencyMap: { safety:[3,4,12,13,26,30], mobility:[12,13,21], monitoring:[9,10,11,23,24], comfort:[] } }
+];
+
+const urgencies = [
+  { id:'safety',     label:'Safety and Fall Prevention',      desc:'Reducing fall risk, securing bathrooms and high-risk areas.',        icon:`<svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>` },
+  { id:'mobility',   label:'Mobility and Getting Around',      desc:'Walking aids, transfers, and equipment to move safely.',             icon:`<svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>` },
+  { id:'monitoring', label:'Monitoring and Staying Connected', desc:'Remote check-ins, medication management, vitals tracking.',          icon:`<svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>` },
+  { id:'comfort',    label:'Comfort and Daily Living',         desc:'Beds, positioning, skin protection, and quality of life.',           icon:`<svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>` }
+];
+
+const products = [
+  { id:1,  name:'Medical Alert System',            vendor:'Bay Alarm Medical',  cat:'Fall Prevention',   price:'~$25-35/month',            bucket:'otc',          covLabel:'OTC Allowance',        vetted:true,   img:'https://www.vivehealth.com/cdn/shop/files/1c_5_5395b2d9-552f-4967-a495-74d960b45953.jpg?v=1771333270',
+    covText:'Many Medicare Advantage plans include PERS (Personal Emergency Response Systems) as a supplemental or OTC benefit. Check your plan\'s Summary of Benefits for coverage amount and approved devices.',
+    desc:'One-button emergency response with 24/7 professional monitoring, GPS for in-home and on-the-go use, and optional fall detection. Cellular and WiFi coverage. No landline required.',
+    clinical:'Recommended for patients with moderate-to-high fall risk, those living alone, or anyone with limited mobility. Clinical evidence shows medical alert systems meaningfully reduce time on the floor after a fall, a critical predictor of outcomes for patients who live alone.' },
+  { id:2,  name:'Adjustable Half Bed Rail',         vendor:'Drive Medical',      cat:'Fall Prevention',   price:'$40-$65',                  bucket:'home-safety',  covLabel:'Home Safety Benefit',  vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/Image_1_64_grande.jpg?v=1664969538',
+    covText:'Many Medicare Advantage plans include a Home Safety benefit that covers bed rails. No prescription needed — check your plan\'s home safety allowance and find an approved supplier.',
+    desc:'Half-length bed rail that attaches to most standard frames without tools. Provides leverage for getting in and out of bed and prevents nighttime rolling. Fits twin through king.',
+    clinical:'Indicated for patients with balance deficits, post-surgical weakness, or those returning from a care facility. Not appropriate for patients at risk of entrapment; review with your clinical team if uncertain.' },
+  { id:3,  name:'Non-Slip Bath Mat Set',            vendor:'SlipNot Safety',     cat:'Fall Prevention',   price:'$25-$45',                  bucket:'home-safety',  covLabel:'Home Safety Benefit',  vetted:false,  img:'https://www.vivehealth.com/cdn/shop/products/xl_shower_mat_blue_2_6a36cbad-6096-41d5-81b0-957ad9a9de3b.jpg?v=1623091882',
+    covText:'Many Medicare Advantage plans include a Home Safety allowance that covers non-slip bath mats and safety equipment. Check your plan\'s supplemental benefits to see your allowance amount.',
+    desc:'Suction-cup bath mat with anti-microbial treatment, plus a matching floor mat. Machine washable. Fits standard tubs and garden tubs.',
+    clinical:'The bathroom is the highest-risk room for falls at home. Recommended universally for any patient with fall risk or balance concerns. Low cost, high impact, and typically one of the first items assessed in any home safety evaluation.' },
+  { id:4,  name:'ADA Grab Bars (2-Pack)',           vendor:'SecureGrip',         cat:'Home Modification', price:'$35-$80 + installation',    bucket:'home-safety',  covLabel:'Home Safety Benefit',  vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/small_silver_grab_ba_I48QL_grande.jpg?v=1620938695',
+    covText:'Many Medicare Advantage plans include a Home Safety Benefit covering grab bar installation (often $200-$250/year). Check your plan or call member services to confirm your allowance.',
+    desc:'ADA-compliant stainless steel grab bars, 300 lb rated. Mounting hardware for tile, drywall, and wood stud installation. Available in 12", 18", and 24" lengths. Professional installation recommended.',
+    clinical:'Among the highest-impact fall prevention interventions in the bathroom. Consistently recommended by occupational therapists for patients with any lower extremity weakness or balance deficit. The bathroom accounts for a disproportionate share of serious home falls.' },
+  { id:5,  name:'Rollator Walker (4-Wheel)',        vendor:'Medline',            cat:'Mobility',          price:'$65-$120',                 bucket:'dme',          covLabel:'DME Benefit',          vetted:true,   img:'https://www.vivehealth.com/cdn/shop/files/Untitleddesign-2024-03-04T094623.394_grande.png?v=1709563709',
+    covText:'Medicare Advantage plans cover rollator walkers as standard DME. Most plans connect you with an in-network supplier — your doctor\'s recommendation is all you need to get started.',
+    desc:'Four-wheeled rollator with padded seat, backrest, and storage bag. Adjustable handles (32"-38"). Loop brakes. Folds flat for transport. Indoor/outdoor wheels. 300 lb capacity.',
+    clinical:'Indicated for patients with balance deficits, lower extremity weakness, or reduced endurance. Particularly appropriate post-discharge and for COPD, Parkinson\'s, and post-orthopedic surgery patients. Requires proper sizing by a physical therapist; incorrect sizing reduces the safety benefit significantly.' },
+  { id:6,  name:'Transport Wheelchair',             vendor:'Invacare',           cat:'Mobility',          price:'$100-$200',                bucket:'dme',          covLabel:'DME Benefit',          vetted:true,   img:'https://www.vivehealth.com/cdn/shop/files/1aMainImage.jpg?v=1744815744',
+    covText:'Medicare Advantage plans cover manual wheelchairs when your doctor documents the need. Call your plan to locate an in-network supplier — delivery is typically arranged within a few days.',
+    desc:'19" seat transport wheelchair with swing-away footrests. Lightweight aluminum frame (19 lbs). Flip-back armrests. 300 lb capacity. Folds for vehicle transport.',
+    clinical:'For patients who cannot ambulate independently for community distances. Transport chairs are caregiver-propelled, making them ideal for hospice, palliative care, and low-endurance patients. For patients with adequate upper body strength, a self-propelled standard wheelchair may be more appropriate.' },
+  { id:7,  name:'Gait Belt / Transfer Belt',        vendor:'VIVE',               cat:'Mobility',          price:'$12-$25',                  bucket:'otc',          covLabel:'OTC Allowance',        vetted:false,  img:'https://www.vivehealth.com/cdn/shop/products/main_image_3cc62de6__hFR5w.jpg?v=1621973964',
+    covText:'Gait belts are available through many Medicare Advantage OTC benefit catalogs. Check your plan\'s OTC allowance — this item is typically $10-25 and may be ordered through your plan\'s OTC portal or picked up at an approved retailer.',
+    desc:'60" gait belt with quick-release metal buckle and six hand-hold loops. Machine washable. Used by trained caregivers during transfers and assisted walking.',
+    clinical:'Essential for caregivers assisting with bed-to-chair and standing transfers. Significantly reduces injury risk for both patient and caregiver. Caregiver training is required before use. Ask the home health team for a transfer safety demonstration.' },
+  { id:8,  name:'Raised Toilet Seat with Handles', vendor:'Carex',              cat:'Fall Prevention',   price:'$30-$55',                  bucket:'home-safety',  covLabel:'Home Safety Benefit',  vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/toilet_safety_rail_1_1SKub_grande.jpg?v=1619201880',
+    covText:'Many Medicare Advantage plans cover raised toilet seats under their Home Safety or DME supplemental benefits. Check your plan\'s Summary of Benefits or ask your discharge coordinator.',
+    desc:'3.5" elevated toilet seat with removable padded armrests for safe lowering and rising. Fits most standard and elongated toilets. 300 lb capacity. Tool-free installation.',
+    clinical:'Standard recommendation post-hip replacement, for severe arthritis, or significant lower extremity weakness. One of the most commonly ordered items following orthopedic surgery, often prescribed before leaving the facility.' },
+  { id:9,  name:'Remote Patient Monitoring Kit',   vendor:'BioTelemetry',       cat:'Remote Monitoring', price:'Covered when prescribed',  bucket:'dme',          covLabel:'DME Benefit',          vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/1_d9741704_2880_42bb_IEqEH_grande.jpg?v=1619125721',
+    covText:'Medicare Advantage plans cover Remote Patient Monitoring when ordered by your physician. The device is typically provided at no cost through your provider\'s RPM program — no out-of-pocket expense.',
+    desc:'Connected blood pressure cuff, pulse oximeter, and weight scale that automatically transmit daily readings to your care team. No app or technical setup required. Readings upload automatically over cellular.',
+    clinical:'Indicated for CHF, COPD, hypertension, or diabetes, and for post-discharge patients at risk for readmission. Studies show RPM reduces 30-day readmissions by 20-50% in high-risk populations. Must be ordered and managed by your physician.' },
+  { id:10, name:'Smart Medical Alert Speaker',      vendor:'Lively',             cat:'Remote Monitoring', price:'$50 device + ~$25/month',  bucket:'otc',          covLabel:'OTC Allowance',        vetted:false,  img:'https://www.vivehealth.com/cdn/shop/files/1AMainImage_32_grande.jpg?v=1770987676',
+    covText:'Some Medicare Advantage plans offer smart alert devices through their OTC (over-the-counter) benefits catalog. Check your plan\'s supplemental benefits summary.',
+    desc:'Voice-activated smart speaker with one-touch 911 calling, medication reminders, and a real-time caregiver notification app. Optional fall-detection wristband available as an add-on.',
+    clinical:'Particularly useful for patients with cognitive changes or those resistant to wearing a button. Voice activation is especially helpful for patients with limited dexterity. The ambient, always-on nature of voice-activated devices improves compliance over wearable-only solutions.' },
+  { id:11, name:'Automatic Medication Dispenser',  vendor:'Hero Health',        cat:'Remote Monitoring', price:'~$30-45/month',            bucket:'otc',          covLabel:'OTC Allowance',        vetted:true,   img:'https://www.vivehealth.com/cdn/shop/files/1-2026-01-16T142427.786_grande.jpg?v=1768590071',
+    covText:'Covered by some Medicare Advantage plans as a home safety or supplemental benefit. Check your plan\'s benefits catalog by calling member services.',
+    desc:'Automated dispenser holding a 90-day supply across 10 compartments. Dispenses on schedule with audible and visual alerts. Locks between doses to prevent doubling. Caregiver app for real-time adherence monitoring.',
+    clinical:'Indicated for complex medication regimens, early memory concerns, or patients who live alone. Medication non-adherence is a leading cause of avoidable hospital readmissions. Particularly valuable post-discharge when multiple new medications are introduced at once.' },
+  { id:12, name:'Portable Threshold Ramp',          vendor:'EZ-Access',          cat:'Home Modification', price:'$30-$80',                  bucket:'home-safety',  covLabel:'Home Safety Benefit',  vetted:false,  img:'https://www.vivehealth.com/cdn/shop/products/stand_assist_1_d75ca88c-af33-446a-bc78-94034ff91f56.jpg?v=1619622023',
+    covText:'Many Medicare Advantage plans include a Home Safety benefit that covers threshold ramps and home access modifications. Check your plan\'s allowance and contact an approved supplier.',
+    desc:'Solid rubber ramp for doorway tracks and raised thresholds. Handles up to a 2" rise. 600 lb capacity. Beveled edges on both sides. No installation or tools required.',
+    clinical:'For walker or wheelchair users encountering raised door thresholds. A simple, low-cost intervention that restores independent home access and reduces tripping risk for all household members.' },
+  { id:13, name:'Add-On Stair Handrail',            vendor:'SecureRail',         cat:'Home Modification', price:'$45-$120 + installation',   bucket:'home-safety',  covLabel:'Home Safety Benefit',  vetted:false,  img:'https://www.vivehealth.com/cdn/shop/products/small_silver_grab_ba_I48QL_grande.jpg?v=1620938695',
+    covText:'Medicare Advantage plans often include a home modification or Home Safety benefit that covers handrail installation. Contact your plan to find an approved contractor and confirm your allowance.',
+    desc:'Secondary handrail installed alongside an existing staircase railing to provide bilateral support. Wall-mounted, 300 lb capacity. Available in multiple finish options.',
+    clinical:'Bilateral handrails significantly reduce stair fall risk for patients with asymmetric weakness, which is common after stroke, hip replacement, or knee surgery. A frequent OT recommendation during post-discharge home safety assessments.' },
+  { id:14, name:'Adjustable Overbed Table',         vendor:'ProBasics',          cat:'Comfort',           price:'$60-$120',                 bucket:'dme',          covLabel:'DME Benefit',          vetted:false,  img:'https://www.vivehealth.com/cdn/shop/files/1.2_grande.jpg?v=1724702550',
+    covText:'Medicare Advantage plans cover overbed tables when ordered alongside a home hospital bed. Ask your care coordinator if you qualify for a hospital bed — they\'re typically arranged together at no extra cost.',
+    desc:'Height-adjustable table (28"-45") with a tilting top for reading or working. H-style base slides under most beds and chairs. Casters with brakes. Suitable for meals, reading, and light activities.',
+    clinical:'Standard equipment for bed-bound or significantly mobility-limited patients. Essential in hospice and palliative care settings to support patient independence for meals and activities from bed.' },
+  { id:15, name:'Bed Wedge Pillow System',          vendor:'MedCline',           cat:'Comfort',           price:'$100-$200',                bucket:'otc',          covLabel:'OTC Allowance',        vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/bed_wedge_1_90240146-abc9-4335-98c5-2d83c0fa2359_grande.jpg?v=1619817309',
+    covText:'Wedge pillows are often available through Medicare Advantage OTC or supplemental benefits, especially when recommended for GERD, COPD, or post-surgical positioning. Check your plan\'s OTC catalog.',
+    desc:'7-piece adjustable wedge system for acid reflux, GERD, post-surgical recovery, and back pain. Memory foam topper. Machine-washable, removable cover.',
+    clinical:'Indicated for GERD, hiatal hernia, COPD with orthopnea, post-cardiac surgery, and pain management in patients with limited mobility. Can significantly improve sleep quality and reduce nighttime respiratory and reflux symptoms.' },
+  { id:16, name:'Pressure Relief Mattress Overlay', vendor:'ROHO',               cat:'Comfort',           price:'$80-$180',                 bucket:'dme',          covLabel:'DME Benefit',          vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/8inchalternatingpressuremattress_grande.jpg?v=1677613254',
+    covText:'Medicare Advantage plans cover pressure-reducing mattress overlays for members at elevated risk for pressure injuries. Ask your doctor or wound care team to document the need — your plan will handle the rest.',
+    desc:'Pressure-redistributing mattress overlay with alternating zones designed to reduce shear and friction. Machine-washable cover. No pump required. Fits standard and hospital beds.',
+    clinical:'Essential for immobile patients, those with circulatory compromise, or patients at elevated risk for pressure injuries. Standard of care in hospice and palliative settings. Early intervention prevents wounds that are costly, painful, and difficult to heal.' },
+  { id:17, name:'Home Hospital Bed (Rental)',       vendor:'Lincare DME',        cat:'Comfort',           price:'Covered / ~$50-100/month', bucket:'dme',          covLabel:'DME Benefit',          vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/main_image_c7cb0e80__E30XI_grande.jpg?v=1630608964',
+    covText:'Medicare Advantage plans cover home hospital bed rentals when your doctor documents medical necessity. Your plan\'s DME coordinator will arrange delivery and setup — typically at no additional cost to you.',
+    desc:'Full-electric hospital bed for home use with head/foot positioning and height adjustment. Side rails included. Delivered and set up by your DME provider on a monthly rental basis.',
+    clinical:'Indicated for mostly bed-bound patients, those with respiratory conditions requiring head elevation, wound care needs, or patients on hospice. Substantially improves patient comfort and reduces caregiver strain during daily care.' },
+  { id:18, name:'Shower Chair / Bath Bench',        vendor:'Drive Medical',      cat:'Fall Prevention',   price:'$35-$75',                  bucket:'home-safety',  covLabel:'Home Safety Benefit',  vetted:true,   img:'https://www.vivehealth.com/cdn/shop/files/LVA1009_-_Shower_Chair_1_grande.jpg?v=1764680540',
+    covText:'Many Medicare Advantage plans cover shower chairs under their Home Safety or DME supplemental benefits. Check your plan\'s Summary of Benefits or call Member Services to confirm.',
+    desc:'Adjustable-height bath bench with back support, non-slip rubber tips, and drainage slots. Fits standard tubs and walk-in showers. 300 lb capacity. Tool-free height adjustment.',
+    clinical:'A foundational item for any patient who cannot safely stand through a full shower. Routinely recommended post-discharge, post-surgery, and for patients with significant lower extremity weakness, balance deficits, or fatigue from conditions like COPD and CHF.' },
+  { id:19, name:'Handheld Shower Head',             vendor:'Moen',               cat:'Home Modification', price:'$25-$60',                  bucket:'home-safety',  covLabel:'Home Safety Benefit',  vetted:false,  img:'https://www.vivehealth.com/cdn/shop/files/1-2025-12-30T024520.164_grande.jpg?v=1767078130',
+    covText:'Many Medicare Advantage plans cover handheld shower head installation under their Home Safety benefit. It pairs with a shower chair and counts toward your plan\'s home safety allowance.',
+    desc:'Wall-mounted showerhead with a 60" flexible hose and handheld option. Installs without tools in minutes. Compatible with shower chairs and bench bathing. Multiple spray settings.',
+    clinical:'Pairs with a shower chair to enable safe seated bathing. Also useful for patients with limited shoulder range of motion or those with wounds or incisions that require careful water management. Low cost, minimal installation.' },
+  { id:20, name:'Bed and Chair Exit Alarm',         vendor:'Smart Caregiver',    cat:'Remote Monitoring', price:'$30-$60',                  bucket:'otc',          covLabel:'OTC Allowance',        vetted:false,  img:'https://www.vivehealth.com/cdn/shop/products/bed_alarm_main_image.jpg?v=1623939765',
+    covText:'Bed and chair exit alarms are often available through Medicare Advantage OTC benefit catalogs. Check your plan\'s OTC allowance or supplemental benefits catalog.',
+    desc:'Pressure-sensitive pad placed under the mattress or seat cushion that triggers an audible alarm when the patient attempts to get up unassisted. Wireless receiver up to 200 ft. Adjustable alarm volume.',
+    clinical:'Used to alert caregivers when a fall-risk patient attempts to rise without assistance. Commonly deployed for patients with dementia, delirium, or post-operative weakness. Complements, but does not replace, caregiver supervision.' },
+  { id:21, name:'Folding Cane with Wrist Strap',   vendor:'HurryCane',          cat:'Mobility',          price:'$20-$50',                  bucket:'dme',          covLabel:'DME Benefit',          vetted:true,   img:'https://www.vivehealth.com/cdn/shop/files/Black_1_grande.jpg?v=1763146941',
+    covText:'Medicare Advantage plans cover canes when your doctor recommends one for balance or mobility. Ask your plan for an in-network DME supplier — it\'s a quick process and usually no cost to you.',
+    desc:'Folds into 4 sections for compact storage and travel. Adjustable height (32"-38"). Non-slip rubber tip. Pivoting base for uneven terrain. Wrist strap included.',
+    clinical:'First-line mobility aid for patients who need minor balance support on one side. Appropriate for mild balance deficits, early Parkinson\'s, mild weakness post-stroke, or general deconditioning. Requires instruction on proper use from a physical therapist.' },
+  { id:22, name:'Bedside Commode',                  vendor:'Carex',              cat:'Mobility',          price:'$50-$120',                 bucket:'dme',          covLabel:'DME Benefit',          vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/folding_commode_1_2ab058eb-c252-4961-a548-62317a8f487a_grande.jpg?v=1631816471',
+    covText:'Medicare Advantage plans cover bedside commodes when your doctor orders one. Request it from your physician or discharge team before going home — delivery can often be arranged same-day.',
+    desc:'Adjustable-height commode chair with removable bucket, splash guard, and padded armrests. Fits over most standard toilets as a raised seat. 350 lb capacity. Foldable for storage.',
+    clinical:'Reduces nighttime trips to the bathroom, which is a high-risk time for falls. Particularly important post-surgery, during acute illness, and in the immediate post-discharge period when fatigue and medication effects are most pronounced.' },
+  { id:23, name:'Home Blood Pressure Monitor',      vendor:'Omron',              cat:'Remote Monitoring', price:'$40-$80',                  bucket:'otc',          covLabel:'OTC Allowance',        vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/1_d9741704_2880_42bb_IEqEH_grande.jpg?v=1619125721',
+    covText:'Blood pressure monitors are commonly available through Medicare Advantage OTC benefit catalogs. Check your plan\'s OTC allowance — this is one of the most frequently covered OTC health items.',
+    desc:'Upper-arm blood pressure monitor validated to clinical accuracy standards. Large display with irregular heartbeat detection. Stores up to 60 readings with date and time. Bluetooth to smartphone app.',
+    clinical:'Self-monitoring of blood pressure is recommended for patients with hypertension, CHF, or post-stroke. Home readings frequently differ from office readings and provide more representative data. Results should be logged and shared with the care team at each visit.' },
+  { id:24, name:'Fingertip Pulse Oximeter',         vendor:'Nonin',              cat:'Remote Monitoring', price:'$25-$50',                  bucket:'otc',          covLabel:'OTC Allowance',        vetted:true,   img:'https://www.vivehealth.com/cdn/shop/files/Image_1c_12_03a87770-f8cf-473e-b957-97ff806232b2.jpg?v=1690460301',
+    covText:'Pulse oximeters are available through many Medicare Advantage OTC benefit catalogs. Check your plan\'s OTC allowance — most plans include basic monitoring equipment in their catalog.',
+    desc:'Clinical-accuracy pulse oximeter measuring oxygen saturation (SpO2) and heart rate. Large LED display. Results in under 10 seconds. Runs on standard AAA batteries. Fingertip design.',
+    clinical:'Essential for patients with COPD, asthma, CHF, or post-COVID respiratory conditions. A drop in SpO2 below 92% warrants clinical attention. Home monitoring enables early detection of exacerbations before they require hospitalization.' },
+  { id:25, name:'Medical-Grade Compression Socks',  vendor:'Sigvaris',           cat:'Comfort',           price:'$30-$60 (2 pairs)',         bucket:'otc',          covLabel:'OTC Allowance',        vetted:true,   img:'https://www.vivehealth.com/cdn/shop/files/Image1_23e9792c-c122-42b7-a544-efd194ca4b39.jpg?v=1697500342',
+    covText:'Compression socks are commonly available through Medicare Advantage OTC benefit catalogs. Check your plan\'s catalog — most include graduated compression socks in the OTC allowance.',
+    desc:'Graduated compression socks (15-20 mmHg or 20-30 mmHg) designed to reduce lower leg swelling and improve circulation. Available in multiple styles and sizes. Machine washable.',
+    clinical:'Recommended for patients with lower extremity edema, chronic venous insufficiency, post-surgical swelling, or DVT risk. Commonly prescribed after orthopedic surgery, cardiac procedures, and for long-term management of heart failure and lymphedema.' },
+  { id:26, name:'Motion-Sensor Night Lights (4-Pack)', vendor:'Govee',           cat:'Fall Prevention',   price:'$25-$45',                  bucket:'home-safety',  covLabel:'Home Safety Benefit',  vetted:false,  img:'https://cdn.shopify.com/s/files/1/0512/3489/8105/collections/guiding-lights-295667.jpg?v=1623830586',
+    covText:'Motion-sensor night lights are often covered under Medicare Advantage Home Safety benefits as a fall prevention measure. Check your plan\'s home safety allowance.',
+    desc:'Plug-in LED night lights that activate automatically with motion, then turn off after 30 seconds of inactivity. Warm white light. Fits any standard outlet. Coverage radius approximately 15 ft.',
+    clinical:'Nighttime navigation without adequate lighting is a significant fall risk factor, particularly for older adults whose eyes take longer to adjust in the dark. Recommended for hallways, bathrooms, and bedroom pathways as part of any home safety assessment.' },
+  { id:27, name:'Reacher / Grabber Tool',           vendor:'Vive Health',        cat:'Daily Living',      price:'$12-$25',                  bucket:'otc',          covLabel:'OTC Allowance',        vetted:false,  img:'https://www.vivehealth.com/cdn/shop/products/reacher_grabber_1_aeb42f89-9e3a-4f19-9167-10f5705864d1.jpg?v=1627918986',
+    covText:'Reachers and adaptive tools are available through many Medicare Advantage OTC catalogs. Check your plan\'s OTC benefit — adaptive daily living aids are commonly included.',
+    desc:'32" grabber with rotating jaw and magnetic tip for picking up small items. Ergonomic pistol grip with locking mechanism. Lightweight aluminum construction.',
+    clinical:'Standard adaptive equipment for patients on hip precautions after hip replacement, those with significant bending restrictions, or patients with limited trunk mobility. Reduces fall risk from bending and reaching. Typically issued by an occupational therapist at discharge.' },
+  { id:28, name:'Dressing Aid Kit',                 vendor:'RMS',                cat:'Daily Living',      price:'$15-$30',                  bucket:'otc',          covLabel:'OTC Allowance',        vetted:false,  img:'https://www.vivehealth.com/cdn/shop/products/sock_assist_1_5a841c0b-9802-4933-a206-e1e0b036ce58.jpg?v=1628514737',
+    covText:'Dressing aid kits are available through many Medicare Advantage OTC benefit catalogs. FSA/HSA funds also apply. Check your plan\'s OTC benefit catalog for eligible items.',
+    desc:'Kit includes a long-handle shoehorn (24"), elastic shoelaces, and a sock aid to enable independent dressing without bending below 90 degrees. Lightweight and easy to store.',
+    clinical:'Essential for patients on hip precautions after hip replacement surgery. Also useful for patients with significant back pain, limited trunk mobility, or those who experience shortness of breath when bending. Typically prescribed by an occupational therapist at discharge.' },
+  { id:29, name:'Pressure-Relief Wheelchair Cushion', vendor:'ROHO',             cat:'Comfort',           price:'$80-$180',                 bucket:'dme',          covLabel:'DME Benefit',          vetted:true,   img:'https://www.vivehealth.com/cdn/shop/products/1_1_148e3db1-ca96-4701-a962-b69e556947e8.jpg?v=1650897760',
+    covText:'Medicare Advantage plans cover pressure-relief cushions for wheelchair users at risk for skin breakdown. Ask your doctor to document the need — your plan will connect you with a supplier.',
+    desc:'Interconnected air cell cushion that distributes weight and reduces interface pressure. Manual inflation with a hand pump. Cover included. Fits most standard and transport wheelchair frames.',
+    clinical:'Indicated for wheelchair users who spend extended hours seated, those with limited ability to perform weight shifts, or patients with compromised skin integrity. Significantly reduces pressure injury incidence, a major quality-of-life concern for long-term wheelchair users.' },
+  { id:30, name:'Waterproof PERS Wristband',        vendor:'Medical Guardian',   cat:'Fall Prevention',   price:'~$25-40/month',            bucket:'otc',          covLabel:'OTC Allowance',        vetted:true,   img:'https://www.vivehealth.com/cdn/shop/files/1c_5_5395b2d9-552f-4967-a495-74d960b45953.jpg?v=1771333270',
+    covText:'Many Medicare Advantage plans include PERS (Personal Emergency Response Systems) as a supplemental benefit. Check your plan\'s Summary of Benefits for coverage amount and approved devices.',
+    desc:'Waterproof wristband with one-button 911 connection to 24/7 professional monitoring. Active fall detection. GPS-enabled for indoor and outdoor use. Works in the shower. Battery lasts up to 5 days.',
+    clinical:'Recommended for adults living alone with any fall risk or chronic condition. The waterproof design is critical because a significant portion of falls occur in the bathroom, where non-waterproof devices cannot be worn. Automatic fall detection improves outcomes when patients cannot press the button.' }
+];
+
+let selSit = null, selUrg = null, activeCat = 'All', covFilter = 'All', visPids = [];
+
+function goScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const s = document.getElementById(id);
+  s.classList.add('active', 'fade-in');
+  setTimeout(() => s.classList.remove('fade-in'), 300);
+  const bb = document.getElementById('breadcrumb-back');
+  const show = id !== 'screen-landing' && id !== 'screen-home' && id !== 'screen-qualifier';
+  bb.classList.toggle('hidden', !show);
+  bb.classList.toggle('flex', show);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goLanding()    { selSit=null; selUrg=null; activeCat='All'; covFilter='All'; visPids=[]; goScreen('screen-landing'); }
+function goHome()       { selSit=null; selUrg=null; activeCat='All'; covFilter='All'; visPids=[]; renderSituationCards(); goScreen('screen-home'); }
+function goQualifier()  { goScreen('screen-qualifier'); }
+function confirmAdvantage(val) { selSit=null; selUrg=null; activeCat='All'; covFilter='All'; visPids=[]; renderSituationCards(); goScreen('screen-home'); }
+function pickSituationFromLanding(id) { goScreen('screen-home'); setTimeout(() => pickSituation(id), 50); }
+
+function pickSituation(id) {
+  selSit = situations.find(s => s.id === id);
+  selUrg = null; activeCat = 'All';
+  document.getElementById('step2-stage-label').textContent = selSit.label;
+  document.getElementById('urg-grid').innerHTML = urgencies.map(u => {
+    const count = (selSit.urgencyMap[u.id]||[]).filter(p => selSit.pids.includes(p)).length;
+    if (!count) return '';
+    return `<div class="urg-card" onclick="pickUrgency('${u.id}')">
+      <div class="w-9 h-9 bg-gray-50 border border-gray-200 rounded-lg flex items-center justify-center flex-shrink-0">${u.icon}</div>
+      <div class="min-w-0"><div class="font-semibold text-sm text-gray-900">${u.label}</div><div class="text-xs text-gray-400 mt-0.5 leading-relaxed">${u.desc}</div></div>
+    </div>`;
+  }).join('');
+  goScreen('screen-urgency');
+}
+
+function pickUrgency(urgId) {
+  selUrg = urgId;
+  const u = urgencies.find(x => x.id === urgId);
+  if (selSit) {
+    const urgPids = selSit.urgencyMap[urgId] || [];
+    visPids = urgPids.filter(p => selSit.pids.includes(p));
+    if (visPids.length < 2) visPids = selSit.pids;
+  }
+  activeCat = 'All';
+  renderProductsScreen(u ? u.label : null);
+  goScreen('screen-products');
+}
+
+function showProducts(urgId) { selUrg=null; visPids=selSit?selSit.pids:products.map(p=>p.id); activeCat='All'; renderProductsScreen(null); goScreen('screen-products'); }
+function showAllProducts()   { selSit=null; selUrg=null; activeCat='All'; visPids=products.map(p=>p.id); renderProductsScreen(null); goScreen('screen-products'); }
+
+function renderProductsScreen(urgLabel) {
+  const bc = document.getElementById('results-breadcrumb');
+  const parts = [];
+  if (selSit) parts.push(`<button onclick="goScreen('screen-home')" class="hover:text-gray-700 cursor-pointer">${selSit.label}</button>`);
+  if (urgLabel) parts.push(`<span>${urgLabel}</span>`);
+  bc.innerHTML = parts.map((p,i) => i < parts.length-1 ? `${p}<span class="mx-1">›</span>` : p).join('');
+  const visList = products.filter(p => visPids.includes(p.id));
+  document.getElementById('results-title').textContent = selSit ? `${visList.length} recommended products` : 'All products';
+  document.getElementById('results-subtitle').textContent = selSit
+    ? `Matched to: ${selSit.label}${urgLabel ? ' · '+urgLabel : ''}`
+    : 'Browse the full catalog. 30 clinically curated items.';
+  renderCovSummary(); renderCatFilters(); renderCovFilter(); renderGrid();
+}
+
+function renderCatFilters() {
+  const visList = products.filter(p => visPids.includes(p.id));
+  const cats = [...new Set(visList.map(p => p.cat))];
+  document.getElementById('cat-filters').innerHTML = ['All',...cats].map(c => {
+    const n = c==='All' ? visList.length : visList.filter(p=>p.cat===c).length;
+    return `<button class="filter-pill ${activeCat===c?'active':''}" onclick="filterCat('${c}')">${c} <span class="ml-1 opacity-50">${n}</span></button>`;
+  }).join('');
+}
+
+function filterCat(c) { activeCat=c; renderCatFilters(); renderGrid(); }
+
+function filterCov(v) { covFilter=v; renderCovFilter(); renderGrid(); }
+
+function renderCovFilter() {
+  const buckets = [
+    { id:'dme',         label:'DME Benefit',      dot:'bg-green-400' },
+    { id:'home-safety', label:'Home Safety',       dot:'bg-blue-400'  },
+    { id:'otc',         label:'OTC Allowance',     dot:'bg-purple-400'}
+  ];
+  document.getElementById('cov-filter-row').innerHTML = buckets.map(b =>
+    `<button class="filter-pill ${covFilter===b.id?'active':''}" onclick="filterCov(covFilter==='${b.id}'?'All':'${b.id}')">
+      <span class="w-2 h-2 rounded-full ${b.dot} inline-block mr-1.5 align-middle"></span>${b.label}
+    </button>`
+  ).join('');
+}
+
+function renderCovSummary() {
+  const visList = products.filter(p => visPids.includes(p.id));
+  const dmeCount = visList.filter(p => p.bucket === 'dme').length;
+  const hsCount  = visList.filter(p => p.bucket === 'home-safety').length;
+  const otcCount = visList.filter(p => p.bucket === 'otc').length;
+  const total = visList.length;
+  if (!total) { document.getElementById('cov-summary').innerHTML=''; return; }
+  document.getElementById('cov-summary').innerHTML =
+    `<div class="bg-blue-50 border border-blue-200 rounded-lg px-4 py-3">
+      <p class="text-sm font-semibold text-blue-900 mb-2">Your Medicare Advantage plan may cover all ${total} of these products:</p>
+      <div class="flex flex-wrap gap-3 text-xs">
+        <span class="flex items-center gap-1.5 text-green-700 font-medium"><span class="w-2 h-2 rounded-full bg-green-400 inline-block"></span>${dmeCount} via DME benefit</span>
+        <span class="flex items-center gap-1.5 text-blue-700 font-medium"><span class="w-2 h-2 rounded-full bg-blue-400 inline-block"></span>${hsCount} via Home Safety benefit</span>
+        <span class="flex items-center gap-1.5 text-purple-700 font-medium"><span class="w-2 h-2 rounded-full bg-purple-400 inline-block"></span>${otcCount} via OTC allowance</span>
+      </div>
+      <p class="text-xs text-blue-600 mt-2">Coverage estimates only — benefits vary by plan. Verify with your plan.</p>
+    </div>`;
+}
+
+function buildCovSection(p) {
+  if (p.bucket === 'dme') {
+    return `<div class="bg-green-50 border border-green-200 rounded-lg p-4">
+      <p class="text-xs font-semibold text-green-800 uppercase tracking-wider mb-1">DME Benefit — Covered by Your Plan</p>
+      <p class="text-green-900 text-sm leading-relaxed mb-3">${p.covText}</p>
+      <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">How to get it covered</p>
+      <ol class="space-y-2.5 text-sm text-gray-700">
+        <li class="flex gap-2.5"><span class="w-5 h-5 bg-green-100 text-green-800 rounded-full text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">1</span><span><strong>Ask your doctor</strong> — Request a recommendation or order for this item at your next visit or by phone.</span></li>
+        <li class="flex gap-2.5"><span class="w-5 h-5 bg-green-100 text-green-800 rounded-full text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">2</span><span><strong>Call your plan</strong> — Ask Member Services to connect you with an in-network DME supplier for this item.</span></li>
+        <li class="flex gap-2.5"><span class="w-5 h-5 bg-green-100 text-green-800 rounded-full text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">3</span><span><strong>Your plan handles the rest</strong> — Delivery, billing, and follow-up are managed through your plan at little or no cost to you.</span></li>
+      </ol>
+    </div>`;
+  }
+  if (p.bucket === 'home-safety') {
+    return `<div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+      <p class="text-xs font-semibold text-blue-800 uppercase tracking-wider mb-1">Home Safety Benefit</p>
+      <p class="text-blue-900 text-sm leading-relaxed mb-3">${p.covText}</p>
+      <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">How to use your Home Safety benefit</p>
+      <ol class="space-y-2.5 text-sm text-gray-700">
+        <li class="flex gap-2.5"><span class="w-5 h-5 bg-blue-100 text-blue-800 rounded-full text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">1</span><span><strong>Check your allowance</strong> — Call Member Services or look in your Summary of Benefits for a "home safety" or "home modification" benefit and the dollar amount.</span></li>
+        <li class="flex gap-2.5"><span class="w-5 h-5 bg-blue-100 text-blue-800 rounded-full text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">2</span><span><strong>Find an approved supplier</strong> — Your plan maintains a list of approved vendors. Ask Member Services or check your member portal.</span></li>
+        <li class="flex gap-2.5"><span class="w-5 h-5 bg-blue-100 text-blue-800 rounded-full text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">3</span><span><strong>Your allowance covers it</strong> — Most plans reimburse directly or bill the vendor. No out-of-pocket cost up to your allowance amount.</span></li>
+      </ol>
+    </div>`;
+  }
+  if (p.bucket === 'otc') {
+    return `<div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+      <p class="text-xs font-semibold text-purple-800 uppercase tracking-wider mb-1">OTC Allowance</p>
+      <p class="text-purple-900 text-sm leading-relaxed mb-3">${p.covText}</p>
+      <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">How to use your OTC benefit</p>
+      <ol class="space-y-2.5 text-sm text-gray-700">
+        <li class="flex gap-2.5"><span class="w-5 h-5 bg-purple-100 text-purple-800 rounded-full text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">1</span><span><strong>Check your balance</strong> — Call your plan or log into your member portal to see your current OTC allowance balance (resets quarterly for most plans).</span></li>
+        <li class="flex gap-2.5"><span class="w-5 h-5 bg-purple-100 text-purple-800 rounded-full text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">2</span><span><strong>Find it in your catalog</strong> — Search your plan's OTC catalog (online or printed) for this product by name or category.</span></li>
+        <li class="flex gap-2.5"><span class="w-5 h-5 bg-purple-100 text-purple-800 rounded-full text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">3</span><span><strong>Order or shop in-store</strong> — Order online through your plan's OTC portal or use your OTC benefit card at approved retailers (Walmart, CVS, Walgreens, and others).</span></li>
+      </ol>
+    </div>`;
+  }
+  return `<div class="border border-gray-100 rounded-lg p-4">
+    <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Coverage</p>
+    <p class="text-gray-600 text-sm leading-relaxed">${p.covText}</p>
+    <p class="text-xs text-gray-400 mt-2">FSA/HSA funds may apply for this item.</p>
+  </div>`;
+}
+
+function renderGrid() {
+  let list = products.filter(p => visPids.includes(p.id));
+  if (activeCat !== 'All') list = list.filter(p => p.cat === activeCat);
+  if (covFilter !== 'All') list = list.filter(p => p.bucket === covFilter);
+  const bucketOrder = {'dme':0, 'home-safety':1, 'otc':2, 'oop':3};
+  list.sort((a,b) => (bucketOrder[a.bucket]||3) - (bucketOrder[b.bucket]||3));
+  const grid = document.getElementById('products-grid');
+  if (!list.length) { grid.innerHTML=`<div class="col-span-3 py-16 text-center text-gray-400 text-sm">No products found.</div>`; return; }
+  grid.innerHTML = list.map(p => {
+    return `<div class="prod-card" onclick="openProd(${p.id})">
+      <div class="h-36 bg-white flex items-center justify-center p-2">
+        <img src="${p.img}" alt="${p.name}" class="max-w-full max-h-full object-contain" loading="lazy" onerror="this.style.opacity='0.15'" />
+      </div>
+      <div class="px-4 pt-4 pb-3">
+        <div class="flex items-start justify-between gap-3 mb-2">
+          <div class="min-w-0">
+            <p class="text-xs text-gray-400 mb-0.5 font-medium">${p.vendor}</p>
+            <h3 class="font-semibold text-gray-900 text-sm leading-snug">${p.name}</h3>
+          </div>
+          ${p.vetted?`<span class="badge-vetted text-xs px-2 py-0.5 rounded-md font-semibold whitespace-nowrap flex-shrink-0 flex items-center gap-0.5">
+            <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+            Vetted</span>`:''}
+        </div>
+        <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">${p.desc}</p>
+      </div>
+      <div class="px-4 pb-4 flex items-center justify-between border-t border-gray-50 pt-3">
+        <span class="text-xs px-2 py-1 rounded-md font-semibold ${covClass(p.bucket)}">${p.covLabel}</span>
+        <span class="text-xs text-gray-400 font-medium">${p.price}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openProd(pid) {
+  const p = products.find(x => x.id === pid);
+  const imgEl = document.getElementById('mp-img-icon');
+  imgEl.src = p.img; imgEl.alt = p.name;
+  document.getElementById('mp-category').textContent = p.cat;
+  document.getElementById('mp-vendor').textContent = p.vendor;
+  document.getElementById('mp-name').textContent = p.name;
+  document.getElementById('mp-price').textContent = p.price;
+  const cb = document.getElementById('mp-cov-badge');
+  cb.textContent = p.covLabel; cb.className = `text-xs px-2.5 py-1 rounded-md font-semibold ${covClass(p.bucket)}`;
+  document.getElementById('mp-desc').textContent = p.desc;
+  document.getElementById('mp-clinical').textContent = p.clinical;
+  document.getElementById('mp-cov-section').innerHTML = buildCovSection(p);
+  const v = document.getElementById('mp-vetted');
+  p.vetted ? v.classList.remove('hidden') : v.classList.add('hidden');
+  document.getElementById('modal-product').classList.remove('hidden');
+  document.body.classList.add('modal-open');
+}
+function closeProdModal()    { document.getElementById('modal-product').classList.add('hidden'); document.body.classList.remove('modal-open'); }
+function showShareModal()    { document.getElementById('modal-share').classList.remove('hidden'); document.body.classList.add('modal-open'); }
+function closeShareModal()   { document.getElementById('modal-share').classList.add('hidden'); document.body.classList.remove('modal-open'); }
+function showCareTeamModal() { document.getElementById('modal-careteam').classList.remove('hidden'); document.body.classList.add('modal-open'); }
+function closeCareTeamModal(){ document.getElementById('modal-careteam').classList.add('hidden'); document.body.classList.remove('modal-open'); }
+
+function copyLink() {
+  navigator.clipboard.writeText('https://careshelf.com/resources').catch(()=>{});
+  const btn = document.getElementById('copy-btn');
+  btn.textContent='Copied'; btn.classList.replace('bg-gray-900','bg-green-700');
+  setTimeout(()=>{ btn.textContent='Copy'; btn.classList.replace('bg-green-700','bg-gray-900'); }, 2000);
+}
+
+function covClass(b) { return b==='dme'?'badge-dme':b==='home-safety'?'badge-home-safety':b==='otc'?'badge-otc':'badge-oop'; }
+
+function renderSituationCards() {
+  document.getElementById('sit-grid').innerHTML = situations.map(s => `
+    <div class="sit-card" onclick="pickSituation('${s.id}')">
+      <div class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mb-3 text-gray-600">${s.icon}</div>
+      <h3 class="font-semibold text-gray-900 text-sm mb-1">${s.label}</h3>
+      <p class="text-gray-500 text-xs leading-relaxed">${s.desc}</p>
+    </div>`).join('');
+}
+
+renderSituationCards();
+</script>
+</body>
+</html>
