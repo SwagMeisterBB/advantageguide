@@ -707,6 +707,9 @@ const products = [
 
 let selSit = null, selUrg = null, activeCat = 'All', covFilter = 'All', visPids = [];
 let curScreen = 'screen-landing';
+let isPopState = false;
+
+history.replaceState({ screen: 'screen-landing' }, '');
 
 function goScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -718,8 +721,15 @@ function goScreen(id) {
   const show = id !== 'screen-landing';
   bb.classList.toggle('hidden', !show);
   bb.classList.toggle('flex', show);
+  if (!isPopState) history.pushState({ screen: id }, '');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+window.addEventListener('popstate', () => {
+  isPopState = true;
+  goBack();
+  isPopState = false;
+});
 
 function goBack() {
   if (curScreen === 'screen-qualifier') { goLanding(); }
