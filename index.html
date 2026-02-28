@@ -151,24 +151,10 @@
       <span class="font-semibold text-gray-900 text-sm tracking-tight">AdvantageGuide</span>
     </div>
     <div class="flex items-center gap-4">
-      <button id="breadcrumb-back" onclick="goBack()"
-              class="hidden items-center gap-1.5 text-sm text-gray-500 hover:text-gray-900 transition-colors">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-        </svg>
-        Back
-      </button>
       <a href="/blog/" class="hidden md:block text-sm text-gray-500 hover:text-gray-900 transition-colors font-medium">Blog</a>
       <button onclick="showCareTeamModal()"
               class="hidden md:block text-sm text-gray-500 hover:text-gray-900 transition-colors font-medium">
         For care teams
-      </button>
-      <button onclick="showShareModal()"
-              class="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900 border border-gray-200 hover:border-gray-400 px-3 py-1.5 rounded-lg transition-all">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
-        </svg>
-        Share
       </button>
     </div>
   </div>
@@ -361,13 +347,15 @@
 
 <!-- SCREEN: ADVANTAGE QUALIFIER -->
 <div id="screen-qualifier" class="screen">
-  <div class="max-w-5xl mx-auto px-6 py-16 fade-in">
+  <div class="max-w-5xl mx-auto px-6 py-10 fade-in">
     <div class="max-w-lg mx-auto">
-      <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-6">
-        Medicare Advantage
-      </div>
+      <button onclick="goBack()" class="flex items-center gap-1.5 text-sm text-gray-400 hover:text-gray-700 transition-colors mb-8">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        Back
+      </button>
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-6">Step 1 of 3</p>
       <h1 class="text-3xl font-extrabold text-gray-900 mb-3">Are you on a Medicare Advantage plan?</h1>
-      <p class="text-gray-500 text-base leading-relaxed mb-8">AdvantageGuide is a Medicare Advantage benefits guide for home health products. If you're already on an Advantage plan, we'll show you exactly which home health items your plan covers — and the steps to claim them. Not sure which plan to pick? Call 1-800-MEDICARE.</p>
+      <p class="text-gray-500 text-base leading-relaxed mb-8">We'll show you which home health products your plan covers and how to claim them.</p>
       <div class="space-y-3 mb-8">
         <button onclick="confirmAdvantage('yes')"
                 class="w-full flex items-center justify-between bg-white border-2 border-gray-200 hover:border-blue-400 rounded-xl px-5 py-4 text-left transition-all group">
@@ -393,6 +381,10 @@
           </div>
           <svg class="w-5 h-5 text-gray-300 group-hover:text-gray-500 flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </button>
+      </div>
+      <div class="border-t border-gray-200 pt-5 mb-5 flex items-center gap-3">
+        <span class="text-sm text-gray-400">Already know what you need?</span>
+        <button onclick="showAllProducts()" class="text-sm font-medium text-gray-700 hover:text-gray-900 underline underline-offset-2">Browse all products</button>
       </div>
       <div class="bg-gray-50 border border-gray-200 rounded-xl p-4">
         <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">What Medicare Advantage members can access</p>
@@ -427,7 +419,11 @@
 
 <!-- SCREEN 1: SITUATION SELECTION -->
 <div id="screen-home" class="screen">
-  <div class="max-w-5xl mx-auto px-6 py-12 fade-in">
+  <div class="max-w-5xl mx-auto px-6 py-10 fade-in">
+    <button onclick="goBack()" class="flex items-center gap-1.5 text-sm text-gray-400 hover:text-gray-700 transition-colors mb-8">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      Back
+    </button>
     <div class="max-w-2xl mb-10">
       <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-3">What are your priorities?</h1>
       <p class="text-gray-500 text-base leading-relaxed">Select up to 3. We'll match products to each and show Medicare coverage on every item.</p>
@@ -456,7 +452,11 @@
 
 <!-- SCREEN 2: URGENCY SELECTION -->
 <div id="screen-urgency" class="screen">
-  <div class="max-w-5xl mx-auto px-6 py-12 fade-in">
+  <div class="max-w-5xl mx-auto px-6 py-10 fade-in">
+    <button onclick="goBack()" class="flex items-center gap-1.5 text-sm text-gray-400 hover:text-gray-700 transition-colors mb-8">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      Back
+    </button>
     <div class="flex items-center gap-3 mb-8 flex-wrap">
       <div class="step-dot done">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
@@ -868,10 +868,6 @@ function goScreen(id) {
   s.classList.add('active', 'fade-in');
   setTimeout(() => s.classList.remove('fade-in'), 300);
   curScreen = id;
-  const bb = document.getElementById('breadcrumb-back');
-  const show = id !== 'screen-landing';
-  bb.classList.toggle('hidden', !show);
-  bb.classList.toggle('flex', show);
   if (!isPopState) history.pushState({ screen: id }, '');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
