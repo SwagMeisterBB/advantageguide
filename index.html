@@ -1095,6 +1095,8 @@ function renderGrid() {
 
 function openProd(pid) {
   const p = products.find(x => x.id === pid);
+  const scrollContainer = document.querySelector('#modal-product .overflow-y-auto');
+  if (scrollContainer) scrollContainer.scrollTop = 0;
   const imgEl = document.getElementById('mp-img-icon');
   imgEl.src = p.img; imgEl.alt = p.name;
   document.getElementById('mp-category').textContent = p.cat;
