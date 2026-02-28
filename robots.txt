@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://swagmeisterbb.github.io/careshelf/sitemap.xml
+Sitemap: https://advantageguide.health/sitemap.xml
