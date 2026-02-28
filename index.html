@@ -87,6 +87,8 @@
       padding: 20px; cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s;
     }
     .sit-card:hover { border-color: #2563EB; box-shadow: 0 2px 14px rgba(37,99,235,0.10); }
+    .sit-card.selected { border-color: #2563EB; background: #EFF6FF; box-shadow: 0 2px 14px rgba(37,99,235,0.10); }
+    .sit-card.disabled { opacity: 0.4; cursor: not-allowed; }
 
     .urg-card {
       background: white; border: 1.5px solid #E5E7EB; border-radius: 10px;
@@ -427,20 +429,23 @@
 <div id="screen-home" class="screen">
   <div class="max-w-5xl mx-auto px-6 py-12 fade-in">
     <div class="max-w-2xl mb-10">
-      <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-3">What's your top priority?</h1>
-      <p class="text-gray-500 text-base leading-relaxed">Choose what best describes the current need. We'll match products to your situation and show Medicare coverage on every item.</p>
+      <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-3">What are your priorities?</h1>
+      <p class="text-gray-500 text-base leading-relaxed">Select up to 3. We'll match products to each and show Medicare coverage on every item.</p>
     </div>
     <div class="flex items-center gap-3 mb-6 flex-wrap">
       <div class="step-dot active">1</div>
-      <span class="text-sm font-semibold text-gray-900">Your priority</span>
+      <span class="text-sm font-semibold text-gray-900">Your priorities</span>
       <div class="h-px bg-gray-200 w-10"></div>
       <div class="step-dot pending">2</div>
-      <span class="text-sm text-gray-400">What's most urgent</span>
-      <div class="h-px bg-gray-200 w-10"></div>
-      <div class="step-dot pending">3</div>
       <span class="text-sm text-gray-400">Matched products</span>
     </div>
-    <div id="sit-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-8"></div>
+    <div id="sit-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6"></div>
+    <div id="sit-cta" class="hidden mb-8">
+      <button onclick="showSelectedProducts()" class="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors text-sm">
+        <span id="sit-cta-text">Show Products</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
     <div class="border-t border-gray-200 pt-6 flex items-center gap-3">
       <span class="text-sm text-gray-400">Already know what you need?</span>
       <button onclick="showAllProducts()" class="text-sm font-medium text-gray-700 hover:text-gray-900 underline underline-offset-2">Browse all products</button>
@@ -851,7 +856,7 @@ const products = [
     link:'https://www.amazon.com/Medical-Guardian-Bracelet-Necklace-Monitoring/dp/B07N8HDHKB?tag=advantageguid-20', clinical:'Recommended for adults living alone with any fall risk or chronic condition. The waterproof design is critical because a significant portion of falls occur in the bathroom, where non-waterproof devices cannot be worn. Automatic fall detection improves outcomes when patients cannot press the button.' }
 ];
 
-let selSit = null, selUrg = null, activeCat = 'All', covFilter = 'All', visPids = [];
+let selSits = [], selUrg = null, activeCat = 'All', covFilter = 'All', visPids = [];
 let curScreen = 'screen-landing';
 let isPopState = false;
 
@@ -880,63 +885,66 @@ window.addEventListener('popstate', () => {
 function goBack() {
   if (curScreen === 'screen-qualifier') { goLanding(); }
   else if (curScreen === 'screen-home') { goLanding(); }
-  else if (curScreen === 'screen-urgency') { renderSituationCards(); goScreen('screen-home'); }
-  else if (curScreen === 'screen-products') {
-    if (selSit && selUrg) { pickSituation(selSit.id); }
-    else if (selSit) { renderSituationCards(); goScreen('screen-home'); }
-    else { goHome(); }
-  }
+  else if (curScreen === 'screen-products') { renderSituationCards(); updateSitCta(); goScreen('screen-home'); }
   else { goLanding(); }
 }
 
-function goLanding()    { selSit=null; selUrg=null; activeCat='All'; covFilter='All'; visPids=[]; goScreen('screen-landing'); }
-function goHome()       { selSit=null; selUrg=null; activeCat='All'; covFilter='All'; visPids=[]; renderSituationCards(); goScreen('screen-home'); }
+function goLanding()    { selSits=[]; selUrg=null; activeCat='All'; covFilter='All'; visPids=[]; goScreen('screen-landing'); }
+function goHome()       { selSits=[]; selUrg=null; activeCat='All'; covFilter='All'; visPids=[]; renderSituationCards(); updateSitCta(); goScreen('screen-home'); }
 function goQualifier()  { goScreen('screen-qualifier'); }
-function confirmAdvantage(val) { selSit=null; selUrg=null; activeCat='All'; covFilter='All'; visPids=[]; renderSituationCards(); goScreen('screen-home'); }
-function pickSituationFromLanding(id) { goScreen('screen-home'); setTimeout(() => pickSituation(id), 50); }
+function confirmAdvantage(val) { selSits=[]; selUrg=null; activeCat='All'; covFilter='All'; visPids=[]; renderSituationCards(); updateSitCta(); goScreen('screen-home'); }
 
-function pickSituation(id) {
-  selSit = situations.find(s => s.id === id);
-  selUrg = null; activeCat = 'All';
-  document.getElementById('step2-stage-label').textContent = selSit.label;
-  document.getElementById('urg-grid').innerHTML = urgencies.map(u => {
-    const count = (selSit.urgencyMap[u.id]||[]).filter(p => selSit.pids.includes(p)).length;
-    if (!count) return '';
-    return `<div class="urg-card" onclick="pickUrgency('${u.id}')">
-      <div class="w-9 h-9 bg-gray-50 border border-gray-200 rounded-lg flex items-center justify-center flex-shrink-0">${u.icon}</div>
-      <div class="min-w-0"><div class="font-semibold text-sm text-gray-900">${u.label}</div><div class="text-xs text-gray-400 mt-0.5 leading-relaxed">${u.desc}</div></div>
-    </div>`;
-  }).join('');
-  goScreen('screen-urgency');
+function pickSituationFromLanding(id) {
+  selSits = [];
+  const sit = situations.find(s => s.id === id);
+  if (sit) selSits = [sit];
+  goScreen('screen-home');
+  setTimeout(() => { renderSituationCards(); updateSitCta(); }, 50);
 }
 
-function pickUrgency(urgId) {
-  selUrg = urgId;
-  const u = urgencies.find(x => x.id === urgId);
-  if (selSit) {
-    const urgPids = selSit.urgencyMap[urgId] || [];
-    visPids = urgPids.filter(p => selSit.pids.includes(p));
-    if (visPids.length < 2) visPids = selSit.pids;
+function toggleSituation(id) {
+  const sit = situations.find(s => s.id === id);
+  const idx = selSits.findIndex(s => s.id === id);
+  if (idx >= 0) {
+    selSits.splice(idx, 1);
+  } else {
+    if (selSits.length >= 3) return;
+    selSits.push(sit);
   }
-  activeCat = 'All';
-  renderProductsScreen(u ? u.label : null);
+  renderSituationCards();
+  updateSitCta();
+}
+
+function updateSitCta() {
+  const cta = document.getElementById('sit-cta');
+  const btn = document.getElementById('sit-cta-text');
+  if (!cta) return;
+  if (selSits.length === 0) { cta.classList.add('hidden'); return; }
+  cta.classList.remove('hidden');
+  const count = [...new Set(selSits.flatMap(s => s.pids))].length;
+  btn.textContent = `Show ${count} Product${count !== 1 ? 's' : ''}`;
+}
+
+function showSelectedProducts() {
+  if (!selSits.length) return;
+  visPids = [...new Set(selSits.flatMap(s => s.pids))];
+  activeCat = 'All'; covFilter = 'All';
+  renderProductsScreen();
   goScreen('screen-products');
 }
 
-function showProducts(urgId) { selUrg=null; visPids=selSit?selSit.pids:products.map(p=>p.id); activeCat='All'; renderProductsScreen(null); goScreen('screen-products'); }
-function showAllProducts()   { selSit=null; selUrg=null; activeCat='All'; visPids=products.map(p=>p.id); renderProductsScreen(null); goScreen('screen-products'); }
+function showAllProducts() { selSits=[]; selUrg=null; activeCat='All'; covFilter='All'; visPids=products.map(p=>p.id); renderProductsScreen(); goScreen('screen-products'); }
 
-function renderProductsScreen(urgLabel) {
+function renderProductsScreen() {
   const bc = document.getElementById('results-breadcrumb');
   const parts = [];
-  if (selSit) parts.push(`<button onclick="goScreen('screen-home')" class="hover:text-gray-700 cursor-pointer">${selSit.label}</button>`);
-  if (urgLabel) parts.push(`<span>${urgLabel}</span>`);
+  if (selSits.length) parts.push(`<button onclick="goBack()" class="hover:text-gray-700 cursor-pointer">${selSits.map(s=>s.label).join(' + ')}</button>`);
   bc.innerHTML = parts.map((p,i) => i < parts.length-1 ? `${p}<span class="mx-1">›</span>` : p).join('');
   const visList = products.filter(p => visPids.includes(p.id));
-  document.getElementById('results-title').textContent = selSit ? `${visList.length} recommended products` : 'All products';
-  document.getElementById('results-subtitle').textContent = selSit
-    ? `Matched to: ${selSit.label}${urgLabel ? ' · '+urgLabel : ''}`
-    : 'Browse the full catalog. 30 clinically curated items.';
+  document.getElementById('results-title').textContent = selSits.length ? `${visList.length} recommended products` : 'All products';
+  document.getElementById('results-subtitle').textContent = selSits.length
+    ? `Matched to: ${selSits.map(s=>s.label).join(', ')}`
+    : 'Browse the full catalog. 40 clinically curated items.';
   renderCovSummary(); renderCatFilters(); renderCovFilter(); renderGrid();
 }
 
@@ -1029,37 +1037,60 @@ function buildCovSection(p) {
   </div>`;
 }
 
+function prodCardHTML(p) {
+  return `<div class="prod-card" onclick="openProd(${p.id})">
+    <div class="h-36 bg-white flex items-center justify-center p-2">
+      <img src="${p.img}" alt="${p.name}" class="max-w-full max-h-full object-contain" loading="lazy" onerror="this.style.opacity='0.15'" />
+    </div>
+    <div class="px-4 pt-4 pb-3">
+      <div class="flex items-start justify-between gap-3 mb-2">
+        <div class="min-w-0">
+          <p class="text-xs text-gray-400 mb-0.5 font-medium">${p.vendor}</p>
+          <h3 class="font-semibold text-gray-900 text-sm leading-snug">${p.name}</h3>
+        </div>
+        ${p.vetted?`<span class="badge-vetted text-xs px-2 py-0.5 rounded-md font-semibold whitespace-nowrap flex-shrink-0 flex items-center gap-0.5">
+          <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          Vetted</span>`:''}
+      </div>
+      <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">${p.desc}</p>
+    </div>
+    <div class="px-4 pb-4 flex items-center justify-between border-t border-gray-50 pt-3">
+      <span class="text-xs px-2 py-1 rounded-md font-semibold ${covClass(p.bucket)}">${p.covLabel}</span>
+      <span class="text-xs text-gray-400 font-medium">${p.price}</span>
+    </div>
+  </div>`;
+}
+
 function renderGrid() {
+  const grid = document.getElementById('products-grid');
+  const bucketOrder = {'dme':0, 'home-safety':1, 'otc':2, 'oop':3};
+
+  if (selSits.length > 1) {
+    grid.className = 'space-y-10';
+    const seenIds = new Set();
+    grid.innerHTML = selSits.map(sit => {
+      let sitProds = products.filter(p => sit.pids.includes(p.id) && !seenIds.has(p.id));
+      sitProds.forEach(p => seenIds.add(p.id));
+      if (activeCat !== 'All') sitProds = sitProds.filter(p => p.cat === activeCat);
+      if (covFilter !== 'All') sitProds = sitProds.filter(p => p.bucket === covFilter);
+      sitProds.sort((a,b) => (bucketOrder[a.bucket]||3) - (bucketOrder[b.bucket]||3));
+      if (!sitProds.length) return '';
+      return `<div>
+        <h3 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3 pb-2 border-b border-gray-100">${sit.label}</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">${sitProds.map(prodCardHTML).join('')}</div>
+      </div>`;
+    }).join('');
+    if (!grid.innerHTML.trim()) grid.innerHTML = `<div class="py-16 text-center text-gray-400 text-sm">No products found.</div>`;
+    return;
+  }
+
+  grid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4';
   let list = products.filter(p => visPids.includes(p.id));
   if (activeCat !== 'All') list = list.filter(p => p.cat === activeCat);
   if (covFilter !== 'All') list = list.filter(p => p.bucket === covFilter);
-  const bucketOrder = {'dme':0, 'home-safety':1, 'otc':2, 'oop':3};
   list.sort((a,b) => (bucketOrder[a.bucket]||3) - (bucketOrder[b.bucket]||3));
-  const grid = document.getElementById('products-grid');
   if (!list.length) { grid.innerHTML=`<div class="col-span-3 py-16 text-center text-gray-400 text-sm">No products found.</div>`; return; }
-  grid.innerHTML = list.map(p => {
-    return `<div class="prod-card" onclick="openProd(${p.id})">
-      <div class="h-36 bg-white flex items-center justify-center p-2">
-        <img src="${p.img}" alt="${p.name}" class="max-w-full max-h-full object-contain" loading="lazy" onerror="this.style.opacity='0.15'" />
-      </div>
-      <div class="px-4 pt-4 pb-3">
-        <div class="flex items-start justify-between gap-3 mb-2">
-          <div class="min-w-0">
-            <p class="text-xs text-gray-400 mb-0.5 font-medium">${p.vendor}</p>
-            <h3 class="font-semibold text-gray-900 text-sm leading-snug">${p.name}</h3>
-          </div>
-          ${p.vetted?`<span class="badge-vetted text-xs px-2 py-0.5 rounded-md font-semibold whitespace-nowrap flex-shrink-0 flex items-center gap-0.5">
-            <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-            Vetted</span>`:''}
-        </div>
-        <p class="text-xs text-gray-500 leading-relaxed line-clamp-2">${p.desc}</p>
-      </div>
-      <div class="px-4 pb-4 flex items-center justify-between border-t border-gray-50 pt-3">
-        <span class="text-xs px-2 py-1 rounded-md font-semibold ${covClass(p.bucket)}">${p.covLabel}</span>
-        <span class="text-xs text-gray-400 font-medium">${p.price}</span>
-      </div>
-    </div>`;
-  }).join('');
+  grid.innerHTML = list.map(prodCardHTML).join('');
 }
 
 function openProd(pid) {
@@ -1117,12 +1148,19 @@ function copyLink() {
 function covClass(b) { return b==='dme'?'badge-dme':b==='home-safety'?'badge-home-safety':b==='otc'?'badge-otc':'badge-oop'; }
 
 function renderSituationCards() {
-  document.getElementById('sit-grid').innerHTML = situations.map(s => `
-    <div class="sit-card" onclick="pickSituation('${s.id}')">
-      <div class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mb-3 text-gray-600">${s.icon}</div>
+  document.getElementById('sit-grid').innerHTML = situations.map(s => {
+    const isSelected = selSits.some(x => x.id === s.id);
+    const isDisabled = !isSelected && selSits.length >= 3;
+    return `<div class="sit-card ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}"
+      onclick="${isDisabled ? '' : `toggleSituation('${s.id}')`}">
+      <div class="flex items-start justify-between mb-3">
+        <div class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center text-gray-600">${s.icon}</div>
+        ${isSelected ? `<svg class="w-5 h-5 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>` : ''}
+      </div>
       <h3 class="font-semibold text-gray-900 text-sm mb-1">${s.label}</h3>
       <p class="text-gray-500 text-xs leading-relaxed">${s.desc}</p>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
 
 renderSituationCards();
