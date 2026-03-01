@@ -174,7 +174,7 @@
         <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-5">
           Your Medicare Advantage<br/>plan covers more than<br/>you think.
         </h1>
-        <p class="text-gray-500 text-lg leading-relaxed mb-8 max-w-xl">
+        <p class="text-gray-600 text-lg leading-relaxed mb-8 max-w-xl">
           Most Advantage members have an OTC allowance, a home safety benefit, and equipment coverage — and most never use them. AdvantageGuide is a Medicare Advantage benefits guide that matches you to the home health products your existing plan already covers, and shows you exactly how to claim them.
         </p>
         <div class="flex flex-wrap items-center gap-3 mb-5">
@@ -236,17 +236,17 @@
         <div>
           <div class="how-num mb-4">1</div>
           <h3 class="font-semibold text-gray-900 mb-2">Tell us your care situation</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Hospital discharge, fall prevention, chronic condition management. Choose what fits. Takes under 30 seconds — no account required.</p>
+          <p class="text-gray-600 text-sm leading-relaxed">Hospital discharge, fall prevention, chronic condition management. Choose what fits. Takes under 30 seconds — no account required.</p>
         </div>
         <div>
           <div class="how-num mb-4">2</div>
           <h3 class="font-semibold text-gray-900 mb-2">See which benefit covers each item</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Every product is labeled with the specific Advantage benefit that covers it — DME, Home Safety, or OTC allowance — so you know exactly what you're working with.</p>
+          <p class="text-gray-600 text-sm leading-relaxed">Every product is labeled with the specific Advantage benefit that covers it — DME, Home Safety, or OTC allowance — so you know exactly what you're working with.</p>
         </div>
         <div>
           <div class="how-num mb-4">3</div>
           <h3 class="font-semibold text-gray-900 mb-2">Get exact steps to claim your coverage</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Each product includes a plain-language guide: who to call, what to ask, and how your plan delivers or reimburses it. No guessing, no runaround.</p>
+          <p class="text-gray-600 text-sm leading-relaxed">Each product includes a plain-language guide: who to call, what to ask, and how your plan delivers or reimburses it. No guessing, no runaround.</p>
         </div>
       </div>
     </div>
@@ -366,7 +366,7 @@
       </button>
       <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-6">Step 1 of 3</p>
       <h1 class="text-3xl font-extrabold text-gray-900 mb-3">Are you on a Medicare Advantage plan?</h1>
-      <p class="text-gray-500 text-base leading-relaxed mb-8">We'll show you which home health products your plan covers and how to claim them.</p>
+      <p class="text-gray-600 text-base leading-relaxed mb-8">We'll show you which home health products your plan covers and how to claim them.</p>
       <div class="space-y-3 mb-8">
         <button onclick="confirmAdvantage('yes')"
                 class="w-full flex items-center justify-between bg-white border-2 border-gray-200 hover:border-blue-400 rounded-xl px-5 py-4 text-left transition-all group">
@@ -437,7 +437,7 @@
     </button>
     <div class="max-w-2xl mb-10">
       <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-3">What describes your situation right now?</h1>
-      <p class="text-gray-500 text-base leading-relaxed">Choose up to 3 that fit. We'll match products to each and show exactly which benefit covers them.</p>
+      <p class="text-gray-600 text-base leading-relaxed">Choose up to 3 that fit. We'll match products to each and show exactly which benefit covers them.</p>
     </div>
     <div class="flex items-center justify-between gap-3 mb-6 flex-wrap">
       <div class="flex items-center gap-3 flex-wrap">
@@ -485,7 +485,7 @@
     </div>
     <div class="max-w-xl mb-6">
       <h2 class="text-2xl font-bold text-gray-900 mb-2">What's the most pressing need right now?</h2>
-      <p class="text-gray-500 text-sm leading-relaxed">We'll prioritize the most relevant products first. You can filter by other categories once you see the results.</p>
+      <p class="text-gray-600 text-sm leading-relaxed">We'll prioritize the most relevant products first. You can filter by other categories once you see the results.</p>
     </div>
     <div id="urg-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl mb-6"></div>
     <button onclick="showProducts(null)" class="text-sm text-gray-400 hover:text-gray-700 underline underline-offset-2">Show all products for this situation</button>
@@ -1297,7 +1297,7 @@ function renderSituationCards() {
         ${isSelected ? `<svg class="w-5 h-5 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>` : ''}
       </div>
       <h3 class="font-semibold text-gray-900 text-sm mb-1">${s.label}</h3>
-      <p class="text-gray-500 text-sm leading-relaxed">${s.desc}</p>
+      <p class="text-gray-600 text-sm leading-relaxed">${s.desc}</p>
     </div>`;
   }).join('');
 }
