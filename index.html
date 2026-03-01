@@ -859,9 +859,64 @@ const products = [
 let selSits = [], selUrg = null, activeCat = 'All', covFilter = 'All', visPids = [];
 let curScreen = 'screen-landing';
 let noAdvantageMode = false;
-let isPopState = false;
+let _replaceNext = false; // use replaceState instead of pushState when restoring
 
-history.replaceState({ screen: 'screen-landing' }, '');
+// --- Hash encoding / decoding ---
+
+function getStateHash() {
+  if (curScreen === 'screen-landing')   return '';
+  if (curScreen === 'screen-qualifier') return 'qualifier';
+  if (curScreen === 'screen-home') {
+    const sits = selSits.map(s => s.id).join(',');
+    return sits ? `home?sits=${sits}` : 'home';
+  }
+  if (curScreen === 'screen-products') {
+    const p = new URLSearchParams();
+    if (selSits.length) p.set('sits', selSits.map(s => s.id).join(','));
+    if (noAdvantageMode) p.set('mode', 'original');
+    if (activeCat !== 'All') p.set('cat', activeCat);
+    if (covFilter !== 'All') p.set('cov', covFilter);
+    const qs = p.toString();
+    return qs ? `results?${qs}` : 'results';
+  }
+  return '';
+}
+
+function restoreFromHash() {
+  const raw = location.hash.replace(/^#/, '');
+  if (!raw) {
+    selSits=[]; selUrg=null; activeCat='All'; covFilter='All'; visPids=[]; noAdvantageMode=false;
+    goScreen('screen-landing');
+    return;
+  }
+  const qIdx = raw.indexOf('?');
+  const path   = qIdx >= 0 ? raw.slice(0, qIdx) : raw;
+  const params = new URLSearchParams(qIdx >= 0 ? raw.slice(qIdx + 1) : '');
+
+  if (path === 'qualifier') { goQualifier(); return; }
+
+  if (path === 'home') {
+    const sp = params.get('sits');
+    selSits = sp ? sp.split(',').map(id => situations.find(s => s.id === id)).filter(Boolean) : [];
+    renderSituationCards(); updateSitCta();
+    goScreen('screen-home');
+    return;
+  }
+
+  if (path === 'results') {
+    noAdvantageMode = params.get('mode') === 'original';
+    const sp = params.get('sits');
+    selSits = sp ? sp.split(',').map(id => situations.find(s => s.id === id)).filter(Boolean) : [];
+    visPids = selSits.length ? [...new Set(selSits.flatMap(s => s.pids))] : products.map(p => p.id);
+    activeCat = params.get('cat') || 'All';
+    covFilter = params.get('cov') || 'All';
+    renderProductsScreen();
+    goScreen('screen-products');
+    return;
+  }
+
+  goScreen('screen-landing');
+}
 
 function goScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -869,15 +924,32 @@ function goScreen(id) {
   s.classList.add('active', 'fade-in');
   setTimeout(() => s.classList.remove('fade-in'), 300);
   curScreen = id;
-  if (!isPopState) history.pushState({ screen: id }, '');
+  const hash = getStateHash();
+  const url = hash ? '#' + hash : location.pathname;
+  if (_replaceNext) { history.replaceState(null, '', url); }
+  else              { history.pushState(null, '', url); }
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+// Update hash in-place when filters change (no new history entry)
+function _updateHash() {
+  const hash = getStateHash();
+  history.replaceState(null, '', hash ? '#' + hash : location.pathname);
+}
+
+// Back/forward button: restore state from the URL we navigate to
 window.addEventListener('popstate', () => {
-  isPopState = true;
-  goBack();
-  isPopState = false;
+  _replaceNext = true;
+  restoreFromHash();
+  _replaceNext = false;
 });
+
+// Restore on hard refresh / direct link
+if (location.hash && location.hash !== '#') {
+  _replaceNext = true;
+  restoreFromHash();
+  _replaceNext = false;
+}
 
 function goBack() {
   if (curScreen === 'screen-qualifier') { goLanding(); }
@@ -963,9 +1035,9 @@ function renderCatFilters() {
      <div class="flex flex-wrap gap-2">${pills}</div>`;
 }
 
-function filterCat(c) { activeCat=c; renderCatFilters(); renderGrid(); }
+function filterCat(c) { activeCat=c; renderCatFilters(); renderGrid(); _updateHash(); }
 
-function filterCov(v) { covFilter=v; renderCovFilter(); renderGrid(); }
+function filterCov(v) { covFilter=v; renderCovFilter(); renderGrid(); _updateHash(); }
 
 function renderCovFilter() {
   const visList = products.filter(p => visPids.includes(p.id));
