@@ -485,19 +485,18 @@
     </button>
     <div class="flex items-start justify-between gap-4 mb-6">
       <div>
-        <div id="results-breadcrumb" class="flex items-center gap-1.5 text-xs text-gray-400 mb-2 flex-wrap"></div>
-        <h2 class="text-xl font-bold text-gray-900" id="results-title">Recommended Products</h2>
-        <p class="text-gray-500 text-sm mt-0.5" id="results-subtitle"></p>
+        <h2 class="text-2xl font-bold text-gray-900" id="results-title">Recommended Products</h2>
+        <p class="text-gray-500 text-sm mt-1" id="results-subtitle"></p>
       </div>
       <button onclick="showShareModal()"
               class="flex-shrink-0 flex items-center gap-1.5 text-sm font-medium border border-gray-200 hover:border-gray-400 text-gray-600 hover:text-gray-900 px-3 py-2 rounded-lg transition-all">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
-        Share this list
+        Share
       </button>
     </div>
-    <div id="cov-summary" class="mb-5"></div>
-    <div class="flex flex-wrap gap-2 mb-3" id="cat-filters"></div>
-    <div id="cov-filter-row" class="mb-5"></div>
+    <div id="cov-summary" class="mb-6"></div>
+    <div class="mb-4" id="cat-filters"></div>
+    <div id="cov-filter-row" class="mb-6"></div>
     <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
   </div>
 </div>
@@ -944,25 +943,24 @@ function showSelectedProducts() {
 function showAllProducts() { selSits=[]; selUrg=null; activeCat='All'; covFilter='All'; visPids=products.map(p=>p.id); renderProductsScreen(); goScreen('screen-products'); }
 
 function renderProductsScreen() {
-  const bc = document.getElementById('results-breadcrumb');
-  const parts = [];
-  if (selSits.length) parts.push(`<button onclick="goBack()" class="hover:text-gray-700 cursor-pointer">${selSits.map(s=>s.label).join(' + ')}</button>`);
-  bc.innerHTML = parts.map((p,i) => i < parts.length-1 ? `${p}<span class="mx-1">›</span>` : p).join('');
   const visList = products.filter(p => visPids.includes(p.id));
   document.getElementById('results-title').textContent = selSits.length ? `${visList.length} recommended products` : 'All products';
   document.getElementById('results-subtitle').textContent = selSits.length
-    ? `Matched to: ${selSits.map(s=>s.label).join(', ')}`
-    : 'Browse the full catalog. 40 clinically curated items.';
+    ? `For: ${selSits.map(s=>s.label).join(', ')}`
+    : 'Browse the full catalog — 40 clinically curated items.';
   renderCovSummary(); renderCatFilters(); renderCovFilter(); renderGrid();
 }
 
 function renderCatFilters() {
   const visList = products.filter(p => visPids.includes(p.id));
   const cats = [...new Set(visList.map(p => p.cat))];
-  document.getElementById('cat-filters').innerHTML = ['All',...cats].map(c => {
+  const pills = ['All',...cats].map(c => {
     const n = c==='All' ? visList.length : visList.filter(p=>p.cat===c).length;
     return `<button class="filter-pill ${activeCat===c?'active':''}" onclick="filterCat('${c}')">${c} <span class="ml-1 opacity-50">${n}</span></button>`;
   }).join('');
+  document.getElementById('cat-filters').innerHTML =
+    `<p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">Category</p>
+     <div class="flex flex-wrap gap-2">${pills}</div>`;
 }
 
 function filterCat(c) { activeCat=c; renderCatFilters(); renderGrid(); }
@@ -970,16 +968,21 @@ function filterCat(c) { activeCat=c; renderCatFilters(); renderGrid(); }
 function filterCov(v) { covFilter=v; renderCovFilter(); renderGrid(); }
 
 function renderCovFilter() {
+  const visList = products.filter(p => visPids.includes(p.id));
   const buckets = [
     { id:'dme',         label:'DME Benefit',      dot:'bg-green-400' },
     { id:'home-safety', label:'Home Safety',       dot:'bg-blue-400'  },
     { id:'otc',         label:'OTC Allowance',     dot:'bg-purple-400'}
   ];
-  document.getElementById('cov-filter-row').innerHTML = buckets.map(b =>
-    `<button class="filter-pill ${covFilter===b.id?'active':''}" onclick="filterCov(covFilter==='${b.id}'?'All':'${b.id}')">
-      <span class="w-2 h-2 rounded-full ${b.dot} inline-block mr-1.5 align-middle"></span>${b.label}
-    </button>`
-  ).join('');
+  const pills = buckets.map(b => {
+    const n = visList.filter(p => p.bucket === b.id).length;
+    return `<button class="filter-pill ${covFilter===b.id?'active':''}" onclick="filterCov(covFilter==='${b.id}'?'All':'${b.id}')">
+      <span class="w-2 h-2 rounded-full ${b.dot} inline-block mr-1.5 align-middle"></span>${b.label} <span class="ml-1 opacity-50">${n}</span>
+    </button>`;
+  }).join('');
+  document.getElementById('cov-filter-row').innerHTML =
+    `<p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">Coverage Benefit</p>
+     <div class="flex flex-wrap gap-2">${pills}</div>`;
 }
 
 function renderCovSummary() {
@@ -999,13 +1002,13 @@ function renderCovSummary() {
   }
   document.getElementById('cov-summary').innerHTML =
     `<div class="bg-blue-50 border border-blue-200 rounded-lg px-4 py-3">
-      <p class="text-sm font-semibold text-blue-900 mb-2">Your Medicare Advantage plan may cover all ${total} of these products:</p>
-      <div class="flex flex-wrap gap-3 text-xs">
-        <span class="flex items-center gap-1.5 text-green-700 font-medium"><span class="w-2 h-2 rounded-full bg-green-400 inline-block"></span>${dmeCount} via DME benefit</span>
-        <span class="flex items-center gap-1.5 text-blue-700 font-medium"><span class="w-2 h-2 rounded-full bg-blue-400 inline-block"></span>${hsCount} via Home Safety benefit</span>
-        <span class="flex items-center gap-1.5 text-purple-700 font-medium"><span class="w-2 h-2 rounded-full bg-purple-400 inline-block"></span>${otcCount} via OTC allowance</span>
+      <p class="text-sm font-semibold text-blue-900 mb-2">These ${total} products may be covered across 3 Medicare Advantage benefits:</p>
+      <div class="flex flex-wrap gap-4 text-xs">
+        <span class="flex items-center gap-1.5 text-green-700 font-medium"><span class="w-2 h-2 rounded-full bg-green-400 inline-block"></span><strong>${dmeCount}</strong>&nbsp;via DME benefit</span>
+        <span class="flex items-center gap-1.5 text-blue-700 font-medium"><span class="w-2 h-2 rounded-full bg-blue-400 inline-block"></span><strong>${hsCount}</strong>&nbsp;via Home Safety</span>
+        <span class="flex items-center gap-1.5 text-purple-700 font-medium"><span class="w-2 h-2 rounded-full bg-purple-400 inline-block"></span><strong>${otcCount}</strong>&nbsp;via OTC allowance</span>
       </div>
-      <p class="text-xs text-blue-600 mt-2">Coverage estimates only — benefits vary by plan. Verify with your plan.</p>
+      <p class="text-xs text-blue-500 mt-2">Coverage varies by plan — click any product to see how to claim it.</p>
     </div>`;
 }
 
@@ -1055,10 +1058,10 @@ function buildCovSection(p) {
 
 function prodCardHTML(p) {
   return `<div class="prod-card" onclick="openProd(${p.id})">
-    <div class="h-36 bg-white flex items-center justify-center p-2">
+    <div class="h-44 bg-white flex items-center justify-center p-3">
       <img src="${p.img}" alt="${p.name}" class="max-w-full max-h-full object-contain" loading="lazy" onerror="this.style.opacity='0.15'" />
     </div>
-    <div class="px-4 pt-4 pb-3">
+    <div class="px-4 pt-3 pb-3">
       <div class="flex items-start justify-between gap-3 mb-2">
         <div class="min-w-0">
           <p class="text-xs text-gray-400 mb-0.5 font-medium">${p.vendor}</p>
@@ -1070,9 +1073,12 @@ function prodCardHTML(p) {
       </div>
       <p class="text-sm text-gray-500 leading-relaxed line-clamp-2">${p.desc}</p>
     </div>
-    <div class="px-4 pb-4 flex items-center justify-between border-t border-gray-50 pt-3">
+    <div class="px-4 pb-4 flex items-center justify-between border-t border-gray-100 pt-3">
       <span class="text-xs px-2 py-1 rounded-md font-semibold ${covClass(p.bucket)}">${p.covLabel}</span>
-      <span class="text-xs text-gray-400 font-medium">${p.price}</span>
+      <span class="flex items-center gap-1 text-xs text-gray-400 font-medium">
+        ${p.price}
+        <svg class="w-3.5 h-3.5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+      </span>
     </div>
   </div>`;
 }
