@@ -84,6 +84,7 @@
     table { width: 100%; border-collapse: collapse; margin-bottom: 1.25rem; font-size: 0.875rem; }
     th { background: #F9FAFB; text-align: left; padding: 0.6rem 0.75rem; border: 1px solid #E5E7EB; color: #111827; font-weight: 600; }
     td { padding: 0.6rem 0.75rem; border: 1px solid #E5E7EB; color: #4B5563; vertical-align: top; }
+      @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
   </style>
 </head>
 <body class="bg-gray-50">
@@ -285,7 +286,7 @@
 </main>
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-    <p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team before purchasing medical equipment.</p>
+    <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
     <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
   </div>
 </footer>
