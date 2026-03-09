@@ -244,8 +244,53 @@
     </div>
   </div>
 
-  <!-- How it works -->
+  <!-- Popular Products Preview -->
   <div class="bg-gray-50 border-t border-b border-gray-200">
+    <div class="max-w-5xl mx-auto px-6 py-12">
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">Most popular covered products</p>
+      <p class="text-gray-600 text-sm mb-6">These are the items Medicare Advantage members order most. Click any to see how your plan covers it.</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div onclick="showProduct(4)" class="prod-card p-4 cursor-pointer">
+          <div class="bg-gray-50 rounded-lg flex items-center justify-center mb-3" style="height:80px">
+            <img src="https://www.vivehealth.com/cdn/shop/products/small_silver_grab_ba_I48QL_grande.jpg?v=1620938695" alt="ADA Grab Bars" class="max-w-full max-h-full object-contain p-2" />
+          </div>
+          <span class="badge-home-safety text-xs px-2 py-0.5 rounded font-semibold">Home Safety</span>
+          <p class="text-sm font-semibold text-gray-900 mt-2 leading-snug">ADA Grab Bars</p>
+          <p class="text-xs text-gray-500 mt-1">$35-$80</p>
+        </div>
+        <div onclick="showProduct(5)" class="prod-card p-4 cursor-pointer">
+          <div class="bg-gray-50 rounded-lg flex items-center justify-center mb-3" style="height:80px">
+            <img src="https://www.vivehealth.com/cdn/shop/files/Untitleddesign-2024-03-04T094623.394_grande.png?v=1709563709" alt="Rollator Walker" class="max-w-full max-h-full object-contain p-2" />
+          </div>
+          <span class="badge-dme text-xs px-2 py-0.5 rounded font-semibold">DME</span>
+          <p class="text-sm font-semibold text-gray-900 mt-2 leading-snug">Rollator Walker</p>
+          <p class="text-xs text-gray-500 mt-1">$65-$120</p>
+        </div>
+        <div onclick="showProduct(8)" class="prod-card p-4 cursor-pointer">
+          <div class="bg-gray-50 rounded-lg flex items-center justify-center mb-3" style="height:80px">
+            <img src="https://m.media-amazon.com/images/P/B001RJQE7G._SL1500_.jpg" alt="Raised Toilet Seat" class="max-w-full max-h-full object-contain p-2" />
+          </div>
+          <span class="badge-home-safety text-xs px-2 py-0.5 rounded font-semibold">Home Safety</span>
+          <p class="text-sm font-semibold text-gray-900 mt-2 leading-snug">Raised Toilet Seat</p>
+          <p class="text-xs text-gray-500 mt-1">$30-$55</p>
+        </div>
+        <div onclick="showProduct(9)" class="prod-card p-4 cursor-pointer">
+          <div class="bg-gray-50 rounded-lg flex items-center justify-center mb-3" style="height:80px">
+            <img src="https://m.media-amazon.com/images/P/B07S2H3XBB._SL1500_.jpg" alt="Blood Pressure Monitor" class="max-w-full max-h-full object-contain p-2" />
+          </div>
+          <span class="badge-dme text-xs px-2 py-0.5 rounded font-semibold">DME</span>
+          <p class="text-sm font-semibold text-gray-900 mt-2 leading-snug">Blood Pressure Monitor</p>
+          <p class="text-xs text-gray-500 mt-1">Covered when prescribed</p>
+        </div>
+      </div>
+      <div class="mt-4 text-center">
+        <button onclick="showAllProducts()" class="text-sm font-medium text-blue-600 hover:text-blue-800 underline underline-offset-2">See all 40+ covered products &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- How it works -->
+  <div class="bg-white border-t border-b border-gray-200">
     <div class="max-w-5xl mx-auto px-6 py-14">
       <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-10">How it works</p>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
@@ -386,9 +431,9 @@
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
         Back
       </button>
-      <p class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-6">Step 1 of 3</p>
+      <p class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-6">Quick question</p>
       <h2 class="text-3xl font-extrabold text-gray-900 mb-3">Are you on a Medicare Advantage plan?</h2>
-      <p class="text-gray-600 text-base leading-relaxed mb-8">We'll show you which home health products your plan covers and how to claim them.</p>
+      <p class="text-gray-600 text-base leading-relaxed mb-8">One answer and we'll show you every product your plan covers, with exact steps to claim each one.</p>
       <div class="space-y-3 mb-8">
         <button onclick="confirmAdvantage('yes')"
                 class="w-full flex items-center justify-between bg-white border-2 border-gray-200 hover:border-blue-400 rounded-xl px-5 py-4 text-left transition-all group">
@@ -900,6 +945,7 @@ const products = [
 
 let selSits = [], selUrg = null, activeCat = 'All', covFilter = 'All', visPids = [];
 let curScreen = 'screen-landing';
+let prevScreen = null;
 let noAdvantageMode = false;
 let currentProductId = null;
 let _replaceNext = false; // use replaceState instead of pushState when restoring
@@ -978,6 +1024,7 @@ function goScreen(id) {
   const s = document.getElementById(id);
   s.classList.add('active', 'fade-in');
   setTimeout(() => s.classList.remove('fade-in'), 300);
+  prevScreen = curScreen;
   curScreen = id;
   const hash = getStateHash();
   const url = hash ? '#' + hash : location.pathname;
@@ -1009,8 +1056,8 @@ if (location.hash && location.hash !== '#') {
 function goBack() {
   if (curScreen === 'screen-qualifier') { goLanding(); }
   else if (curScreen === 'screen-home') { goLanding(); }
-  else if (curScreen === 'screen-products') { renderSituationCards(); updateSitCta(); goScreen('screen-home'); }
-  else if (curScreen === 'screen-product') { goScreen('screen-products'); }
+  else if (curScreen === 'screen-products') { if (prevScreen === 'screen-qualifier') { goScreen('screen-qualifier'); } else { goLanding(); } }
+  else if (curScreen === 'screen-product') { if (prevScreen === 'screen-landing') { goLanding(); } else { goScreen('screen-products'); } }
   else { goLanding(); }
 }
 
@@ -1020,13 +1067,9 @@ function goQualifier()  { goScreen('screen-qualifier'); }
 function confirmAdvantage(val) {
   selSits=[]; selUrg=null; activeCat='All'; covFilter='All';
   noAdvantageMode = (val === 'no');
-  if (val === 'no') {
-    visPids = products.map(p => p.id);
-    renderProductsScreen();
-    goScreen('screen-products');
-  } else {
-    visPids=[]; renderSituationCards(); updateSitCta(); goScreen('screen-home');
-  }
+  visPids = products.map(p => p.id);
+  renderProductsScreen();
+  goScreen('screen-products');
 }
 
 function pickSituationFromLanding(id) {
@@ -1318,6 +1361,11 @@ function trackAffiliateClick(e) {
 }
 
 function openProd(pid) {
+  _renderProductPage(pid);
+  goScreen('screen-product');
+}
+function showProduct(pid) {
+  visPids = products.map(p => p.id);
   _renderProductPage(pid);
   goScreen('screen-product');
 }
