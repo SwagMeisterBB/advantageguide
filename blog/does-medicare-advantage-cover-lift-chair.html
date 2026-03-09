@@ -114,6 +114,24 @@
     <article class="prose">
 
       <p><strong>Medicare Advantage covers part of a lift chair recliner, but not the whole thing. Only the lift mechanism (the motor that raises and tilts the chair to help you stand) is covered as durable medical equipment (DME). The chair itself is not covered.</strong> The lift component is typically valued at around $200 to $330. After your deductible, you pay about 20% of that amount, which works out to roughly $40 to $65 out of pocket for the mechanism. The chair portion, which can range from $300 to $1,000 or more depending on the model, is your responsibility. Some Medicare Advantage plans may have different or more generous coverage terms, so it is worth calling your plan to ask.</p>
+      <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
+          <span class="text-xs text-green-600">&middot; Covered by most plans</span>
+        </div>
+        <a href="https://www.amazon.com/dp/B005IV0AYC?tag=advantageguid-20" target="_blank" rel="nofollow sponsored" class="flex items-center gap-4 group">
+          <img src="https://m.media-amazon.com/images/P/B005IV0AYC._SL1500_.jpg" alt="Hugo Quad Cane" class="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-lg bg-white border border-green-100 p-1 flex-shrink-0" />
+          <div class="flex-1 min-w-0">
+            <p class="text-sm sm:text-base font-bold text-gray-900 group-hover:text-green-700 transition-colors leading-snug">Hugo Quad Cane</p>
+            <p class="text-sm text-gray-600 mt-1">$30-50 &middot; Covered under DME benefit</p>
+          </div>
+        </a>
+        <a href="https://www.amazon.com/dp/B005IV0AYC?tag=advantageguid-20" target="_blank" rel="nofollow sponsored" class="mt-3 flex items-center justify-center gap-2 w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold text-sm transition-colors">
+          View on Amazon
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+
 
       <h2>What Is a Lift Chair and Why Does It Matter</h2>
       <p>A lift chair looks like a regular power recliner, but it has a motorized base that tilts the entire chair forward and upward. This motion helps people who have trouble pushing up from a seated position to stand safely without putting extra strain on their knees, hips, or back. For people with severe arthritis, COPD, heart failure, or other conditions that affect strength and balance, a lift chair can mean the difference between staying home independently and needing more hands-on care.</p>
@@ -165,7 +183,7 @@
 
     </article>
 
-    <div class="mt-10 border border-gray-200 rounded-xl overflow-hidden bg-white">
+    <div id="recommended-products" class="mt-10 border border-gray-200 rounded-xl overflow-hidden bg-white">
       <div class="px-6 py-4 border-b border-gray-100">
         <p class="text-sm font-semibold text-gray-600 uppercase tracking-wider">Recommended products</p>
       </div>
@@ -237,6 +255,30 @@
 <button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#2563EB;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
 <script>
 (function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+</script>
+
+
+<div id="sticky-product-bar" class="fixed bottom-0 left-0 right-0 bg-green-600 z-40 shadow-[0_-2px_10px_rgba(0,0,0,0.15)] md:hidden" style="display:none">
+  <a href="#recommended-products" class="flex items-center justify-between px-4 py-3">
+    <div class="flex items-center gap-2">
+      <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+      <span class="text-white font-semibold text-sm">See Covered Products</span>
+    </div>
+    <span class="bg-white text-green-700 font-bold text-xs px-3 py-1.5 rounded-full">View &#8595;</span>
+  </a>
+</div>
+<script>
+(function(){
+  var bar=document.getElementById('sticky-product-bar');
+  var prods=document.getElementById('recommended-products');
+  if(!bar||!prods)return;
+  function check(){
+    var r=prods.getBoundingClientRect();
+    bar.style.display=(window.scrollY>200&&r.top>window.innerHeight)?'block':'none';
+  }
+  window.addEventListener('scroll',check,{passive:true});
+  check();
+})();
 </script>
 
 </body>
