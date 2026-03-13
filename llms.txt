@@ -1,0 +1,72 @@
+# AdvantageGuide
+
+> A plain-language guide to Medicare Advantage supplemental benefits, covering OTC allowances, home safety modifications, DME coverage, and fall prevention for seniors aging in place.
+
+## Core Pages
+- [Home](https://advantageguide.health/): Interactive tool helping Medicare Advantage members discover covered home health products
+- [Blog](https://advantageguide.health/blog/): 50 guides covering OTC benefits, DME, home safety, and condition-specific Medicare Advantage coverage
+- [About](https://advantageguide.health/about.html): About AdvantageGuide and author Austin Edy
+
+## Popular Guides
+- [OTC Benefit Items List](https://advantageguide.health/blog/medicare-advantage-otc-benefit-items-list.html): Complete list of items covered by Medicare Advantage OTC benefits with categories and allowance ranges
+- [Fall Prevention Benefits](https://advantageguide.health/blog/medicare-advantage-fall-prevention-benefits.html): Guide to fall prevention benefits including Home Safety, DME, and OTC coverage
+- [How to Check OTC Balance](https://advantageguide.health/blog/how-to-check-medicare-advantage-otc-balance.html): Four methods to check your OTC benefit balance
+- [Benefits Most People Don't Know](https://advantageguide.health/blog/medicare-advantage-benefits-most-people-dont-know.html): Seven underutilized Medicare Advantage supplemental benefits
+- [Home Safety Benefit](https://advantageguide.health/blog/medicare-advantage-home-safety-benefit.html): How the Home Safety benefit covers grab bars, ramps, and bathroom modifications
+- [Hospital Discharge Equipment](https://advantageguide.health/blog/medicare-advantage-hospital-discharge-equipment.html): Equipment covered after hospital discharge
+- [Caregiver Guide](https://advantageguide.health/blog/medicare-advantage-caregiver-guide.html): How caregivers can help family members claim Medicare Advantage benefits
+
+## Coverage Guides by Product
+- [Grab Bars](https://advantageguide.health/blog/does-medicare-advantage-cover-grab-bars.html)
+- [Shower Chair](https://advantageguide.health/blog/does-medicare-advantage-cover-shower-chair.html)
+- [Hospital Bed](https://advantageguide.health/blog/does-medicare-advantage-cover-hospital-bed.html)
+- [Medical Alert System](https://advantageguide.health/blog/does-medicare-advantage-cover-medical-alert-system.html)
+- [Rollator Walker](https://advantageguide.health/blog/does-medicare-advantage-cover-rollator-walker.html)
+- [Power Wheelchair](https://advantageguide.health/blog/does-medicare-advantage-cover-power-wheelchair.html)
+- [CPAP Machine](https://advantageguide.health/blog/does-medicare-advantage-cover-cpap.html)
+- [Hearing Aids](https://advantageguide.health/blog/does-medicare-advantage-cover-hearing-aids.html)
+- [Lift Chair](https://advantageguide.health/blog/does-medicare-advantage-cover-lift-chair.html)
+- [Bed Rails](https://advantageguide.health/blog/does-medicare-advantage-cover-bed-rails.html)
+- [Bedside Commode](https://advantageguide.health/blog/does-medicare-advantage-cover-bedside-commode.html)
+- [Blood Pressure Monitor](https://advantageguide.health/blog/does-medicare-advantage-cover-blood-pressure-monitor.html)
+- [Knee Scooter](https://advantageguide.health/blog/does-medicare-advantage-cover-knee-scooter.html)
+- [Transfer Bench](https://advantageguide.health/blog/does-medicare-advantage-cover-transfer-bench.html)
+- [Raised Toilet Seat](https://advantageguide.health/blog/does-medicare-advantage-cover-raised-toilet-seat.html)
+- [Stair Lift](https://advantageguide.health/blog/does-medicare-advantage-cover-stair-lift.html)
+- [TENS Unit](https://advantageguide.health/blog/does-medicare-advantage-cover-tens-unit.html)
+- [Cane](https://advantageguide.health/blog/does-medicare-advantage-cover-cane.html)
+- [Compression Socks](https://advantageguide.health/blog/does-medicare-advantage-cover-compression-socks.html)
+- [Pulse Oximeter](https://advantageguide.health/blog/does-medicare-advantage-cover-pulse-oximeter.html)
+- [Non-Slip Bath Mat](https://advantageguide.health/blog/does-medicare-advantage-cover-non-slip-bath-mat.html)
+- [Gait Belt](https://advantageguide.health/blog/does-medicare-advantage-cover-gait-belt.html)
+- [Bathroom Ramp](https://advantageguide.health/blog/does-medicare-advantage-cover-bathroom-ramp.html)
+- [Dental Coverage](https://advantageguide.health/blog/does-medicare-advantage-cover-dental.html)
+- [Vision/Glasses](https://advantageguide.health/blog/does-medicare-advantage-cover-glasses-vision.html)
+
+## OTC Benefit by Insurer
+- [Humana OTC Benefit](https://advantageguide.health/blog/humana-medicare-advantage-otc-benefit.html)
+- [UnitedHealthcare OTC Benefit](https://advantageguide.health/blog/unitedhealthcare-medicare-advantage-otc-benefit.html)
+- [Aetna OTC Benefit](https://advantageguide.health/blog/aetna-medicare-advantage-otc-benefit.html)
+- [Humana Home Safety Benefit](https://advantageguide.health/blog/humana-medicare-advantage-home-safety-benefit.html)
+
+## How-To Guides
+- [How to Check Your OTC Balance](https://advantageguide.health/blog/how-to-check-medicare-advantage-otc-balance.html)
+- [How to Use OTC Benefit at Walmart](https://advantageguide.health/blog/how-to-use-medicare-advantage-otc-benefit-walmart.html)
+- [How to Check Your Benefits](https://advantageguide.health/blog/how-to-check-your-medicare-advantage-benefits.html)
+- [How to Appeal a Denial](https://advantageguide.health/blog/how-to-appeal-medicare-advantage-denial.html)
+- [OTC Benefit Online Ordering](https://advantageguide.health/blog/medicare-advantage-otc-benefit-online-ordering.html)
+- [What Is the OTC Benefit?](https://advantageguide.health/blog/what-is-medicare-advantage-otc-benefit.html)
+- [What Can You Buy with OTC?](https://advantageguide.health/blog/what-can-i-buy-with-medicare-advantage-otc-benefit.html)
+- [When Does OTC Reset?](https://advantageguide.health/blog/when-does-medicare-advantage-otc-benefit-reset.html)
+- [OTC Vitamins Coverage](https://advantageguide.health/blog/does-medicare-advantage-otc-cover-vitamins.html)
+
+## Condition-Specific Guides
+- [After Hip Replacement](https://advantageguide.health/blog/medicare-advantage-benefits-after-hip-replacement.html)
+- [After Knee Replacement](https://advantageguide.health/blog/medicare-advantage-benefits-after-knee-replacement.html)
+- [After Stroke](https://advantageguide.health/blog/medicare-advantage-benefits-after-stroke.html)
+- [End of Year Benefits](https://advantageguide.health/blog/medicare-advantage-benefits-end-of-year.html)
+- [MA vs Original Medicare](https://advantageguide.health/blog/medicare-advantage-vs-original-medicare-benefits.html)
+- [Home Health Benefit](https://advantageguide.health/blog/medicare-advantage-home-health-benefit.html)
+
+## Optional
+- [Sitemap](https://advantageguide.health/sitemap.xml)

@@ -38,7 +38,10 @@
     "description": "AdvantageGuide is a Medicare Advantage benefits guide for home health products. Helps members on existing Advantage plans discover and claim covered DME, home safety modifications, and OTC allowance items.",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://advantageguide.health/",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://advantageguide.health/blog/?q={search_term_string}"
+      },
       "query-input": "required name=search_term_string"
     }
   }
@@ -50,9 +53,22 @@
     "name": "AdvantageGuide",
     "url": "https://advantageguide.health/",
     "description": "A Medicare Advantage benefits guide helping members on existing Advantage plans discover and claim covered home health products.",
+    "founder": {
+      "@type": "Person",
+      "name": "Austin Edy",
+      "url": "https://advantageguide.health/about.html"
+    },
+    "sameAs": [
+      "https://github.com/SwagMeisterBB/advantageguide"
+    ],
+    "knowsAbout": ["Medicare Advantage", "Durable Medical Equipment", "OTC Benefits", "Home Safety Modifications"],
     "audience": {
-      "@type": "Audience",
-      "audienceType": "Medicare Advantage members, caregivers, home health patients"
+      "@type": "MedicalAudience",
+      "audienceType": "Patient",
+      "healthCondition": {
+        "@type": "MedicalCondition",
+        "name": "Aging in place, fall prevention, home health recovery"
+      }
     }
   }
   </script>
@@ -75,7 +91,9 @@
   </script>
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232563EB'/%3E%3Cpath d='M16 5C13.5 6.5 11 7.2 8 7.2c0 0-.5 8.3 1.5 12.8S16 27 16 27s4-2.5 6.5-7S24 7.2 24 7.2c-3 0-5.5-.7-8-2.2z' fill='none' stroke='white' stroke-width='1.8'/%3E%3Cpath d='M12.5 16l2.5 2.5 5-5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="/styles.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
@@ -170,6 +188,23 @@
 
 <!-- SCREEN: LANDING PAGE -->
 <div id="main-content"></div>
+<noscript>
+  <div style="max-width:640px;margin:40px auto;padding:0 24px;font-family:Inter,sans-serif;color:#111827;">
+    <h1 style="font-size:24px;font-weight:800;margin-bottom:16px;">AdvantageGuide: Medicare Advantage Home Health Benefits</h1>
+    <p style="color:#4B5563;line-height:1.75;margin-bottom:16px;">AdvantageGuide helps Medicare Advantage members discover covered home health products, including DME (durable medical equipment), home safety modifications, and OTC allowance items.</p>
+    <p style="color:#4B5563;line-height:1.75;margin-bottom:24px;">Browse our guides to learn what your plan covers and how to claim it:</p>
+    <ul style="list-style:disc;padding-left:20px;color:#4B5563;line-height:2;">
+      <li><a href="/blog/medicare-advantage-otc-benefit-items-list.html" style="color:#2563EB;">OTC Benefit: Full List of What You Can Buy</a></li>
+      <li><a href="/blog/medicare-advantage-home-safety-benefit.html" style="color:#2563EB;">Home Safety Benefit: What It Covers</a></li>
+      <li><a href="/blog/medicare-advantage-fall-prevention-benefits.html" style="color:#2563EB;">Fall Prevention Benefits Guide</a></li>
+      <li><a href="/blog/how-to-check-medicare-advantage-otc-balance.html" style="color:#2563EB;">How to Check Your OTC Balance</a></li>
+      <li><a href="/blog/medicare-advantage-benefits-most-people-dont-know.html" style="color:#2563EB;">Benefits Most People Don't Know About</a></li>
+      <li><a href="/blog/medicare-advantage-caregiver-guide.html" style="color:#2563EB;">Caregiver Guide</a></li>
+      <li><a href="/blog/" style="color:#2563EB;">View All 50 Guides</a></li>
+    </ul>
+  </div>
+</noscript>
+
 <div id="screen-landing" class="screen active">
 
   <!-- Hero -->
