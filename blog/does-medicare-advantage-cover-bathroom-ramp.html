@@ -137,8 +137,18 @@
   <link href="/styles.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Source Sans 3', -apple-system, sans-serif; }
+    body { font-family: 'Source Sans 3', -apple-system, sans-serif; background: #FAFAF8; }
     h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; }
+    .btn-brand {
+      background: linear-gradient(135deg, #2563EB 0%, #1d4ed8 100%);
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+      transition: all 0.2s;
+    }
+    .btn-brand:hover {
+      background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+      transform: translateY(-1px);
+    }
     .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
@@ -149,7 +159,7 @@
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
   </style>
 </head>
-<body class="bg-gray-50">
+<body>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:z-50">Skip to main content</a>
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
@@ -159,7 +169,7 @@
       </div>
       <span class="font-semibold text-gray-900 text-sm tracking-tight">AdvantageGuide</span>
     </a>
-    <nav class="flex items-center gap-4">
+    <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
       <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
@@ -167,7 +177,7 @@
 </header>
 <main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
-    <nav class="flex items-center gap-2 text-sm text-gray-600 mb-8">
+    <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
       <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
       <span>›</span>
       <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
@@ -295,7 +305,7 @@
     <div class="mt-6 bg-blue-50 border border-blue-200 rounded-xl p-6">
       <p class="font-bold text-gray-900 mb-1">Find covered products on AdvantageGuide</p>
       <p class="text-sm text-gray-600 mb-4">AdvantageGuide matches you to the home health products your Medicare Advantage plan already covers, with step-by-step claiming instructions for each one.</p>
-      <a href="/" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm px-5 py-3 rounded-lg transition-colors">Find My Covered Products <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+      <a href="/" class="inline-flex items-center gap-2 btn-brand text-white font-semibold text-sm px-5 py-3 rounded-lg">Find My Covered Products <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
     </div>
 
 
@@ -314,9 +324,9 @@
     <div class="mt-8 pt-8 border-t border-gray-200">
       <p class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-4">More from the blog</p>
       <div class="space-y-1">
-        <a href="/blog/does-medicare-advantage-cover-grab-bars.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Does Medicare Advantage Cover Grab Bars? Yes: Here's How</a>
-        <a href="/blog/medicare-advantage-home-safety-benefit.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Medicare Advantage Home Safety Benefit: What It Covers and How to Use It</a>
-        <a href="/blog/medicare-advantage-fall-prevention-benefits.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Medicare Advantage Benefits for Fall Prevention at Home</a>
+        <a href="/blog/does-medicare-advantage-cover-grab-bars.html" class="flex items-center justify-between gap-3 group text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors"><span>Does Medicare Advantage Cover Grab Bars? Yes: Here's How</span><svg class="w-4 h-4 text-gray-300 group-hover:text-blue-500 flex-shrink-0 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+        <a href="/blog/medicare-advantage-home-safety-benefit.html" class="flex items-center justify-between gap-3 group text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors"><span>Medicare Advantage Home Safety Benefit: What It Covers and How to Use It</span><svg class="w-4 h-4 text-gray-300 group-hover:text-blue-500 flex-shrink-0 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+        <a href="/blog/medicare-advantage-fall-prevention-benefits.html" class="flex items-center justify-between gap-3 group text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors"><span>Medicare Advantage Benefits for Fall Prevention at Home</span><svg class="w-4 h-4 text-gray-300 group-hover:text-blue-500 flex-shrink-0 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
       </div>
     </div>
   </div>

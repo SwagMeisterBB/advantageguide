@@ -149,6 +149,20 @@
       cursor: pointer; overflow: hidden; transition: border-color 0.15s, box-shadow 0.15s;
     }
     .prod-card:hover { border-color: #9CA3AF; box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+    .prod-card:focus-visible { outline: 2px solid #2563EB; outline-offset: 2px; }
+
+    .sit-card:focus-visible, .urg-card:focus-visible { outline: 2px solid #2563EB; outline-offset: 2px; }
+
+    .btn-brand {
+      background: linear-gradient(135deg, #2563EB 0%, #1d4ed8 100%);
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+      transition: all 0.2s;
+    }
+    .btn-brand:hover {
+      background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+      transform: translateY(-1px);
+    }
 
     .badge-dme         { background:#DCFCE7; color:#15803D; }
     .badge-home-safety { background:#DBEAFE; color:#1D4ED8; }
@@ -251,7 +265,7 @@
         <div class="flex flex-wrap items-center justify-center gap-3 mb-5">
           <button onclick="goQualifier()"
                   aria-label="Find my covered products"
-                  class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg text-sm transition-colors">
+                  class="btn-brand text-white font-semibold px-6 py-3 rounded-lg text-sm">
             Find My Covered Products
           </button>
           <button onclick="showAllProducts()"
@@ -310,7 +324,7 @@
       <p class="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-2">Most popular covered products</p>
       <p class="text-gray-600 text-sm mb-6">These are the items Medicare Advantage members order most. Click any to see how your plan covers it.</p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <div onclick="showProduct(4)" class="prod-card p-4 cursor-pointer">
+        <div onclick="showProduct(4)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showProduct(4)}" role="button" tabindex="0" class="prod-card p-4 cursor-pointer">
           <div class="bg-gray-50 rounded-lg flex items-center justify-center mb-3" style="height:80px">
             <img src="https://www.vivehealth.com/cdn/shop/products/small_silver_grab_ba_I48QL_grande.jpg?v=1620938695" alt="ADA Grab Bars" class="max-w-full max-h-full object-contain p-2" width="80" height="80" fetchpriority="high" />
           </div>
@@ -318,7 +332,7 @@
           <p class="text-sm font-semibold text-gray-900 mt-2 leading-snug">ADA Grab Bars</p>
           <p class="text-xs text-gray-500 mt-1">$35-$80</p>
         </div>
-        <div onclick="showProduct(5)" class="prod-card p-4 cursor-pointer">
+        <div onclick="showProduct(5)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showProduct(5)}" role="button" tabindex="0" class="prod-card p-4 cursor-pointer">
           <div class="bg-gray-50 rounded-lg flex items-center justify-center mb-3" style="height:80px">
             <img src="https://www.vivehealth.com/cdn/shop/files/Untitleddesign-2024-03-04T094623.394_grande.png?v=1709563709" alt="Rollator Walker" class="max-w-full max-h-full object-contain p-2" width="80" height="80" loading="lazy" />
           </div>
@@ -326,7 +340,7 @@
           <p class="text-sm font-semibold text-gray-900 mt-2 leading-snug">Rollator Walker</p>
           <p class="text-xs text-gray-500 mt-1">$65-$120</p>
         </div>
-        <div onclick="showProduct(8)" class="prod-card p-4 cursor-pointer">
+        <div onclick="showProduct(8)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showProduct(8)}" role="button" tabindex="0" class="prod-card p-4 cursor-pointer">
           <div class="bg-gray-50 rounded-lg flex items-center justify-center mb-3" style="height:80px">
             <img src="https://m.media-amazon.com/images/P/B001RJQE7G._SL1500_.jpg" alt="Raised Toilet Seat" class="max-w-full max-h-full object-contain p-2" width="80" height="80" loading="lazy" />
           </div>
@@ -334,7 +348,7 @@
           <p class="text-sm font-semibold text-gray-900 mt-2 leading-snug">Raised Toilet Seat</p>
           <p class="text-xs text-gray-500 mt-1">$30-$55</p>
         </div>
-        <div onclick="showProduct(9)" class="prod-card p-4 cursor-pointer">
+        <div onclick="showProduct(9)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();showProduct(9)}" role="button" tabindex="0" class="prod-card p-4 cursor-pointer">
           <div class="bg-gray-50 rounded-lg flex items-center justify-center mb-3" style="height:80px">
             <img src="https://m.media-amazon.com/images/P/B07S2H3XBB._SL1500_.jpg" alt="Blood Pressure Monitor" class="max-w-full max-h-full object-contain p-2" width="80" height="80" loading="lazy" />
           </div>
@@ -430,9 +444,9 @@
     <div class="max-w-5xl mx-auto px-6 py-12">
       <div class="bg-gray-900 rounded-xl p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div>
-          <p class="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-2">For home health agencies and care coordinators</p>
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">For home health agencies and care coordinators</p>
           <h3 class="text-white font-bold text-xl mb-2">Give your patients a clear path home.</h3>
-          <p class="text-gray-500 text-sm leading-relaxed max-w-lg">Partner organizations get a branded URL, your preferred product list front and center, and a dashboard showing what your patients are viewing after discharge. No EMR integration. No IT project.</p>
+          <p class="text-gray-300 text-sm leading-relaxed max-w-lg">Partner organizations get a branded URL, your preferred product list front and center, and a dashboard showing what your patients are viewing after discharge. No EMR integration. No IT project.</p>
         </div>
         <button onclick="showCareTeamModal()"
                 class="flex-shrink-0 bg-white hover:bg-gray-100 text-gray-900 font-semibold text-sm px-5 py-3 rounded-lg transition-colors whitespace-nowrap">
