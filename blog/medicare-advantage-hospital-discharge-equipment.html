@@ -154,13 +154,19 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
     .prose h3 { font-size: 1.375rem; font-weight: 600; color: #1f2937; margin-top: 1.5rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -169,7 +175,7 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
@@ -178,7 +184,7 @@
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
@@ -187,10 +193,10 @@
   <div class="max-w-2xl mx-auto px-6 py-12">
 
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">DME Benefit</span>
     </nav>
 
@@ -199,15 +205,33 @@
         <span class="text-xs font-semibold bg-green-50 text-green-700 px-2.5 py-1 rounded-full">DME Benefit</span>
         <span class="text-xs" style="color: #15803D; opacity: 0.6;">6 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#15803D" stroke-width="1.5" viewBox="0 0 40 40"><path d="M14 8v20M26 8v20M14 16h12M14 24h12" stroke-linecap="round"/><circle cx="14" cy="32" r="3"/><circle cx="26" cy="32" r="3"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#15803D" stroke-width="1.5" viewBox="0 0 40 40"><path d="M14 8v20M26 8v20M14 16h12M14 24h12" stroke-linecap="round"/><circle cx="14" cy="32" r="3"/><circle cx="26" cy="32" r="3"/></svg>
     </div>
 
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/dme-walker.jpg" alt="Senior woman using a walker independently in her kitchen" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
+    </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">What Equipment Does Medicare Advantage Cover After Hospital Discharge?</h1>
     <p class="text-sm text-gray-600 mb-10">Published February 27, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
 
     <article class="prose">
 
       <p>Medicare Advantage covers walkers, shower chairs, bed rails, raised toilet seats, bedside commodes, and wheelchairs after a hospital discharge under the DME (Durable Medical Equipment) benefit. Your doctor or discharge coordinator can order this equipment before you leave, and most plans deliver it within 24 to 48 hours at little or no cost to you.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#the-dme-benefit-your-most-important-benefit-after-discharge" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">The DME Benefit: Your Most Important Benefit After Discharge</a></li>
+          <li><a href="#what-equipment-is-covered" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Equipment Is Covered?</a></li>
+          <li><a href="#the-most-important-rule-ask-before-you-leave" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">The Most Important Rule: Ask Before You Leave</a></li>
+          <li><a href="#what-your-doctor-needs-to-do" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Your Doctor Needs to Do</a></li>
+          <li><a href="#how-fast-can-equipment-be-delivered" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How Fast Can Equipment Be Delivered?</a></li>
+          <li><a href="#can-you-use-both-dme-and-home-safety-benefits-together" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Can You Use Both DME and Home Safety Benefits Together?</a></li>
+          <li><a href="#what-to-ask-the-discharge-team-before-you-leave" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What to Ask the Discharge Team Before You Leave</a></li>
+          <li><a href="#what-if-you-already-came-home-without-ordering-equipment" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What If You Already Came Home Without Ordering Equipment?</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -229,13 +253,13 @@
 
       <p>The answer is: quite a lot. And the key is asking before you leave.</p>
 
-      <h2>The DME Benefit: Your Most Important Benefit After Discharge</h2>
+      <h2 id="the-dme-benefit-your-most-important-benefit-after-discharge">The DME Benefit: Your Most Important Benefit After Discharge</h2>
 
       <p>Most of the equipment you need after a hospital stay falls under the <strong>DME (Durable Medical Equipment) benefit</strong>. This is a standard benefit in all Medicare Advantage plans. It covers equipment your doctor prescribes as medically necessary for use at home.</p>
 
       <p>Your doctor or the hospital's discharge coordinator handles the prescription. Your plan handles the delivery. In most cases, there is no out-of-pocket cost to you beyond your normal copay.</p>
 
-      <h2>What Equipment Is Covered?</h2>
+      <h2 id="what-equipment-is-covered">What Equipment Is Covered?</h2>
 
       <p>Common DME items covered after hospital or rehab discharge fall into three main categories:</p>
 
@@ -248,29 +272,29 @@
       <h3>Bedroom and Transfer Equipment</h3>
       <p><a href="/blog/does-medicare-advantage-cover-hospital-bed.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">Hospital bed rentals</a> are covered for patients who are mostly bed-bound and need an adjustable sleeping surface. <a href="/blog/does-medicare-advantage-cover-bed-rails.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">Adjustable bed rails</a> prevent falls during sleep and provide leverage for getting in and out of bed. Transfer boards and sliding boards help patients move safely between bed, wheelchair, and car. <a href="/blog/does-medicare-advantage-cover-lift-chair.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">Power lift recliners</a> are covered for patients who cannot safely rise from a standard chair.</p>
 
-      <h2>The Most Important Rule: Ask Before You Leave</h2>
+      <h2 id="the-most-important-rule-ask-before-you-leave">The Most Important Rule: Ask Before You Leave</h2>
 
       <p>Once you are discharged, getting equipment arranged takes significantly longer and involves more back-and-forth between your doctor, your plan, and the DME supplier. When the discharge team is finalizing your paperwork, that is the moment to ask: "What equipment will I need at home? Can we get the order placed today?"</p>
 
       <p>Most hospitals have a discharge coordinator or social worker whose job is to arrange exactly this. If no one has brought it up by the day before your discharge, ask to speak with the discharge coordinator directly.</p>
 
-      <h2>What Your Doctor Needs to Do</h2>
+      <h2 id="what-your-doctor-needs-to-do">What Your Doctor Needs to Do</h2>
 
       <p>For DME to be covered, your physician needs to write a prescription or order documenting medical necessity. This does not have to be a formal printed prescription. For most items, a verbal order documented in your chart is sufficient to start the process.</p>
 
       <p>Ask your doctor or the hospital team before discharge: "Can you put in an order for a <a href="/blog/does-medicare-advantage-cover-rollator-walker.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">walker</a>, <a href="/blog/does-medicare-advantage-cover-shower-chair.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">shower chair</a>, or <a href="/blog/does-medicare-advantage-cover-bedside-commode.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">commode</a> so my plan can arrange delivery?"</p>
 
-      <h2>How Fast Can Equipment Be Delivered?</h2>
+      <h2 id="how-fast-can-equipment-be-delivered">How Fast Can Equipment Be Delivered?</h2>
 
       <p>For most standard items, delivery takes <strong>24 to 48 hours</strong> after the order is placed. DME suppliers work closely with hospitals and plans to coordinate discharge equipment. In many cases, items like walkers and commodes can be delivered to your home before you arrive back from the hospital.</p>
 
       <p>Hospital beds typically take 24 to 72 hours. More specialized equipment may take longer. Starting the process before discharge is the best way to avoid a gap.</p>
 
-      <h2>Can You Use Both DME and Home Safety Benefits Together?</h2>
+      <h2 id="can-you-use-both-dme-and-home-safety-benefits-together">Can You Use Both DME and Home Safety Benefits Together?</h2>
 
       <p>Yes. The DME benefit covers equipment. Grab bars, ramps, and home modifications fall under a separate benefit: the Home Safety benefit. Both can be used at the same time and both are commonly needed after a hospital or rehab stay. If you are setting up your home for a return from the hospital, you may qualify for both simultaneously.</p>
 
-      <h2>What to Ask the Discharge Team Before You Leave</h2>
+      <h2 id="what-to-ask-the-discharge-team-before-you-leave">What to Ask the Discharge Team Before You Leave</h2>
 
       <p>Before discharge, ask the coordinator, your nurse, or your doctor:</p>
       <ul>
@@ -283,7 +307,7 @@
 
       <p>Writing these questions down before discharge day makes a real difference. Discharge day is busy and rushed. Having a list in hand ensures nothing gets missed.</p>
 
-      <h2>What If You Already Came Home Without Ordering Equipment?</h2>
+      <h2 id="what-if-you-already-came-home-without-ordering-equipment">What If You Already Came Home Without Ordering Equipment?</h2>
 
       <p>It is not too late. Call your plan's Member Services line and explain that you recently returned from a hospital or rehab stay and need DME. Ask them to connect you with an in-network DME supplier. You will need your doctor to submit an order, which your plan or the DME supplier can help coordinate.</p>
 
@@ -386,14 +410,16 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 

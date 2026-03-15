@@ -136,7 +136,8 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h3 { font-size: 1.375rem; font-weight: 700; color: #111827; margin-top: 1.75rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -144,6 +145,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -151,7 +158,7 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
@@ -160,17 +167,17 @@
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
 <main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">Home Safety</span>
     </nav>
     <div class="rounded-xl mb-6 px-5 py-4 flex items-center justify-between" style="background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);">
@@ -178,13 +185,30 @@
         <span class="text-xs font-semibold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full">Home Safety</span>
         <span class="text-xs" style="color: #1D4ED8; opacity: 0.6;">6 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#1D4ED8" stroke-width="1.5" viewBox="0 0 40 40"><path d="M20 6L4 18h4v16h10V24h4v10h10V18h4L20 6z" stroke-linejoin="round"/><path d="M16 22l3 3 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#1D4ED8" stroke-width="1.5" viewBox="0 0 40 40"><path d="M20 6L4 18h4v16h10V24h4v10h10V18h4L20 6z" stroke-linejoin="round"/><path d="M16 22l3 3 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/home-safety.jpg" alt="Senior woman looking out window in her safe, comfortable home" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Does Medicare Advantage Cover Bed Rails?</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
     <article class="prose">
 
       <p>Yes, Medicare covers bed rails through Medicare Advantage plans. Most plans cover them under either the <a href="/blog/medicare-advantage-home-safety-benefit.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">Home Safety benefit</a> or the DME (Durable Medical Equipment) benefit, depending on how your plan is structured. Under the Home Safety benefit, no prescription is usually required. Under the DME benefit, your doctor writes an order stating that bed rails are medically necessary. Either path can result in coverage at little or no cost to you.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#what-are-bed-rails" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Are Bed Rails?</a></li>
+          <li><a href="#who-benefits-most-from-bed-rails" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Who Benefits Most from Bed Rails?</a></li>
+          <li><a href="#two-ways-medicare-advantage-can-cover-bed-rails" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Two Ways Medicare Advantage Can Cover Bed Rails</a></li>
+          <li><a href="#full-length-rails-vs-half-rails-what-plans-typically-cover" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Full-Length Rails vs. Half Rails: What Plans Typically Cover</a></li>
+          <li><a href="#steps-to-claim-your-bed-rail-benefit" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Steps to Claim Your Bed Rail Benefit</a></li>
+          <li><a href="#what-to-do-if-your-claim-is-denied" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What to Do If Your Claim Is Denied</a></li>
+          <li><a href="#items-often-covered-alongside-bed-rails" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Items Often Covered Alongside Bed Rails</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -204,11 +228,11 @@
       </div>
 
 
-      <h2>What Are Bed Rails?</h2>
+      <h2 id="what-are-bed-rails">What Are Bed Rails?</h2>
       <p>Bed rails, also called bed grab rails, bed assist rails, or half rails, are safety devices that attach to the bed frame or slide under the mattress. They give a person something to grip when getting in and out of bed, and they provide a physical barrier to help prevent rolling out of bed during the night.</p>
       <p>The most commonly covered type is a <strong>half rail or adjustable bed handle</strong>. These attach to one side of the bed and extend from the middle of the mattress to the edge, giving the user a sturdy handhold. Full-length rails that run the entire length of the bed are less frequently covered because they are classified differently and carry different safety considerations.</p>
 
-      <h2>Who Benefits Most from Bed Rails?</h2>
+      <h2 id="who-benefits-most-from-bed-rails">Who Benefits Most from Bed Rails?</h2>
       <p>Bed rails are most commonly used in these situations:</p>
       <ul>
         <li><strong>Recovery from surgery:</strong> After hip replacement, knee replacement, or back surgery, getting in and out of bed is one of the most physically demanding tasks of the day. A bed rail gives you something firm to push or pull against.</li>
@@ -217,15 +241,15 @@
         <li><strong>Post-hospitalization weakness:</strong> Extended hospital stays cause muscle loss quickly. A bed rail at home helps bridge the gap while strength returns.</li>
       </ul>
 
-      <h2>Two Ways Medicare Advantage Can Cover Bed Rails</h2>
+      <h2 id="two-ways-medicare-advantage-can-cover-bed-rails">Two Ways Medicare Advantage Can Cover Bed Rails</h2>
       <p><strong>Option 1: Home Safety Benefit.</strong> Many Medicare Advantage plans include an annual Home Safety or Home Modification allowance. This benefit is designed to fund modifications that reduce fall risk in the home. Bed rails, <a href="/blog/does-medicare-advantage-cover-grab-bars.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">grab bars</a>, and non-slip mats often fall under this category. The Home Safety benefit typically does not require a doctor's prescription. You call Member Services, confirm the benefit amount available to you, and request the item or a reimbursement for a purchase you already made.</p>
       <p><strong>Option 2: DME Benefit.</strong> If your plan does not have a Home Safety benefit, or if the cost of the rail exceeds your allowance, the DME benefit may cover the gap. Under DME coverage, your doctor documents in your chart that bed rails are medically necessary for your condition. The plan then authorizes coverage through an in-network DME supplier who delivers the rails to your home.</p>
 
-      <h2>Full-Length Rails vs. Half Rails: What Plans Typically Cover</h2>
+      <h2 id="full-length-rails-vs-half-rails-what-plans-typically-cover">Full-Length Rails vs. Half Rails: What Plans Typically Cover</h2>
       <p>It is worth knowing the distinction before you call your plan. <strong>Half rails and adjustable bed handles</strong> are the most commonly covered type. They sit on one side of the bed, are easy to install, and are designed for people who need help repositioning themselves or transferring in and out of bed.</p>
       <p>Full-length side rails, which run the full length of the bed on both sides, are less commonly covered under standard benefits. They are typically associated with <a href="/blog/does-medicare-advantage-cover-hospital-bed.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">hospital bed</a>s, which are a separate DME category. If your doctor has prescribed a hospital bed, full-length rails may be included as part of that benefit. If you have a standard home bed, focus your request on half rails or adjustable assist handles.</p>
 
-      <h2>Steps to Claim Your Bed Rail Benefit</h2>
+      <h2 id="steps-to-claim-your-bed-rail-benefit">Steps to Claim Your Bed Rail Benefit</h2>
       <ol>
         <li>Call the Member Services number on the back of your Medicare Advantage insurance card.</li>
         <li>Ask the representative two specific questions: "Does my plan have a Home Safety or Home Modification benefit?" and "Are bed rails or bed assist handles covered under my DME benefit?"</li>
@@ -234,11 +258,11 @@
         <li>Ask your plan for a list of in-network DME suppliers. Contact one and place the order. They will handle the billing paperwork with your plan.</li>
       </ol>
 
-      <h2>What to Do If Your Claim Is Denied</h2>
+      <h2 id="what-to-do-if-your-claim-is-denied">What to Do If Your Claim Is Denied</h2>
       <p>Denials for bed rails are not uncommon on the first attempt, particularly if the medical necessity documentation is thin. If your claim is denied, do not stop there. Request a formal appeal. Ask your doctor to provide a more detailed letter of medical necessity that explains your specific diagnosis, your fall risk, and why a bed rail is needed for your safety at home. Appeals that include a detailed physician letter are approved at a meaningful rate.</p>
       <p>Also ask your plan whether the item might be covered under a different benefit category. Sometimes a bed rail denied under DME is approvable under a Home Safety or supplemental benefit.</p>
 
-      <h2>Items Often Covered Alongside Bed Rails</h2>
+      <h2 id="items-often-covered-alongside-bed-rails">Items Often Covered Alongside Bed Rails</h2>
       <p>If you are requesting a bed rail, it is worth asking about other items at the same time. Grab bars near the bed, non-slip mats, and shower safety equipment are often part of the same Home Safety allowance or can be ordered simultaneously through a DME supplier. Combining requests into one call or one order can simplify the process significantly.</p>
 
     
@@ -305,13 +329,15 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 

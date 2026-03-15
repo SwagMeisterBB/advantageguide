@@ -170,7 +170,8 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h3 { font-size: 1.375rem; font-weight: 700; color: #111827; margin-top: 1.75rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -178,6 +179,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -186,7 +193,7 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
@@ -195,7 +202,7 @@
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
@@ -204,10 +211,10 @@
   <div class="max-w-2xl mx-auto px-6 py-12">
 
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">DME Benefit</span>
     </nav>
 
@@ -216,15 +223,33 @@
         <span class="text-xs font-semibold bg-green-50 text-green-700 px-2.5 py-1 rounded-full">DME Benefit</span>
         <span class="text-xs" style="color: #15803D; opacity: 0.6;">5 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#15803D" stroke-width="1.5" viewBox="0 0 40 40"><path d="M14 8v20M26 8v20M14 16h12M14 24h12" stroke-linecap="round"/><circle cx="14" cy="32" r="3"/><circle cx="26" cy="32" r="3"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#15803D" stroke-width="1.5" viewBox="0 0 40 40"><path d="M14 8v20M26 8v20M14 16h12M14 24h12" stroke-linecap="round"/><circle cx="14" cy="32" r="3"/><circle cx="26" cy="32" r="3"/></svg>
     </div>
 
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/dme-walker.jpg" alt="Senior woman using a walker independently in her kitchen" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
+    </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Does Medicare Advantage Cover a Rollator Walker? Yes: Here's How</h1>
     <p class="text-sm text-gray-600 mb-10">Published February 28, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
 
     <article class="prose">
 
       <p>Yes, Medicare Advantage covers rollator walkers. They fall under the <strong>DME (Durable Medical Equipment) benefit</strong>, which is included in all Medicare Advantage plans. When your doctor documents the medical need, your plan arranges a rollator through an in-network supplier, typically at no out-of-pocket cost beyond your normal copay.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#what-is-the-dme-benefit" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Is the DME Benefit?</a></li>
+          <li><a href="#does-medicare-advantage-cover-a-4-wheel-rollator-specificall" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Does Medicare Advantage Cover a 4-Wheel Rollator Specifically?</a></li>
+          <li><a href="#rollator-vs-standard-walker-which-does-medicare-advantage-co" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Rollator vs. Standard Walker: Which Does Medicare Advantage Cover?</a></li>
+          <li><a href="#how-to-get-a-rollator-covered-step-by-step" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How to Get a Rollator Covered: Step by Step</a></li>
+          <li><a href="#what-if-i-already-bought-a-rollator-and-want-reimbursement" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What If I Already Bought a Rollator and Want Reimbursement?</a></li>
+          <li><a href="#can-i-get-a-rollator-after-a-hospital-stay" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Can I Get a Rollator After a Hospital Stay?</a></li>
+          <li><a href="#does-medicare-advantage-cover-rollator-accessories" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Does Medicare Advantage Cover Rollator Accessories?</a></li>
+          <li><a href="#how-long-can-i-keep-the-rollator" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How Long Can I Keep the Rollator?</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -246,13 +271,13 @@
 
       <p>The process is straightforward, but there are a few things you need to know before you call your plan.</p>
 
-      <h2>What Is the DME Benefit?</h2>
+      <h2 id="what-is-the-dme-benefit">What Is the DME Benefit?</h2>
 
       <p>The DME benefit covers medically necessary equipment for home use. Rollators, walkers, <a href="/blog/does-medicare-advantage-cover-cane.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">cane</a>s, wheelchairs, hospital beds, and commodes all fall under this benefit. Medicare Advantage plans are required to cover these items, and in most cases the cost to you is minimal or nothing after your annual deductible.</p>
 
       <p>Original Medicare (Parts A and B) also covers walkers under Part B DME. Medicare Advantage plans must cover at least the same level as Original Medicare, and many cover more.</p>
 
-      <h2>Does Medicare Advantage Cover a 4-Wheel Rollator Specifically?</h2>
+      <h2 id="does-medicare-advantage-cover-a-4-wheel-rollator-specificall">Does Medicare Advantage Cover a 4-Wheel Rollator Specifically?</h2>
 
       <p>Yes. A four-wheel rollator with a seat qualifies as covered DME under Medicare Advantage. To be covered, the rollator must be:</p>
       <ul>
@@ -263,11 +288,11 @@
 
       <p>The most common reason a claim is denied is that the member bought the rollator from a store or online retailer without going through an in-network supplier first. Always contact your plan before purchasing.</p>
 
-      <h2>Rollator vs. Standard Walker: Which Does Medicare Advantage Cover?</h2>
+      <h2 id="rollator-vs-standard-walker-which-does-medicare-advantage-co">Rollator vs. Standard Walker: Which Does Medicare Advantage Cover?</h2>
 
       <p>Medicare Advantage covers both. A standard walker (no wheels) and a rollator (two or four wheels with a seat) are both covered DME. Your doctor will document which type is appropriate for your mobility needs. If you need a seat for rest breaks during walking, a rollator is typically the prescribed choice.</p>
 
-      <h2>How to Get a Rollator Covered: Step by Step</h2>
+      <h2 id="how-to-get-a-rollator-covered-step-by-step">How to Get a Rollator Covered: Step by Step</h2>
 
       <p><strong>Step 1: Get a prescription from your doctor.</strong> Tell your doctor you are having difficulty walking or are at fall risk. Ask them to prescribe a rollator walker. They will document the medical necessity in your chart and submit an order to your plan or directly to a DME supplier.</p>
 
@@ -277,19 +302,19 @@
 
       <p><strong>Step 4: Receive your rollator.</strong> The supplier delivers the rollator and typically adjusts the height to fit you. If you have questions about how to use it safely, ask your doctor for a physical therapy referral, one or two PT sessions to learn proper gait technique significantly reduce fall risk.</p>
 
-      <h2>What If I Already Bought a Rollator and Want Reimbursement?</h2>
+      <h2 id="what-if-i-already-bought-a-rollator-and-want-reimbursement">What If I Already Bought a Rollator and Want Reimbursement?</h2>
 
       <p>This is a common situation. Unfortunately, Medicare Advantage generally will not reimburse you for equipment you purchased on your own without prior authorization. The plan requires you to use an in-network supplier. If you have already purchased a rollator and want coverage going forward, ask your plan about future purchases or accessories (like replacement parts).</p>
 
-      <h2>Can I Get a Rollator After a Hospital Stay?</h2>
+      <h2 id="can-i-get-a-rollator-after-a-hospital-stay">Can I Get a Rollator After a Hospital Stay?</h2>
 
       <p>Yes, and this is actually the easiest time to get one covered. When you are discharged from a hospital or rehab facility, the discharge team can place a DME order before you leave. The rollator is often delivered to your home the same day you are discharged, or waiting for you when you arrive. Ask the discharge coordinator specifically: "Can you put in an order for a rollator walker before I leave?"</p>
 
-      <h2>Does Medicare Advantage Cover Rollator Accessories?</h2>
+      <h2 id="does-medicare-advantage-cover-rollator-accessories">Does Medicare Advantage Cover Rollator Accessories?</h2>
 
       <p>The rollator itself is typically covered. Accessories like replacement bags, trays, and cup holders are generally not covered under the DME benefit, as they are considered convenience items rather than medically necessary components. These are affordable to purchase on your own.</p>
 
-      <h2>How Long Can I Keep the Rollator?</h2>
+      <h2 id="how-long-can-i-keep-the-rollator">How Long Can I Keep the Rollator?</h2>
 
       <p>Under Medicare rules, walkers provided through the DME benefit are purchased outright (not rented). Once it is delivered to you, it is yours to keep. There is no return requirement.</p>
 
@@ -382,14 +407,16 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 

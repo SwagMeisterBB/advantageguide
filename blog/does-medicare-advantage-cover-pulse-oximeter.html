@@ -143,7 +143,8 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h3 { font-size: 1.375rem; font-weight: 700; color: #111827; margin-top: 1.75rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -151,6 +152,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -158,24 +165,24 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
       </div>
       <span class="font-semibold text-gray-900 text-sm tracking-tight">AdvantageGuide</span>
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
 <main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">OTC Allowance</span>
     </nav>
     <div class="rounded-xl mb-6 px-5 py-4 flex items-center justify-between" style="background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);">
@@ -183,13 +190,30 @@
         <span class="text-xs font-semibold bg-purple-50 text-purple-700 px-2.5 py-1 rounded-full">OTC Allowance</span>
         <span class="text-xs" style="color: #7C3AED; opacity: 0.6;">6 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#7C3AED" stroke-width="1.5" viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="20" rx="3"/><path d="M20 16v8M16 20h8" stroke-linecap="round"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#7C3AED" stroke-width="1.5" viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="20" rx="3"/><path d="M20 16v8M16 20h8" stroke-linecap="round"/></svg>
+    </div>
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/otc-medicine.jpg" alt="Senior woman reviewing over-the-counter health products" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Does Medicare Advantage Cover a Pulse Oximeter?</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
     <article class="prose">
 
       <p>Yes, fingertip pulse oximeters are available through many Medicare Advantage <a href="/blog/what-is-medicare-advantage-otc-benefit.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">OTC (Over-the-Counter) benefit</a> catalogs. A pulse oximeter clips onto your fingertip and measures your blood oxygen level and heart rate in seconds. Most plans list pulse oximeters under "health monitoring" or "monitoring devices" in their OTC product catalog, and you can use your benefit card to purchase one at no additional cost if your allowance covers it.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#what-is-a-pulse-oximeter" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Is a Pulse Oximeter?</a></li>
+          <li><a href="#who-should-monitor-oxygen-levels-at-home" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Who Should Monitor Oxygen Levels at Home?</a></li>
+          <li><a href="#what-are-normal-oxygen-levels" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Are Normal Oxygen Levels?</a></li>
+          <li><a href="#how-to-get-a-pulse-oximeter-through-your-otc-benefit" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How to Get a Pulse Oximeter Through Your OTC Benefit</a></li>
+          <li><a href="#what-makes-a-good-home-pulse-oximeter" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Makes a Good Home Pulse Oximeter?</a></li>
+          <li><a href="#tips-for-getting-accurate-readings-at-home" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Tips for Getting Accurate Readings at Home</a></li>
+          <li><a href="#how-a-pulse-oximeter-fits-into-your-home-health-routine" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How a Pulse Oximeter Fits into Your Home Health Routine</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -209,12 +233,12 @@
       </div>
 
 
-      <h2>What Is a Pulse Oximeter?</h2>
+      <h2 id="what-is-a-pulse-oximeter">What Is a Pulse Oximeter?</h2>
       <p>A pulse oximeter is a small, clip-like device that attaches to your fingertip. It shines a light through your skin to measure how much oxygen is being carried by your red blood cells. This measurement is called blood oxygen saturation, or SpO2, and it appears on the device's screen as a percentage. Most devices also display your pulse rate at the same time.</p>
       <p>The device is completely painless and non-invasive. You simply clip it to your fingertip, hold still for a few seconds, and read the numbers on the screen. No needles, no blood, and no lab visit required. Results appear in under a minute.</p>
       <p>Pulse oximeters are routinely used by nurses and doctors in clinical settings. The consumer versions available through OTC benefits are FDA-cleared for home use and provide reliable readings for most adults.</p>
 
-      <h2>Who Should Monitor Oxygen Levels at Home?</h2>
+      <h2 id="who-should-monitor-oxygen-levels-at-home">Who Should Monitor Oxygen Levels at Home?</h2>
       <p>Home pulse oximetry is especially valuable for people with conditions that affect breathing or oxygen delivery. You may benefit from regular monitoring if you have:</p>
       <ul>
         <li><strong>COPD (Chronic Obstructive Pulmonary Disease):</strong> Oxygen levels can drop during activity or during a flare-up</li>
@@ -226,7 +250,7 @@
       </ul>
       <p>Many doctors recommend that patients with chronic lung or heart conditions keep a pulse oximeter at home so they can detect changes before symptoms become severe enough to require emergency care.</p>
 
-      <h2>What Are Normal Oxygen Levels?</h2>
+      <h2 id="what-are-normal-oxygen-levels">What Are Normal Oxygen Levels?</h2>
       <p>For most healthy adults, a normal SpO2 reading falls between 95 and 100 percent. Here is a general guide to understanding what your readings mean:</p>
       <ul>
         <li><strong>95-100%:</strong> Normal range for most adults</li>
@@ -236,7 +260,7 @@
       </ul>
       <p>Keep in mind that some people with chronic lung disease are accustomed to lower baseline oxygen levels. Your doctor will help you understand what is normal for you specifically and when to be concerned.</p>
 
-      <h2>How to Get a Pulse Oximeter Through Your OTC Benefit</h2>
+      <h2 id="how-to-get-a-pulse-oximeter-through-your-otc-benefit">How to Get a Pulse Oximeter Through Your OTC Benefit</h2>
       <p>Getting a pulse oximeter through your Medicare Advantage OTC benefit takes just a few steps:</p>
       <ol>
         <li><strong>Check your OTC balance.</strong> Log in to your member portal or call Member Services to find out how much you have available and when your benefit resets.</li>
@@ -245,7 +269,7 @@
         <li><strong>Order online, by phone, or in person.</strong> Most plans allow ordering through their website, by calling their OTC catalog line, or by using your benefit card at approved retail locations like CVS or Walgreens.</li>
       </ol>
 
-      <h2>What Makes a Good Home Pulse Oximeter?</h2>
+      <h2 id="what-makes-a-good-home-pulse-oximeter">What Makes a Good Home Pulse Oximeter?</h2>
       <p>Not all pulse oximeters are equally accurate. When choosing one, look for:</p>
       <ul>
         <li><strong>FDA clearance:</strong> This indicates the device has passed accuracy testing</li>
@@ -255,7 +279,7 @@
       </ul>
       <p>Nonin is widely considered the most clinically validated brand in the consumer pulse oximeter market. Nonin devices are used in both clinical and home settings and are known for reliable readings even in people with poor circulation or darker skin tones, which can affect accuracy in some lower-quality devices.</p>
 
-      <h2>Tips for Getting Accurate Readings at Home</h2>
+      <h2 id="tips-for-getting-accurate-readings-at-home">Tips for Getting Accurate Readings at Home</h2>
       <p>A few simple steps will help you get the most accurate readings from your pulse oximeter:</p>
       <ul>
         <li>Warm your hands before measuring, since cold fingers can affect accuracy</li>
@@ -266,7 +290,7 @@
       </ul>
       <p>If you get an unexpectedly low reading, try another finger or wait a few minutes and try again. A single unusual reading is less meaningful than a pattern of low readings over multiple days.</p>
 
-      <h2>How a Pulse Oximeter Fits into Your Home Health Routine</h2>
+      <h2 id="how-a-pulse-oximeter-fits-into-your-home-health-routine">How a Pulse Oximeter Fits into Your Home Health Routine</h2>
       <p>A pulse oximeter works well alongside other home monitoring tools. Members who use a <a href="/blog/does-medicare-advantage-cover-blood-pressure-monitor.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">blood pressure monitor</a> to track hypertension often benefit from adding a pulse oximeter, since both devices help catch changes between doctor visits. Together, they give you and your care team a clearer picture of your cardiovascular and respiratory health without requiring extra trips to a clinic.</p>
       <p>If your plan's OTC allowance covers both a pulse oximeter and a blood pressure monitor, getting both in the same benefit period is a smart way to build a complete home monitoring kit at little or no cost.</p>
 
@@ -334,13 +358,15 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 

@@ -134,7 +134,8 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h3 { font-size: 1.375rem; font-weight: 700; color: #111827; margin-top: 1.75rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -142,6 +143,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -149,24 +156,24 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
       </div>
       <span class="font-semibold text-gray-900 text-sm tracking-tight">AdvantageGuide</span>
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
 <main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">Supplemental Benefits</span>
     </nav>
     <div class="rounded-xl mb-6 px-5 py-4 flex items-center justify-between" style="background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);">
@@ -174,18 +181,37 @@
         <span class="text-xs font-semibold bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">Supplemental Benefits</span>
         <span class="text-xs" style="color: #4B5563; opacity: 0.6;">6 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#4B5563" stroke-width="1.5" viewBox="0 0 40 40"><rect x="8" y="6" width="24" height="30" rx="3"/><path d="M14 16h12M14 22h12M14 28h8" stroke-linecap="round"/><rect x="16" y="4" width="8" height="4" rx="1"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#4B5563" stroke-width="1.5" viewBox="0 0 40 40"><rect x="8" y="6" width="24" height="30" rx="3"/><path d="M14 16h12M14 22h12M14 28h8" stroke-linecap="round"/><rect x="16" y="4" width="8" height="4" rx="1"/></svg>
+    </div>
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/general-documents.jpg" alt="Senior couple reviewing Medicare documents together at home" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Does Medicare Advantage Cover Glasses and Vision Care?</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
     <article class="prose">
 
       <p>Yes, many Medicare Advantage plans cover routine vision care, including annual eye exams and an allowance for glasses or contact lenses. Original Medicare does not cover routine eye exams or eyeglasses. If you have a Medicare Advantage plan with vision benefits, you can use them each year to reduce or eliminate the cost of seeing your eye doctor and getting new glasses.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#what-original-medicare-does-and-does-not-cover-for-eyes" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Original Medicare Does and Does Not Cover for Eyes</a></li>
+          <li><a href="#what-do-most-medicare-advantage-vision-benefits-include" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Do Most Medicare Advantage Vision Benefits Include?</a></li>
+          <li><a href="#can-you-use-the-allowance-for-contact-lenses" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Can You Use the Allowance for Contact Lenses?</a></li>
+          <li><a href="#what-about-progressive-lenses" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What About Progressive Lenses?</a></li>
+          <li><a href="#where-can-you-use-your-vision-benefit" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Where Can You Use Your Vision Benefit?</a></li>
+          <li><a href="#special-considerations-for-members-with-diabetes" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Special Considerations for Members with Diabetes</a></li>
+          <li><a href="#step-by-step-how-to-use-your-vision-benefit" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Step-by-Step: How to Use Your Vision Benefit</a></li>
+          <li><a href="#tips-to-maximize-your-vision-benefit" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Tips to Maximize Your Vision Benefit</a></li>
+          <li><a href="#what-if-your-current-plan-does-not-include-vision-coverage" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What If Your Current Plan Does Not Include Vision Coverage?</a></li>
+        </ol>
+      </nav>
 
-      <h2>What Original Medicare Does and Does Not Cover for Eyes</h2>
+
+      <h2 id="what-original-medicare-does-and-does-not-cover-for-eyes">What Original Medicare Does and Does Not Cover for Eyes</h2>
       <p>Original Medicare (Parts A and B) covers eye care only when it is related to a medical condition. For example, Medicare will cover eye exams for people with diabetes who need monitoring for diabetic eye disease. Medicare also covers treatment for glaucoma, cataracts (the surgery itself), and macular degeneration. What it does not cover is a routine eye exam to update your glasses prescription or any help paying for frames, lenses, or contact lenses. Medicare Advantage plans fill this gap through vision supplemental benefits.</p>
 
-      <h2>What Do Most Medicare Advantage Vision Benefits Include?</h2>
+      <h2 id="what-do-most-medicare-advantage-vision-benefits-include">What Do Most Medicare Advantage Vision Benefits Include?</h2>
       <p>Vision benefits vary by plan, but most plans with vision coverage include these three things:</p>
       <ul>
         <li><strong>One routine eye exam per year:</strong> This includes a refraction exam (the part where your doctor checks your prescription). In-network exams are often covered at no cost or with a small copay.</li>
@@ -193,20 +219,20 @@
         <li><strong>Discounts at partner optical retailers:</strong> Many plans have relationships with national optical chains. Even if your allowance does not fully cover the frames you want, you may receive a 20 to 40 percent discount on purchases above the allowance amount.</li>
       </ul>
 
-      <h2>Can You Use the Allowance for Contact Lenses?</h2>
+      <h2 id="can-you-use-the-allowance-for-contact-lenses">Can You Use the Allowance for Contact Lenses?</h2>
       <p>In most cases, yes. Your frame and lens allowance can typically be applied to contact lenses instead of glasses. You usually cannot use the allowance for both contacts and glasses in the same year. If you prefer contacts, you would use your allowance toward a supply of contact lenses after your exam and fitting. Ask your plan for the specifics, since some plans have separate allowances for glasses versus contacts.</p>
 
-      <h2>What About Progressive Lenses?</h2>
+      <h2 id="what-about-progressive-lenses">What About Progressive Lenses?</h2>
       <p>Progressive lenses (no-line bifocals) often cost more than the plan allowance covers. If you choose progressive lenses, you may owe the difference between the plan's allowance and the actual cost of the lenses out of pocket. Standard single-vision or lined bifocal lenses are more likely to be fully covered within a typical allowance. Ask the optical shop for a cost breakdown before you order so you know exactly what you will pay.</p>
 
-      <h2>Where Can You Use Your Vision Benefit?</h2>
+      <h2 id="where-can-you-use-your-vision-benefit">Where Can You Use Your Vision Benefit?</h2>
       <p>You must use in-network providers to get the full value of your vision benefit. Many Medicare Advantage plans contract with national optical chains, including LensCrafters, Target Optical, Walmart Vision Center, and Costco Optical. Independent optometrists may also be in-network. Check your plan's provider directory or call Member Services to confirm a provider is in-network before your appointment.</p>
       <p>Going out of network typically means lower reimbursement or no reimbursement from your plan. If your preferred eye doctor is not in-network, it may be worth asking whether they can become a participating provider, or you can look for a comparable in-network option nearby.</p>
 
-      <h2>Special Considerations for Members with Diabetes</h2>
+      <h2 id="special-considerations-for-members-with-diabetes">Special Considerations for Members with Diabetes</h2>
       <p>If you have diabetes, your Medicare Advantage plan may cover more frequent eye exams. People with diabetes are at higher risk for diabetic retinopathy, which can cause vision loss if not caught early. Some plans cover eye exams every six months for diabetic members rather than once per year. This coverage may come through the medical benefit rather than the vision benefit, so ask Member Services specifically about diabetic eye care coverage and how to access it.</p>
 
-      <h2>Step-by-Step: How to Use Your Vision Benefit</h2>
+      <h2 id="step-by-step-how-to-use-your-vision-benefit">Step-by-Step: How to Use Your Vision Benefit</h2>
       <ol>
         <li>Call Member Services or log into your member portal to confirm your vision benefit details. Ask for the exam copay, the frame and lens allowance amount, and a list of in-network providers.</li>
         <li>Find an in-network eye doctor or optical chain using the provider directory. Choose one that is convenient and carries frames you like.</li>
@@ -216,7 +242,7 @@
         <li>Use any remaining allowance before it expires. Most vision allowances reset annually and do not carry over to the next year.</li>
       </ol>
 
-      <h2>Tips to Maximize Your Vision Benefit</h2>
+      <h2 id="tips-to-maximize-your-vision-benefit">Tips to Maximize Your Vision Benefit</h2>
       <ul>
         <li>Schedule your annual exam early in the year so you have time to order glasses and use your allowance before it resets.</li>
         <li>Shop frames during a sale at in-network chains, which often run promotions on top of your plan allowance.</li>
@@ -225,7 +251,7 @@
         <li>If you wear both glasses and contacts, ask your plan whether you can split the allowance between both in a given year.</li>
       </ul>
 
-      <h2>What If Your Current Plan Does Not Include Vision Coverage?</h2>
+      <h2 id="what-if-your-current-plan-does-not-include-vision-coverage">What If Your Current Plan Does Not Include Vision Coverage?</h2>
       <p>Not every Medicare Advantage plan includes vision benefits. If yours does not, or if the allowance is too low for your needs, the Annual Enrollment Period (October 15 to December 7 each year) is the time to switch. You can compare plans at Medicare.gov by filtering for vision benefits. Look at the allowance amount, the network of providers, and whether there is a copay for the exam. A plan with a $300 allowance and no exam copay may be worth a slightly higher monthly premium if you wear glasses and visit the eye doctor every year.</p>
 
     </article>
@@ -262,13 +288,15 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 </body>

@@ -97,7 +97,8 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h3 { font-size: 1.375rem; font-weight: 700; color: #111827; margin-top: 1.75rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -105,6 +106,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -112,24 +119,24 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
       </div>
       <span class="font-semibold text-gray-900 text-sm tracking-tight">AdvantageGuide</span>
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
 <main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">General</span>
     </nav>
     <div class="rounded-xl mb-6 px-5 py-4 flex items-center justify-between" style="background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);">
@@ -137,13 +144,31 @@
         <span class="text-xs font-semibold bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">General</span>
         <span class="text-xs" style="color: #4B5563; opacity: 0.6;">8 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#4B5563" stroke-width="1.5" viewBox="0 0 40 40"><rect x="8" y="6" width="24" height="30" rx="3"/><path d="M14 16h12M14 22h12M14 28h8" stroke-linecap="round"/><rect x="16" y="4" width="8" height="4" rx="1"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#4B5563" stroke-width="1.5" viewBox="0 0 40 40"><rect x="8" y="6" width="24" height="30" rx="3"/><path d="M14 16h12M14 22h12M14 28h8" stroke-linecap="round"/><rect x="16" y="4" width="8" height="4" rx="1"/></svg>
+    </div>
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/general-documents.jpg" alt="Senior couple reviewing Medicare documents together at home" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">A Caregiver's Guide to Medicare Advantage Benefits</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
     <article class="prose">
 
       <p>If you are helping a parent or loved one navigate their Medicare Advantage plan, you may be sitting on a significant amount of unused benefits that your loved one has already paid for through their premiums. Medicare Advantage plans routinely include dental, vision, hearing, over-the-counter health product allowances, home safety modifications, and medical alert systems as supplemental benefits. This guide walks through each benefit category so you know exactly what to look for, how to claim it, and how to make the conversation easier if your loved one is resistant to accepting help.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#what-medicare-advantage-covers-that-original-medicare-does-n" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Medicare Advantage Covers That Original Medicare Does Not</a></li>
+          <li><a href="#how-to-find-out-what-the-plan-actually-covers" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How to Find Out What the Plan Actually Covers</a></li>
+          <li><a href="#equipment-to-request-at-hospital-discharge" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Equipment to Request at Hospital Discharge</a></li>
+          <li><a href="#the-home-safety-benefit-making-the-home-safer-for-aging-in-p" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">The Home Safety Benefit: Making the Home Safer for Aging in Place</a></li>
+          <li><a href="#the-otc-benefit-quarterly-money-for-health-products" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">The OTC Benefit: Quarterly Money for Health Products</a></li>
+          <li><a href="#medical-alert-systems-coverage-for-fall-detection" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Medical Alert Systems: Coverage for Fall Detection</a></li>
+          <li><a href="#how-to-help-a-parent-who-is-resistant-to-accepting-help" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How to Help a Parent Who Is Resistant to Accepting Help</a></li>
+          <li><a href="#advantageguide-was-built-for-caregivers-like-you" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">AdvantageGuide Was Built for Caregivers Like You</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -163,7 +188,7 @@
       </div>
 
 
-      <h2>What Medicare Advantage Covers That Original Medicare Does Not</h2>
+      <h2 id="what-medicare-advantage-covers-that-original-medicare-does-n">What Medicare Advantage Covers That Original Medicare Does Not</h2>
       <p>Many family members are surprised to learn just how much more Medicare Advantage covers compared to Original Medicare. Here is a quick summary of the most valuable supplemental benefits available in most Medicare Advantage plans:</p>
       <ul>
         <li><strong>OTC (Over-the-Counter) allowance:</strong> A quarterly budget ($50 to $200 in most plans, based on 2026 plan documents) for over-the-counter health products like blood pressure monitors, vitamins, and compression socks.</li>
@@ -177,7 +202,7 @@
       </ul>
       <p>None of these benefits exist in Original Medicare. If your loved one is on Medicare Advantage, they have access to all of the benefits their specific plan includes, whether they know it or not.</p>
 
-      <h2>How to Find Out What the Plan Actually Covers</h2>
+      <h2 id="how-to-find-out-what-the-plan-actually-covers">How to Find Out What the Plan Actually Covers</h2>
       <p>The best way to find out exactly what is covered is to call the plan's Member Services line together. Here are a few important tips for this call:</p>
       <ul>
         <li>The member should be on the line, or the member should have previously authorized you as a representative who can speak on their behalf. Plans take privacy seriously and will not discuss account details with a non-authorized caller.</li>
@@ -187,7 +212,7 @@
       </ul>
       <p>The Member Services number is printed on the back of the insurance card. You can also log into the plan's member portal online to view a benefits summary, though the portal is sometimes less detailed than a direct call.</p>
 
-      <h2>Equipment to Request at Hospital Discharge</h2>
+      <h2 id="equipment-to-request-at-hospital-discharge">Equipment to Request at Hospital Discharge</h2>
       <p>One of the most important moments for a caregiver to advocate for their loved one is at <a href="/blog/medicare-advantage-hospital-discharge-equipment.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">hospital discharge</a>. This is when the medical team and case manager are planning what the member will need at home, and it is often possible to arrange for Medicare-covered durable medical equipment (DME (Durable Medical Equipment)) to be delivered directly to the home. Common items to ask about at discharge include:</p>
       <ul>
         <li>Rollator walker or standard walker for mobility support</li>
@@ -198,20 +223,20 @@
       </ul>
       <p>Ask the discharge planner or social worker what equipment the plan will cover for home use. Do not leave the hospital without this conversation. Equipment ordered through the hospital at discharge is often covered with no out-of-pocket cost, whereas arranging it afterward can be more complicated.</p>
 
-      <h2>The Home Safety Benefit: Making the Home Safer for Aging in Place</h2>
+      <h2 id="the-home-safety-benefit-making-the-home-safer-for-aging-in-p">The Home Safety Benefit: Making the Home Safer for Aging in Place</h2>
       <p>Falls are the leading cause of injury-related emergency room visits among older adults, <a href="https://www.cdc.gov/falls/data-research/index.html" target="_blank" rel="noopener" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">according to the CDC</a>. Many Medicare Advantage plans include a home safety benefit, sometimes called a home modification benefit, that pays for modifications designed to reduce fall risk. The annual allowance is typically $200 to $500 and resets each January 1.</p>
       <p>Common covered items include <a href="/blog/does-medicare-advantage-cover-grab-bars.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">grab bars</a> in the bathroom and shower, threshold ramps over door saddles, non-slip mats, raised toilet seats, and shower chairs. Some plans also cover installation labor. Call Member Services to confirm the dollar amount, the list of covered items, and whether you need to use an approved vendor or can self-purchase and submit a receipt.</p>
       <p>If your loved one's plan includes this benefit, using it now is far less expensive than dealing with a fall and a hospital stay later.</p>
 
-      <h2>The OTC Benefit: Quarterly Money for Health Products</h2>
+      <h2 id="the-otc-benefit-quarterly-money-for-health-products">The OTC Benefit: Quarterly Money for Health Products</h2>
       <p>The <a href="/blog/what-is-medicare-advantage-otc-benefit.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">OTC benefit</a> gives members a quarterly allowance, typically $50 to $200, to spend on over-the-counter health products at approved retailers like Walmart, CVS, and Walgreens, or online through the plan's ordering portal. The allowance resets at the end of each quarter and unused funds are forfeited, so it is worth checking in with your loved one every few months to make sure they are using it.</p>
       <p>Eligible items commonly include blood pressure monitors, compression socks, vitamins, dental care products, reading glasses, first aid supplies, and incontinence products. As a caregiver, you can help your loved one make a list of health items they regularly buy and check whether those items qualify. Using the full quarterly allowance is one of the easiest ways to reduce out-of-pocket health spending.</p>
 
-      <h2>Medical Alert Systems: Coverage for Fall Detection</h2>
+      <h2 id="medical-alert-systems-coverage-for-fall-detection">Medical Alert Systems: Coverage for Fall Detection</h2>
       <p>Personal emergency response systems (PERS), often called medical alert systems, allow a person to call for help at the press of a button if they fall or have a medical emergency. Many Medicare Advantage plans cover the monthly cost of a PERS device as a supplemental benefit, which can save $30 to $60 or more per month compared to paying out of pocket.</p>
       <p>If your loved one lives alone or spends time alone at home, a medical alert system can provide peace of mind for the whole family. Call Member Services to ask whether the plan covers a PERS device, which devices are approved, and how to enroll in the benefit.</p>
 
-      <h2>How to Help a Parent Who Is Resistant to Accepting Help</h2>
+      <h2 id="how-to-help-a-parent-who-is-resistant-to-accepting-help">How to Help a Parent Who Is Resistant to Accepting Help</h2>
       <p>Many older adults feel uncomfortable accepting help because it feels like a loss of independence or a sign of weakness. If your parent or loved one resists using their benefits, try reframing the conversation. These are benefits they have already paid for as part of their plan. Using them is not charity, it is getting the value they are entitled to. Here are a few approaches that often work:</p>
       <ul>
         <li>Frame it as being practical: "You paid for this benefit with your premiums. Let's make sure you're getting your money's worth."</li>
@@ -221,7 +246,7 @@
       </ul>
       <p>The goal is to frame every benefit as a tool for maintaining independence and quality of life, not as an admission that something is wrong.</p>
 
-      <h2>AdvantageGuide Was Built for Caregivers Like You</h2>
+      <h2 id="advantageguide-was-built-for-caregivers-like-you">AdvantageGuide Was Built for Caregivers Like You</h2>
       <p>Navigating Medicare Advantage benefits is genuinely complicated. Plans vary by carrier, by county, and by year. Benefits reset on different schedules. Claiming processes differ from plan to plan. AdvantageGuide was built specifically to cut through that complexity for members and the family caregivers who help them. Enter your loved one's plan information, and AdvantageGuide will show you exactly which benefits are available, which products are covered, and how to claim them step by step before the reset date. Getting the full value from a Medicare Advantage plan is one of the most meaningful things a caregiver can do.</p>
 
     
@@ -296,13 +321,15 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 

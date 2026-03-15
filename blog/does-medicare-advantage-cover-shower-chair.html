@@ -238,7 +238,8 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h3 { font-size: 1.375rem; font-weight: 700; color: #111827; margin-top: 1.75rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -246,6 +247,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -254,7 +261,7 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
@@ -263,7 +270,7 @@
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
@@ -272,10 +279,10 @@
   <div class="max-w-2xl mx-auto px-6 py-12">
 
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">Home Safety</span>
     </nav>
 
@@ -284,15 +291,32 @@
         <span class="text-xs font-semibold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full">Home Safety</span>
         <span class="text-xs" style="color: #1D4ED8; opacity: 0.6;">5 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#1D4ED8" stroke-width="1.5" viewBox="0 0 40 40"><path d="M20 6L4 18h4v16h10V24h4v10h10V18h4L20 6z" stroke-linejoin="round"/><path d="M16 22l3 3 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#1D4ED8" stroke-width="1.5" viewBox="0 0 40 40"><path d="M20 6L4 18h4v16h10V24h4v10h10V18h4L20 6z" stroke-linejoin="round"/><path d="M16 22l3 3 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
 
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/home-safety.jpg" alt="Senior woman looking out window in her safe, comfortable home" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
+    </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Does Medicare Advantage Cover a Shower Chair? Yes: Here's How to Get One</h1>
     <p class="text-sm text-gray-600 mb-10">Published February 28, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
 
     <article class="prose">
 
       <p>Yes, shower chairs are covered by Medicare through Medicare Advantage plans. Depending on your plan, a shower chair may be covered under the <strong>DME (Durable Medical Equipment) benefit</strong>, the <strong><a href="/blog/medicare-advantage-home-safety-benefit.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">Home Safety benefit</a></strong>, or both. Most members can get a shower chair through their insurance at little or no cost, but the majority never ask about it and end up paying out of pocket unnecessarily.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#which-medicare-advantage-benefit-covers-a-shower-chair" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Which Medicare Advantage Benefit Covers a Shower Chair?</a></li>
+          <li><a href="#does-medicare-advantage-cover-a-walk-in-shower-bench-too" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Does Medicare Advantage Cover a Walk-In Shower Bench Too?</a></li>
+          <li><a href="#what-does-a-shower-chair-cost-without-coverage" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Does a Shower Chair Cost Without Coverage?</a></li>
+          <li><a href="#how-to-get-a-shower-chair-covered-3-steps" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How to Get a Shower Chair Covered: 3 Steps</a></li>
+          <li><a href="#can-you-get-a-shower-chair-at-discharge-from-the-hospital" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Can You Get a Shower Chair at Discharge From the Hospital?</a></li>
+          <li><a href="#should-you-use-a-shower-chair-with-a-handheld-shower-head" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Should You Use a Shower Chair With a Handheld Shower Head?</a></li>
+          <li><a href="#what-about-non-slip-bath-mats" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What About Non-Slip Bath Mats?</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -312,7 +336,7 @@
       </div>
 
 
-      <h2>Which Medicare Advantage Benefit Covers a Shower Chair?</h2>
+      <h2 id="which-medicare-advantage-benefit-covers-a-shower-chair">Which Medicare Advantage Benefit Covers a Shower Chair?</h2>
 
       <p>Shower chairs can fall under two different benefits depending on your plan:</p>
       <ul>
@@ -322,17 +346,17 @@
 
       <p>Call Member Services and ask about both. Some plans will cover a shower chair under whichever benefit you qualify for.</p>
 
-      <h2>Does Medicare Advantage Cover a Walk-In Shower Bench Too?</h2>
+      <h2 id="does-medicare-advantage-cover-a-walk-in-shower-bench-too">Does Medicare Advantage Cover a Walk-In Shower Bench Too?</h2>
 
       <p>Yes. A <a href="/blog/does-medicare-advantage-cover-transfer-bench.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">transfer bench</a>, which straddles the tub edge so you can sit down outside the tub and slide in, is also covered under most plans. Transfer benches are often recommended over standard shower chairs for patients who have difficulty stepping over a tub wall, including many post-hip and post-knee replacement patients.</p>
 
       <p>Both shower chairs and transfer benches fall within the same benefit category. Ask your doctor which type is more appropriate for your specific situation.</p>
 
-      <h2>What Does a Shower Chair Cost Without Coverage?</h2>
+      <h2 id="what-does-a-shower-chair-cost-without-coverage">What Does a Shower Chair Cost Without Coverage?</h2>
 
       <p>A quality shower chair typically costs <strong>$35 to $75 out of pocket</strong>. If your plan covers it, the cost to you is usually zero or a small copay. Either way, a shower chair is one of the highest-value safety investments per dollar for anyone with balance or mobility concerns.</p>
 
-      <h2>How to Get a Shower Chair Covered: 3 Steps</h2>
+      <h2 id="how-to-get-a-shower-chair-covered-3-steps">How to Get a Shower Chair Covered: 3 Steps</h2>
 
       <p><strong>Step 1: Call Member Services.</strong> Call the number on the back of your insurance card. Ask: "Do I have a Home Safety benefit or DME coverage for a shower chair or bath bench? What do I need to do to get one covered?" Note the benefit name and allowance amount they give you.</p>
 
@@ -340,17 +364,17 @@
 
       <p><strong>Step 3: Use an approved vendor or self-purchase.</strong> Some plans work with approved DME suppliers who deliver the chair to your home. Others allow you to purchase one yourself and submit a receipt for reimbursement up to your allowance amount. Ask Member Services which method your plan uses.</p>
 
-      <h2>Can You Get a Shower Chair at Discharge From the Hospital?</h2>
+      <h2 id="can-you-get-a-shower-chair-at-discharge-from-the-hospital">Can You Get a Shower Chair at Discharge From the Hospital?</h2>
 
       <p>Yes, and this is the easiest time. Before you leave the hospital or rehab facility, ask the discharge coordinator: "Can you put in an order for a shower chair?" It is one of the most commonly ordered items at discharge, and most plans can arrange delivery before you arrive home.</p>
 
       <p>Occupational therapists on the hospital team will often recommend a shower chair as part of your discharge plan. If one hasn't been mentioned and you have any balance concerns, ask about it proactively.</p>
 
-      <h2>Should You Use a Shower Chair With a Handheld Shower Head?</h2>
+      <h2 id="should-you-use-a-shower-chair-with-a-handheld-shower-head">Should You Use a Shower Chair With a Handheld Shower Head?</h2>
 
       <p>Yes. A shower chair is most effective when paired with a handheld shower head with an extended hose. This lets you direct water while seated without twisting or reaching. A handheld shower head is also often covered under the Home Safety benefit. The two items together cost less than $100 and make a significant difference in both safety and independence.</p>
 
-      <h2>What About Non-Slip Bath Mats?</h2>
+      <h2 id="what-about-non-slip-bath-mats">What About Non-Slip Bath Mats?</h2>
 
       <p>Non-slip bath mats are also covered under most Home Safety benefits and are typically available through your plan's OTC (Over-the-Counter) catalog as well. A <a href="/blog/does-medicare-advantage-cover-non-slip-bath-mat.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">non-slip</a> mat inside the tub or shower, paired with a shower chair, covers the two most common slip-and-fall scenarios in the bathroom.</p>
 
@@ -443,14 +467,16 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 

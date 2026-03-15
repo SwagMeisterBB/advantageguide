@@ -96,7 +96,7 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
     .prose h3 { font-size: 1.375rem; font-weight: 600; color: #1f2937; margin-top: 1.5rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
@@ -105,6 +105,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -112,24 +118,24 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
       </div>
       <span class="font-semibold text-gray-900 text-sm tracking-tight">AdvantageGuide</span>
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
 <main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">Home Health</span>
     </nav>
     <div class="rounded-xl mb-6 px-5 py-4 flex items-center justify-between" style="background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);">
@@ -137,13 +143,30 @@
         <span class="text-xs font-semibold bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">Home Health</span>
         <span class="text-xs" style="color: #4B5563; opacity: 0.6;">7 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#4B5563" stroke-width="1.5" viewBox="0 0 40 40"><rect x="8" y="6" width="24" height="30" rx="3"/><path d="M14 16h12M14 22h12M14 28h8" stroke-linecap="round"/><rect x="16" y="4" width="8" height="4" rx="1"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#4B5563" stroke-width="1.5" viewBox="0 0 40 40"><rect x="8" y="6" width="24" height="30" rx="3"/><path d="M14 16h12M14 22h12M14 28h8" stroke-linecap="round"/><rect x="16" y="4" width="8" height="4" rx="1"/></svg>
+    </div>
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/home-safety.jpg" alt="Senior woman looking out window in her safe, comfortable home" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Medicare Advantage Home Health Benefit: What It Covers and How to Use It</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
     <article class="prose">
 
       <p>Medicare Advantage covers skilled nursing visits, physical therapy, and other professional health services delivered directly to your home, at no cost to you in most plans, as long as your doctor orders the services and you meet the homebound criteria. This is one of the most valuable benefits in Medicare, and one of the least used, because many people don't realize they qualify.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#what-the-home-health-benefit-covers" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What the Home Health Benefit Covers</a></li>
+          <li><a href="#who-qualifies-for-home-health" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Who Qualifies for Home Health</a></li>
+          <li><a href="#how-many-visits-are-covered" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How Many Visits Are Covered</a></li>
+          <li><a href="#how-to-get-home-health-started" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How to Get Home Health Started</a></li>
+          <li><a href="#medicare-advantage-vs-original-medicare-for-home-health" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Medicare Advantage vs. Original Medicare for Home Health</a></li>
+          <li><a href="#what-home-health-does-not-cover" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Home Health Does NOT Cover</a></li>
+          <li><a href="#equipment-that-supports-recovery-at-home" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Equipment That Supports Recovery at Home</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -163,7 +186,7 @@
       </div>
 
 
-      <h2>What the Home Health Benefit Covers</h2>
+      <h2 id="what-the-home-health-benefit-covers">What the Home Health Benefit Covers</h2>
       <p>Medicare Advantage plans must cover all home health services that Original Medicare covers, and many plans add additional visits on top of that. Covered services fall into three main areas:</p>
 
       <h3>Skilled Nursing Care at Home</h3>
@@ -175,7 +198,7 @@
       <h3>Home Health Aides and Social Workers</h3>
       <p>A home health aide can provide personal care such as bathing and grooming, but only when a skilled nursing or therapy service is also being provided. A medical social worker can help you and your family with discharge planning, community resources, and coping with illness. Social workers are especially valuable for connecting you to programs you may not know about, such as Meals on Wheels, transportation assistance, and caregiver support groups.</p>
 
-      <h2>Who Qualifies for Home Health</h2>
+      <h2 id="who-qualifies-for-home-health">Who Qualifies for Home Health</h2>
       <p>To qualify for the home health benefit, you must meet two requirements at the same time. First, you must be <strong>homebound</strong>. Second, you must need <strong>skilled nursing or therapy</strong>.</p>
       <p><strong>Homebound</strong> does not mean you are bedridden or cannot leave home at all. It means that leaving home requires a considerable and taxing effort. You may still qualify as homebound if you use a walker or wheelchair, if going outside causes significant shortness of breath or pain, or if you need the help of another person to leave safely. Attending religious services, occasional medical appointments, or infrequent outings do not disqualify you from being homebound.</p>
       <p><strong>Common situations that qualify:</strong></p>
@@ -188,11 +211,11 @@
         <li>Recent hospitalization with ongoing medical needs</li>
       </ul>
 
-      <h2>How Many Visits Are Covered</h2>
+      <h2 id="how-many-visits-are-covered">How Many Visits Are Covered</h2>
       <p>There is no fixed limit on the number of home health visits covered by Medicare Advantage. Coverage continues as long as you remain homebound, your doctor continues to certify that skilled care is needed, and you are making progress or your condition requires ongoing maintenance care.</p>
       <p>This is different from some other benefits. There is no "30 visit maximum" or annual cap. The key is that a doctor must order and certify the services on a regular basis, typically every 60 days, and you must continue to meet the homebound criteria.</p>
 
-      <h2>How to Get Home Health Started</h2>
+      <h2 id="how-to-get-home-health-started">How to Get Home Health Started</h2>
       <p>The process starts with your doctor. Here are the steps:</p>
       <ol>
         <li><strong>Talk to your doctor.</strong> Tell your doctor that you are having difficulty with daily activities, that leaving home is a significant effort, or that you need skilled care at home. Ask whether home health would be appropriate for your situation.</li>
@@ -202,15 +225,15 @@
         <li><strong>Services begin.</strong> A nurse or therapist from the agency will visit your home, assess your needs, and develop a care plan in coordination with your doctor.</li>
       </ol>
 
-      <h2>Medicare Advantage vs. Original Medicare for Home Health</h2>
+      <h2 id="medicare-advantage-vs-original-medicare-for-home-health">Medicare Advantage vs. Original Medicare for Home Health</h2>
       <p>By law, Medicare Advantage plans must cover home health at least as generously as Original Medicare. In practice, most MA plans cover home health with no copay for as long as you remain eligible. Some MA plans go further and cover additional "custodial" or "non-skilled" home care visits that Original Medicare does not cover.</p>
       <p>However, MA plans may require you to use in-network home health agencies. Using an out-of-network agency without prior authorization could result in higher costs or a denial. Always confirm which agencies are in your plan's network before services begin.</p>
 
-      <h2>What Home Health Does NOT Cover</h2>
+      <h2 id="what-home-health-does-not-cover">What Home Health Does NOT Cover</h2>
       <p>Home health does not cover 24-hour-a-day care at home, meals delivered to your home (though some MA plans cover this separately), or homemaker services like housekeeping and laundry if no skilled care is also being provided. Long-term custodial care, such as ongoing personal care with no medical component, is not covered by Medicare.</p>
       <p>If you need non-medical home care on an ongoing basis, contact your local Area Agency on Aging (aging.org) to learn about community resources and state-funded programs that may help.</p>
 
-      <h2>Equipment That Supports Recovery at Home</h2>
+      <h2 id="equipment-that-supports-recovery-at-home">Equipment That Supports Recovery at Home</h2>
       <p>When you receive home health services, your doctor or therapist may also recommend durable medical equipment to support your safety and recovery. A rollator walker can help you move safely through your home while you rebuild strength. Non-slip bath mats are a simple addition to the bathroom that reduce fall risk during recovery. Both of these items may be covered under your plan's DME or home safety benefit.</p>
 
     </article>
@@ -270,13 +293,15 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 

@@ -119,7 +119,8 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h3 { font-size: 1.375rem; font-weight: 700; color: #111827; margin-top: 1.75rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -130,6 +131,12 @@
     th { background: #F9FAFB; text-align: left; padding: 0.6rem 0.75rem; border: 1px solid #E5E7EB; color: #111827; font-weight: 600; }
     td { padding: 0.6rem 0.75rem; border: 1px solid #E5E7EB; color: #4B5563; vertical-align: top; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -137,24 +144,24 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
       </div>
       <span class="font-semibold text-gray-900 text-sm tracking-tight">AdvantageGuide</span>
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
 <main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">General</span>
     </nav>
     <div class="rounded-xl mb-6 px-5 py-4 flex items-center justify-between" style="background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);">
@@ -162,13 +169,29 @@
         <span class="text-xs font-semibold bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">General</span>
         <span class="text-xs" style="color: #4B5563; opacity: 0.6;">7 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#4B5563" stroke-width="1.5" viewBox="0 0 40 40"><rect x="8" y="6" width="24" height="30" rx="3"/><path d="M14 16h12M14 22h12M14 28h8" stroke-linecap="round"/><rect x="16" y="4" width="8" height="4" rx="1"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#4B5563" stroke-width="1.5" viewBox="0 0 40 40"><rect x="8" y="6" width="24" height="30" rx="3"/><path d="M14 16h12M14 22h12M14 28h8" stroke-linecap="round"/><rect x="16" y="4" width="8" height="4" rx="1"/></svg>
+    </div>
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/general-documents.jpg" alt="Senior couple reviewing Medicare documents together at home" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Medicare Advantage vs. Original Medicare: Supplemental Benefits Compared</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
     <article class="prose">
 
       <p>The biggest difference between Medicare Advantage and Original Medicare comes down to supplemental benefits. Original Medicare covers hospitalization and medical services, but it does not pay for routine dental care, vision, <a href="/blog/does-medicare-advantage-cover-hearing-aids.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">hearing aids</a>, over-the-counter health products, home safety modifications, or fitness programs. Medicare Advantage plans are required to cover everything Original Medicare covers, and most plans layer on a significant set of extra benefits that can be worth hundreds or even thousands of dollars per year. This guide walks through each benefit category side by side so you can see exactly what each option includes.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#what-is-original-medicare" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Is Original Medicare?</a></li>
+          <li><a href="#what-is-medicare-advantage" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Is Medicare Advantage?</a></li>
+          <li><a href="#side-by-side-comparison-what-each-option-covers" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Side-by-Side Comparison: What Each Option Covers</a></li>
+          <li><a href="#supplemental-benefits-that-medicare-advantage-plans-commonly" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Supplemental Benefits That Medicare Advantage Plans Commonly Add</a></li>
+          <li><a href="#the-main-trade-off-provider-networks" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">The Main Trade-Off: Provider Networks</a></li>
+          <li><a href="#if-you-are-already-on-medicare-advantage-use-your-benefits" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">If You Are Already on Medicare Advantage, Use Your Benefits</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -188,7 +211,7 @@
       </div>
 
 
-      <h2>What Is Original Medicare?</h2>
+      <h2 id="what-is-original-medicare">What Is Original Medicare?</h2>
       <p>Original Medicare is the federal health insurance program managed directly by the U.S. government. It has two parts:</p>
       <ul>
         <li><strong>Part A (Hospital Insurance):</strong> Covers inpatient hospital stays, skilled nursing facility care after a qualifying hospital stay, hospice, and some home health care.</li>
@@ -196,11 +219,11 @@
       </ul>
       <p>One important advantage of Original Medicare is provider flexibility. You can see any doctor, specialist, or hospital in the United States that accepts Medicare, without needing a referral or worrying about whether a provider is in-network. This is especially valuable for people who travel frequently or live in rural areas with limited provider options.</p>
 
-      <h2>What Is Medicare Advantage?</h2>
+      <h2 id="what-is-medicare-advantage">What Is Medicare Advantage?</h2>
       <p>Medicare Advantage (also called Part C) is an alternative way to receive your Medicare coverage. Instead of getting your benefits directly from the federal government, you enroll in a private insurance plan that is approved by Medicare. The plan must cover everything Part A and Part B cover, and most plans include additional benefits beyond the basics.</p>
       <p>Medicare Advantage plans typically operate as HMO or PPO networks, which means you generally need to use in-network providers and, in HMO plans, get referrals to see specialists. This is the main trade-off compared to Original Medicare. In exchange for accepting a network, most members gain access to a range of supplemental benefits not available under Original Medicare.</p>
 
-      <h2>Side-by-Side Comparison: What Each Option Covers</h2>
+      <h2 id="side-by-side-comparison-what-each-option-covers">Side-by-Side Comparison: What Each Option Covers</h2>
       <table>
         <thead>
           <tr>
@@ -273,7 +296,7 @@
         </tbody>
       </table>
 
-      <h2>Supplemental Benefits That Medicare Advantage Plans Commonly Add</h2>
+      <h2 id="supplemental-benefits-that-medicare-advantage-plans-commonly">Supplemental Benefits That Medicare Advantage Plans Commonly Add</h2>
 
       <p><strong>Dental coverage.</strong> Most Medicare Advantage plans include some level of routine dental coverage, such as annual cleanings, X-rays, and fillings. Higher-value plans may cover more extensive work including crowns, extractions, and dentures, typically up to an annual maximum.</p>
 
@@ -289,11 +312,11 @@
 
       <p><strong>Transportation.</strong> Some plans include a limited number of one-way trips to medical appointments per year, which is helpful for members who no longer drive.</p>
 
-      <h2>The Main Trade-Off: Provider Networks</h2>
+      <h2 id="the-main-trade-off-provider-networks">The Main Trade-Off: Provider Networks</h2>
       <p>The most significant limitation of Medicare Advantage compared to Original Medicare is the provider network. Under Original Medicare, you can see any doctor or specialist in the country who accepts Medicare. Under most Medicare Advantage plans, you are limited to a network of providers in your area. Going outside the network typically means higher costs or no coverage at all in HMO plans.</p>
       <p>For people who receive care at major research hospitals or who see specialists across multiple health systems, this network restriction can be a meaningful disadvantage. However, for people who receive most of their care locally from a primary care doctor and a small set of specialists, the network restriction rarely causes problems in practice.</p>
 
-      <h2>If You Are Already on Medicare Advantage, Use Your Benefits</h2>
+      <h2 id="if-you-are-already-on-medicare-advantage-use-your-benefits">If You Are Already on Medicare Advantage, Use Your Benefits</h2>
       <p>If you are already enrolled in a Medicare Advantage plan, the supplemental benefits described above are available to you now. Many members do not realize how much their plan covers or do not know how to access benefits like the OTC allowance, home safety modifications, or hearing aids. These benefits have annual limits and reset dates, and unused funds are forfeited when the period ends.</p>
       <p>Use AdvantageGuide to find out exactly which benefits your specific Medicare Advantage plan includes and get step-by-step instructions for claiming each one before the deadline.</p>
 
@@ -361,13 +384,15 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 

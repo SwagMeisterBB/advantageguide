@@ -93,6 +93,12 @@
   <style>
     body { font-family: 'Source Sans 3', -apple-system, sans-serif; background: #FAFAF8; }
     h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -101,7 +107,7 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
@@ -110,7 +116,7 @@
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
@@ -125,6 +131,10 @@
     <!-- About AdvantageGuide -->
     <section class="mb-12">
       <h2 class="text-xl font-bold text-gray-900 mb-4">Our Mission</h2>
+
+      <div class="rounded-xl overflow-hidden mb-8" style="max-height:240px">
+        <img src="/images/about-doctor.jpg" alt="Healthcare professional consulting with a senior patient" class="w-full object-cover" style="height:240px;object-position:center" width="800" height="240" loading="lazy" />
+      </div>
       <p class="text-lg text-gray-700 leading-relaxed mb-4">Most Medicare Advantage members are sitting on benefits they never use. Their plans include allowances for over-the-counter health products, home safety modifications like grab bars and shower chairs, and durable medical equipment coverage that can save hundreds of dollars a year. But the information is buried in dense plan documents, and no one tells members what they have or how to use it.</p>
       <p class="text-lg text-gray-700 leading-relaxed mb-4">AdvantageGuide exists to fix that.</p>
       <p class="text-lg text-gray-700 leading-relaxed mb-4">Founded by Austin Edy, AdvantageGuide is built on a simple idea: if you are paying for a Medicare Advantage plan, you should actually get everything it covers. We research the benefits, explain them in plain language, and show you the exact steps to claim them. No jargon. No confusion. Just clear answers about what your plan pays for and how to get it.</p>
@@ -182,7 +192,7 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 

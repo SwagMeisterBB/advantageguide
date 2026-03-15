@@ -135,7 +135,7 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
     .prose h3 { font-size: 1.375rem; font-weight: 600; color: #1f2937; margin-top: 1.5rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
@@ -144,6 +144,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -151,24 +157,24 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
       </div>
       <span class="font-semibold text-gray-900 text-sm tracking-tight">AdvantageGuide</span>
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
 <main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">OTC Allowance</span>
     </nav>
     <div class="rounded-xl mb-6 px-5 py-4 flex items-center justify-between" style="background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);">
@@ -176,13 +182,32 @@
         <span class="text-xs font-semibold bg-purple-50 text-purple-700 px-2.5 py-1 rounded-full">OTC Allowance</span>
         <span class="text-xs" style="color: #7C3AED; opacity: 0.6;">6 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#7C3AED" stroke-width="1.5" viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="20" rx="3"/><path d="M20 16v8M16 20h8" stroke-linecap="round"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#7C3AED" stroke-width="1.5" viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="20" rx="3"/><path d="M20 16v8M16 20h8" stroke-linecap="round"/></svg>
+    </div>
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/otc-medicine.jpg" alt="Senior woman reviewing over-the-counter health products" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Aetna Medicare Advantage OTC Benefit: How It Works in 2026</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
     <article class="prose">
 
       <p>Your Aetna Medicare Advantage extra benefits card (also called the Aetna OTC card) gives you a quarterly allowance of <strong>$25 to $150</strong> to buy health products at CVS, Walmart, Walgreens, and other approved stores at no cost. In 2026, most Aetna plans load your <a href="/blog/what-is-medicare-advantage-otc-benefit.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">OTC (Over-the-Counter) allowance</a> onto this card every quarter, and you can use it in-store, online, or through the Aetna OTC catalog. This guide covers what you can buy with your extra benefits card, how to check your balance, and how to get the most out of every dollar.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#what-is-the-aetna-otc-benefit" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Is the Aetna OTC Benefit?</a></li>
+          <li><a href="#what-can-i-buy-with-my-aetna-extra-benefits-card" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Can I Buy With My Aetna Extra Benefits Card?</a></li>
+          <li><a href="#how-much-does-aetna-give-for-otc" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How Much Does Aetna Give for OTC?</a></li>
+          <li><a href="#how-to-check-your-aetna-otc-balance" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How to Check Your Aetna OTC Balance</a></li>
+          <li><a href="#where-can-you-use-your-aetna-otc-card-in-store" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Where Can You Use Your Aetna OTC Card In-Store?</a></li>
+          <li><a href="#ordering-otc-items-online-through-aetna" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Ordering OTC Items Online Through Aetna</a></li>
+          <li><a href="#what-does-the-aetna-otc-benefit-cover" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Does the Aetna OTC Benefit Cover?</a></li>
+          <li><a href="#aetnas-healthy-foods-benefit-an-extra-perk-in-some-plans" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Aetna's Healthy Foods Benefit: An Extra Perk in Some Plans</a></li>
+          <li><a href="#other-supplemental-benefits-in-aetna-medicare-advantage-plan" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Other Supplemental Benefits in Aetna Medicare Advantage Plans</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -207,17 +232,17 @@
         <p class="text-sm text-yellow-700">Benefits vary by specific Aetna plan and location. The information below reflects common features across many Aetna Medicare Advantage plans, but your plan may differ. Always log into your member portal at aetna.com or call Member Services at the number on the back of your Aetna card to confirm your exact benefit amount and covered items.</p>
       </div>
 
-      <h2>What Is the Aetna OTC Benefit?</h2>
+      <h2 id="what-is-the-aetna-otc-benefit">What Is the Aetna OTC Benefit?</h2>
       <p>The OTC benefit is a prepaid quarterly allowance that Aetna loads onto your OTC benefit card. You use this card at approved retail stores or through Aetna's online ordering portal to purchase eligible health and wellness products. Because Aetna is part of CVS Health, Aetna members often find that CVS stores are a particularly convenient place to shop. The integration between Aetna and CVS can also make it easier to find eligible items, since CVS staff are generally familiar with how the benefit works.</p>
       <p>The benefit covers everyday items that Original Medicare does not pay for, such as blood pressure monitors, vitamins, compression socks, dental supplies, and more. Using this benefit is one of the simplest ways to reduce your out-of-pocket spending on health essentials each quarter.</p>
 
-      <h2>What Can I Buy With My Aetna Extra Benefits Card?</h2>
+      <h2 id="what-can-i-buy-with-my-aetna-extra-benefits-card">What Can I Buy With My Aetna Extra Benefits Card?</h2>
       <p>Your Aetna extra benefits card (the OTC card) can be used to buy a wide range of health products. Common items include blood pressure monitors, pulse oximeters, vitamins and supplements, compression socks, first aid supplies, dental care items, cold and allergy medicine, pain relievers, digestive health products, and personal care items. The exact list depends on your plan, but you can view your full Aetna OTC catalog by logging into aetna.com or calling the number on the back of your card.</p>
 
-      <h2>How Much Does Aetna Give for OTC?</h2>
+      <h2 id="how-much-does-aetna-give-for-otc">How Much Does Aetna Give for OTC?</h2>
       <p>Most Aetna Medicare Advantage plans provide between <strong>$25 and $150 per quarter</strong> in OTC allowance. Some plans may offer more, depending on the specific plan design and the county where you live. The allowance resets quarterly. Unused funds at the end of the quarter are forfeited and do not roll over to the next period, so it is worth shopping before each reset date.</p>
 
-      <h2>How to Check Your Aetna OTC Balance</h2>
+      <h2 id="how-to-check-your-aetna-otc-balance">How to Check Your Aetna OTC Balance</h2>
       <p>There are two easy ways to check your current OTC balance:</p>
       <ul>
         <li><strong>Log into aetna.com:</strong> Sign in to your member account and navigate to the supplemental benefits or OTC benefit section of your dashboard.</li>
@@ -225,7 +250,7 @@
       </ul>
       <p>Checking your balance a week or two before the end of each quarter gives you enough time to shop and use any remaining funds before they expire.</p>
 
-      <h2>Where Can You Use Your Aetna OTC Card In-Store?</h2>
+      <h2 id="where-can-you-use-your-aetna-otc-card-in-store">Where Can You Use Your Aetna OTC Card In-Store?</h2>
       <p>Aetna's OTC card is accepted at a network of approved retail stores. Common locations include:</p>
       <ul>
         <li>CVS Pharmacy (particularly well-integrated due to the CVS Health connection)</li>
@@ -236,10 +261,10 @@
       </ul>
       <p>At checkout, swipe or tap your Aetna OTC card like a debit card. The system automatically approves eligible items and flags ineligible ones. If your cart includes a mix of covered and non-covered products, pay for the ineligible items separately using another payment method.</p>
 
-      <h2>Ordering OTC Items Online Through Aetna</h2>
+      <h2 id="ordering-otc-items-online-through-aetna">Ordering OTC Items Online Through Aetna</h2>
       <p>Many Aetna plans also offer online OTC ordering through the member portal at aetna.com. Online ordering is a great option for members who prefer home delivery or have difficulty traveling to a store. Log into your account, navigate to the OTC benefit section, browse the eligible product catalog, and place your order. Items ship to your home, typically at no extra charge, within a few business days.</p>
 
-      <h2>What Does the Aetna OTC Benefit Cover?</h2>
+      <h2 id="what-does-the-aetna-otc-benefit-cover">What Does the Aetna OTC Benefit Cover?</h2>
       <p>The exact list of covered items depends on your specific plan, but most Aetna OTC benefits include products in these categories:</p>
 
       <h3>Health Monitoring Equipment</h3>
@@ -257,10 +282,10 @@
       <h3>Home Safety and Incontinence</h3>
       <p>Incontinence pads and protective underwear are covered under most Aetna plans. Some Aetna plans also include non-slip bath mats and other basic safety items under the OTC benefit, which can overlap with the separate <a href="/blog/medicare-advantage-home-safety-benefit.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">home safety benefit</a>. Check your specific plan to see if safety items are included in your OTC catalog.</p>
 
-      <h2>Aetna's Healthy Foods Benefit: An Extra Perk in Some Plans</h2>
+      <h2 id="aetnas-healthy-foods-benefit-an-extra-perk-in-some-plans">Aetna's Healthy Foods Benefit: An Extra Perk in Some Plans</h2>
       <p>Some Aetna Medicare Advantage plans also include a <strong>Healthy Foods benefit</strong> separate from the standard OTC allowance. This benefit provides funds specifically for purchasing nutritious groceries, including fresh produce, lean proteins, and whole grains, at participating grocery stores. If your plan includes this feature, the Healthy Foods funds may appear as a separate balance on your OTC card. Ask Member Services whether your plan includes a Healthy Foods allowance and how to use it.</p>
 
-      <h2>Other Supplemental Benefits in Aetna Medicare Advantage Plans</h2>
+      <h2 id="other-supplemental-benefits-in-aetna-medicare-advantage-plan">Other Supplemental Benefits in Aetna Medicare Advantage Plans</h2>
       <p>Beyond the OTC benefit, Aetna Medicare Advantage plans commonly include several other supplemental benefits not covered by Original Medicare. These may include:</p>
       <ul>
         <li>Dental coverage for cleanings, X-rays, fillings, and sometimes crowns</li>
@@ -343,13 +368,15 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 

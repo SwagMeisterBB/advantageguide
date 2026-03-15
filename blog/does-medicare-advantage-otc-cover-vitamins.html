@@ -111,7 +111,8 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h3 { font-size: 1.375rem; font-weight: 700; color: #111827; margin-top: 1.75rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -119,6 +120,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -127,7 +134,7 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
@@ -136,7 +143,7 @@
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
@@ -144,10 +151,10 @@
 <main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">OTC Allowance</span>
     </nav>
     <div class="rounded-xl mb-6 px-5 py-4 flex items-center justify-between" style="background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);">
@@ -155,13 +162,29 @@
         <span class="text-xs font-semibold bg-purple-50 text-purple-700 px-2.5 py-1 rounded-full">OTC Allowance</span>
         <span class="text-xs" style="color: #7C3AED; opacity: 0.6;">6 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#7C3AED" stroke-width="1.5" viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="20" rx="3"/><path d="M20 16v8M16 20h8" stroke-linecap="round"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#7C3AED" stroke-width="1.5" viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="20" rx="3"/><path d="M20 16v8M16 20h8" stroke-linecap="round"/></svg>
+    </div>
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/otc-medicine.jpg" alt="Senior woman reviewing over-the-counter health products" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Does Medicare Advantage OTC Benefit Cover Vitamins and Supplements?</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
     <article class="prose">
 
       <p>Many Medicare Advantage <a href="/blog/what-is-medicare-advantage-otc-benefit.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">OTC (Over-the-Counter) benefit</a> plans do cover vitamins and supplements, but coverage depends entirely on your specific plan's catalog. Common items that appear in OTC catalogs include multivitamins, vitamin D, vitamin C, calcium supplements, fish oil and omega-3 capsules, B-complex vitamins, and probiotics. However, because every plan builds its own catalog, you need to check your plan's specific approved list to know for certain which vitamins and supplement brands are covered for you.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#why-coverage-varies-from-plan-to-plan" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Why Coverage Varies from Plan to Plan</a></li>
+          <li><a href="#vitamins-and-supplements-that-are-commonly-covered" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Vitamins and Supplements That Are Commonly Covered</a></li>
+          <li><a href="#what-is-not-covered-even-if-it-is-a-supplement" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Is Not Covered, Even If It Is a Supplement</a></li>
+          <li><a href="#does-it-matter-where-you-buy-your-vitamins" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Does It Matter Where You Buy Your Vitamins?</a></li>
+          <li><a href="#how-to-check-your-plans-vitamin-coverage" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How to Check Your Plan's Vitamin Coverage</a></li>
+          <li><a href="#using-your-otc-balance-for-vitamins-at-end-of-quarter" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Using Your OTC Balance for Vitamins at End of Quarter</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -181,11 +204,11 @@
       </div>
 
 
-      <h2>Why Coverage Varies from Plan to Plan</h2>
+      <h2 id="why-coverage-varies-from-plan-to-plan">Why Coverage Varies from Plan to Plan</h2>
       <p>Medicare sets the rules for what types of products can be included in an OTC benefit, but each Medicare Advantage plan decides its own catalog. One plan might cover a wide range of vitamins in many brands and sizes. Another plan in the same county might offer vitamins only through its online ordering portal, or might limit coverage to a specific brand or bottle size.</p>
       <p>This means you cannot assume that because your neighbor's plan covers vitamin D, yours does too. The only reliable way to know is to look at your own plan's OTC catalog.</p>
 
-      <h2>Vitamins and Supplements That Are Commonly Covered</h2>
+      <h2 id="vitamins-and-supplements-that-are-commonly-covered">Vitamins and Supplements That Are Commonly Covered</h2>
       <p>While the specific products vary, these categories appear frequently in Medicare Advantage OTC catalogs across many plans:</p>
       <ul>
         <li><strong>Multivitamins:</strong> Daily multivitamins formulated for adults 50 and older are among the most commonly listed supplement items. Look for brands like Centrum Silver or store-brand equivalents.</li>
@@ -198,7 +221,7 @@
         <li><strong>Magnesium:</strong> Magnesium glycinate or magnesium citrate supplements are sometimes covered, particularly in plans with broader supplement coverage.</li>
       </ul>
 
-      <h2>What Is Not Covered, Even If It Is a Supplement</h2>
+      <h2 id="what-is-not-covered-even-if-it-is-a-supplement">What Is Not Covered, Even If It Is a Supplement</h2>
       <p>Even if your plan covers vitamins, there are limits to what counts as an eligible supplement purchase:</p>
       <ul>
         <li><strong>Prescription-strength supplements:</strong> High-dose prescription omega-3 medications or prescription vitamin D formulations (like 50,000 IU capsules) are not covered by the OTC benefit. Those go through your Part D drug coverage.</li>
@@ -207,11 +230,11 @@
         <li><strong>Certain herbal supplements:</strong> Some plans include basic herbal items like melatonin, while others do not. Specialty herbal supplements are frequently excluded.</li>
       </ul>
 
-      <h2>Does It Matter Where You Buy Your Vitamins?</h2>
+      <h2 id="does-it-matter-where-you-buy-your-vitamins">Does It Matter Where You Buy Your Vitamins?</h2>
       <p>Yes, the retailer matters. Your OTC card will only recognize covered vitamins by their product barcode at approved stores. A vitamin that is covered when you order it through your plan's online OTC portal may not ring up as eligible when you buy it at a physical store, because the in-store inventory may carry a different size or UPC than what is in the plan's system.</p>
       <p>If you want to be completely certain your vitamins are covered before checkout, use your plan's online OTC ordering portal. Every item shown there is pre-approved for your specific plan. If you prefer shopping in-store, check whether your plan's app allows barcode scanning to verify coverage before you add an item to your cart.</p>
 
-      <h2>How to Check Your Plan's Vitamin Coverage</h2>
+      <h2 id="how-to-check-your-plans-vitamin-coverage">How to Check Your Plan's Vitamin Coverage</h2>
       <p>There are three straightforward ways to confirm which vitamins and supplements your plan covers:</p>
       <ol>
         <li><strong>Review your OTC catalog online:</strong> Log into your member portal and navigate to the OTC benefit section. Many plans display a searchable catalog where you can type "vitamin" or "supplement" to see all covered items.</li>
@@ -220,7 +243,7 @@
       </ol>
       <p>It is also worth checking the catalog at the start of each new plan year, since catalogs are updated annually and the vitamin coverage may change from one year to the next.</p>
 
-      <h2>Using Your OTC Balance for Vitamins at End of Quarter</h2>
+      <h2 id="using-your-otc-balance-for-vitamins-at-end-of-quarter">Using Your OTC Balance for Vitamins at End of Quarter</h2>
       <p>Vitamins and supplements are an excellent choice for spending down an OTC balance before it resets. They are consumable, have a long shelf life, and most adults over 65 can benefit from taking them regularly. If you find yourself with $30 or $40 left in your OTC account near the end of a quarter, picking up a bottle of vitamin D, a multivitamin, or a three-month supply of fish oil is a practical way to use those funds before they expire. Check your catalog first, then order online through your plan's portal or pick them up at a covered store.</p>
 
     
@@ -291,13 +314,15 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 
