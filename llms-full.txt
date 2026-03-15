@@ -1,0 +1,155 @@
+# AdvantageGuide
+
+> A plain-language guide to Medicare Advantage supplemental benefits, covering OTC allowances, home safety modifications, DME coverage, and fall prevention for seniors aging in place.
+
+## About
+
+AdvantageGuide (https://advantageguide.health) is an independent reference site that helps Medicare Advantage members and their caregivers identify, understand, and claim supplemental benefits they are already paying for through their plan premiums. The site covers 50 topics across OTC allowances, home safety modifications, durable medical equipment (DME), fall prevention, dental, vision, hearing, and condition-specific post-surgical benefits. It includes an interactive tool that matches members to covered products based on their plan and benefit category.
+
+AdvantageGuide was created by Austin Edy, who has 10+ years of experience in health technology and 5+ years of dedicated Medicare research, with a background scaling health tech startups from six-figure to nine-figure revenue. He founded AdvantageGuide after helping his parents navigate their Medicare Advantage benefits and discovering how much coverage goes unclaimed by members who simply do not know what their plan includes.
+
+The site's methodology is grounded in primary sources: official CMS (Centers for Medicare & Medicaid Services) documents, Summary of Benefits filings from major carriers, carrier-specific plan data for the current plan year, and CDC research on fall prevention and aging. All content is reviewed and updated on a regular basis, with the most recent review cycle completed in March 2026. AdvantageGuide is not affiliated with any insurance carrier or government agency. It is monetized through Amazon Associates affiliate links to products that are commonly covered under Medicare Advantage supplemental benefits.
+
+## Key Facts
+
+### OTC (Over-the-Counter) Benefit
+
+- The OTC benefit is a supplemental benefit unique to Medicare Advantage; Original Medicare does not offer it.
+- Members receive a pre-loaded quarterly or annual allowance to spend on approved health items.
+- Most members use less than half of their OTC allowance because they do not know what the benefit covers.
+- Typical OTC allowance ranges (2026 plan data):
+  - Basic plans: $25 to $50 per quarter ($100 to $200 per year)
+  - Mid-tier plans: $75 to $150 per quarter ($300 to $600 per year)
+  - Premium plans: $200+ per quarter ($800+ per year)
+- OTC allowance by major carrier (2026 plans):
+  - UnitedHealthcare: $30 - $200+ per quarter ($120 - $800+ per year). Order online, by phone, or in-store at Walmart/Walgreens.
+  - Humana: $25 - $150+ per quarter ($100 - $600+ per year). Order online, by phone, or in-store at CVS/Walgreens.
+  - Aetna: $25 - $125+ per quarter ($100 - $500+ per year). Order online or by phone.
+  - Anthem BCBS: $35 - $175+ per quarter ($140 - $700+ per year). Order online, by phone, or in-store at Walmart.
+- Unused OTC funds do not roll over to the next period in most plans. Funds remaining at the end of the quarter or year are forfeited.
+- Common OTC-eligible item categories: blood pressure monitors, pulse oximeters, blood glucose meters and test strips, thermometers, weight scales, TENS units, heating pads, OTC pain relievers, topical pain creams, back/knee/ankle supports, multivitamins, vitamin D, calcium, fish oil, fiber supplements, adult incontinence products, wound care supplies, toothbrushes, denture adhesives, reading glasses, hearing aid batteries, non-slip bath mats, night lights, compression socks, gait belts, reachers, first aid kits.
+- OTC benefits do NOT cover: prescription medications, food/beverages/meal supplements (unless plan has separate Healthy Food benefit), personal care products (shampoo, soap) unless specifically listed, DME items (walkers, wheelchairs, hospital beds), or any item not in the plan's approved catalog.
+- Four methods to check OTC balance: (1) call Member Services, (2) log into member portal or app, (3) check balance kiosk at retail stores, (4) review Explanation of Benefits (EOB) statement.
+- Humana Member Services for balance checks: 1-800-457-4708. UnitedHealthcare: myuhc.com. Aetna: aetna.com member portal.
+
+### Home Safety Benefit
+
+- The Home Safety benefit (also called Home Modification benefit) is a supplemental benefit in most Medicare Advantage plans. Original Medicare does not offer it.
+- Provides an annual dollar allowance for modifications that reduce fall risk in the home.
+- Typical allowance: $200 to $500 per year. Some plans in competitive markets offer up to $1,500 per year.
+- Allowance resets January 1 each year. Unused funds do not carry over.
+- Covered items include: grab bar installation (shower, tub, beside toilet, hallways), raised toilet seats and toilet safety rails, shower chairs and bath benches, non-slip bath mats and tub mats, threshold ramps for doorways, handrails and stair rails, motion-sensor night lights, portable wheelchair ramps.
+- Some plans also cover doorway widening for wheelchair access, lever-style door handles, and roll-in shower modifications.
+- Renter-friendly options exist: suction-cup grab bars, non-slip mats, night lights, and portable ramps can be installed without permanent modifications.
+- For most standard modifications (two grab bars, a shower chair, a threshold ramp), the typical $200 to $500 allowance is often sufficient to cover everything.
+- The Home Safety benefit and DME benefit can be used simultaneously.
+- Typical product costs: grab bar $25-45, shower chair $35-55, non-slip bath mat $15-25, threshold ramp $30-50, motion-sensor night lights (4-pack) $20-35.
+
+### Fall Prevention
+
+- Falls are the leading cause of injury-related death among adults 65 and older (CDC).
+- The CDC estimates one in four older adults falls each year; most falls happen at home in the bathroom, on stairs, or getting in/out of bed.
+- Three separate Medicare Advantage benefits cover fall prevention items:
+  - Home Safety: grab bars, non-slip mats, ramps, toilet rails, handrails ($200-$500/year, no prescription needed)
+  - DME: walkers, rollators, canes, wheelchairs, transfer belts ($0 copay in most plans, prescription required)
+  - OTC: non-slip socks, night lights, reachers, bath treads ($100-$600+/year, no prescription needed)
+- Many plans also cover a Personal Emergency Response System (PERS) / medical alert device with fall detection. Coverage varies: some plans provide the device at no cost, others cover the monthly monitoring fee ($30-$60/month savings vs. out-of-pocket).
+- Home health physical therapy may be available for fall risk: a physical therapist visits the home, assesses balance and strength, identifies fall hazards, and develops a personalized exercise program. Requires homebound status and doctor's order. Most MA plans cover with no copay.
+
+### Durable Medical Equipment (DME)
+
+- DME requires a doctor's prescription documenting medical necessity.
+- Most MA plans require use of an in-network DME supplier.
+- Common covered DME: rollator walkers ($65-120), standard walkers, canes, power wheelchairs, hospital beds, bedside commodes, transfer benches, knee scooters, CPAP machines, lift chairs (partial coverage).
+- Equipment ordered through the hospital at discharge is often covered with no out-of-pocket cost.
+
+### Medicare Advantage vs. Original Medicare
+
+- Supplemental benefits exclusive to Medicare Advantage (not available in Original Medicare): OTC allowance, home safety modifications, dental coverage (cleanings, X-rays, fillings, sometimes crowns/dentures), vision coverage (annual eye exams, frame/contact lens allowance), hearing benefits (hearing exams, hearing aid allowance), fitness programs (SilverSneakers), transportation to medical appointments, medical alert systems (PERS).
+
+### Appeals Process
+
+- Medicare Advantage denials can be appealed through five levels:
+  - Level 1 (Redetermination): Plan reviews the denial. Must file within 60 days. Plan must respond within 60 days (72 hours for expedited).
+  - Level 2 (Reconsideration): Independent Qualified Independent Contractor (QIC) reviews. Must file within 60 days. Response within 60 days (72 hours expedited).
+  - Level 3 (ALJ Hearing): Administrative Law Judge hearing. Available if amount in dispute is $180 or more (adjusted annually). Must file within 60 days.
+  - Level 4 (Medicare Appeals Council): Part of HHS. Must file within 60 days.
+  - Level 5 (Federal District Court): Available if amount exceeds $1,760 (adjusted annually).
+- A doctor's letter of medical necessity is the single most important document in a DME or service appeal.
+- For DME denials, the most common reason is insufficient documentation of medical necessity.
+- Free appeal assistance: SHIP (State Health Insurance Assistance Program) at shiphelp.org or 1-800-MEDICARE; Medicare Rights Center at 800-333-4114.
+
+### Caregiver Information
+
+- Caregivers must be authorized as a representative on the member's plan to speak on their behalf with Member Services.
+- Hospital discharge is a critical moment for benefit activation: request DME (walker, shower chair, raised toilet seat, grab bars) and home physical therapy before leaving the hospital.
+- Key questions for caregivers to ask Member Services: What is the OTC allowance amount? What is the Home Safety benefit amount? What are the reset dates? What is the claiming process for each benefit?
+
+## Core Pages
+- [Home](https://advantageguide.health/): Interactive tool helping Medicare Advantage members discover covered home health products
+- [Blog](https://advantageguide.health/blog/): 50 guides covering OTC benefits, DME, home safety, and condition-specific Medicare Advantage coverage
+- [About](https://advantageguide.health/about.html): About AdvantageGuide and author Austin Edy
+
+## Popular Guides
+- [OTC Benefit Items List](https://advantageguide.health/blog/medicare-advantage-otc-benefit-items-list.html): Complete list of items covered by Medicare Advantage OTC benefits with categories and allowance ranges
+- [Fall Prevention Benefits](https://advantageguide.health/blog/medicare-advantage-fall-prevention-benefits.html): Guide to fall prevention benefits including Home Safety, DME, and OTC coverage
+- [How to Check OTC Balance](https://advantageguide.health/blog/how-to-check-medicare-advantage-otc-balance.html): Four methods to check your OTC benefit balance
+- [Benefits Most People Don't Know](https://advantageguide.health/blog/medicare-advantage-benefits-most-people-dont-know.html): Seven underutilized Medicare Advantage supplemental benefits
+- [Home Safety Benefit](https://advantageguide.health/blog/medicare-advantage-home-safety-benefit.html): How the Home Safety benefit covers grab bars, ramps, and bathroom modifications
+- [Hospital Discharge Equipment](https://advantageguide.health/blog/medicare-advantage-hospital-discharge-equipment.html): Equipment covered after hospital discharge
+- [Caregiver Guide](https://advantageguide.health/blog/medicare-advantage-caregiver-guide.html): How caregivers can help family members claim Medicare Advantage benefits
+
+## Coverage Guides by Product
+- [Grab Bars](https://advantageguide.health/blog/does-medicare-advantage-cover-grab-bars.html)
+- [Shower Chair](https://advantageguide.health/blog/does-medicare-advantage-cover-shower-chair.html)
+- [Hospital Bed](https://advantageguide.health/blog/does-medicare-advantage-cover-hospital-bed.html)
+- [Medical Alert System](https://advantageguide.health/blog/does-medicare-advantage-cover-medical-alert-system.html)
+- [Rollator Walker](https://advantageguide.health/blog/does-medicare-advantage-cover-rollator-walker.html)
+- [Power Wheelchair](https://advantageguide.health/blog/does-medicare-advantage-cover-power-wheelchair.html)
+- [CPAP Machine](https://advantageguide.health/blog/does-medicare-advantage-cover-cpap.html)
+- [Hearing Aids](https://advantageguide.health/blog/does-medicare-advantage-cover-hearing-aids.html)
+- [Lift Chair](https://advantageguide.health/blog/does-medicare-advantage-cover-lift-chair.html)
+- [Bed Rails](https://advantageguide.health/blog/does-medicare-advantage-cover-bed-rails.html)
+- [Bedside Commode](https://advantageguide.health/blog/does-medicare-advantage-cover-bedside-commode.html)
+- [Blood Pressure Monitor](https://advantageguide.health/blog/does-medicare-advantage-cover-blood-pressure-monitor.html)
+- [Knee Scooter](https://advantageguide.health/blog/does-medicare-advantage-cover-knee-scooter.html)
+- [Transfer Bench](https://advantageguide.health/blog/does-medicare-advantage-cover-transfer-bench.html)
+- [Raised Toilet Seat](https://advantageguide.health/blog/does-medicare-advantage-cover-raised-toilet-seat.html)
+- [Stair Lift](https://advantageguide.health/blog/does-medicare-advantage-cover-stair-lift.html)
+- [TENS Unit](https://advantageguide.health/blog/does-medicare-advantage-cover-tens-unit.html)
+- [Cane](https://advantageguide.health/blog/does-medicare-advantage-cover-cane.html)
+- [Compression Socks](https://advantageguide.health/blog/does-medicare-advantage-cover-compression-socks.html)
+- [Pulse Oximeter](https://advantageguide.health/blog/does-medicare-advantage-cover-pulse-oximeter.html)
+- [Non-Slip Bath Mat](https://advantageguide.health/blog/does-medicare-advantage-cover-non-slip-bath-mat.html)
+- [Gait Belt](https://advantageguide.health/blog/does-medicare-advantage-cover-gait-belt.html)
+- [Bathroom Ramp](https://advantageguide.health/blog/does-medicare-advantage-cover-bathroom-ramp.html)
+- [Dental Coverage](https://advantageguide.health/blog/does-medicare-advantage-cover-dental.html)
+- [Vision/Glasses](https://advantageguide.health/blog/does-medicare-advantage-cover-glasses-vision.html)
+
+## OTC Benefit by Insurer
+- [Humana OTC Benefit](https://advantageguide.health/blog/humana-medicare-advantage-otc-benefit.html)
+- [UnitedHealthcare OTC Benefit](https://advantageguide.health/blog/unitedhealthcare-medicare-advantage-otc-benefit.html)
+- [Aetna OTC Benefit](https://advantageguide.health/blog/aetna-medicare-advantage-otc-benefit.html)
+- [Humana Home Safety Benefit](https://advantageguide.health/blog/humana-medicare-advantage-home-safety-benefit.html)
+
+## How-To Guides
+- [How to Check Your OTC Balance](https://advantageguide.health/blog/how-to-check-medicare-advantage-otc-balance.html)
+- [How to Use OTC Benefit at Walmart](https://advantageguide.health/blog/how-to-use-medicare-advantage-otc-benefit-walmart.html)
+- [How to Check Your Benefits](https://advantageguide.health/blog/how-to-check-your-medicare-advantage-benefits.html)
+- [How to Appeal a Denial](https://advantageguide.health/blog/how-to-appeal-medicare-advantage-denial.html)
+- [OTC Benefit Online Ordering](https://advantageguide.health/blog/medicare-advantage-otc-benefit-online-ordering.html)
+- [What Is the OTC Benefit?](https://advantageguide.health/blog/what-is-medicare-advantage-otc-benefit.html)
+- [What Can You Buy with OTC?](https://advantageguide.health/blog/what-can-i-buy-with-medicare-advantage-otc-benefit.html)
+- [When Does OTC Reset?](https://advantageguide.health/blog/when-does-medicare-advantage-otc-benefit-reset.html)
+- [OTC Vitamins Coverage](https://advantageguide.health/blog/does-medicare-advantage-otc-cover-vitamins.html)
+
+## Condition-Specific Guides
+- [After Hip Replacement](https://advantageguide.health/blog/medicare-advantage-benefits-after-hip-replacement.html)
+- [After Knee Replacement](https://advantageguide.health/blog/medicare-advantage-benefits-after-knee-replacement.html)
+- [After Stroke](https://advantageguide.health/blog/medicare-advantage-benefits-after-stroke.html)
+- [End of Year Benefits](https://advantageguide.health/blog/medicare-advantage-benefits-end-of-year.html)
+- [MA vs Original Medicare](https://advantageguide.health/blog/medicare-advantage-vs-original-medicare-benefits.html)
+- [Home Health Benefit](https://advantageguide.health/blog/medicare-advantage-home-health-benefit.html)
+
+## Optional
+- [Sitemap](https://advantageguide.health/sitemap.xml)
