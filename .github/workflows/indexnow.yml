@@ -1,0 +1,58 @@
+# IndexNow — Notify Bing (and other engines) of updated URLs on every deploy
+# Parses sitemap.xml and sends a batch submission to the IndexNow API.
+
+name: IndexNow Submission
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    name: Submit URLs to IndexNow
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Parse sitemap and submit to IndexNow
+        run: |
+          # Extract all <loc> URLs from sitemap.xml
+          URLS=$(grep -oP '(?<=<loc>)[^<]+' sitemap.xml)
+
+          # Build a JSON array of URLs
+          URL_JSON=$(echo "$URLS" | jq -R -s 'split("\n") | map(select(length > 0))')
+          URL_COUNT=$(echo "$URL_JSON" | jq length)
+
+          # Build the IndexNow payload
+          PAYLOAD=$(jq -n \
+            --arg host "advantageguide.health" \
+            --arg key "advantageguide-health-indexnow" \
+            --arg keyLocation "https://advantageguide.health/advantageguide-health-indexnow.txt" \
+            --argjson urlList "$URL_JSON" \
+            '{host: $host, key: $key, keyLocation: $keyLocation, urlList: $urlList}')
+
+          echo "Submitting $URL_COUNT URLs to IndexNow..."
+
+          # Send batch request
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST \
+            "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$PAYLOAD")
+
+          HTTP_BODY=$(echo "$RESPONSE" | sed '$d')
+          HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+
+          echo "HTTP Status: $HTTP_CODE"
+          if [ -n "$HTTP_BODY" ]; then
+            echo "Response: $HTTP_BODY"
+          fi
+
+          if [ "$HTTP_CODE" -ge 400 ]; then
+            echo "::error::IndexNow submission failed with HTTP $HTTP_CODE"
+            exit 1
+          fi
+
+          echo "IndexNow submission successful — $URL_COUNT URLs submitted"
