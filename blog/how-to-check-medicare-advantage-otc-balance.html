@@ -70,10 +70,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="/styles.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .prose h2 { font-size: 1.35rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    body { font-family: 'Source Sans 3', -apple-system, sans-serif; }
+    h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; }
+    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -85,6 +86,7 @@
 </head>
 <body class="bg-gray-50">
 
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:z-50">Skip to main content</a>
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
@@ -102,7 +104,7 @@
   </div>
 </header>
 
-<main>
+<main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav class="flex items-center gap-2 text-sm text-gray-600 mb-8">
       <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
@@ -113,13 +115,13 @@
     </nav>
     <div class="flex items-center gap-3 mb-4">
       <span class="text-xs font-semibold bg-purple-50 text-purple-700 px-2.5 py-1 rounded-full">OTC Allowance</span>
-      <span class="text-xs text-gray-400">5 min read</span>
+      <span class="text-xs text-gray-500">5 min read</span>
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">How to Check Your Medicare Advantage OTC Benefit Balance</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
     <article class="prose">
 
-      <p>There are four reliable ways to check your Medicare Advantage <a href="/blog/what-is-medicare-advantage-otc-benefit.html" class="text-blue-600 hover:underline">OTC (Over-the-Counter) benefit</a> balance: call Member Services using the number on the back of your card, log into your plan's member portal or app, check a balance kiosk at select retail stores, or review your most recent Explanation of Benefits (EOB) statement. Knowing your balance before you shop helps you plan your purchases and make sure you do not leave money on the table before your benefit <a href="/blog/when-does-medicare-advantage-otc-benefit-reset.html" class="text-blue-600 hover:underline">reset</a>s.</p>
+      <p>There are four reliable ways to check your Medicare Advantage <a href="/blog/what-is-medicare-advantage-otc-benefit.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">OTC (Over-the-Counter) benefit</a> balance: call Member Services using the number on the back of your card, log into your plan's member portal or app, check a balance kiosk at select retail stores, or review your most recent Explanation of Benefits (EOB) statement. Knowing your balance before you shop helps you plan your purchases and make sure you do not leave money on the table before your benefit <a href="/blog/when-does-medicare-advantage-otc-benefit-reset.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">reset</a>s.</p>
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -231,10 +233,10 @@
 
     <div class="mt-8 pt-8 border-t border-gray-200">
       <p class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-4">More from the blog</p>
-      <div class="space-y-3">
-        <a href="/blog/what-is-medicare-advantage-otc-benefit.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">What Is the Medicare Advantage OTC Benefit? A Plain-Language Guide</a>
-        <a href="/blog/medicare-advantage-otc-benefit-items-list.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Medicare Advantage OTC Benefit: Full List of What You Can Buy</a>
-        <a href="/blog/what-can-i-buy-with-medicare-advantage-otc-benefit.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">What Can I Buy With My Medicare Advantage OTC Benefit?</a>
+      <div class="space-y-1">
+        <a href="/blog/what-is-medicare-advantage-otc-benefit.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">What Is the Medicare Advantage OTC Benefit? A Plain-Language Guide</a>
+        <a href="/blog/medicare-advantage-otc-benefit-items-list.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Medicare Advantage OTC Benefit: Full List of What You Can Buy</a>
+        <a href="/blog/what-can-i-buy-with-medicare-advantage-otc-benefit.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">What Can I Buy With My Medicare Advantage OTC Benefit?</a>
       </div>
     </div>
   </div>

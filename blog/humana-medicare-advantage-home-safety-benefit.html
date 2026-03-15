@@ -94,10 +94,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="/styles.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .prose h2 { font-size: 1.35rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    body { font-family: 'Source Sans 3', -apple-system, sans-serif; }
+    h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; }
+    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -108,6 +109,7 @@
   </style>
 </head>
 <body class="bg-gray-50">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:z-50">Skip to main content</a>
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
@@ -122,7 +124,7 @@
     </nav>
   </div>
 </header>
-<main>
+<main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav class="flex items-center gap-2 text-sm text-gray-600 mb-8">
       <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
@@ -133,13 +135,13 @@
     </nav>
     <div class="flex items-center gap-3 mb-4">
       <span class="text-xs font-semibold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full">Home Safety</span>
-      <span class="text-xs text-gray-400">6 min read</span>
+      <span class="text-xs text-gray-500">6 min read</span>
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Humana Medicare Advantage Home Safety Benefit: What It Covers</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
     <article class="prose">
 
-      <p>Many Humana Medicare Advantage plans include a home safety benefit that pays for modifications designed to reduce your fall risk at home. Most plans that include this benefit provide between <strong>$0 and $500 per year</strong> for items like <a href="/blog/does-medicare-advantage-cover-grab-bars.html" class="text-blue-600 hover:underline">grab bars</a>, threshold ramps, non-slip mats, and toilet safety rails. This is one of the most valuable supplemental benefits available in Medicare Advantage because it helps you stay independent at home while reducing the risk of a serious injury.</p>
+      <p>Many Humana Medicare Advantage plans include a home safety benefit that pays for modifications designed to reduce your fall risk at home. Most plans that include this benefit provide between <strong>$0 and $500 per year</strong> for items like <a href="/blog/does-medicare-advantage-cover-grab-bars.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">grab bars</a>, threshold ramps, non-slip mats, and toilet safety rails. This is one of the most valuable supplemental benefits available in Medicare Advantage because it helps you stay independent at home while reducing the risk of a serious injury.</p>
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -198,7 +200,7 @@
       <p>The Humana home safety benefit resets on <strong>January 1</strong> each year. Unused funds from the previous year do not carry over. If you are approaching the end of the plan year and have not used your home safety allowance, now is the time to act. Even a simple grab bar installation can make a meaningful difference in fall prevention, and if your plan covers it, there is no reason to leave that benefit unused.</p>
 
       <h2>Why Home Safety Modifications Matter</h2>
-      <p>Falls are the leading cause of injury-related emergency room visits among older adults. The bathroom is the most common location for falls in the home, which is why grab bars, non-slip mats, and <a href="/blog/does-medicare-advantage-cover-shower-chair.html" class="text-blue-600 hover:underline">shower chair</a>s are so important. A threshold ramp that costs $50 to $120 can eliminate a trip hazard that might otherwise lead to a broken hip and a hospital stay. When your plan pays for these items, using the benefit is simply smart planning.</p>
+      <p>Falls are the leading cause of injury-related emergency room visits among older adults. The bathroom is the most common location for falls in the home, which is why grab bars, non-slip mats, and <a href="/blog/does-medicare-advantage-cover-shower-chair.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">shower chair</a>s are so important. A threshold ramp that costs $50 to $120 can eliminate a trip hazard that might otherwise lead to a broken hip and a hospital stay. When your plan pays for these items, using the benefit is simply smart planning.</p>
       <p>Even if you feel steady on your feet today, adding safety modifications now is much easier than doing so after an injury. Caregivers helping a parent or loved one navigate their plan should make the home safety benefit one of the first things they look into.</p>
 
       <h2>Getting the Most from Your Humana Plan</h2>
@@ -265,10 +267,10 @@
 
     <div class="mt-8 pt-8 border-t border-gray-200">
       <p class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-4">More from the blog</p>
-      <div class="space-y-3">
-        <a href="/blog/does-medicare-advantage-cover-grab-bars.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Does Medicare Advantage Cover Grab Bars? Yes: Here's How</a>
-        <a href="/blog/medicare-advantage-home-safety-benefit.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Medicare Advantage Home Safety Benefit: What It Covers and How to Use It</a>
-        <a href="/blog/medicare-advantage-fall-prevention-benefits.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Medicare Advantage Benefits for Fall Prevention at Home</a>
+      <div class="space-y-1">
+        <a href="/blog/does-medicare-advantage-cover-grab-bars.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Does Medicare Advantage Cover Grab Bars? Yes: Here's How</a>
+        <a href="/blog/medicare-advantage-home-safety-benefit.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Medicare Advantage Home Safety Benefit: What It Covers and How to Use It</a>
+        <a href="/blog/medicare-advantage-fall-prevention-benefits.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Medicare Advantage Benefits for Fall Prevention at Home</a>
       </div>
     </div>
   </div>

@@ -25,10 +25,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="/styles.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .prose h2 { font-size: 1.35rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    body { font-family: 'Source Sans 3', -apple-system, sans-serif; }
+    h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; }
+    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -39,6 +40,7 @@
 </head>
 <body class="bg-gray-50">
 
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:z-50">Skip to main content</a>
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
@@ -56,7 +58,7 @@
   </div>
 </header>
 
-<main>
+<main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
 
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Privacy Policy</h1>
@@ -124,7 +126,7 @@
 
       <h2>Contact Us</h2>
 
-      <p>If you have questions about this privacy policy or how we handle your information, you can reach us at <a href="mailto:hello@advantageguide.health" class="text-blue-600 hover:underline">hello@advantageguide.health</a>.</p>
+      <p>If you have questions about this privacy policy or how we handle your information, you can reach us at <a href="mailto:hello@advantageguide.health" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">hello@advantageguide.health</a>.</p>
 
     </article>
 

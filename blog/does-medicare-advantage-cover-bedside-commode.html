@@ -118,10 +118,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="/styles.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .prose h2 { font-size: 1.35rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    body { font-family: 'Source Sans 3', -apple-system, sans-serif; }
+    h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; }
+    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -132,6 +133,7 @@
   </style>
 </head>
 <body class="bg-gray-50">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:z-50">Skip to main content</a>
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
@@ -148,7 +150,7 @@
     </nav>
   </div>
 </header>
-<main>
+<main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav class="flex items-center gap-2 text-sm text-gray-600 mb-8">
       <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
@@ -159,13 +161,13 @@
     </nav>
     <div class="flex items-center gap-3 mb-4">
       <span class="text-xs font-semibold bg-green-50 text-green-700 px-2.5 py-1 rounded-full">DME Benefit</span>
-      <span class="text-xs text-gray-400">6 min read</span>
+      <span class="text-xs text-gray-500">6 min read</span>
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Does Medicare Advantage Cover a Bedside Commode?</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
     <article class="prose">
 
-      <p>Yes, Medicare Advantage covers bedside commodes as standard Durable Medical Equipment (DME) when prescribed by a doctor. A bedside commode is one of the most commonly ordered items at <a href="/blog/medicare-advantage-hospital-discharge-equipment.html" class="text-blue-600 hover:underline">hospital discharge</a>, and most Medicare Advantage members receive it at little or no out-of-pocket cost. The key step is getting a written order from your doctor or hospital discharge team before you leave the facility.</p>
+      <p>Yes, Medicare Advantage covers bedside commodes as standard Durable Medical Equipment (DME) when prescribed by a doctor. A bedside commode is one of the most commonly ordered items at <a href="/blog/medicare-advantage-hospital-discharge-equipment.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">hospital discharge</a>, and most Medicare Advantage members receive it at little or no out-of-pocket cost. The key step is getting a written order from your doctor or hospital discharge team before you leave the facility.</p>
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -186,7 +188,7 @@
 
 
       <h2>What Is a Bedside Commode?</h2>
-      <p>A bedside commode is a portable toilet chair. It looks like a sturdy chair with a bucket or collection container beneath the seat. It can be placed right next to the bed for use during the night or when walking to the bathroom is not safe. Many commodes are also designed to fit directly over a standard toilet, functioning as a <a href="/blog/does-medicare-advantage-cover-raised-toilet-seat.html" class="text-blue-600 hover:underline">raised toilet seat</a> with arms when the bucket is removed.</p>
+      <p>A bedside commode is a portable toilet chair. It looks like a sturdy chair with a bucket or collection container beneath the seat. It can be placed right next to the bed for use during the night or when walking to the bathroom is not safe. Many commodes are also designed to fit directly over a standard toilet, functioning as a <a href="/blog/does-medicare-advantage-cover-raised-toilet-seat.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">raised toilet seat</a> with arms when the bucket is removed.</p>
       <p>This dual function makes a bedside commode one of the most versatile pieces of recovery equipment available. A single item can serve as a nighttime toilet, a raised toilet seat, and a chair with armrests for toileting support.</p>
 
       <h2>Who Typically Needs a Bedside Commode?</h2>
@@ -286,10 +288,10 @@
 
     <div class="mt-8 pt-8 border-t border-gray-200">
       <p class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-4">More from the blog</p>
-      <div class="space-y-3">
-        <a href="/blog/medicare-advantage-hospital-discharge-equipment.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">What Equipment Does Medicare Advantage Cover After Hospital Discharge?</a>
-        <a href="/blog/does-medicare-advantage-cover-rollator-walker.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Does Medicare Advantage Cover a Rollator Walker? Yes: Here's How</a>
-        <a href="/blog/does-medicare-advantage-cover-cpap.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Does Medicare Advantage Cover a CPAP Machine?</a>
+      <div class="space-y-1">
+        <a href="/blog/medicare-advantage-hospital-discharge-equipment.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">What Equipment Does Medicare Advantage Cover After Hospital Discharge?</a>
+        <a href="/blog/does-medicare-advantage-cover-rollator-walker.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Does Medicare Advantage Cover a Rollator Walker? Yes: Here's How</a>
+        <a href="/blog/does-medicare-advantage-cover-cpap.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Does Medicare Advantage Cover a CPAP Machine?</a>
       </div>
     </div>
   </div>
