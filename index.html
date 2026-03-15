@@ -318,9 +318,14 @@
             </div>
           </button>
 
-        <!-- Hero lifestyle image -->
-        <div class="mt-10 rounded-2xl overflow-hidden" style="max-height:320px">
-          <img src="/images/hero-couple.jpg" alt="Senior couple relaxing together comfortably at home" class="w-full object-cover" style="height:320px;object-position:center 30%" width="1200" height="320" fetchpriority="high" />
+        <!-- Hero lifestyle images -->
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="rounded-2xl overflow-hidden">
+            <img src="/images/hero-couple.jpg" alt="Senior couple relaxing together comfortably at home" class="w-full object-cover" style="height:220px;object-position:center 30%" width="600" height="220" fetchpriority="high" />
+          </div>
+          <div class="rounded-2xl overflow-hidden">
+            <img src="/images/hero-couple-2.jpg" alt="Senior couple smiling together on the couch at home" class="w-full object-cover" style="height:220px;object-position:center 20%" width="600" height="220" loading="lazy" />
+          </div>
         </div>
       </div>
     </div>
@@ -730,7 +735,7 @@
 
 <!-- SHARE MODAL -->
 <div id="modal-share" class="hidden fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4"
-     role="dialog" aria-modal="true"
+     role="dialog" aria-modal="true" aria-label="Share with patient or family"
      onclick="if(event.target===this) closeShareModal()">
   <div class="bg-white rounded-xl max-w-md w-full p-6 shadow-2xl">
     <div class="flex items-center justify-between mb-4">
@@ -767,7 +772,7 @@
 
 <!-- CARE TEAM MODAL -->
 <div id="modal-careteam" class="hidden fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-4"
-     role="dialog" aria-modal="true"
+     role="dialog" aria-modal="true" aria-label="Partner access for care organizations"
      onclick="if(event.target===this) closeCareTeamModal()">
   <div class="bg-white rounded-xl max-w-md w-full p-6 shadow-2xl">
     <div class="flex items-center justify-between mb-5">
@@ -1452,10 +1457,27 @@ function showProduct(pid) {
   _renderProductPage(pid);
   goScreen('screen-product');
 }
-function showShareModal()    { document.getElementById('modal-share').classList.remove('hidden'); document.body.classList.add('modal-open'); }
-function closeShareModal()   { document.getElementById('modal-share').classList.add('hidden'); document.body.classList.remove('modal-open'); }
-function showCareTeamModal() { document.getElementById('modal-careteam').classList.remove('hidden'); document.body.classList.add('modal-open'); }
-function closeCareTeamModal(){ document.getElementById('modal-careteam').classList.add('hidden'); document.body.classList.remove('modal-open'); }
+var _modalTrigger = null;
+function _trapFocus(modal) {
+  var focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  if (!focusable.length) return;
+  var first = focusable[0], last = focusable[focusable.length - 1];
+  first.focus();
+  modal._trapHandler = function(e) {
+    if (e.key !== 'Tab') return;
+    if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
+    else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
+  };
+  modal.addEventListener('keydown', modal._trapHandler);
+}
+function _releaseFocus(modal) {
+  if (modal._trapHandler) { modal.removeEventListener('keydown', modal._trapHandler); modal._trapHandler = null; }
+  if (_modalTrigger) { _modalTrigger.focus(); _modalTrigger = null; }
+}
+function showShareModal()    { _modalTrigger = document.activeElement; var m = document.getElementById('modal-share'); m.classList.remove('hidden'); document.body.classList.add('modal-open'); _trapFocus(m); }
+function closeShareModal()   { var m = document.getElementById('modal-share'); m.classList.add('hidden'); document.body.classList.remove('modal-open'); _releaseFocus(m); }
+function showCareTeamModal() { _modalTrigger = document.activeElement; var m = document.getElementById('modal-careteam'); m.classList.remove('hidden'); document.body.classList.add('modal-open'); _trapFocus(m); }
+function closeCareTeamModal(){ var m = document.getElementById('modal-careteam'); m.classList.add('hidden'); document.body.classList.remove('modal-open'); _releaseFocus(m); }
 
 function copyLink() {
   navigator.clipboard.writeText('https://advantageguide.health').catch(()=>{});
