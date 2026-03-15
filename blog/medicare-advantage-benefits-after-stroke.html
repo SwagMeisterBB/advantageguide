@@ -54,10 +54,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="/styles.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .prose h2 { font-size: 1.35rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    body { font-family: 'Source Sans 3', -apple-system, sans-serif; }
+    h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; }
+    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -68,6 +69,7 @@
   </style>
 </head>
 <body class="bg-gray-50">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:z-50">Skip to main content</a>
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
@@ -82,7 +84,7 @@
     </nav>
   </div>
 </header>
-<main>
+<main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav class="flex items-center gap-2 text-sm text-gray-600 mb-8">
       <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
@@ -93,7 +95,7 @@
     </nav>
     <div class="flex items-center gap-3 mb-4">
       <span class="text-xs font-semibold bg-green-50 text-green-700 px-2.5 py-1 rounded-full">DME Benefit</span>
-      <span class="text-xs text-gray-400">8 min read</span>
+      <span class="text-xs text-gray-500">8 min read</span>
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Medicare Advantage Benefits After Stroke: Home Equipment and Support Covered</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
@@ -136,7 +138,7 @@
         <li><strong>Occupational therapy (OT):</strong> OT helps you relearn how to do daily activities such as dressing, bathing, cooking, and using the phone. OT is especially important for stroke survivors with weakness on one side, since many daily tasks require adapting technique or using adaptive tools.</li>
         <li><strong>Speech therapy:</strong> Speech-language pathologists treat both communication problems (aphasia, difficulty finding words, or understanding speech) and swallowing problems (dysphagia). Dysphagia is a common and serious complication of stroke that increases the risk of aspiration pneumonia. Speech therapy at home or at an outpatient clinic is covered by Medicare Advantage when medically necessary.</li>
       </ul>
-      <p>Home health visits continue as long as you are homebound and showing measurable progress in your recovery. Your plan requires prior authorization. Ask the <a href="/blog/medicare-advantage-hospital-discharge-equipment.html" class="text-blue-600 hover:underline">hospital discharge</a> team to coordinate authorization before you leave so there is no gap in care.</p>
+      <p>Home health visits continue as long as you are homebound and showing measurable progress in your recovery. Your plan requires prior authorization. Ask the <a href="/blog/medicare-advantage-hospital-discharge-equipment.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">hospital discharge</a> team to coordinate authorization before you leave so there is no gap in care.</p>
 
       <h2>Home Safety Modifications</h2>
       <p>Many Medicare Advantage plans include a home safety or home modification benefit that covers grab bar installation, threshold ramps, stair handrails, and other changes to reduce fall risk. Falls are a serious concern for stroke survivors because balance and coordination are often impaired. Even a modest home safety benefit can pay for a grab bar next to the toilet, a grab bar in the shower, and a ramp over a threshold step. Call your plan's Member Services to ask whether this benefit is included and how to access it. Some plans require a home safety assessment by an occupational therapist to activate the benefit.</p>
@@ -153,7 +155,7 @@
       <p>Some of these items may be covered through your plan's DME benefit with an OT prescription. Others may appear on your plan's OTC benefit approved item list. Ask your OT and your plan's Member Services what is available to you.</p>
 
       <h2>Speech Therapy for Aphasia and Swallowing</h2>
-      <p>Aphasia, the difficulty understanding or producing language after stroke, affects about one-third of stroke survivors, <a href="https://www.nidcd.nih.gov/health/aphasia" target="_blank" rel="noopener" class="text-blue-600 hover:underline">according to the NIH</a>. Speech therapy for aphasia can help you rebuild communication over weeks, months, and even years after the stroke. Do not assume that therapy should stop if progress feels slow. Significant improvement can occur long after discharge from the hospital. Coverage continues as long as there is measurable progress. If your plan denies continued speech therapy coverage, you have the right to appeal the decision.</p>
+      <p>Aphasia, the difficulty understanding or producing language after stroke, affects about one-third of stroke survivors, <a href="https://www.nidcd.nih.gov/health/aphasia" target="_blank" rel="noopener" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">according to the NIH</a>. Speech therapy for aphasia can help you rebuild communication over weeks, months, and even years after the stroke. Do not assume that therapy should stop if progress feels slow. Significant improvement can occur long after discharge from the hospital. Coverage continues as long as there is measurable progress. If your plan denies continued speech therapy coverage, you have the right to appeal the decision.</p>
       <p>Swallowing problems (dysphagia) are also common after stroke and require evaluation by a speech-language pathologist. If you or your family member had a swallowing evaluation in the hospital, follow-up at home or as an outpatient is important, especially if a modified diet texture is still required.</p>
 
       <h2>How Long Does Home Health Coverage Last?</h2>
@@ -226,10 +228,10 @@
 
     <div class="mt-8 pt-8 border-t border-gray-200">
       <p class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-4">More from the blog</p>
-      <div class="space-y-3">
-        <a href="/blog/medicare-advantage-benefits-after-hip-replacement.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Medicare Advantage Benefits After Hip Replacement: What You Are Entitled To</a>
-        <a href="/blog/medicare-advantage-benefits-after-knee-replacement.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Medicare Advantage Benefits After Knee Replacement: What You Are Entitled To</a>
-        <a href="/blog/does-medicare-advantage-cover-grab-bars.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Does Medicare Advantage Cover Grab Bars? Yes: Here's How</a>
+      <div class="space-y-1">
+        <a href="/blog/medicare-advantage-benefits-after-hip-replacement.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Medicare Advantage Benefits After Hip Replacement: What You Are Entitled To</a>
+        <a href="/blog/medicare-advantage-benefits-after-knee-replacement.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Medicare Advantage Benefits After Knee Replacement: What You Are Entitled To</a>
+        <a href="/blog/does-medicare-advantage-cover-grab-bars.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Does Medicare Advantage Cover Grab Bars? Yes: Here's How</a>
       </div>
     </div>
   </div>

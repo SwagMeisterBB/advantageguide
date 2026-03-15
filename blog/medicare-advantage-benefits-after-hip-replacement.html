@@ -54,10 +54,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="/styles.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .prose h2 { font-size: 1.35rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    body { font-family: 'Source Sans 3', -apple-system, sans-serif; }
+    h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; }
+    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -68,6 +69,7 @@
   </style>
 </head>
 <body class="bg-gray-50">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:z-50">Skip to main content</a>
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
@@ -82,7 +84,7 @@
     </nav>
   </div>
 </header>
-<main>
+<main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav class="flex items-center gap-2 text-sm text-gray-600 mb-8">
       <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
@@ -93,7 +95,7 @@
     </nav>
     <div class="flex items-center gap-3 mb-4">
       <span class="text-xs font-semibold bg-green-50 text-green-700 px-2.5 py-1 rounded-full">DME Benefit</span>
-      <span class="text-xs text-gray-400">7 min read</span>
+      <span class="text-xs text-gray-500">7 min read</span>
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Medicare Advantage Benefits After Hip Replacement: What You Are Entitled To</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
@@ -131,7 +133,7 @@
       <p>Ask your surgeon and hospital case manager to write orders for all of these items before discharge. The hospital's discharge coordinator or social worker can arrange for a durable medical equipment supplier to deliver these items to your home before or shortly after you arrive.</p>
 
       <h2>Understanding Hip Precautions</h2>
-      <p>Patients who have posterior approach hip replacement surgery are typically given hip precautions to protect the new joint while the muscles and tissues heal. The three main precautions are: no bending the hip past 90 degrees, no crossing the legs, and no turning the foot inward. These precautions make a <a href="/blog/does-medicare-advantage-cover-raised-toilet-seat.html" class="text-blue-600 hover:underline">raised toilet seat</a> and <a href="/blog/does-medicare-advantage-cover-shower-chair.html" class="text-blue-600 hover:underline">shower chair</a> non-negotiable safety items. Violating hip precautions can dislocate the new joint, which requires emergency treatment. If your surgeon used an anterior approach, you may have fewer or different precautions. Ask your surgical team which precautions apply to you and for how long.</p>
+      <p>Patients who have posterior approach hip replacement surgery are typically given hip precautions to protect the new joint while the muscles and tissues heal. The three main precautions are: no bending the hip past 90 degrees, no crossing the legs, and no turning the foot inward. These precautions make a <a href="/blog/does-medicare-advantage-cover-raised-toilet-seat.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">raised toilet seat</a> and <a href="/blog/does-medicare-advantage-cover-shower-chair.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">shower chair</a> non-negotiable safety items. Violating hip precautions can dislocate the new joint, which requires emergency treatment. If your surgeon used an anterior approach, you may have fewer or different precautions. Ask your surgical team which precautions apply to you and for how long.</p>
 
       <h2>Home Safety Modifications Covered by Medicare Advantage</h2>
       <p>Many Medicare Advantage plans include a home safety or home modification benefit that goes beyond standard DME. This benefit may cover grab bar installation, threshold ramps, stair railings, and other modifications to reduce fall risk at home. The benefit amount varies widely by plan, from a few hundred dollars to over $1,500 per year. Call Member Services before your surgery to ask whether your plan includes this benefit and how to activate it. Some plans require pre-authorization for home modifications, so starting this process early is important.</p>
@@ -242,10 +244,10 @@
 
     <div class="mt-8 pt-8 border-t border-gray-200">
       <p class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-4">More from the blog</p>
-      <div class="space-y-3">
-        <a href="/blog/medicare-advantage-benefits-after-knee-replacement.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Medicare Advantage Benefits After Knee Replacement: What You Are Entitled To</a>
-        <a href="/blog/medicare-advantage-benefits-after-stroke.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Medicare Advantage Benefits After Stroke: Home Equipment and Support Covered</a>
-        <a href="/blog/does-medicare-advantage-cover-grab-bars.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Does Medicare Advantage Cover Grab Bars? Yes: Here's How</a>
+      <div class="space-y-1">
+        <a href="/blog/medicare-advantage-benefits-after-knee-replacement.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Medicare Advantage Benefits After Knee Replacement: What You Are Entitled To</a>
+        <a href="/blog/medicare-advantage-benefits-after-stroke.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Medicare Advantage Benefits After Stroke: Home Equipment and Support Covered</a>
+        <a href="/blog/does-medicare-advantage-cover-grab-bars.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Does Medicare Advantage Cover Grab Bars? Yes: Here's How</a>
       </div>
     </div>
   </div>

@@ -70,10 +70,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="/styles.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .prose h2 { font-size: 1.35rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    body { font-family: 'Source Sans 3', -apple-system, sans-serif; }
+    h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; }
+    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -85,6 +86,7 @@
 </head>
 <body class="bg-gray-50">
 
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:z-50">Skip to main content</a>
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
@@ -102,7 +104,7 @@
   </div>
 </header>
 
-<main>
+<main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
 
     <nav class="flex items-center gap-2 text-sm text-gray-600 mb-8">
@@ -115,7 +117,7 @@
 
     <div class="flex items-center gap-3 mb-4">
       <span class="text-xs font-semibold bg-green-50 text-green-700 px-2.5 py-1 rounded-full">DME Benefit</span>
-      <span class="text-xs text-gray-400">7 min read</span>
+      <span class="text-xs text-gray-500">7 min read</span>
     </div>
 
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Does Medicare Advantage Cover a Power Wheelchair or Mobility Scooter?</h1>
@@ -182,7 +184,7 @@
       <p>Like other DME, power wheelchairs and scooters are typically rented for 13 months and then ownership transfers to you. Accessories like specialized cushions, headrests, or elevating leg rests may require separate documentation to be covered.</p>
 
       <h2>If You Do Not Qualify for a Power Chair or Scooter</h2>
-      <p>Not everyone who has mobility difficulty will meet the criteria for a power wheelchair or scooter. If your condition allows you to walk some but you need support, a <a href="/blog/does-medicare-advantage-cover-rollator-walker.html" class="text-blue-600 hover:underline">rollator</a> walker, quad cane, or transport wheelchair may be covered instead and may actually serve your needs well. Talk to your doctor about which option makes the most sense for your daily life.</p>
+      <p>Not everyone who has mobility difficulty will meet the criteria for a power wheelchair or scooter. If your condition allows you to walk some but you need support, a <a href="/blog/does-medicare-advantage-cover-rollator-walker.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">rollator</a> walker, quad cane, or transport wheelchair may be covered instead and may actually serve your needs well. Talk to your doctor about which option makes the most sense for your daily life.</p>
 
     
     <div class="not-prose my-8 bg-blue-50 border border-blue-200 rounded-xl p-5">
@@ -244,10 +246,10 @@
 
     <div class="mt-8 pt-8 border-t border-gray-200">
       <p class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-4">More from the blog</p>
-      <div class="space-y-3">
-        <a href="/blog/medicare-advantage-hospital-discharge-equipment.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">What Equipment Does Medicare Advantage Cover After Hospital Discharge?</a>
-        <a href="/blog/does-medicare-advantage-cover-rollator-walker.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Does Medicare Advantage Cover a Rollator Walker? Yes: Here's How</a>
-        <a href="/blog/does-medicare-advantage-cover-cpap.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Does Medicare Advantage Cover a CPAP Machine?</a>
+      <div class="space-y-1">
+        <a href="/blog/medicare-advantage-hospital-discharge-equipment.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">What Equipment Does Medicare Advantage Cover After Hospital Discharge?</a>
+        <a href="/blog/does-medicare-advantage-cover-rollator-walker.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Does Medicare Advantage Cover a Rollator Walker? Yes: Here's How</a>
+        <a href="/blog/does-medicare-advantage-cover-cpap.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Does Medicare Advantage Cover a CPAP Machine?</a>
       </div>
     </div>
 

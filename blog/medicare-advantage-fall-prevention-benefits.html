@@ -54,10 +54,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="/styles.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .prose h2 { font-size: 1.35rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    body { font-family: 'Source Sans 3', -apple-system, sans-serif; }
+    h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; }
+    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -68,6 +69,7 @@
   </style>
 </head>
 <body class="bg-gray-50">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:z-50">Skip to main content</a>
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
@@ -82,7 +84,7 @@
     </nav>
   </div>
 </header>
-<main>
+<main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav class="flex items-center gap-2 text-sm text-gray-600 mb-8">
       <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
@@ -93,13 +95,13 @@
     </nav>
     <div class="flex items-center gap-3 mb-4">
       <span class="text-xs font-semibold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full">Home Safety</span>
-      <span class="text-xs text-gray-400">6 min read</span>
+      <span class="text-xs text-gray-500">6 min read</span>
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Medicare Advantage Benefits for Fall Prevention at Home</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
     <article class="prose">
 
-      <p>Yes, Medicare Advantage plans cover fall prevention items including grab bars, <a href="/blog/does-medicare-advantage-cover-non-slip-bath-mat.html" class="text-blue-600 hover:underline">non-slip bath mats</a>, shower chairs, canes, walkers, <a href="/blog/does-medicare-advantage-cover-medical-alert-system.html" class="text-blue-600 hover:underline">medical alert systems</a>, and threshold ramps at little or no cost. These items are covered under three separate benefits — Home Safety, DME, and OTC — and most members never claim them. This guide walks through every fall prevention benefit in a typical Medicare Advantage plan and how to use each one.</p>
+      <p>Yes, Medicare Advantage plans cover fall prevention items including grab bars, <a href="/blog/does-medicare-advantage-cover-non-slip-bath-mat.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">non-slip bath mats</a>, shower chairs, canes, walkers, <a href="/blog/does-medicare-advantage-cover-medical-alert-system.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">medical alert systems</a>, and threshold ramps at little or no cost. These items are covered under three separate benefits — Home Safety, DME, and OTC — and most members never claim them. This guide walks through every fall prevention benefit in a typical Medicare Advantage plan and how to use each one.</p>
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -120,7 +122,7 @@
 
 
       <h2>Why Falls Are the Top Safety Priority</h2>
-      <p>Falls are the leading cause of injury-related death among adults 65 and older, <a href="https://www.cdc.gov/falls/data-research/index.html" target="_blank" rel="noopener" class="text-blue-600 hover:underline">according to the CDC</a>. The <a href="https://www.cdc.gov/falls/data-research/index.html" target="_blank" rel="noopener" class="text-blue-600 hover:underline">CDC estimates that one in four older adults falls each year</a>, and many of those falls happen at home in the bathroom, on stairs, or getting in and out of bed. The good news is that most falls are preventable with the right modifications and equipment. Medicare Advantage is specifically designed to help you make those changes.</p>
+      <p>Falls are the leading cause of injury-related death among adults 65 and older, <a href="https://www.cdc.gov/falls/data-research/index.html" target="_blank" rel="noopener" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">according to the CDC</a>. The <a href="https://www.cdc.gov/falls/data-research/index.html" target="_blank" rel="noopener" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">CDC estimates that one in four older adults falls each year</a>, and many of those falls happen at home in the bathroom, on stairs, or getting in and out of bed. The good news is that most falls are preventable with the right modifications and equipment. Medicare Advantage is specifically designed to help you make those changes.</p>
 
       <h3 class="text-lg font-bold text-gray-900 mt-6 mb-3">Fall Prevention Benefits at a Glance</h3>
       <div class="not-prose my-4 overflow-x-auto">
@@ -163,7 +165,7 @@
       </div>
 
       <h2>The Home Safety Benefit: Your Primary Fall Prevention Resource</h2>
-      <p>Most Medicare Advantage plans include a <strong><a href="/blog/medicare-advantage-home-safety-benefit.html" class="text-blue-600 hover:underline">Home Safety benefit</a></strong>, sometimes called a Home Modification benefit. This benefit provides an annual allowance (typically $200 to $500) to cover safety modifications at home. Items commonly covered include:</p>
+      <p>Most Medicare Advantage plans include a <strong><a href="/blog/medicare-advantage-home-safety-benefit.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">Home Safety benefit</a></strong>, sometimes called a Home Modification benefit. This benefit provides an annual allowance (typically $200 to $500) to cover safety modifications at home. Items commonly covered include:</p>
       <ul>
         <li><strong>Grab bars:</strong> Wall-mounted bars in the shower, tub, and beside the toilet. This is the most impactful single modification for bathroom fall prevention.</li>
         <li><strong>Non-slip bath mats:</strong> Suction-cup mats for the tub floor and non-slip rugs for the bathroom floor.</li>
@@ -272,10 +274,10 @@
 
     <div class="mt-8 pt-8 border-t border-gray-200">
       <p class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-4">More from the blog</p>
-      <div class="space-y-3">
-        <a href="/blog/does-medicare-advantage-cover-grab-bars.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Does Medicare Advantage Cover Grab Bars? Yes: Here's How</a>
-        <a href="/blog/medicare-advantage-home-safety-benefit.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Medicare Advantage Home Safety Benefit: What It Covers and How to Use It</a>
-        <a href="/blog/does-medicare-advantage-cover-shower-chair.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Does Medicare Advantage Cover a Shower Chair? Yes: Here's How to Get One</a>
+      <div class="space-y-1">
+        <a href="/blog/does-medicare-advantage-cover-grab-bars.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Does Medicare Advantage Cover Grab Bars? Yes: Here's How</a>
+        <a href="/blog/medicare-advantage-home-safety-benefit.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Medicare Advantage Home Safety Benefit: What It Covers and How to Use It</a>
+        <a href="/blog/does-medicare-advantage-cover-shower-chair.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Does Medicare Advantage Cover a Shower Chair? Yes: Here's How to Get One</a>
       </div>
     </div>
   </div>

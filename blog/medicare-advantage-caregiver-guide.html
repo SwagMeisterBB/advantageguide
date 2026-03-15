@@ -54,10 +54,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="/styles.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .prose h2 { font-size: 1.35rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    body { font-family: 'Source Sans 3', -apple-system, sans-serif; }
+    h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; }
+    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -68,6 +69,7 @@
   </style>
 </head>
 <body class="bg-gray-50">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:z-50">Skip to main content</a>
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
@@ -82,7 +84,7 @@
     </nav>
   </div>
 </header>
-<main>
+<main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav class="flex items-center gap-2 text-sm text-gray-600 mb-8">
       <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
@@ -93,7 +95,7 @@
     </nav>
     <div class="flex items-center gap-3 mb-4">
       <span class="text-xs font-semibold bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">General</span>
-      <span class="text-xs text-gray-400">8 min read</span>
+      <span class="text-xs text-gray-500">8 min read</span>
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">A Caregiver's Guide to Medicare Advantage Benefits</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
@@ -144,7 +146,7 @@
       <p>The Member Services number is printed on the back of the insurance card. You can also log into the plan's member portal online to view a benefits summary, though the portal is sometimes less detailed than a direct call.</p>
 
       <h2>Equipment to Request at Hospital Discharge</h2>
-      <p>One of the most important moments for a caregiver to advocate for their loved one is at <a href="/blog/medicare-advantage-hospital-discharge-equipment.html" class="text-blue-600 hover:underline">hospital discharge</a>. This is when the medical team and case manager are planning what the member will need at home, and it is often possible to arrange for Medicare-covered durable medical equipment (DME (Durable Medical Equipment)) to be delivered directly to the home. Common items to ask about at discharge include:</p>
+      <p>One of the most important moments for a caregiver to advocate for their loved one is at <a href="/blog/medicare-advantage-hospital-discharge-equipment.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">hospital discharge</a>. This is when the medical team and case manager are planning what the member will need at home, and it is often possible to arrange for Medicare-covered durable medical equipment (DME (Durable Medical Equipment)) to be delivered directly to the home. Common items to ask about at discharge include:</p>
       <ul>
         <li>Rollator walker or standard walker for mobility support</li>
         <li>Shower chair or bath seat for safe bathing</li>
@@ -155,12 +157,12 @@
       <p>Ask the discharge planner or social worker what equipment the plan will cover for home use. Do not leave the hospital without this conversation. Equipment ordered through the hospital at discharge is often covered with no out-of-pocket cost, whereas arranging it afterward can be more complicated.</p>
 
       <h2>The Home Safety Benefit: Making the Home Safer for Aging in Place</h2>
-      <p>Falls are the leading cause of injury-related emergency room visits among older adults, <a href="https://www.cdc.gov/falls/data-research/index.html" target="_blank" rel="noopener" class="text-blue-600 hover:underline">according to the CDC</a>. Many Medicare Advantage plans include a home safety benefit, sometimes called a home modification benefit, that pays for modifications designed to reduce fall risk. The annual allowance is typically $200 to $500 and resets each January 1.</p>
-      <p>Common covered items include <a href="/blog/does-medicare-advantage-cover-grab-bars.html" class="text-blue-600 hover:underline">grab bars</a> in the bathroom and shower, threshold ramps over door saddles, non-slip mats, raised toilet seats, and shower chairs. Some plans also cover installation labor. Call Member Services to confirm the dollar amount, the list of covered items, and whether you need to use an approved vendor or can self-purchase and submit a receipt.</p>
+      <p>Falls are the leading cause of injury-related emergency room visits among older adults, <a href="https://www.cdc.gov/falls/data-research/index.html" target="_blank" rel="noopener" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">according to the CDC</a>. Many Medicare Advantage plans include a home safety benefit, sometimes called a home modification benefit, that pays for modifications designed to reduce fall risk. The annual allowance is typically $200 to $500 and resets each January 1.</p>
+      <p>Common covered items include <a href="/blog/does-medicare-advantage-cover-grab-bars.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">grab bars</a> in the bathroom and shower, threshold ramps over door saddles, non-slip mats, raised toilet seats, and shower chairs. Some plans also cover installation labor. Call Member Services to confirm the dollar amount, the list of covered items, and whether you need to use an approved vendor or can self-purchase and submit a receipt.</p>
       <p>If your loved one's plan includes this benefit, using it now is far less expensive than dealing with a fall and a hospital stay later.</p>
 
       <h2>The OTC Benefit: Quarterly Money for Health Products</h2>
-      <p>The <a href="/blog/what-is-medicare-advantage-otc-benefit.html" class="text-blue-600 hover:underline">OTC benefit</a> gives members a quarterly allowance, typically $50 to $200, to spend on over-the-counter health products at approved retailers like Walmart, CVS, and Walgreens, or online through the plan's ordering portal. The allowance resets at the end of each quarter and unused funds are forfeited, so it is worth checking in with your loved one every few months to make sure they are using it.</p>
+      <p>The <a href="/blog/what-is-medicare-advantage-otc-benefit.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">OTC benefit</a> gives members a quarterly allowance, typically $50 to $200, to spend on over-the-counter health products at approved retailers like Walmart, CVS, and Walgreens, or online through the plan's ordering portal. The allowance resets at the end of each quarter and unused funds are forfeited, so it is worth checking in with your loved one every few months to make sure they are using it.</p>
       <p>Eligible items commonly include blood pressure monitors, compression socks, vitamins, dental care products, reading glasses, first aid supplies, and incontinence products. As a caregiver, you can help your loved one make a list of health items they regularly buy and check whether those items qualify. Using the full quarterly allowance is one of the easiest ways to reduce out-of-pocket health spending.</p>
 
       <h2>Medical Alert Systems: Coverage for Fall Detection</h2>
@@ -241,10 +243,10 @@
 
     <div class="mt-8 pt-8 border-t border-gray-200">
       <p class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-4">More from the blog</p>
-      <div class="space-y-3">
-        <a href="/blog/medicare-advantage-home-health-benefit.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Medicare Advantage Home Health Benefit: What It Covers and How to Use It</a>
-        <a href="/blog/medicare-advantage-benefits-most-people-dont-know.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">7 Medicare Advantage Benefits Most People Never Use</a>
-        <a href="/blog/how-to-check-your-medicare-advantage-benefits.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">How to Check What Your Medicare Advantage Plan Covers</a>
+      <div class="space-y-1">
+        <a href="/blog/medicare-advantage-home-health-benefit.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Medicare Advantage Home Health Benefit: What It Covers and How to Use It</a>
+        <a href="/blog/medicare-advantage-benefits-most-people-dont-know.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">7 Medicare Advantage Benefits Most People Never Use</a>
+        <a href="/blog/how-to-check-your-medicare-advantage-benefits.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">How to Check What Your Medicare Advantage Plan Covers</a>
       </div>
     </div>
   </div>

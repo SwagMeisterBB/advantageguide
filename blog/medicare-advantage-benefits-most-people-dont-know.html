@@ -54,10 +54,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="/styles.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .prose h2 { font-size: 1.35rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    body { font-family: 'Source Sans 3', -apple-system, sans-serif; }
+    h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; }
+    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -68,6 +69,7 @@
   </style>
 </head>
 <body class="bg-gray-50">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-blue-600 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:z-50">Skip to main content</a>
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
@@ -82,7 +84,7 @@
     </nav>
   </div>
 </header>
-<main>
+<main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav class="flex items-center gap-2 text-sm text-gray-600 mb-8">
       <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
@@ -93,7 +95,7 @@
     </nav>
     <div class="flex items-center gap-3 mb-4">
       <span class="text-xs font-semibold bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">General</span>
-      <span class="text-xs text-gray-400">7 min read</span>
+      <span class="text-xs text-gray-500">7 min read</span>
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">7 Medicare Advantage Benefits Most People Never Use</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
@@ -144,8 +146,8 @@
       <p>This is one of the least-known benefits because it only activates after a hospital stay and has to be arranged proactively. If you or a family member has recently been discharged from the hospital, call your plan's Member Services right away and ask whether meal delivery is included.</p>
 
       <h2>7. Hearing, Dental, and Vision Coverage</h2>
-      <p>Original Medicare (Parts A and B) does not cover routine <a href="/blog/does-medicare-advantage-cover-dental.html" class="text-blue-600 hover:underline">dental</a>, <a href="/blog/does-medicare-advantage-cover-glasses-vision.html" class="text-blue-600 hover:underline">vision</a>, or hearing care. But <strong>most Medicare Advantage plans include at least some coverage</strong> in each of these areas, and many members never use it.</p>
-      <p>Dental coverage might pay for annual cleanings, X-rays, and basic fillings. Vision benefits often include an annual eye exam plus an allowance for frames or contact lenses. Hearing benefits may cover annual hearing exams and a discount or allowance toward <a href="/blog/does-medicare-advantage-cover-hearing-aids.html" class="text-blue-600 hover:underline">hearing aids</a>. Check your Summary of Benefits or call Member Services to find out exactly what your plan includes, and make sure you use these benefits before they reset at the end of the year.</p>
+      <p>Original Medicare (Parts A and B) does not cover routine <a href="/blog/does-medicare-advantage-cover-dental.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">dental</a>, <a href="/blog/does-medicare-advantage-cover-glasses-vision.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">vision</a>, or hearing care. But <strong>most Medicare Advantage plans include at least some coverage</strong> in each of these areas, and many members never use it.</p>
+      <p>Dental coverage might pay for annual cleanings, X-rays, and basic fillings. Vision benefits often include an annual eye exam plus an allowance for frames or contact lenses. Hearing benefits may cover annual hearing exams and a discount or allowance toward <a href="/blog/does-medicare-advantage-cover-hearing-aids.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">hearing aids</a>. Check your Summary of Benefits or call Member Services to find out exactly what your plan includes, and make sure you use these benefits before they reset at the end of the year.</p>
 
       <h2>How to Find Out What Your Plan Covers</h2>
       <p>The fastest way to learn what benefits you have is to call the Member Services number printed on the back of your plan ID card. Ask specifically about each benefit by name: OTC allowance, home safety benefit, PERS coverage, fitness benefit, transportation, and hearing, dental, and vision. Plans are required to answer these questions, and the call is free.</p>
@@ -204,10 +206,10 @@
 
     <div class="mt-8 pt-8 border-t border-gray-200">
       <p class="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-4">More from the blog</p>
-      <div class="space-y-3">
-        <a href="/blog/medicare-advantage-home-health-benefit.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Medicare Advantage Home Health Benefit: What It Covers and How to Use It</a>
-        <a href="/blog/how-to-check-your-medicare-advantage-benefits.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">How to Check What Your Medicare Advantage Plan Covers</a>
-        <a href="/blog/medicare-advantage-benefits-end-of-year.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 transition-colors">Medicare Advantage Benefits: What to Use Before the Year Ends</a>
+      <div class="space-y-1">
+        <a href="/blog/medicare-advantage-home-health-benefit.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Medicare Advantage Home Health Benefit: What It Covers and How to Use It</a>
+        <a href="/blog/how-to-check-your-medicare-advantage-benefits.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">How to Check What Your Medicare Advantage Plan Covers</a>
+        <a href="/blog/medicare-advantage-benefits-end-of-year.html" class="block text-base font-medium text-gray-700 hover:text-blue-600 p-3 -mx-3 rounded-lg hover:bg-gray-50 transition-colors">Medicare Advantage Benefits: What to Use Before the Year Ends</a>
       </div>
     </div>
   </div>
