@@ -67,7 +67,8 @@
     "foundingDate": "2025",
     "sameAs": [
       "https://github.com/SwagMeisterBB/advantageguide",
-      "https://youtube.com/@austinswags"
+      "https://youtube.com/@austinswags",
+      "https://www.linkedin.com/company/advantageguide/"
     ],
     "knowsAbout": ["Medicare Advantage", "Durable Medical Equipment", "OTC Benefits", "Home Safety Modifications"],
     "audience": {
@@ -86,7 +87,7 @@
     "@type": "MedicalWebPage",
     "name": "Medicare Advantage Home Health Product Guide",
     "url": "https://advantageguide.health/",
-    "description": "Clinically matched home health products for Medicare Advantage members. Covers DME (durable medical equipment), home safety modifications, and OTC allowance items.",
+    "description": "Editorially vetted home health products for Medicare Advantage members. Covers DME (durable medical equipment), home safety modifications, and OTC allowance items.",
     "lastReviewed": "2026-03-01",
     "reviewedBy": {
       "@type": "Person",
@@ -107,6 +108,8 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232563EB'/%3E%3Cpath d='M16 5C13.5 6.5 11 7.2 8 7.2c0 0-.5 8.3 1.5 12.8S16 27 16 27s4-2.5 6.5-7S24 7.2 24 7.2c-3 0-5.5-.7-8-2.2z' fill='none' stroke='white' stroke-width='1.8'/%3E%3Cpath d='M12.5 16l2.5 2.5 5-5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://m.media-amazon.com" />
+  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
   <link href="/styles.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
@@ -260,7 +263,7 @@
           </span>
           <span class="flex items-center gap-1.5 text-sm text-gray-700">
             <svg class="w-4 h-4 text-blue-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-            Clinician-reviewed products
+            CMS-sourced coverage data
           </span>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xl mx-auto">
@@ -660,11 +663,11 @@
         <span class="text-gray-500 text-sm" id="pp-price"></span>
       </div>
       <span id="pp-vetted" class="hidden badge-vetted text-sm px-3 py-1 rounded-md font-semibold inline-flex items-center gap-1.5"
-            title="Reviewed by licensed home health clinicians for safety, effectiveness, and Medicare Advantage coverage eligibility.">
+            title="Editorially vetted using official CMS plan documents and carrier benefit summaries.">
         <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-        Clinically Vetted
+        Editorially Vetted
       </span>
-      <p id="pp-vetted-note" class="hidden text-sm text-blue-600 mt-2">Reviewed by licensed clinicians for safety and Medicare Advantage coverage eligibility.</p>
+      <p id="pp-vetted-note" class="hidden text-sm text-blue-600 mt-2">Vetted using official CMS plan documents and carrier benefit summaries for coverage eligibility.</p>
     </div>
 
     <!-- Description -->
@@ -1176,7 +1179,7 @@ function renderProductsScreen() {
   document.getElementById('results-title').textContent = selSits.length ? `${visList.length} recommended products` : 'All products';
   document.getElementById('results-subtitle').textContent = selSits.length
     ? `For: ${selSits.map(s=>s.label).join(', ')}`
-    : 'Browse the full catalog, 40 clinically curated items.';
+    : 'Browse the full catalog, 40 editorially curated items.';
   const changeBtn = document.getElementById('change-situation-btn');
   if (changeBtn) changeBtn.classList.toggle('hidden', !selSits.length);
   renderCovSummary(); renderCatFilters(); renderCovFilter(); renderGrid();
