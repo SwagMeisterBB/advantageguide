@@ -112,7 +112,8 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h3 { font-size: 1.375rem; font-weight: 700; color: #111827; margin-top: 1.75rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -120,6 +121,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -128,7 +135,7 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
@@ -137,7 +144,7 @@
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
@@ -146,10 +153,10 @@
   <div class="max-w-2xl mx-auto px-6 py-12">
 
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">DME Benefit</span>
     </nav>
 
@@ -158,15 +165,31 @@
         <span class="text-xs font-semibold bg-green-50 text-green-700 px-2.5 py-1 rounded-full">DME Benefit</span>
         <span class="text-xs" style="color: #15803D; opacity: 0.6;">6 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#15803D" stroke-width="1.5" viewBox="0 0 40 40"><path d="M14 8v20M26 8v20M14 16h12M14 24h12" stroke-linecap="round"/><circle cx="14" cy="32" r="3"/><circle cx="26" cy="32" r="3"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#15803D" stroke-width="1.5" viewBox="0 0 40 40"><path d="M14 8v20M26 8v20M14 16h12M14 24h12" stroke-linecap="round"/><circle cx="14" cy="32" r="3"/><circle cx="26" cy="32" r="3"/></svg>
     </div>
 
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/dme-walker.jpg" alt="Senior woman using a walker independently in her kitchen" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
+    </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Does Medicare Advantage Cover a Lift Chair Recliner?</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
 
     <article class="prose">
 
       <p><strong>Medicare Advantage covers part of a lift chair recliner, but not the whole thing. Only the lift mechanism (the motor that raises and tilts the chair to help you stand) is covered as durable medical equipment (DME (Durable Medical Equipment)). The chair itself is not covered.</strong> The lift component is typically valued at around $200 to $330. After your deductible, you pay about 20% of that amount, which works out to roughly $40 to $65 out of pocket for the mechanism. The chair portion, which can range from $300 to $1,000 or more depending on the model, is your responsibility. Some Medicare Advantage plans may have different or more generous coverage terms, so it is worth calling your plan to ask.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#what-is-a-lift-chair-and-why-does-it-matter" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Is a Lift Chair and Why Does It Matter</a></li>
+          <li><a href="#who-qualifies-for-the-lift-mechanism-coverage" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Who Qualifies for the Lift Mechanism Coverage</a></li>
+          <li><a href="#how-the-cost-breakdown-works" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How the Cost Breakdown Works</a></li>
+          <li><a href="#how-to-get-the-lift-mechanism-covered" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How to Get the Lift Mechanism Covered</a></li>
+          <li><a href="#important-things-to-confirm-before-you-buy" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Important Things to Confirm Before You Buy</a></li>
+          <li><a href="#alternatives-if-you-cannot-afford-the-chair-portion" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Alternatives If You Cannot Afford the Chair Portion</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -186,11 +209,11 @@
       </div>
 
 
-      <h2>What Is a Lift Chair and Why Does It Matter</h2>
+      <h2 id="what-is-a-lift-chair-and-why-does-it-matter">What Is a Lift Chair and Why Does It Matter</h2>
       <p>A lift chair looks like a regular power recliner, but it has a motorized base that tilts the entire chair forward and upward. This motion helps people who have trouble pushing up from a seated position to stand safely without putting extra strain on their knees, hips, or back. For people with severe arthritis, COPD (Chronic Obstructive Pulmonary Disease), heart failure, or other conditions that affect strength and balance, a lift chair can mean the difference between staying home independently and needing more hands-on care.</p>
       <p>Because the chair has obvious medical value, many people assume Medicare pays for the whole thing. The reality is that Medicare draws a clear line: it pays for the mechanical part that provides the lift, not for the furniture itself.</p>
 
-      <h2>Who Qualifies for the Lift Mechanism Coverage</h2>
+      <h2 id="who-qualifies-for-the-lift-mechanism-coverage">Who Qualifies for the Lift Mechanism Coverage</h2>
       <p>To have the lift component covered, your doctor must certify that you have a medical condition that makes it difficult or unsafe to stand up from a seated position without assistance. Common qualifying conditions include:</p>
       <ul>
         <li>Severe arthritis affecting the knees, hips, or lower back</li>
@@ -202,7 +225,7 @@
       </ul>
       <p>The condition needs to directly affect your ability to rise from a seated position. General age-related difficulty is usually not sufficient on its own. Your doctor's documentation should clearly link your diagnosis to the functional limitation.</p>
 
-      <h2>How the Cost Breakdown Works</h2>
+      <h2 id="how-the-cost-breakdown-works">How the Cost Breakdown Works</h2>
       <p>This is the part that surprises most people. Here is a practical example of how the costs typically break down:</p>
       <ul>
         <li>The lift mechanism is assigned a Medicare-approved amount of roughly $200 to $330.</li>
@@ -212,7 +235,7 @@
       </ul>
       <p>So if you buy a lift chair that costs $700 total, you might pay around $50 for the lift mechanism portion and $400 or more for the chair itself. The supplier is required to itemize the bill so the lift mechanism is listed separately from the chair. This is not optional. Medicare requires that the costs be separated.</p>
 
-      <h2>How to Get the Lift Mechanism Covered</h2>
+      <h2 id="how-to-get-the-lift-mechanism-covered">How to Get the Lift Mechanism Covered</h2>
       <p>The process requires working with both your doctor and an in-network DME supplier:</p>
       <ol>
         <li>Talk to your doctor about your difficulty standing. Describe when it happens, how often, and what risk it poses (falls, avoiding activity, etc.).</li>
@@ -222,7 +245,7 @@
         <li>Choose a chair that fits your height, weight, and room dimensions. The lift mechanism coverage applies regardless of which chair model you choose from the supplier's approved selection.</li>
       </ol>
 
-      <h2>Important Things to Confirm Before You Buy</h2>
+      <h2 id="important-things-to-confirm-before-you-buy">Important Things to Confirm Before You Buy</h2>
       <p>Before you commit to a purchase, verify these things directly with your plan and supplier:</p>
       <ul>
         <li>Ask your plan whether prior authorization is required for the lift mechanism.</li>
@@ -231,7 +254,7 @@
         <li>Check whether your specific plan has any additional coverage for the chair portion. Some Medicare Advantage plans offer supplemental benefits that go beyond Original Medicare, and a small number may cover more of the chair cost.</li>
       </ul>
 
-      <h2>Alternatives If You Cannot Afford the Chair Portion</h2>
+      <h2 id="alternatives-if-you-cannot-afford-the-chair-portion">Alternatives If You Cannot Afford the Chair Portion</h2>
       <p>If the out-of-pocket cost for the chair itself is a barrier, there are a few options worth exploring. Some nonprofit organizations and Area Agencies on Aging have programs that help seniors access adaptive furniture. Medicaid, for those who qualify alongside Medicare, may have additional coverage. Some states also have low-income assistance programs for home medical equipment. Call your local Area Agency on Aging (1-800-677-1116) to ask what programs are available in your area.</p>
 
     
@@ -316,14 +339,16 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 

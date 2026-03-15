@@ -212,7 +212,8 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h3 { font-size: 1.375rem; font-weight: 700; color: #111827; margin-top: 1.75rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -220,6 +221,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -228,7 +235,7 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
@@ -237,7 +244,7 @@
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
@@ -246,10 +253,10 @@
   <div class="max-w-2xl mx-auto px-6 py-12">
 
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">Home Safety</span>
     </nav>
 
@@ -258,15 +265,32 @@
         <span class="text-xs font-semibold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full">Home Safety</span>
         <span class="text-xs" style="color: #1D4ED8; opacity: 0.6;">5 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#1D4ED8" stroke-width="1.5" viewBox="0 0 40 40"><path d="M20 6L4 18h4v16h10V24h4v10h10V18h4L20 6z" stroke-linejoin="round"/><path d="M16 22l3 3 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#1D4ED8" stroke-width="1.5" viewBox="0 0 40 40"><path d="M20 6L4 18h4v16h10V24h4v10h10V18h4L20 6z" stroke-linejoin="round"/><path d="M16 22l3 3 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
 
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/home-safety.jpg" alt="Senior woman looking out window in her safe, comfortable home" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
+    </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Does Medicare Advantage Cover Grab Bars? Yes: Here's How</h1>
     <p class="text-sm text-gray-600 mb-10">Published February 27, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
 
     <article class="prose">
 
       <p>Yes, most Medicare Advantage plans cover grab bars under the Home Safety benefit, which provides an annual allowance of $200 to $500 for bathroom safety modifications including grab bar installation. No doctor's prescription is required for most plans. If you or someone you care for is at risk of a fall in the bathroom, grab bars are one of the most effective safety modifications you can make, and most members never ask about coverage and end up paying out of pocket.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#which-medicare-advantage-benefit-covers-grab-bars" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Which Medicare Advantage Benefit Covers Grab Bars?</a></li>
+          <li><a href="#how-much-does-your-plan-cover" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How Much Does Your Plan Cover?</a></li>
+          <li><a href="#what-types-of-grab-bars-are-covered" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Types of Grab Bars Are Covered?</a></li>
+          <li><a href="#how-to-get-grab-bars-covered-3-steps" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How to Get Grab Bars Covered: 3 Steps</a></li>
+          <li><a href="#what-if-your-plan-doesnt-cover-installation" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What If Your Plan Doesn't Cover Installation?</a></li>
+          <li><a href="#why-grab-bars-matter" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Why Grab Bars Matter</a></li>
+          <li><a href="#does-medicare-advantage-cover-grab-bar-installation-in-a-ren" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Does Medicare Advantage Cover Grab Bar Installation in a Rental?</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -288,19 +312,19 @@
 
       <p>Here is everything you need to know.</p>
 
-      <h2>Which Medicare Advantage Benefit Covers Grab Bars?</h2>
+      <h2 id="which-medicare-advantage-benefit-covers-grab-bars">Which Medicare Advantage Benefit Covers Grab Bars?</h2>
 
       <p>Grab bars fall under the <strong><a href="/blog/medicare-advantage-home-safety-benefit.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">Home Safety benefit</a></strong>, sometimes called the Home Modification benefit. This is a supplemental benefit included in most Medicare Advantage plans that Original Medicare (Parts A and B) does not offer. It exists specifically to cover modifications that reduce fall risk at home.</p>
 
       <p>This is one of the key reasons many people choose Medicare Advantage over Original Medicare. The supplemental benefits, including Home Safety, go well beyond what standard Medicare provides.</p>
 
-      <h2>How Much Does Your Plan Cover?</h2>
+      <h2 id="how-much-does-your-plan-cover">How Much Does Your Plan Cover?</h2>
 
       <p>Most plans offer between <strong>$200 and $500 per year</strong> for home safety modifications. Some plans offer more, particularly in markets where Humana, UnitedHealthcare, and Aetna compete aggressively for members.</p>
 
       <p>The exact amount is listed in your plan's Summary of Benefits document, which you can find on your plan's website or request by calling Member Services. The allowance typically resets each January 1.</p>
 
-      <h2>What Types of Grab Bars Are Covered?</h2>
+      <h2 id="what-types-of-grab-bars-are-covered">What Types of Grab Bars Are Covered?</h2>
 
       <p>Your Home Safety benefit commonly covers:</p>
       <ul>
@@ -312,7 +336,7 @@
 
       <p>Professional installation is often included in the coverage, which matters because grab bars mounted incorrectly can be more dangerous than having no bar at all. Always use an approved vendor or a licensed contractor.</p>
 
-      <h2>How to Get Grab Bars Covered: 3 Steps</h2>
+      <h2 id="how-to-get-grab-bars-covered-3-steps">How to Get Grab Bars Covered: 3 Steps</h2>
 
       <p><strong>Step 1: Call Member Services.</strong> Call the number on the back of your insurance card. Ask specifically: "Do I have a Home Safety or Home Modification benefit? What is my annual allowance and how do I use it?" Write down the amount and ask for a list of approved vendors in your area.</p>
 
@@ -320,19 +344,19 @@
 
       <p><strong>Step 3: Get them installed.</strong> Schedule the work through your approved vendor. Your plan covers the cost up to your annual allowance. If the installation costs more than your allowance, you pay the difference.</p>
 
-      <h2>What If Your Plan Doesn't Cover Installation?</h2>
+      <h2 id="what-if-your-plan-doesnt-cover-installation">What If Your Plan Doesn't Cover Installation?</h2>
 
       <p>If your plan covers the grab bars but not the labor, the bars themselves are affordable. A quality stainless steel grab bar typically costs $35 to $80. A handyperson usually charges $50 to $100 per bar for installation.</p>
 
       <p>Even out of pocket, this is one of the highest-value safety investments you can make at home.</p>
 
-      <h2>Why Grab Bars Matter</h2>
+      <h2 id="why-grab-bars-matter">Why Grab Bars Matter</h2>
 
       <p>The bathroom is the most dangerous room in the home for older adults. The CDC estimates more than 200,000 adults over 65 are treated in emergency rooms for bathroom falls every year. A grab bar next to the toilet and one inside the <a href="/blog/does-medicare-advantage-cover-shower-chair.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">shower</a> are consistently identified as the two highest-impact modifications in any home safety assessment.</p>
 
       <p>For anyone returning home after a <a href="/blog/medicare-advantage-benefits-after-hip-replacement.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">hip replacement</a>, knee surgery, or hospital stay, grab bars are typically one of the first items recommended by occupational therapists before discharge. In many cases, your discharge team can arrange for your plan to cover them as part of the DME (Durable Medical Equipment) or Home Safety benefit before you even leave the facility.</p>
 
-      <h2>Does Medicare Advantage Cover Grab Bar Installation in a Rental?</h2>
+      <h2 id="does-medicare-advantage-cover-grab-bar-installation-in-a-ren">Does Medicare Advantage Cover Grab Bar Installation in a Rental?</h2>
 
       <p>If you rent your home, permanent installation may not be an option. Most plans still cover suction-cup grab bars for renters. These attach to smooth tile surfaces without drilling and can be moved when you relocate. They are not as strong as permanently mounted bars, but they provide meaningful protection and are widely covered under the Home Safety benefit.</p>
 
@@ -417,14 +441,16 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 

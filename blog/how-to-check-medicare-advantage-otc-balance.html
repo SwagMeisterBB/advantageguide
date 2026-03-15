@@ -145,7 +145,8 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h3 { font-size: 1.375rem; font-weight: 700; color: #111827; margin-top: 1.75rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -153,6 +154,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -161,7 +168,7 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
@@ -170,7 +177,7 @@
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
@@ -178,10 +185,10 @@
 <main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">OTC Allowance</span>
     </nav>
     <div class="rounded-xl mb-6 px-5 py-4 flex items-center justify-between" style="background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);">
@@ -189,13 +196,30 @@
         <span class="text-xs font-semibold bg-purple-50 text-purple-700 px-2.5 py-1 rounded-full">OTC Allowance</span>
         <span class="text-xs" style="color: #7C3AED; opacity: 0.6;">5 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#7C3AED" stroke-width="1.5" viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="20" rx="3"/><path d="M20 16v8M16 20h8" stroke-linecap="round"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#7C3AED" stroke-width="1.5" viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="20" rx="3"/><path d="M20 16v8M16 20h8" stroke-linecap="round"/></svg>
+    </div>
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/otc-medicine.jpg" alt="Senior woman reviewing over-the-counter health products" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">How to Check Your Medicare Advantage OTC Benefit Balance</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
     <article class="prose">
 
       <p>There are four reliable ways to check your Medicare Advantage <a href="/blog/what-is-medicare-advantage-otc-benefit.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">OTC (Over-the-Counter) benefit</a> balance: call Member Services using the number on the back of your card, log into your plan's member portal or app, check a balance kiosk at select retail stores, or review your most recent Explanation of Benefits (EOB) statement. Knowing your balance before you shop helps you plan your purchases and make sure you do not leave money on the table before your benefit <a href="/blog/when-does-medicare-advantage-otc-benefit-reset.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">reset</a>s.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#method-1-call-member-services" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Method 1: Call Member Services</a></li>
+          <li><a href="#method-2-log-into-your-member-portal-or-app" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Method 2: Log Into Your Member Portal or App</a></li>
+          <li><a href="#method-3-check-a-balance-kiosk-in-store" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Method 3: Check a Balance Kiosk In-Store</a></li>
+          <li><a href="#method-4-review-your-explanation-of-benefits-eob" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Method 4: Review Your Explanation of Benefits (EOB)</a></li>
+          <li><a href="#plan-specific-balance-check-instructions" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Plan-Specific Balance Check Instructions</a></li>
+          <li><a href="#what-to-do-if-your-balance-looks-wrong" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What to Do If Your Balance Looks Wrong</a></li>
+          <li><a href="#how-often-should-you-check-your-balance" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How Often Should You Check Your Balance?</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -215,22 +239,22 @@
       </div>
 
 
-      <h2>Method 1: Call Member Services</h2>
+      <h2 id="method-1-call-member-services">Method 1: Call Member Services</h2>
       <p>The fastest option for most people is to call the Member Services number printed on the back of your OTC card or insurance card. A representative can tell you your current balance, when your benefit resets, and how much you have spent so far in the current period. This usually takes less than five minutes and does not require any internet access.</p>
       <p>When you call, have your member ID number ready. The representative may also be able to answer questions about which items are covered and how to use your card online or in-store.</p>
 
-      <h2>Method 2: Log Into Your Member Portal or App</h2>
+      <h2 id="method-2-log-into-your-member-portal-or-app">Method 2: Log Into Your Member Portal or App</h2>
       <p>Most major Medicare Advantage plans have a member website and a mobile app where you can check your OTC balance at any time. Once you log in, look for a section called "Benefits," "My Benefits," or "OTC Benefit." Your current balance and the next reset date are usually displayed on this page.</p>
       <p>If you have not yet created an online account, you can typically register on your plan's website using your member ID number and date of birth. Setting up an account takes about 10 minutes and gives you easy access to your balance going forward.</p>
 
-      <h2>Method 3: Check a Balance Kiosk In-Store</h2>
+      <h2 id="method-3-check-a-balance-kiosk-in-store">Method 3: Check a Balance Kiosk In-Store</h2>
       <p>Some retailers that accept OTC benefit cards have balance-checking kiosks inside the store, usually near the pharmacy or customer service area. CVS Health Hubs and some Walgreens locations offer this option. You insert or swipe your card at the kiosk and your remaining balance appears on screen.</p>
       <p>This is a convenient option if you are already at the store and want to know your balance before you start shopping. Not every store location has a kiosk, so it is a good idea to have a backup method available.</p>
 
-      <h2>Method 4: Review Your Explanation of Benefits (EOB)</h2>
+      <h2 id="method-4-review-your-explanation-of-benefits-eob">Method 4: Review Your Explanation of Benefits (EOB)</h2>
       <p>Your plan sends you an Explanation of Benefits statement, either by mail or electronically, that summarizes your benefit usage. The EOB typically shows your OTC benefit allowance, how much you have used, and how much remains. This is not a real-time balance, so if you have made purchases since the last EOB was generated, the balance shown may be slightly out of date. For the most current number, use the member portal or call Member Services.</p>
 
-      <h2>Plan-Specific Balance Check Instructions</h2>
+      <h2 id="plan-specific-balance-check-instructions">Plan-Specific Balance Check Instructions</h2>
       <p>The steps to check your balance vary slightly depending on which plan you have. Here are specific instructions for three of the largest Medicare Advantage carriers:</p>
       <ul>
         <li><strong>Humana members:</strong> Visit Humana.com and log into your member account. Navigate to "My Benefits" and select the OTC or Flex Card section. Alternatively, call Humana Member Services at 1-800-457-4708 to get your balance over the phone.</li>
@@ -239,7 +263,7 @@
       </ul>
       <p>If your plan is not listed above, the process is similar: log into your plan's website, look for a benefits section, and find your OTC allowance details there.</p>
 
-      <h2>What to Do If Your Balance Looks Wrong</h2>
+      <h2 id="what-to-do-if-your-balance-looks-wrong">What to Do If Your Balance Looks Wrong</h2>
       <p>If the balance displayed in your member portal seems lower than it should be, or if you see a charge you do not recognize, call Member Services right away. A representative can pull up your transaction history and show you exactly how your balance has been spent. Common reasons for an unexpected low balance include:</p>
       <ul>
         <li>A purchase you forgot about from earlier in the quarter</li>
@@ -248,7 +272,7 @@
       </ul>
       <p>If you believe there is a genuine error, ask the representative to file a dispute on your behalf and note the date and reference number for your call.</p>
 
-      <h2>How Often Should You Check Your Balance?</h2>
+      <h2 id="how-often-should-you-check-your-balance">How Often Should You Check Your Balance?</h2>
       <p>For most people, checking once a month is enough to stay on top of the benefit. If your plan resets quarterly, a good habit is to check your balance at the start of each quarter and again about two weeks before the reset date. That two-week warning gives you enough time to spend any remaining funds before they expire. Remember: unused balances do not roll over, so the goal is to spend as close to your full allowance as possible each period.</p>
 
     
@@ -319,13 +343,15 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 

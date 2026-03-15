@@ -96,7 +96,8 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h3 { font-size: 1.375rem; font-weight: 700; color: #111827; margin-top: 1.75rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -104,6 +105,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -111,24 +118,24 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
       </div>
       <span class="font-semibold text-gray-900 text-sm tracking-tight">AdvantageGuide</span>
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
 <main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">General</span>
     </nav>
     <div class="rounded-xl mb-6 px-5 py-4 flex items-center justify-between" style="background: linear-gradient(135deg, #F9FAFB 0%, #F3F4F6 100%);">
@@ -136,13 +143,31 @@
         <span class="text-xs font-semibold bg-gray-100 text-gray-700 px-2.5 py-1 rounded-full">General</span>
         <span class="text-xs" style="color: #4B5563; opacity: 0.6;">7 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#4B5563" stroke-width="1.5" viewBox="0 0 40 40"><rect x="8" y="6" width="24" height="30" rx="3"/><path d="M14 16h12M14 22h12M14 28h8" stroke-linecap="round"/><rect x="16" y="4" width="8" height="4" rx="1"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#4B5563" stroke-width="1.5" viewBox="0 0 40 40"><rect x="8" y="6" width="24" height="30" rx="3"/><path d="M14 16h12M14 22h12M14 28h8" stroke-linecap="round"/><rect x="16" y="4" width="8" height="4" rx="1"/></svg>
+    </div>
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/general-documents.jpg" alt="Senior couple reviewing Medicare documents together at home" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">7 Medicare Advantage Benefits Most People Never Use</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
     <article class="prose">
 
       <p>Most Medicare Advantage members use their plan for doctor visits and prescriptions, and that's it. But your plan almost certainly includes a range of extra benefits that go far beyond basic medical care, and most people never claim them. From free health products to home safety upgrades to gym memberships, these seven benefits could save you hundreds of dollars each year.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#1-otc-allowance-a-quarterly-credit-for-health-products" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">1. OTC Allowance: A Quarterly Credit for Health Products</a></li>
+          <li><a href="#2-home-safety-and-modification-benefit" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">2. Home Safety and Modification Benefit</a></li>
+          <li><a href="#3-medical-alert-system-coverage" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">3. Medical Alert System Coverage</a></li>
+          <li><a href="#4-fitness-benefit-free-or-discounted-gym-membership" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">4. Fitness Benefit: Free or Discounted Gym Membership</a></li>
+          <li><a href="#5-transportation-to-medical-appointments" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">5. Transportation to Medical Appointments</a></li>
+          <li><a href="#6-meal-delivery-after-a-hospital-stay" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">6. Meal Delivery After a Hospital Stay</a></li>
+          <li><a href="#7-hearing-dental-and-vision-coverage" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">7. Hearing, Dental, and Vision Coverage</a></li>
+          <li><a href="#how-to-find-out-what-your-plan-covers" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How to Find Out What Your Plan Covers</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -162,35 +187,35 @@
       </div>
 
 
-      <h2>1. OTC Allowance: A Quarterly Credit for Health Products</h2>
+      <h2 id="1-otc-allowance-a-quarterly-credit-for-health-products">1. OTC Allowance: A Quarterly Credit for Health Products</h2>
       <p>Many Medicare Advantage plans include an <strong>over-the-counter (OTC) allowance</strong>, a quarterly credit you can spend on everyday health items. Depending on your plan, this credit ranges from $25 to over $150 per quarter. You can use it at major retailers like Walmart, CVS, and Walgreens, or through your plan's online catalog.</p>
       <p>Items that typically qualify include bandages, vitamins, pain relievers, cold and allergy medicines, blood pressure monitors, compression socks, and more. The credit resets each quarter, and anything you don't spend is usually forfeited. If you haven't checked your OTC balance lately, call the Member Services number on the back of your plan card and ask how much you have available.</p>
 
-      <h2>2. Home Safety and Modification Benefit</h2>
+      <h2 id="2-home-safety-and-modification-benefit">2. Home Safety and Modification Benefit</h2>
       <p>Many plans offer a <strong>home safety or home modification benefit</strong> worth $200 to $500 per year. This benefit pays for items that make your home safer and help prevent falls. Covered items often include grab bars in the bathroom, handrails for stairs, ramps for doorways, and non-slip strips in the tub or shower.</p>
       <p>Most people miss this benefit because it isn't labeled as "medical" and doesn't come up at a routine doctor's visit. To access it, call Member Services and ask specifically: "Do I have a home safety or home modification benefit? What does it cover and how much is the annual allowance?" You may need to purchase through an approved vendor or submit receipts for reimbursement.</p>
 
-      <h2>3. Medical Alert System Coverage</h2>
+      <h2 id="3-medical-alert-system-coverage">3. Medical Alert System Coverage</h2>
       <p>A Personal Emergency Response System (PERS), more commonly known as a medical alert device, is covered as a supplemental benefit by many Medicare Advantage plans. These are the devices that let you press a button to call for help if you fall or have a medical emergency at home.</p>
       <p>Coverage varies widely. Some plans pay the full monthly monitoring fee, others contribute a set amount, and some cover only certain devices. This benefit is listed under "supplemental benefits" in your Summary of Benefits document. Ask Member Services: "Do I have a PERS or medical alert system benefit?"</p>
 
-      <h2>4. Fitness Benefit: Free or Discounted Gym Membership</h2>
+      <h2 id="4-fitness-benefit-free-or-discounted-gym-membership">4. Fitness Benefit: Free or Discounted Gym Membership</h2>
       <p>Millions of Medicare Advantage members are enrolled in plans that include a <strong>fitness benefit</strong> such as SilverSneakers, Silver&Fit, or a similar program. This gives you access to thousands of gyms, fitness centers, and YMCAs across the country at no extra cost.</p>
       <p>Many members never activate this benefit because they assume gym memberships are not covered by health insurance. To check, log into your plan's member portal and look for "Fitness Benefit," or call Member Services and ask whether SilverSneakers or a similar program is included in your plan.</p>
 
-      <h2>5. Transportation to Medical Appointments</h2>
+      <h2 id="5-transportation-to-medical-appointments">5. Transportation to Medical Appointments</h2>
       <p>If getting to a doctor's appointment is difficult, your plan may help. Many Medicare Advantage plans include a <strong>non-emergency medical transportation benefit</strong> that covers rides to and from covered medical appointments. This typically includes rides to doctor visits, labs, and pharmacies, not emergency trips.</p>
       <p>The number of covered rides per year varies by plan. Some plans offer as few as 12 rides, while others offer unlimited trips. To use this benefit, you usually need to schedule the ride through your plan's transportation partner in advance. Ask Member Services: "Do I have a transportation benefit for medical appointments, and how do I schedule a ride?"</p>
 
-      <h2>6. Meal Delivery After a Hospital Stay</h2>
+      <h2 id="6-meal-delivery-after-a-hospital-stay">6. Meal Delivery After a Hospital Stay</h2>
       <p>Some Medicare Advantage plans cover <strong>meal delivery after a hospitalization</strong> or a significant health event. This benefit recognizes that proper nutrition during recovery is important for healing. Covered meals are typically delivered to your home for a set number of days after discharge.</p>
       <p>This is one of the least-known benefits because it only activates after a hospital stay and has to be arranged proactively. If you or a family member has recently been discharged from the hospital, call your plan's Member Services right away and ask whether meal delivery is included.</p>
 
-      <h2>7. Hearing, Dental, and Vision Coverage</h2>
+      <h2 id="7-hearing-dental-and-vision-coverage">7. Hearing, Dental, and Vision Coverage</h2>
       <p>Original Medicare (Parts A and B) does not cover routine <a href="/blog/does-medicare-advantage-cover-dental.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">dental</a>, <a href="/blog/does-medicare-advantage-cover-glasses-vision.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">vision</a>, or hearing care. But <strong>most Medicare Advantage plans include at least some coverage</strong> in each of these areas, and many members never use it.</p>
       <p>Dental coverage might pay for annual cleanings, X-rays, and basic fillings. Vision benefits often include an annual eye exam plus an allowance for frames or contact lenses. Hearing benefits may cover annual hearing exams and a discount or allowance toward <a href="/blog/does-medicare-advantage-cover-hearing-aids.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">hearing aids</a>. Check your Summary of Benefits or call Member Services to find out exactly what your plan includes, and make sure you use these benefits before they reset at the end of the year.</p>
 
-      <h2>How to Find Out What Your Plan Covers</h2>
+      <h2 id="how-to-find-out-what-your-plan-covers">How to Find Out What Your Plan Covers</h2>
       <p>The fastest way to learn what benefits you have is to call the Member Services number printed on the back of your plan ID card. Ask specifically about each benefit by name: OTC allowance, home safety benefit, PERS coverage, fitness benefit, transportation, and hearing, dental, and vision. Plans are required to answer these questions, and the call is free.</p>
       <p>You can also log into your plan's member portal or review your Summary of Benefits document, which is mailed to you each fall. If you need free help understanding your benefits, contact your State Health Insurance Assistance Program (SHIP). SHIP counselors are available in every state and provide free, unbiased guidance.</p>
 
@@ -258,13 +283,15 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 

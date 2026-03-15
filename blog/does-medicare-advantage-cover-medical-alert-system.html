@@ -175,7 +175,8 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h3 { font-size: 1.375rem; font-weight: 700; color: #111827; margin-top: 1.75rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -183,6 +184,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -191,7 +198,7 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
@@ -200,7 +207,7 @@
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
@@ -209,10 +216,10 @@
   <div class="max-w-2xl mx-auto px-6 py-12">
 
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">Fall Prevention</span>
     </nav>
 
@@ -221,15 +228,33 @@
         <span class="text-xs font-semibold bg-purple-50 text-purple-700 px-2.5 py-1 rounded-full">Fall Prevention</span>
         <span class="text-xs" style="color: #7C3AED; opacity: 0.6;">5 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#7C3AED" stroke-width="1.5" viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="20" rx="3"/><path d="M20 16v8M16 20h8" stroke-linecap="round"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#7C3AED" stroke-width="1.5" viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="20" rx="3"/><path d="M20 16v8M16 20h8" stroke-linecap="round"/></svg>
     </div>
 
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/home-safety.jpg" alt="Senior woman looking out window in her safe, comfortable home" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
+    </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Does Medicare Advantage Cover a Medical Alert System? What to Know</h1>
     <p class="text-sm text-gray-600 mb-10">Published February 28, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
 
     <article class="prose">
 
       <p>Many Medicare Advantage plans cover medical alert systems, also called PERS (Personal Emergency Response Systems), as a supplemental benefit. Original Medicare does not cover them at all, which is one of the reasons many people choose Medicare Advantage. But whether your specific plan covers one depends on the plan you are enrolled in, not Medicare overall.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#what-is-a-pers-medical-alert-system" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Is a PERS / Medical Alert System?</a></li>
+          <li><a href="#does-medicare-advantage-cover-pers" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Does Medicare Advantage Cover PERS?</a></li>
+          <li><a href="#which-medicare-advantage-plans-typically-cover-medical-alert" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Which Medicare Advantage Plans Typically Cover Medical Alert Systems?</a></li>
+          <li><a href="#what-does-the-coverage-include" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Does the Coverage Include?</a></li>
+          <li><a href="#what-if-my-plan-does-not-cover-a-medical-alert-system" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What If My Plan Does Not Cover a Medical Alert System?</a></li>
+          <li><a href="#how-to-claim-the-pers-benefit" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How to Claim the PERS Benefit</a></li>
+          <li><a href="#does-my-loved-one-need-a-doctors-order-to-get-a-medical-aler" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Does My Loved One Need a Doctor's Order to Get a Medical Alert System?</a></li>
+          <li><a href="#what-features-should-i-look-for-in-a-medical-alert-system" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Features Should I Look For in a Medical Alert System?</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -251,25 +276,25 @@
 
       <p>Here is what you need to know.</p>
 
-      <h2>What Is a PERS / Medical Alert System?</h2>
+      <h2 id="what-is-a-pers-medical-alert-system">What Is a PERS / Medical Alert System?</h2>
 
       <p>A Personal Emergency Response System (PERS) is a device, typically a wearable button or pendant, that connects you to an emergency response center when you press it or when a fall is detected. The monitoring center can dispatch emergency services, contact family members, or simply talk you through a situation.</p>
 
       <p>PERS devices range from simple home base-station-and-pendant systems to GPS-enabled mobile devices that work anywhere. Most Medicare Advantage plans that cover PERS will specify which devices or which monitoring services are approved.</p>
 
-      <h2>Does Medicare Advantage Cover PERS?</h2>
+      <h2 id="does-medicare-advantage-cover-pers">Does Medicare Advantage Cover PERS?</h2>
 
       <p>Many plans do, but not all. PERS coverage is a <strong>supplemental benefit</strong> that individual plans choose to offer. When your plan covers it, the device and monitoring fees are typically covered up to a set amount per month or year. Some plans cover both the device and monitoring fees. Others cover only one or the other.</p>
 
       <p>To find out if your plan covers PERS, check your plan's Summary of Benefits document or call Member Services. The benefit is sometimes listed as "Personal Emergency Response System," sometimes as "Medical Alert System," and sometimes under a broader "Safety" benefit category.</p>
 
-      <h2>Which Medicare Advantage Plans Typically Cover Medical Alert Systems?</h2>
+      <h2 id="which-medicare-advantage-plans-typically-cover-medical-alert">Which Medicare Advantage Plans Typically Cover Medical Alert Systems?</h2>
 
       <p>PERS coverage is most common in plans offered by larger insurers including Humana, UnitedHealthcare (AARP), and Aetna, particularly in competitive urban and suburban markets. Coverage varies significantly by county and plan type. A plan in one state may include PERS while the same insurer's plan in another state does not.</p>
 
       <p>The only way to confirm coverage is to check your specific plan's Summary of Benefits for the current year.</p>
 
-      <h2>What Does the Coverage Include?</h2>
+      <h2 id="what-does-the-coverage-include">What Does the Coverage Include?</h2>
 
       <p>When a plan covers PERS, the coverage typically includes:</p>
       <ul>
@@ -280,7 +305,7 @@
 
       <p>Some plans require you to use an approved vendor. Others allow you to choose your own PERS provider and reimburse up to the covered amount.</p>
 
-      <h2>What If My Plan Does Not Cover a Medical Alert System?</h2>
+      <h2 id="what-if-my-plan-does-not-cover-a-medical-alert-system">What If My Plan Does Not Cover a Medical Alert System?</h2>
 
       <p>If your plan does not cover PERS, you have a few options:</p>
       <ul>
@@ -289,7 +314,7 @@
         <li><strong>Switch plans at next enrollment:</strong> If PERS coverage matters to you, it is worth checking whether a different plan in your area offers it during the Annual Enrollment Period (October 15 to December 7 each year).</li>
       </ul>
 
-      <h2>How to Claim the PERS Benefit</h2>
+      <h2 id="how-to-claim-the-pers-benefit">How to Claim the PERS Benefit</h2>
 
       <p><strong>Step 1:</strong> Call Member Services and confirm you have a PERS benefit. Ask for the coverage amount, approved devices or vendors, and any required documentation.</p>
 
@@ -297,11 +322,11 @@
 
       <p><strong>Step 3:</strong> Set up service and submit receipts if reimbursement is required. Keep records of your monthly monitoring bills if your plan reimburses ongoing fees.</p>
 
-      <h2>Does My Loved One Need a Doctor's Order to Get a Medical Alert System?</h2>
+      <h2 id="does-my-loved-one-need-a-doctors-order-to-get-a-medical-aler">Does My Loved One Need a Doctor's Order to Get a Medical Alert System?</h2>
 
       <p>Usually not. PERS coverage under Medicare Advantage typically does not require a physician prescription. It is treated more like a supplemental safety benefit than a medical device. Call your plan to confirm the specific requirements for your policy.</p>
 
-      <h2>What Features Should I Look For in a Medical Alert System?</h2>
+      <h2 id="what-features-should-i-look-for-in-a-medical-alert-system">What Features Should I Look For in a Medical Alert System?</h2>
 
       <p>The most important features depend on the person's situation. For someone who lives alone and is at fall risk, these are the highest priorities:</p>
       <ul>
@@ -401,14 +426,16 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 

@@ -160,7 +160,8 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h3 { font-size: 1.375rem; font-weight: 700; color: #111827; margin-top: 1.75rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -168,6 +169,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -175,7 +182,7 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
@@ -184,17 +191,17 @@
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
 <main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">DME Benefit</span>
     </nav>
     <div class="rounded-xl mb-6 px-5 py-4 flex items-center justify-between" style="background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);">
@@ -202,13 +209,30 @@
         <span class="text-xs font-semibold bg-green-50 text-green-700 px-2.5 py-1 rounded-full">DME Benefit</span>
         <span class="text-xs" style="color: #15803D; opacity: 0.6;">6 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#15803D" stroke-width="1.5" viewBox="0 0 40 40"><path d="M14 8v20M26 8v20M14 16h12M14 24h12" stroke-linecap="round"/><circle cx="14" cy="32" r="3"/><circle cx="26" cy="32" r="3"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#15803D" stroke-width="1.5" viewBox="0 0 40 40"><path d="M14 8v20M26 8v20M14 16h12M14 24h12" stroke-linecap="round"/><circle cx="14" cy="32" r="3"/><circle cx="26" cy="32" r="3"/></svg>
+    </div>
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/dme-walker.jpg" alt="Senior woman using a walker independently in her kitchen" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Does Medicare Advantage Cover a Transfer Bench?</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
     <article class="prose">
 
       <p>Yes, Medicare Advantage covers transfer benches under the Durable Medical Equipment (DME) benefit when your doctor prescribes one as medically necessary. Many plans also cover transfer benches under a separate Home Safety benefit, which may require no prescription at all. Either way, most members pay little or nothing out of pocket for a covered transfer bench.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#what-is-a-transfer-bench" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Is a Transfer Bench?</a></li>
+          <li><a href="#who-typically-needs-a-transfer-bench" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Who Typically Needs a Transfer Bench?</a></li>
+          <li><a href="#how-does-medicare-advantage-cover-a-transfer-bench" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How Does Medicare Advantage Cover a Transfer Bench?</a></li>
+          <li><a href="#steps-to-get-your-transfer-bench-covered" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Steps to Get Your Transfer Bench Covered</a></li>
+          <li><a href="#transfer-bench-vs-shower-chair-what-is-the-difference" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Transfer Bench vs. Shower Chair: What Is the Difference?</a></li>
+          <li><a href="#what-if-my-plan-does-not-cover-a-transfer-bench" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What If My Plan Does Not Cover a Transfer Bench?</a></li>
+          <li><a href="#tips-for-choosing-and-using-a-transfer-bench-safely" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Tips for Choosing and Using a Transfer Bench Safely</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -228,11 +252,11 @@
       </div>
 
 
-      <h2>What Is a Transfer Bench?</h2>
+      <h2 id="what-is-a-transfer-bench">What Is a Transfer Bench?</h2>
       <p>A transfer bench, sometimes called a bath transfer bench or tub transfer bench, is a seat that straddles the edge of a standard bathtub. Two legs sit inside the tub, and two legs sit on the bathroom floor outside the tub. To use one, you sit down on the outside portion of the bench, then slide across the seat and lift your legs into the tub one at a time. You never have to step over the tub wall.</p>
       <p>This design makes bathing much safer for people who cannot safely lift a leg high enough to step over a tub edge. It is one of the most commonly prescribed bathroom safety items after major surgery or a significant health event.</p>
 
-      <h2>Who Typically Needs a Transfer Bench?</h2>
+      <h2 id="who-typically-needs-a-transfer-bench">Who Typically Needs a Transfer Bench?</h2>
       <p>Transfer benches are most often used by people in the following situations:</p>
       <ul>
         <li><strong>After hip replacement surgery:</strong> Hip precautions often restrict how far you can bend the hip. Stepping over a tub wall can violate those restrictions and risk dislocating the new joint. A transfer bench keeps you safe.</li>
@@ -241,12 +265,12 @@
         <li><strong>Weakness from illness or hospitalization:</strong> Extended bed rest reduces muscle strength quickly. A transfer bench is often sent home with patients at hospital discharge.</li>
       </ul>
 
-      <h2>How Does Medicare Advantage Cover a Transfer Bench?</h2>
+      <h2 id="how-does-medicare-advantage-cover-a-transfer-bench">How Does Medicare Advantage Cover a Transfer Bench?</h2>
       <p>There are two main pathways to coverage, and your plan may offer one or both.</p>
       <p><strong>Pathway 1: The DME Benefit.</strong> Your doctor writes an order (a prescription) stating that you need a transfer bench for a specific medical reason. Your Medicare Advantage plan then connects you with an in-network DME supplier who delivers the bench to your home. Under the DME benefit, you typically pay little or nothing after your plan's cost-sharing is applied.</p>
       <p><strong>Pathway 2: The Home Safety Benefit.</strong> Many Medicare Advantage plans include an annual Home Safety or Home Modification allowance, often ranging from $500 to $2,000 per year depending on the plan. A transfer bench may be covered under this allowance without requiring a doctor's prescription. You call Member Services, request the benefit, and the plan either sends the item or reimburses your purchase.</p>
 
-      <h2>Steps to Get Your Transfer Bench Covered</h2>
+      <h2 id="steps-to-get-your-transfer-bench-covered">Steps to Get Your Transfer Bench Covered</h2>
       <ol>
         <li>Talk to your doctor or physical therapist about your bathing safety concerns. Ask them to note the medical need in your chart or write a brief DME order.</li>
         <li>Call the Member Services number on the back of your Medicare Advantage card. Ask whether a transfer bench is covered under your DME benefit or your Home Safety benefit.</li>
@@ -255,15 +279,15 @@
         <li>Keep a copy of your doctor's order and any receipts in case you need to follow up.</li>
       </ol>
 
-      <h2>Transfer Bench vs. Shower Chair: What Is the Difference?</h2>
+      <h2 id="transfer-bench-vs-shower-chair-what-is-the-difference">Transfer Bench vs. Shower Chair: What Is the Difference?</h2>
       <p>This is a common source of confusion. A transfer bench is designed specifically for use with a standard bathtub. It straddles the tub edge, so two legs are inside the tub and two are outside. You use it by sitting on the outside and sliding in.</p>
       <p>A <a href="/blog/does-medicare-advantage-cover-shower-chair.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">shower chair</a>, by contrast, sits entirely inside a walk-in shower or shower stall. It does not straddle anything. If you have a walk-in shower without a tub, a shower chair is the right choice. If you have a bathtub and need to get into it, a transfer bench is the right choice. Some people with both a tub and a walk-in shower may benefit from both items, and Medicare Advantage may cover both if they are each medically justified.</p>
 
-      <h2>What If My Plan Does Not Cover a Transfer Bench?</h2>
+      <h2 id="what-if-my-plan-does-not-cover-a-transfer-bench">What If My Plan Does Not Cover a Transfer Bench?</h2>
       <p>If your plan denies the claim or does not offer either benefit pathway, you have options. First, ask your doctor to write a letter of medical necessity explaining in detail why the transfer bench is required for your safety. This documentation often turns a denial into an approval on appeal. Second, ask about any supplemental benefits your plan offers for home safety. Third, check whether your state Medicaid program offers additional home modification assistance if you are enrolled in both Medicare and Medicaid (dual eligible).</p>
       <p>Transfer benches are also modestly priced at retail, generally between $40 and $80, so self-pay is an option if insurance does not cover the cost.</p>
 
-      <h2>Tips for Choosing and Using a Transfer Bench Safely</h2>
+      <h2 id="tips-for-choosing-and-using-a-transfer-bench-safely">Tips for Choosing and Using a Transfer Bench Safely</h2>
       <p>When your plan's supplier delivers a transfer bench, ask for a brief demonstration before they leave. A few points to keep in mind:</p>
       <ul>
         <li>Make sure all four legs are adjusted to the correct height so the seat is level.</li>
@@ -337,13 +361,15 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 

@@ -112,7 +112,8 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h3 { font-size: 1.375rem; font-weight: 700; color: #111827; margin-top: 1.75rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -120,6 +121,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -128,7 +135,7 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
@@ -137,7 +144,7 @@
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
@@ -146,10 +153,10 @@
   <div class="max-w-2xl mx-auto px-6 py-12">
 
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">DME Benefit</span>
     </nav>
 
@@ -158,15 +165,32 @@
         <span class="text-xs font-semibold bg-green-50 text-green-700 px-2.5 py-1 rounded-full">DME Benefit</span>
         <span class="text-xs" style="color: #15803D; opacity: 0.6;">5 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#15803D" stroke-width="1.5" viewBox="0 0 40 40"><path d="M14 8v20M26 8v20M14 16h12M14 24h12" stroke-linecap="round"/><circle cx="14" cy="32" r="3"/><circle cx="26" cy="32" r="3"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#15803D" stroke-width="1.5" viewBox="0 0 40 40"><path d="M14 8v20M26 8v20M14 16h12M14 24h12" stroke-linecap="round"/><circle cx="14" cy="32" r="3"/><circle cx="26" cy="32" r="3"/></svg>
     </div>
 
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/dme-walker.jpg" alt="Senior woman using a walker independently in her kitchen" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
+    </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Does Medicare Advantage Cover a Knee Scooter?</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
 
     <article class="prose">
 
       <p><strong>Yes, Medicare Advantage covers knee scooters (also called knee <a href="/blog/does-medicare-advantage-cover-rollator-walker.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">walker</a>s) as durable medical equipment (DME (Durable Medical Equipment)) when a doctor prescribes one for recovery from a lower leg injury or surgery.</strong> Common qualifying situations include foot surgery, ankle surgery, and lower leg fractures where putting weight on the foot is not allowed during recovery. The scooter is typically rented for the length of your recovery and then returned to the supplier. Some plans may require prior authorization, so it is worth calling your plan before you order. The key requirement is that it must be medically necessary, not just convenient.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#what-is-a-knee-scooter-and-how-does-it-work" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Is a Knee Scooter and How Does It Work</a></li>
+          <li><a href="#who-qualifies-for-coverage" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Who Qualifies for Coverage</a></li>
+          <li><a href="#how-the-rental-process-works" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How the Rental Process Works</a></li>
+          <li><a href="#prior-authorization-do-you-need-it" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Prior Authorization: Do You Need It</a></li>
+          <li><a href="#using-an-in-network-dme-supplier" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Using an In-Network DME Supplier</a></li>
+          <li><a href="#what-happens-when-your-recovery-is-complete" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Happens When Your Recovery Is Complete</a></li>
+          <li><a href="#alternatives-to-a-knee-scooter" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Alternatives to a Knee Scooter</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -186,11 +210,11 @@
       </div>
 
 
-      <h2>What Is a Knee Scooter and How Does It Work</h2>
+      <h2 id="what-is-a-knee-scooter-and-how-does-it-work">What Is a Knee Scooter and How Does It Work</h2>
       <p>A knee scooter is a four-wheeled mobility device with a padded knee platform. Instead of hopping on one foot or using crutches, you rest the injured leg on the padded platform and propel yourself forward with your other foot. This takes all weight off the injured foot or ankle, which is exactly what many surgeons require during the healing period.</p>
       <p>Knee scooters are popular because they are easier on the arms and upper body than crutches, more stable than hopping, and allow people to move around their home and community much more independently during recovery. For older adults especially, crutches can be difficult to use safely, and a knee scooter is often a safer and more practical option.</p>
 
-      <h2>Who Qualifies for Coverage</h2>
+      <h2 id="who-qualifies-for-coverage">Who Qualifies for Coverage</h2>
       <p>To qualify for Medicare Advantage coverage, your knee scooter must be prescribed by your doctor for a specific medical reason. Common qualifying conditions include:</p>
       <ul>
         <li>Foot surgery, including bunion removal, hammertoe correction, or plantar fascia procedures</li>
@@ -201,7 +225,7 @@
       </ul>
       <p>The device must be medically necessary for your recovery. If your surgeon or doctor has prescribed non-weight-bearing status for your injured leg, that is typically sufficient documentation to support coverage. General difficulty walking without a specific injury or surgery usually does not qualify.</p>
 
-      <h2>How the Rental Process Works</h2>
+      <h2 id="how-the-rental-process-works">How the Rental Process Works</h2>
       <p>Knee scooters are covered as a rental, not a purchase, because they are only needed for a defined recovery period. Here is how the process typically works:</p>
       <ol>
         <li>Your surgeon or treating doctor writes a prescription for a knee scooter and documents the medical necessity (usually as part of post-operative instructions).</li>
@@ -212,17 +236,17 @@
       </ol>
       <p>The rental period typically matches your recovery timeline. If your recovery takes 6 to 8 weeks, you pay for 6 to 8 weeks of rental. You do not automatically own the scooter after 13 months the way you would with some other DME, because the expectation is that recovery will be complete well before that point.</p>
 
-      <h2>Prior Authorization: Do You Need It</h2>
+      <h2 id="prior-authorization-do-you-need-it">Prior Authorization: Do You Need It</h2>
       <p>Some Medicare Advantage plans require prior authorization for knee scooters, and some do not. The best approach is to call your plan's member services line as soon as you know you will need one, ideally before your surgery date if you have advance notice. Give yourself at least a few days to allow for the prior authorization review if it is required. Your surgeon's office can often help submit the prior authorization paperwork since they will already have all the relevant medical documentation.</p>
       <p>If you need the scooter urgently (for example, after an unexpected fracture), ask your supplier whether they can deliver the scooter while the prior authorization is being processed and whether there is any risk to you if the authorization is denied. A reputable supplier will walk you through the process and help you understand your options.</p>
 
-      <h2>Using an In-Network DME Supplier</h2>
+      <h2 id="using-an-in-network-dme-supplier">Using an In-Network DME Supplier</h2>
       <p>As with all DME covered by Medicare Advantage, you must use a supplier that is in your plan's network. Using an out-of-network supplier can result in significantly higher out-of-pocket costs or a denied claim. Call your plan first, get a list of approved suppliers, and confirm the supplier is in-network before accepting delivery. Many hospital systems and orthopedic practices have preferred DME suppliers they regularly work with. Ask your surgeon's office who they typically work with and confirm that supplier is in your plan's network.</p>
 
-      <h2>What Happens When Your Recovery Is Complete</h2>
+      <h2 id="what-happens-when-your-recovery-is-complete">What Happens When Your Recovery Is Complete</h2>
       <p>When your doctor clears you to bear full weight again, contact your DME supplier to arrange the return of the scooter. The supplier will typically schedule a pickup or give you instructions for dropping it off. Make sure to get a receipt or confirmation that the scooter was returned so that monthly rental charges stop promptly. If you keep the scooter longer than your recovery requires, you may continue to be billed for the rental. Your plan may also follow up to confirm you still need the device if the rental extends beyond a certain period.</p>
 
-      <h2>Alternatives to a Knee Scooter</h2>
+      <h2 id="alternatives-to-a-knee-scooter">Alternatives to a Knee Scooter</h2>
       <p>A knee scooter is not the only covered option for lower leg injury recovery. Your doctor may recommend a different approach depending on your injury and living situation:</p>
       <ul>
         <li><strong>Crutches:</strong> Covered as DME and typically provided at the hospital or surgical center. Good for people with sufficient upper body strength.</li>
@@ -304,14 +328,16 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 

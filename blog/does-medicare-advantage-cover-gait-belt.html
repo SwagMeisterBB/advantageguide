@@ -136,7 +136,8 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h3 { font-size: 1.375rem; font-weight: 700; color: #111827; margin-top: 1.75rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -144,6 +145,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -151,7 +158,7 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
@@ -160,17 +167,17 @@
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
 <main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">OTC Allowance</span>
     </nav>
     <div class="rounded-xl mb-6 px-5 py-4 flex items-center justify-between" style="background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);">
@@ -178,13 +185,30 @@
         <span class="text-xs font-semibold bg-purple-50 text-purple-700 px-2.5 py-1 rounded-full">OTC Allowance</span>
         <span class="text-xs" style="color: #7C3AED; opacity: 0.6;">6 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#7C3AED" stroke-width="1.5" viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="20" rx="3"/><path d="M20 16v8M16 20h8" stroke-linecap="round"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#7C3AED" stroke-width="1.5" viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="20" rx="3"/><path d="M20 16v8M16 20h8" stroke-linecap="round"/></svg>
+    </div>
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/otc-medicine.jpg" alt="Senior woman reviewing over-the-counter health products" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Does Medicare Advantage Cover a Gait Belt?</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
     <article class="prose">
 
       <p>Gait belts, also called transfer belts, are available through many Medicare Advantage OTC (Over-the-Counter) benefit catalogs at no cost to members with a quarterly or annual OTC allowance. You will typically find them listed under mobility aids or daily living aids in your plan's catalog. If your plan does not include a gait belt in the OTC catalog, some plans cover them under the DME (Durable Medical Equipment) benefit with a doctor's order.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#what-is-a-gait-belt" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Is a Gait Belt?</a></li>
+          <li><a href="#why-gait-belts-matter-for-home-caregivers" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Why Gait Belts Matter for Home Caregivers</a></li>
+          <li><a href="#how-to-find-a-gait-belt-in-your-otc-catalog" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How to Find a Gait Belt in Your OTC Catalog</a></li>
+          <li><a href="#what-if-my-otc-catalog-does-not-include-a-gait-belt" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What If My OTC Catalog Does Not Include a Gait Belt?</a></li>
+          <li><a href="#common-situations-where-a-gait-belt-is-needed" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Common Situations Where a Gait Belt Is Needed</a></li>
+          <li><a href="#how-to-use-a-gait-belt-safely" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How to Use a Gait Belt Safely</a></li>
+          <li><a href="#pairing-a-gait-belt-with-other-mobility-equipment" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Pairing a Gait Belt with Other Mobility Equipment</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -204,16 +228,16 @@
       </div>
 
 
-      <h2>What Is a Gait Belt?</h2>
+      <h2 id="what-is-a-gait-belt">What Is a Gait Belt?</h2>
       <p>A gait belt is a sturdy strap, usually made of canvas or nylon webbing, worn around the waist of a person who has difficulty walking, standing up, or transferring from one surface to another (such as from a bed to a chair). The belt gives a <a href="/blog/medicare-advantage-caregiver-guide.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">caregiver</a> a safe, firm point to grip and guide the person without grabbing at their arms, shoulders, or clothing.</p>
       <p>Gait belts are used every day in hospitals, rehabilitation facilities, nursing homes, and home care settings. Physical therapists use them routinely during gait training. Home caregivers rely on them to safely assist loved ones with transfers throughout the day. Despite being a relatively simple device, a gait belt is one of the most important injury-prevention tools in home care.</p>
 
-      <h2>Why Gait Belts Matter for Home Caregivers</h2>
+      <h2 id="why-gait-belts-matter-for-home-caregivers">Why Gait Belts Matter for Home Caregivers</h2>
       <p>Caregiver injury is a serious and underappreciated risk. When a caregiver tries to help a loved one without a gait belt, they often grab at clothing, pull on an arm, or twist awkwardly to prevent a fall. These situations lead to back injuries, shoulder injuries, and falls for the caregiver as well as the person being assisted.</p>
       <p>A gait belt changes the dynamic entirely. The belt gives the caregiver a stable, centered grip at waist level. This allows them to support and guide the person safely without overextending or twisting. It also gives the person being assisted more confidence, because the belt contact feels more secure than a hand on the arm.</p>
       <p>If you are caring for a parent, spouse, or other family member at home and they have any difficulty with walking or transfers, a gait belt is one of the first tools you should have on hand.</p>
 
-      <h2>How to Find a Gait Belt in Your OTC Catalog</h2>
+      <h2 id="how-to-find-a-gait-belt-in-your-otc-catalog">How to Find a Gait Belt in Your OTC Catalog</h2>
       <p>The <a href="/blog/what-is-medicare-advantage-otc-benefit.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">OTC benefit</a> varies by plan, but most large Medicare Advantage carriers include gait belts or transfer belts in their catalogs. Here is how to find yours:</p>
       <ol>
         <li><strong>Locate your OTC catalog.</strong> Most plans mail a printed catalog at the start of the year, or you can find it on your plan's member portal online. Some plans use a third-party OTC platform such as NationsOTC, InComm Benefits, or a similar service.</li>
@@ -222,7 +246,7 @@
         <li><strong>Check your quarterly allowance.</strong> OTC benefits are often issued quarterly rather than all at once. If your allowance refreshes every quarter, note when each new period starts so you do not miss an opportunity to use your balance.</li>
       </ol>
 
-      <h2>What If My OTC Catalog Does Not Include a Gait Belt?</h2>
+      <h2 id="what-if-my-otc-catalog-does-not-include-a-gait-belt">What If My OTC Catalog Does Not Include a Gait Belt?</h2>
       <p>Not every plan's OTC catalog includes every item. If you cannot find a gait belt in your catalog, here are your next steps:</p>
       <ul>
         <li><strong>Call Member Services.</strong> Ask directly: "Is a gait belt or transfer belt available through my OTC benefit or any other plan benefit?" Sometimes items are included under a different category name than what you searched.</li>
@@ -230,7 +254,7 @@
         <li><strong>Consider retail cost.</strong> Gait belts are very affordable at retail, typically $12 to $25. Even if your plan does not cover one, the out-of-pocket cost is low enough that self-pay is a reasonable option given the safety benefit.</li>
       </ul>
 
-      <h2>Common Situations Where a Gait Belt Is Needed</h2>
+      <h2 id="common-situations-where-a-gait-belt-is-needed">Common Situations Where a Gait Belt Is Needed</h2>
       <p>A gait belt is appropriate and useful in many home care scenarios:</p>
       <ul>
         <li>Assisting a person recovering from hip or knee replacement to walk during the first weeks at home.</li>
@@ -240,7 +264,7 @@
         <li>Providing walking assistance during physical therapy exercises at home.</li>
       </ul>
 
-      <h2>How to Use a Gait Belt Safely</h2>
+      <h2 id="how-to-use-a-gait-belt-safely">How to Use a Gait Belt Safely</h2>
       <p>Using a gait belt correctly makes a significant difference in both safety and comfort. A few key points for caregivers:</p>
       <ul>
         <li><strong>Placement:</strong> Fasten the belt snugly around the person's waist, over their clothing and above the hip bones. You should be able to fit two fingers under the belt but it should not be loose enough to slide up or down.</li>
@@ -250,7 +274,7 @@
         <li><strong>When to remove the belt:</strong> Remove the gait belt immediately after the transfer is complete. Do not leave it on while the person is seated or sleeping.</li>
       </ul>
 
-      <h2>Pairing a Gait Belt with Other Mobility Equipment</h2>
+      <h2 id="pairing-a-gait-belt-with-other-mobility-equipment">Pairing a Gait Belt with Other Mobility Equipment</h2>
       <p>A gait belt works alongside other mobility aids rather than replacing them. Many people who use a gait belt during transfers also use a rollator <a href="/blog/does-medicare-advantage-cover-rollator-walker.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">walker</a> for independent walking once they are standing. The rollator gives the person a stable support structure to walk on their own, while the gait belt is used by the caregiver during the more demanding sit-to-stand and stand-to-sit transfers.</p>
       <p>If your loved one needs both a gait belt and a rollator walker, both may be available through your plan's OTC catalog or DME benefit. Ask your plan about both items at the same time to streamline the process.</p>
 
@@ -318,13 +342,15 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 

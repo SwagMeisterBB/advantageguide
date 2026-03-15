@@ -167,7 +167,8 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h3 { font-size: 1.375rem; font-weight: 700; color: #111827; margin-top: 1.75rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -175,6 +176,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -183,7 +190,7 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
@@ -192,7 +199,7 @@
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
@@ -201,27 +208,44 @@
   <div class="max-w-2xl mx-auto px-6 py-12">
 
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">OTC Benefit</span>
     </nav>
 
-    <div class="rounded-xl mb-6 px-5 py-4 flex items-center justify-between" style="background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);">
+    <div class="rounded-xl mb-6 px-5 py-4 flex items-center justify-between" style="background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);">
       <div class="flex items-center gap-3">
-        <span class="text-xs font-semibold bg-orange-50 text-orange-700 px-2.5 py-1 rounded-full">OTC Benefit</span>
-        <span class="text-xs" style="color: #C2410C; opacity: 0.6;">6 min read</span>
+        <span class="text-xs font-semibold bg-purple-50 text-purple-700 px-2.5 py-1 rounded-full">OTC Benefit</span>
+        <span class="text-xs" style="color: #7C3AED; opacity: 0.6;">6 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#C2410C" stroke-width="1.5" viewBox="0 0 40 40"><path d="M20 34s-12-8-12-16c0-4 3-7 7-7 2.5 0 4 1.5 5 3 1-1.5 2.5-3 5-3 4 0 7 3 7 7 0 8-12 16-12 16z"/><path d="M20 18v6M17 21h6" stroke-linecap="round"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#7C3AED" stroke-width="1.5" viewBox="0 0 40 40"><path d="M20 34s-12-8-12-16c0-4 3-7 7-7 2.5 0 4 1.5 5 3 1-1.5 2.5-3 5-3 4 0 7 3 7 7 0 8-12 16-12 16z"/><path d="M20 18v6M17 21h6" stroke-linecap="round"/></svg>
     </div>
 
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/otc-medicine.jpg" alt="Senior woman reviewing over-the-counter health products" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
+    </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">Medicare Advantage OTC Benefit: Full List of What You Can Buy</h1>
     <p class="text-sm text-gray-600 mb-10">Published February 28, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
 
     <article class="prose">
 
       <p>Most Medicare Advantage members receive an <strong>OTC (Over-the-Counter) benefit</strong>, a quarterly or annual allowance to spend on health and wellness products. The average allowance is $100 to $200 per quarter, though some plans offer significantly more. Most members use less than half of what they are entitled to, simply because they do not know what the benefit covers.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#what-is-the-medicare-advantage-otc-benefit" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Is the Medicare Advantage OTC Benefit?</a></li>
+          <li><a href="#what-can-you-buy-with-the-otc-benefit" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Can You Buy With the OTC Benefit?</a></li>
+          <li><a href="#what-does-the-otc-benefit-not-cover" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Does the OTC Benefit NOT Cover?</a></li>
+          <li><a href="#how-much-is-the-otc-allowance" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How Much Is the OTC Allowance?</a></li>
+          <li><a href="#how-to-check-your-otc-balance" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How to Check Your OTC Balance</a></li>
+          <li><a href="#do-otc-funds-roll-over" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Do OTC Funds Roll Over?</a></li>
+          <li><a href="#can-you-use-the-otc-benefit-at-cvs-walgreens-or-walmart" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Can You Use the OTC Benefit at CVS, Walgreens, or Walmart?</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -243,7 +267,7 @@
 
       <p>Here is a comprehensive breakdown of what the <a href="/blog/what-is-medicare-advantage-otc-benefit.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">OTC benefit</a> covers and how to use it.</p>
 
-      <h2>What Is the Medicare Advantage OTC Benefit?</h2>
+      <h2 id="what-is-the-medicare-advantage-otc-benefit">What Is the Medicare Advantage OTC Benefit?</h2>
 
       <p>The OTC benefit is a supplemental benefit that gives you a pre-loaded allowance to spend on approved health items. Original Medicare does not offer this benefit, it is one of the key advantages of Medicare Advantage plans over Original Medicare.</p>
 
@@ -256,7 +280,7 @@
 
       <p>The allowance resets quarterly or annually depending on your plan. Unused funds typically do not roll over.</p>
 
-      <h2>What Can You Buy With the OTC Benefit?</h2>
+      <h2 id="what-can-you-buy-with-the-otc-benefit">What Can You Buy With the OTC Benefit?</h2>
 
       <p>OTC catalogs vary by plan, but most include items across these categories:</p>
 
@@ -322,7 +346,7 @@
         <li>First aid kits</li>
       </ul>
 
-      <h2>What Does the OTC Benefit NOT Cover?</h2>
+      <h2 id="what-does-the-otc-benefit-not-cover">What Does the OTC Benefit NOT Cover?</h2>
 
       <p>OTC benefits do not typically cover:</p>
       <ul>
@@ -333,7 +357,7 @@
         <li>Any item not listed in your plan's approved catalog</li>
       </ul>
 
-      <h2>How Much Is the OTC Allowance?</h2>
+      <h2 id="how-much-is-the-otc-allowance">How Much Is the OTC Allowance?</h2>
 
       <p>The amount varies significantly by plan and year. Common ranges:</p>
       <ul>
@@ -385,7 +409,7 @@
 
       <p>Your specific allowance is listed in your plan's Annual Notice of Change or Summary of Benefits. If you do not know your allowance amount, call Member Services or log in to your plan's member portal.</p>
 
-      <h2>How to Check Your OTC Balance</h2>
+      <h2 id="how-to-check-your-otc-balance">How to Check Your OTC Balance</h2>
 
       <p>The easiest ways to check your remaining balance are:</p>
       <ol>
@@ -394,13 +418,13 @@
         <li>Check at checkout when shopping in-store at an approved retailer</li>
       </ol>
 
-      <h2>Do OTC Funds Roll Over?</h2>
+      <h2 id="do-otc-funds-roll-over">Do OTC Funds Roll Over?</h2>
 
       <p>In most plans, unused OTC funds do not roll over to the next period. If your allowance resets quarterly, any balance remaining at the end of the quarter is forfeited. This is the primary reason members leave money unused, they do not realize the deadline until it is too late.</p>
 
       <p>Set a reminder two weeks before the end of each quarter to check your balance and place an order if you have remaining funds.</p>
 
-      <h2>Can You Use the OTC Benefit at CVS, Walgreens, or Walmart?</h2>
+      <h2 id="can-you-use-the-otc-benefit-at-cvs-walgreens-or-walmart">Can You Use the OTC Benefit at CVS, Walgreens, or Walmart?</h2>
 
       <p>Many plans allow in-store purchases at major pharmacy retailers. However, the specific retailers and which items are eligible vary by plan. You typically need to select eligible items (marked in the store's system) and present your insurance card or a specific OTC card at checkout. Ask Member Services for a list of approved in-store retailers and how to identify eligible items.</p>
 
@@ -501,14 +525,16 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 

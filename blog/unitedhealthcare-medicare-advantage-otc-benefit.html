@@ -135,7 +135,7 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
     .prose h3 { font-size: 1.375rem; font-weight: 600; color: #1f2937; margin-top: 1.5rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
@@ -144,6 +144,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -151,24 +157,24 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
       </div>
       <span class="font-semibold text-gray-900 text-sm tracking-tight">AdvantageGuide</span>
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
 <main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">OTC Allowance</span>
     </nav>
     <div class="rounded-xl mb-6 px-5 py-4 flex items-center justify-between" style="background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);">
@@ -176,13 +182,31 @@
         <span class="text-xs font-semibold bg-purple-50 text-purple-700 px-2.5 py-1 rounded-full">OTC Allowance</span>
         <span class="text-xs" style="color: #7C3AED; opacity: 0.6;">6 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#7C3AED" stroke-width="1.5" viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="20" rx="3"/><path d="M20 16v8M16 20h8" stroke-linecap="round"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#7C3AED" stroke-width="1.5" viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="20" rx="3"/><path d="M20 16v8M16 20h8" stroke-linecap="round"/></svg>
+    </div>
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/otc-medicine.jpg" alt="Senior woman reviewing over-the-counter health products" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">UnitedHealthcare Medicare Advantage OTC Benefit: How It Works in 2026</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
     <article class="prose">
 
       <p>UnitedHealthcare (UHC) Medicare Advantage plans, including plans sold under the AARP MedicareComplete brand, include an <a href="/blog/what-is-medicare-advantage-otc-benefit.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">OTC (Over-the-Counter) benefit</a> that gives you a quarterly allowance to buy everyday health and wellness products at no cost to you. Most UHC plans provide between <strong>$50 and $150 per quarter</strong> in OTC funds, loaded onto a card called the Healthy Benefits+ card. This guide explains exactly how the benefit works and how to make the most of it.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#what-is-the-uhc-otc-benefit" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Is the UHC OTC Benefit?</a></li>
+          <li><a href="#how-much-does-unitedhealthcare-give-for-otc" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How Much Does UnitedHealthcare Give for OTC?</a></li>
+          <li><a href="#how-to-check-your-uhc-otc-balance" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How to Check Your UHC OTC Balance</a></li>
+          <li><a href="#where-can-you-use-your-healthy-benefits-card-in-store" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Where Can You Use Your Healthy Benefits+ Card In-Store?</a></li>
+          <li><a href="#how-to-order-otc-items-online" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How to Order OTC Items Online</a></li>
+          <li><a href="#what-does-the-uhc-otc-benefit-cover" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Does the UHC OTC Benefit Cover?</a></li>
+          <li><a href="#the-uhc-healthy-foods-benefit-a-bonus-for-some-members" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">The UHC Healthy Foods Benefit: A Bonus for Some Members</a></li>
+          <li><a href="#tips-to-maximize-your-uhc-otc-benefit" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Tips to Maximize Your UHC OTC Benefit</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -207,13 +231,13 @@
         <p class="text-sm text-yellow-700">Benefits vary by specific UnitedHealthcare plan and county. The information below reflects common features across many UHC plans, but your plan may differ. Always call Member Services at the number printed on the back of your UHC card or log into myuhc.com to confirm your exact benefit amount and which items are covered.</p>
       </div>
 
-      <h2>What Is the UHC OTC Benefit?</h2>
+      <h2 id="what-is-the-uhc-otc-benefit">What Is the UHC OTC Benefit?</h2>
       <p>The OTC benefit is a prepaid quarterly allowance that UnitedHealthcare adds to your Healthy Benefits+ card. You use this card at approved stores or online to purchase eligible health products without spending any of your own money. The card is separate from your standard UHC insurance card. Keep both cards in your wallet so you always have them available when you shop. The benefit is one of the most used supplemental perks in Medicare Advantage because it pays for items you would otherwise buy out of pocket every month.</p>
 
-      <h2>How Much Does UnitedHealthcare Give for OTC?</h2>
+      <h2 id="how-much-does-unitedhealthcare-give-for-otc">How Much Does UnitedHealthcare Give for OTC?</h2>
       <p>Most UHC Medicare Advantage plans load between <strong>$50 and $150 per quarter</strong> onto your Healthy Benefits+ card. Some plans reset monthly rather than quarterly, depending on the specific plan design. Check your plan's Evidence of Coverage or call Member Services to find out your exact amount and reset schedule. Unused funds do not carry over at the end of the benefit period, so using your full balance before the reset date is important.</p>
 
-      <h2>How to Check Your UHC OTC Balance</h2>
+      <h2 id="how-to-check-your-uhc-otc-balance">How to Check Your UHC OTC Balance</h2>
       <p>You have two convenient ways to check your current Healthy Benefits+ balance:</p>
       <ul>
         <li><strong>Log into myuhc.com:</strong> Sign in to your member account and look for the supplemental benefits or OTC benefit section on your dashboard.</li>
@@ -221,7 +245,7 @@
       </ul>
       <p>You can also check your balance at checkout in many stores, or through the Healthy Benefits+ website at healthybenefitsplus.com.</p>
 
-      <h2>Where Can You Use Your Healthy Benefits+ Card In-Store?</h2>
+      <h2 id="where-can-you-use-your-healthy-benefits-card-in-store">Where Can You Use Your Healthy Benefits+ Card In-Store?</h2>
       <p>UnitedHealthcare's Healthy Benefits+ card is accepted at a broad network of retail stores. Common approved locations include:</p>
       <ul>
         <li>Walmart</li>
@@ -233,7 +257,7 @@
       </ul>
       <p>At checkout, swipe or tap your Healthy Benefits+ card just like a debit card. The system automatically approves eligible items and declines ineligible ones. If you have a mix of covered and non-covered items in your cart, simply pay for the ineligible items separately.</p>
 
-      <h2>How to Order OTC Items Online</h2>
+      <h2 id="how-to-order-otc-items-online">How to Order OTC Items Online</h2>
       <p>UHC members can also order OTC products online through the Healthy Benefits+ portal or through the myuhc.com member portal. Online ordering is a great option if you have limited mobility or prefer the convenience of home delivery. To order online:</p>
       <ol>
         <li>Go to healthybenefitsplus.com or log into myuhc.com.</li>
@@ -243,7 +267,7 @@
         <li>Items ship to your home, usually within a few business days, at no extra cost.</li>
       </ol>
 
-      <h2>What Does the UHC OTC Benefit Cover?</h2>
+      <h2 id="what-does-the-uhc-otc-benefit-cover">What Does the UHC OTC Benefit Cover?</h2>
       <p>The covered item list varies by plan, but most UnitedHealthcare OTC benefits include products in these categories:</p>
 
       <h3>Health Monitoring and Glucose Supplies</h3>
@@ -261,10 +285,10 @@
       <h3>Incontinence Supplies</h3>
       <p>Pads and protective underwear are covered under most UHC OTC plans. Because these are needed on an ongoing basis, the quarterly OTC allowance can significantly reduce the ongoing out-of-pocket cost of managing incontinence.</p>
 
-      <h2>The UHC Healthy Foods Benefit: A Bonus for Some Members</h2>
+      <h2 id="the-uhc-healthy-foods-benefit-a-bonus-for-some-members">The UHC Healthy Foods Benefit: A Bonus for Some Members</h2>
       <p>Some UnitedHealthcare Medicare Advantage plans go a step further by including a <strong>Healthy Foods benefit</strong> in addition to the standard OTC allowance. This benefit provides a separate allowance specifically for purchasing fresh produce, proteins, and other nutritious grocery items at participating stores. If your plan includes this feature, you may find it loaded onto the same Healthy Benefits+ card as a separate balance. Ask Member Services whether your specific plan includes a Healthy Foods allowance and how much it provides.</p>
 
-      <h2>Tips to Maximize Your UHC OTC Benefit</h2>
+      <h2 id="tips-to-maximize-your-uhc-otc-benefit">Tips to Maximize Your UHC OTC Benefit</h2>
       <p>Getting the full value of your quarterly OTC allowance takes a little planning. Set a calendar reminder for the final week of each benefit period so you do not forget to shop before unused funds disappear. Make a list of health items you regularly purchase, such as vitamins, blood pressure monitoring supplies, or compression socks, and check whether they qualify. Stocking up on non-perishable eligible items near the end of each period is a smart way to make sure nothing goes to waste. Use AdvantageGuide to quickly identify which specific products your UHC plan covers and get step-by-step instructions for ordering or claiming them.</p>
 
     
@@ -339,13 +363,15 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 

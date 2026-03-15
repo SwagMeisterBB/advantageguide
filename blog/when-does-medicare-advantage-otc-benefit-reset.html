@@ -135,7 +135,8 @@
     }
     .prose a { color: #1B5E7E; }
     .prose a:hover { color: #154D68; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h2 { font-size: 1.75rem; font-weight: 700; color: #111827; margin-top: 2rem; margin-bottom: 0.65rem; }
+    .prose h3 { font-size: 1.375rem; font-weight: 700; color: #111827; margin-top: 1.75rem; margin-bottom: 0.5rem; }
     .prose p { color: #374151; font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.125rem; }
     .prose ul { list-style-type: disc; padding-left: 1.25rem; margin-bottom: 1rem; }
     .prose ul li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
@@ -143,6 +144,12 @@
     .prose ol li { color: #374151; font-size: 1.125rem; margin-bottom: 0.5rem; line-height: 1.75; }
     .prose strong { color: #111827; font-weight: 600; }
       @media print { header, footer, #back-to-top, .bg-blue-50 { display:none; } .prose { font-size:12pt; max-width:100%; } body { background:white; } }
+  
+    .nav-brand { background: #1B5E7E; }
+    .nav-brand:hover { background: #154D68; }
+  
+    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    [id] { scroll-margin-top: 4rem; }
   </style>
 </head>
 <body>
@@ -151,7 +158,7 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <div class="w-7 h-7 bg-blue-600 rounded-md flex items-center justify-center">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
@@ -160,7 +167,7 @@
     </a>
     <nav aria-label="Main" class="flex items-center gap-4">
       <a href="/blog/" class="text-sm text-gray-700 hover:text-gray-900 font-medium transition-colors">Blog</a>
-      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg transition-colors">Find My Products</a>
+      <a href="/" class="flex items-center gap-2 text-sm font-semibold text-white nav-brand px-4 py-2 rounded-lg transition-colors">Find My Products</a>
     </nav>
   </div>
 </header>
@@ -168,10 +175,10 @@
 <main id="main-content">
   <div class="max-w-2xl mx-auto px-6 py-12">
     <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-sm text-gray-600 mb-8">
-      <a href="/" class="hover:text-gray-600 transition-colors">Home</a>
-      <span>›</span>
-      <a href="/blog/" class="hover:text-gray-600 transition-colors">Blog</a>
-      <span>›</span>
+      <a href="/" class="hover:text-gray-900 transition-colors">Home</a>
+      <span aria-hidden="true">›</span>
+      <a href="/blog/" class="hover:text-gray-900 transition-colors">Blog</a>
+      <span aria-hidden="true">›</span>
       <span class="text-gray-600">OTC Allowance</span>
     </nav>
     <div class="rounded-xl mb-6 px-5 py-4 flex items-center justify-between" style="background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);">
@@ -179,13 +186,29 @@
         <span class="text-xs font-semibold bg-purple-50 text-purple-700 px-2.5 py-1 rounded-full">OTC Allowance</span>
         <span class="text-xs" style="color: #7C3AED; opacity: 0.6;">6 min read</span>
       </div>
-      <svg class="w-10 h-10" style="opacity:0.2;" fill="none" stroke="#7C3AED" stroke-width="1.5" viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="20" rx="3"/><path d="M20 16v8M16 20h8" stroke-linecap="round"/></svg>
+      <svg class="w-10 h-10" style="opacity:0.2;" aria-hidden="true" fill="none" stroke="#7C3AED" stroke-width="1.5" viewBox="0 0 40 40"><rect x="6" y="10" width="28" height="20" rx="3"/><path d="M20 16v8M16 20h8" stroke-linecap="round"/></svg>
+    </div>
+
+    <div class="rounded-xl overflow-hidden mb-6" style="max-height:200px">
+      <img src="/images/otc-medicine.jpg" alt="Senior woman reviewing over-the-counter health products" class="w-full object-cover" style="height:200px;object-position:center" width="800" height="200" loading="lazy" />
     </div>
     <h1 class="text-3xl font-extrabold text-gray-900 leading-tight mb-4">When Does the Medicare Advantage OTC Benefit Reset?</h1>
     <p class="text-sm text-gray-600 mb-10">Published March 1, 2026 by Austin Edy · <span class="text-green-600 font-medium">Last reviewed March 2026</span></p>
     <article class="prose">
 
       <p>Most Medicare Advantage <a href="/blog/what-is-medicare-advantage-otc-benefit.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">OTC (Over-the-Counter) benefit</a>s reset quarterly, meaning your balance refreshes four times a year: January 1, April 1, July 1, and October 1. Some plans reset monthly, and a smaller number reset just once per year. The most important thing to know is that unused balances almost never roll over. If you do not spend your allowance before the reset date, that money is gone. This is the single biggest reason Medicare Advantage members leave free benefits on the table.</p>
+      <nav id="table-of-contents" class="not-prose bg-gray-50 border border-gray-200 rounded-xl p-5 my-8" aria-label="Table of contents">
+        <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">In this article</p>
+        <ol class="space-y-2 list-decimal list-inside">
+          <li><a href="#the-three-reset-schedules-which-one-does-your-plan-use" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">The Three Reset Schedules: Which One Does Your Plan Use?</a></li>
+          <li><a href="#why-unused-balances-do-not-roll-over" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Why Unused Balances Do Not Roll Over</a></li>
+          <li><a href="#how-to-check-your-current-balance" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How to Check Your Current Balance</a></li>
+          <li><a href="#how-to-avoid-losing-your-balance" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">How to Avoid Losing Your Balance</a></li>
+          <li><a href="#what-happens-to-your-balance-when-your-plan-year-ends" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">What Happens to Your Balance When Your Plan Year Ends?</a></li>
+          <li><a href="#setting-up-reminders-so-you-never-forget" class="text-sm text-gray-600 hover:text-gray-900 transition-colors leading-relaxed">Setting Up Reminders So You Never Forget</a></li>
+        </ol>
+      </nav>
+
       <div class="not-prose my-8 bg-green-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xs font-bold text-green-700 uppercase tracking-wider">Top Pick</span>
@@ -205,7 +228,7 @@
       </div>
 
 
-      <h2>The Three Reset Schedules: Which One Does Your Plan Use?</h2>
+      <h2 id="the-three-reset-schedules-which-one-does-your-plan-use">The Three Reset Schedules: Which One Does Your Plan Use?</h2>
       <p>Understanding your plan's reset schedule is the first step to making sure you never lose your benefit. Here are the three most common structures:</p>
       <ul>
         <li><strong>Quarterly reset (most common):</strong> Your balance refreshes every three months, on January 1, April 1, July 1, and October 1. A typical quarterly allowance ranges from $25 to $150 per period, though some plans offer more.</li>
@@ -214,12 +237,12 @@
       </ul>
       <p>To find out which schedule your plan uses, check your Summary of Benefits document, log into your member portal, or call Member Services.</p>
 
-      <h2>Why Unused Balances Do Not Roll Over</h2>
+      <h2 id="why-unused-balances-do-not-roll-over">Why Unused Balances Do Not Roll Over</h2>
       <p>Medicare Advantage plans structure the OTC benefit as a "use it or lose it" allowance. This is built into the plan contract. When the reset date arrives, your balance returns to the full quarterly (or monthly) amount, regardless of how much you had left. Any remaining funds from the previous period simply disappear.</p>
       <p>To put this in concrete terms: if you have a $75 quarterly OTC benefit and you have $50 left on March 31, that $50 is gone on April 1. Your new $75 loads, but you cannot carry forward the amount you did not spend.</p>
       <p>Over the course of a year, a member who consistently leaves $50 unused each quarter loses $200 in benefits they paid for through their plan premium. That adds up quickly.</p>
 
-      <h2>How to Check Your Current Balance</h2>
+      <h2 id="how-to-check-your-current-balance">How to Check Your Current Balance</h2>
       <p>Before you can plan your spending, you need to know where your balance stands. Here are the most reliable ways to check:</p>
       <ul>
         <li><strong>Member portal or app:</strong> Log into your plan's website or mobile app. Look for a section labeled "Benefits," "OTC Benefit," or "Flex Card." Your current balance is usually displayed on the main benefits page.</li>
@@ -228,7 +251,7 @@
         <li><strong>Receipt from last purchase:</strong> Your most recent OTC purchase receipt often shows your remaining balance after the transaction.</li>
       </ul>
 
-      <h2>How to Avoid Losing Your Balance</h2>
+      <h2 id="how-to-avoid-losing-your-balance">How to Avoid Losing Your Balance</h2>
       <p>The most effective strategy is simple: set a calendar reminder two weeks before each quarter ends. That gives you time to <a href="/blog/how-to-check-medicare-advantage-otc-balance.html" class="text-blue-600 underline underline-offset-2 hover:text-blue-800">check your balance</a> and spend any remaining funds before the reset. The quarterly end dates to remember are March 31, June 30, September 30, and December 31.</p>
       <p>When you have a remaining balance to use up, focus on items that have a long shelf life and that you will definitely use over time. These categories are well suited for stocking up:</p>
       <ul>
@@ -239,10 +262,10 @@
         <li><strong>Health monitors:</strong> If you do not yet have a blood pressure monitor or pulse oximeter, these are high-value items worth buying when you have remaining OTC funds.</li>
       </ul>
 
-      <h2>What Happens to Your Balance When Your Plan Year Ends?</h2>
+      <h2 id="what-happens-to-your-balance-when-your-plan-year-ends">What Happens to Your Balance When Your Plan Year Ends?</h2>
       <p>The plan year for Medicare Advantage runs from January 1 to December 31. When the year ends, any remaining OTC balance from the final quarter also expires, just like any other quarterly reset. If you switch plans during open enrollment, your OTC benefit from the old plan does not transfer. The new plan's benefit starts fresh on January 1.</p>
 
-      <h2>Setting Up Reminders So You Never Forget</h2>
+      <h2 id="setting-up-reminders-so-you-never-forget">Setting Up Reminders So You Never Forget</h2>
       <p>The simplest approach is to add a recurring quarterly reminder to your phone or paper calendar. Set it for mid-March, mid-June, mid-September, and mid-December. When the reminder pops up, check your balance and make a shopping list. Even a quick 10-minute review can save you from losing $50 or more in benefits you have already paid for through your monthly premium.</p>
       <p>Some plans also send email or text reminders before balances reset. Check your plan's communication preferences in the member portal and opt in to balance alerts if that option is available.</p>
 
@@ -331,13 +354,15 @@
 <footer class="border-t border-gray-200 bg-white mt-8">
   <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
     <div><p class="text-sm text-gray-500">&copy; 2026 AdvantageGuide. For informational use only. Always consult your care team.</p><div class="flex flex-wrap gap-3 mt-2"><a href="/about.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a><a href="/contact.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a><a href="/privacy.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Privacy</a><a href="/terms.html" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Terms</a></div></div>
-    <a href="/" class="text-xs text-blue-600 hover:underline">Back to AdvantageGuide</a>
+    <a href="/" class="text-xs hover:underline" style="color:#1B5E7E">Back to AdvantageGuide</a>
   </div>
 </footer>
 
-<button onclick="window.scrollTo({top:0,behavior:'smooth'})" id="back-to-top" aria-label="Back to top" style="display:none;position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:#1B5E7E;color:white;border:none;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.15);z-index:50;font-size:1.25rem;line-height:1;">&#8593;</button>
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-8 right-8 z-50 w-12 h-12 text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 pointer-events-none" style="background:#1B5E7E">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
 <script>
-(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){btn.style.display=window.scrollY>400?'block':'none';});})();
+(function(){var btn=document.getElementById('back-to-top');window.addEventListener('scroll',function(){if(window.scrollY>400){btn.style.opacity='1';btn.style.pointerEvents='auto';}else{btn.style.opacity='0';btn.style.pointerEvents='none';}});btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});})();
 </script>
 
 
