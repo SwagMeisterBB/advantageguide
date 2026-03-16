@@ -4,7 +4,7 @@
 
 ## Core Pages
 - [Home](https://advantageguide.health/): Interactive tool helping Medicare Advantage members discover covered home health products
-- [Blog](https://advantageguide.health/blog/): 50 guides covering OTC benefits, DME, home safety, and condition-specific Medicare Advantage coverage
+- [Blog](https://advantageguide.health/blog/): 52 guides covering OTC benefits, DME, home safety, and condition-specific Medicare Advantage coverage
 - [About](https://advantageguide.health/about.html): About AdvantageGuide and author Austin Edy
 
 ## Popular Guides
@@ -47,6 +47,8 @@
 - [Humana OTC Benefit](https://advantageguide.health/blog/humana-medicare-advantage-otc-benefit.html)
 - [UnitedHealthcare OTC Benefit](https://advantageguide.health/blog/unitedhealthcare-medicare-advantage-otc-benefit.html)
 - [Aetna OTC Benefit](https://advantageguide.health/blog/aetna-medicare-advantage-otc-benefit.html)
+- [Aetna Extra Benefits Card Stores](https://advantageguide.health/blog/what-stores-take-aetna-extra-benefits-card.html)
+- [Aetna OTC Balance Check](https://advantageguide.health/blog/how-to-check-aetna-extra-benefits-card-balance.html)
 - [Humana Home Safety Benefit](https://advantageguide.health/blog/humana-medicare-advantage-home-safety-benefit.html)
 
 ## How-To Guides
