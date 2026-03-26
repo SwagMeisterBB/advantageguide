@@ -14,16 +14,16 @@
 - **Reference sites:** Medicare.gov (Open Sans + Bitter pairing, warm approach), GoodRx (humanized healthcare design)
 
 ## Typography
-- **Display/Hero:** Bitter (slab serif) — warm, authoritative, highly readable at large sizes. Same family Medicare.gov uses for headlines. Signals "editorial publication" not "startup landing page."
+- **Display/Hero:** Merriweather (serif) — warm, authoritative, highly readable at large sizes. Signals "editorial publication" not "startup landing page." (Originally spec'd as Bitter; Merriweather was chosen during implementation for its superior readability at heading sizes.)
 - **Body:** Source Sans 3 — Adobe's open-source humanist sans-serif. Wider letterforms than Inter, better readability at 18px+ for older eyes.
 - **UI/Labels:** Source Sans 3 semibold
 - **Data/Tables:** Source Sans 3 (supports tabular-nums)
 - **Code:** Not applicable (no code on this site)
-- **Loading:** Google Fonts CDN — `https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap`
+- **Loading:** Google Fonts CDN — `https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap`
 - **Scale:**
-  - H1: 48px / 3rem — Bitter 700, line-height 1.15, letter-spacing -0.02em
-  - H2: 32px / 2rem — Bitter 700, line-height 1.2
-  - H3: 22px / 1.375rem — Bitter 600, line-height 1.3
+  - H1: 48px / 3rem — Merriweather 700, line-height 1.15, letter-spacing -0.02em
+  - H2: 32px / 2rem — Merriweather 700, line-height 1.2
+  - H3: 22px / 1.375rem — Merriweather 600, line-height 1.3
   - Body: 18px / 1.125rem — Source Sans 3 400, line-height 1.65
   - Small: 15px / 0.9375rem — Source Sans 3 400, line-height 1.55
   - Caption: 13px / 0.8125rem — Source Sans 3 600, letter-spacing 0.02em, uppercase
