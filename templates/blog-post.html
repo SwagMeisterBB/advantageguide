@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ========== CONFIGURE PER POST ========== -->
+  <title>{{POST_TITLE}}</title>
+  <meta name="description" content="{{META_DESCRIPTION}}" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="{{CANONICAL_URL}}" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="{{CANONICAL_URL}}" />
+  <meta property="og:title" content="{{POST_TITLE}}" />
+  <meta property="og:description" content="{{META_DESCRIPTION}}" />
+  <meta property="og:image" content="{{OG_IMAGE_URL}}" />
+  <meta property="og:site_name" content="{{SITE_NAME}}" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{POST_TITLE}}" />
+  <meta name="twitter:description" content="{{META_DESCRIPTION}}" />
+  <meta name="twitter:image" content="{{OG_IMAGE_URL}}" />
+
+  <!-- Schema: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{POST_TITLE}}",
+    "description": "{{META_DESCRIPTION}}",
+    "author": {
+      "@type": "Person",
+      "name": "{{AUTHOR_NAME}}",
+      "url": "{{AUTHOR_URL}}",
+      "image": "{{AUTHOR_IMAGE}}"
+    },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "{{CANONICAL_URL}}" },
+    "image": { "@type": "ImageObject", "url": "{{OG_IMAGE_URL}}", "width": 1200, "height": 630 },
+    "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", ".prose h2", ".prose p:first-of-type"] },
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{SITE_NAME}}",
+      "url": "{{SITE_URL}}"
+    },
+    "datePublished": "{{DATE_PUBLISHED}}",
+    "dateModified": "{{DATE_MODIFIED}}",
+    "articleSection": "{{CATEGORY}}",
+    "inLanguage": "en-US"
+  }
+  </script>
+
+  <!-- Schema: Breadcrumbs -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{SITE_URL}}" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "{{SITE_URL}}/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "{{CATEGORY}}", "item": "{{CANONICAL_URL}}" }
+    ]
+  }
+  </script>
+
+  <link rel="icon" href="{{FAVICON_URL}}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ========== THEME — swap these per site ========== */
+    :root {
+      --brand: #1B5E7E;
+      --brand-dark: #154D68;
+      --accent: #16a34a;
+      --bg: #FAFAF8;
+      --surface: #ffffff;
+      --text: #374151;
+      --text-strong: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --border-light: #f3f4f6;
+    }
+
+    /* ========== BASE ========== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg); color: var(--text);
+      -webkit-font-smoothing: antialiased; line-height: 1.6;
+    }
+    h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; color: var(--text-strong); }
+    a { color: var(--brand); text-decoration: none; transition: color 0.15s; }
+    a:hover { color: var(--brand-dark); }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: 4px; }
+    img { max-width: 100%; height: auto; display: block; }
+    [id] { scroll-margin-top: 5rem; }
+
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--brand); color: #fff;
+      padding: 0.5rem 1rem; border-radius: 0.375rem;
+      font-size: 0.875rem; font-weight: 600; z-index: 100;
+    }
+    .skip-link:focus { top: 0.75rem; }
+
+    /* ========== HEADER ========== */
+    .site-header {
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 40;
+    }
+    .header-inner {
+      max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; height: 3.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .header-logo {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-weight: 600; font-size: 0.875rem; color: var(--text-strong);
+    }
+    .header-logo:hover { color: var(--text-strong); }
+    .logo-icon {
+      width: 1.75rem; height: 1.75rem; border-radius: 0.375rem;
+      background: var(--brand); display: flex; align-items: center; justify-content: center;
+    }
+    .header-nav { display: flex; align-items: center; gap: 1rem; }
+    .header-nav a { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); }
+    .header-nav a:hover { color: var(--text-strong); }
+    .btn-header {
+      background: var(--brand); color: #fff !important;
+      padding: 0.5rem 1rem; border-radius: 0.5rem;
+      font-size: 0.875rem; font-weight: 600; transition: background 0.15s;
+    }
+    .btn-header:hover { background: var(--brand-dark); }
+
+    /* ========== HERO ========== */
+    .hero-image { max-width: 48rem; margin: 0 auto; padding: 2rem 1.5rem 0; }
+    .hero-image img { width: 100%; height: 20rem; object-fit: cover; border-radius: 1rem; }
+
+    /* ========== CONTENT ========== */
+    .content-wrap { max-width: 42rem; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ========== POST META ========== */
+    .post-meta { padding: 2rem 0 0; }
+    .category-pill {
+      display: inline-block; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      background: color-mix(in srgb, var(--brand) 10%, transparent);
+      color: var(--brand); padding: 0.25rem 0.75rem; border-radius: 9999px;
+    }
+    .read-time { font-size: 0.75rem; color: var(--text-muted); margin-left: 0.75rem; }
+    .post-title { font-size: 2rem; font-weight: 800; line-height: 1.25; margin: 1rem 0 0.75rem; }
+    .post-byline { font-size: 0.875rem; color: var(--text-muted); }
+    .post-byline .reviewed { color: var(--accent); font-weight: 500; }
+
+    /* ========== AUTHOR CARD ========== */
+    .author-card {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin: 1.25rem 0 2rem; padding: 1rem 1.25rem;
+      border-radius: 0.75rem; background: var(--border-light);
+    }
+    .author-card img { width: 2.75rem; height: 2.75rem; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .author-card .name { font-weight: 600; font-size: 0.9375rem; color: var(--text-strong); }
+    .author-card .role { font-size: 0.8125rem; color: var(--text-muted); }
+
+    /* ========== TABLE OF CONTENTS ========== */
+    .toc {
+      background: var(--border-light); border: 1px solid var(--border);
+      border-radius: 0.75rem; padding: 1.25rem 1.5rem; margin: 0 0 2rem;
+    }
+    .toc-title {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.6875rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.75rem;
+    }
+    .toc ol { list-style: decimal; padding-left: 1.25rem; }
+    .toc li { margin-bottom: 0.5rem; }
+    .toc a { font-size: 0.875rem; color: var(--text-muted); }
+    .toc a:hover { color: var(--text-strong); }
+
+    /* ========== PROSE ========== */
+    .prose h2 {
+      font-size: 1.625rem; font-weight: 700; margin: 2.5rem 0 0.75rem;
+      padding-top: 1.5rem; border-top: 1px solid var(--border);
+    }
+    .prose h2:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+    .prose h3 { font-size: 1.25rem; font-weight: 700; margin: 2rem 0 0.5rem; }
+    .prose p { font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.25rem; }
+    .prose ul, .prose ol { padding-left: 1.25rem; margin-bottom: 1.25rem; }
+    .prose li { font-size: 1.125rem; line-height: 1.75; margin-bottom: 0.5rem; }
+    .prose ul { list-style: disc; }
+    .prose ol { list-style: decimal; }
+    .prose strong { color: var(--text-strong); font-weight: 600; }
+    .prose a { color: var(--brand); text-decoration: underline; text-underline-offset: 2px; }
+    .prose a:hover { color: var(--brand-dark); }
+
+    /* ========== AUTHOR BIO ========== */
+    .author-bio {
+      display: flex; align-items: flex-start; gap: 1rem;
+      padding: 2rem 0; margin-top: 2.5rem; border-top: 1px solid var(--border);
+    }
+    .author-bio img { width: 3.5rem; height: 3.5rem; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .author-bio .name { font-weight: 600; color: var(--text-strong); }
+    .author-bio .name .reviewed { color: var(--accent); font-weight: 500; }
+    .author-bio .bio { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; margin-top: 0.25rem; }
+
+    /* ========== RELATED POSTS ========== */
+    .related-posts { padding: 2rem 0; border-top: 1px solid var(--border); }
+    .related-posts-title {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 1rem;
+    }
+    .related-grid { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+    .related-card {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0.875rem 1rem; border-radius: 0.75rem;
+      border: 1px solid var(--border); background: var(--surface);
+      transition: all 0.15s; color: inherit;
+    }
+    .related-card:hover { border-color: var(--brand); box-shadow: 0 2px 8px color-mix(in srgb, var(--brand) 10%, transparent); }
+    .related-card img { width: 4rem; height: 4rem; object-fit: cover; border-radius: 0.5rem; flex-shrink: 0; }
+    .related-card .title { font-size: 0.9375rem; font-weight: 600; color: var(--text-strong); line-height: 1.35; }
+    .related-card:hover .title { color: var(--brand); }
+    .related-card .chevron { width: 1rem; height: 1rem; color: var(--border); flex-shrink: 0; margin-left: auto; }
+    .related-card:hover .chevron { color: var(--brand); }
+
+    /* ========== FOOTER ========== */
+    .site-footer { border-top: 1px solid var(--border); background: var(--surface); margin-top: 2rem; }
+    .footer-inner {
+      max-width: 72rem; margin: 0 auto; padding: 2rem 1.5rem;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem;
+    }
+    .footer-copy { font-size: 0.8125rem; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 1rem; margin-top: 0.5rem; }
+    .footer-links a { font-size: 0.8125rem; color: var(--text-muted); }
+    .footer-links a:hover { color: var(--text-strong); }
+
+    /* ========== BACK TO TOP ========== */
+    .back-to-top {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 50;
+      width: 3rem; height: 3rem; background: var(--brand); color: #fff;
+      border: none; border-radius: 50%; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s;
+    }
+    .back-to-top.visible { opacity: 1; pointer-events: auto; }
+    .back-to-top:hover { transform: translateY(-2px); }
+
+    /* ========== RESPONSIVE ========== */
+    @media (min-width: 640px) {
+      .post-title { font-size: 2.5rem; }
+      .hero-image img { height: 24rem; }
+      .related-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 768px) {
+      .hero-image img { height: 28rem; }
+    }
+    @media print {
+      .site-header, .site-footer, .back-to-top { display: none; }
+      .prose { font-size: 12pt; max-width: 100%; }
+      body { background: white; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="header-logo">
+      <div class="logo-icon">
+        <svg width="16" height="16" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+      </div>
+      {{SITE_NAME}}
+    </a>
+    <nav class="header-nav" aria-label="Main">
+      <a href="/blog/">Blog</a>
+      <a href="/" class="btn-header">{{HEADER_CTA}}</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<div class="hero-image">
+  <img src="{{HERO_IMAGE}}" alt="{{HERO_ALT}}" width="800" height="450" loading="eager" fetchpriority="high" />
+</div>
+
+<!-- Main -->
+<main id="main">
+  <div class="content-wrap">
+
+    <div class="post-meta">
+      <span class="category-pill">{{CATEGORY}}</span>
+      <span class="read-time">{{READ_TIME}} min read</span>
+    </div>
+
+    <h1 class="post-title">{{POST_TITLE}}</h1>
+
+    <p class="post-byline">
+      Published {{DATE_PUBLISHED_DISPLAY}} by {{AUTHOR_NAME}}
+      &middot; <span class="reviewed">Last reviewed {{DATE_REVIEWED_DISPLAY}}</span>
+    </p>
+
+    <div class="author-card">
+      <img src="{{AUTHOR_IMAGE}}" alt="{{AUTHOR_NAME}}" width="44" height="44" loading="lazy" />
+      <div>
+        <div class="name">{{AUTHOR_NAME}}</div>
+        <div class="role">{{AUTHOR_ROLE}}</div>
+      </div>
+    </div>
+
+    <nav class="toc" aria-label="Table of contents">
+      <p class="toc-title">In this article</p>
+      <ol>
+        <li><a href="#section-1">{{TOC_1}}</a></li>
+        <li><a href="#section-2">{{TOC_2}}</a></li>
+        <li><a href="#section-3">{{TOC_3}}</a></li>
+      </ol>
+    </nav>
+
+    <!-- Article body -->
+    <article class="prose">
+
+      <p>{{INTRO_PARAGRAPH}}</p>
+
+      <h2 id="section-1">{{H2_1}}</h2>
+      <p>{{CONTENT}}</p>
+
+      <h2 id="section-2">{{H2_2}}</h2>
+      <p>{{CONTENT}}</p>
+
+      <h2 id="section-3">{{H2_3}}</h2>
+      <p>{{CONTENT}}</p>
+
+    </article>
+
+    <!-- Author bio -->
+    <div class="author-bio">
+      <img src="{{AUTHOR_IMAGE}}" alt="{{AUTHOR_NAME}}" width="56" height="56" loading="lazy" />
+      <div>
+        <p class="name">Written by {{AUTHOR_NAME}} &middot; <span class="reviewed">Last reviewed {{DATE_REVIEWED_DISPLAY}}</span></p>
+        <p class="bio">{{AUTHOR_BIO}}</p>
+      </div>
+    </div>
+
+    <!-- Related posts -->
+    <div class="related-posts">
+      <p class="related-posts-title">More from the blog</p>
+      <div class="related-grid">
+        <a href="{{RELATED_1_URL}}" class="related-card">
+          <img src="{{RELATED_1_IMAGE}}" alt="" width="64" height="64" loading="lazy" />
+          <span class="title">{{RELATED_1_TITLE}}</span>
+          <svg class="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="{{RELATED_2_URL}}" class="related-card">
+          <img src="{{RELATED_2_IMAGE}}" alt="" width="64" height="64" loading="lazy" />
+          <span class="title">{{RELATED_2_TITLE}}</span>
+          <svg class="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="{{RELATED_3_URL}}" class="related-card">
+          <img src="{{RELATED_3_IMAGE}}" alt="" width="64" height="64" loading="lazy" />
+          <span class="title">{{RELATED_3_TITLE}}</span>
+          <svg class="chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <p class="footer-copy">&copy; 2026 {{SITE_NAME}}. {{FOOTER_DISCLAIMER}}</p>
+      <div class="footer-links">
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+      </div>
+    </div>
+    <a href="/" style="font-size:0.75rem;color:var(--brand)">Back to {{SITE_NAME}}</a>
+  </div>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top" id="back-to-top">
+  <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/></svg>
+</button>
+
+<script>
+(function(){
+  var btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', function(){ btn.classList.toggle('visible', window.scrollY > 400); });
+  btn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+</script>
+
+</body>
+</html>
