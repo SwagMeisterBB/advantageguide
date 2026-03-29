@@ -1,16 +1,17 @@
 /* ========== Blog Template Styles ========== */
 /* Theme colors — single place to change for the whole site */
 :root {
-  --brand: #1B5E7E;
-  --brand-dark: #154D68;
-  --accent: #16a34a;
-  --bg: #FAFAF8;
+  --brand: #1E5FAD;
+  --brand-dark: #154A8A;
+  --accent: #B45309;
+  --accent-dark: #8B3F06;
+  --bg: #FDFAF6;
   --surface: #ffffff;
-  --text: #374151;
-  --text-strong: #111827;
-  --text-muted: #6b7280;
-  --border: #e5e7eb;
-  --border-light: #f3f4f6;
+  --text: #3D3935;
+  --text-strong: #2A2623;
+  --text-muted: #8A8580;
+  --border: #E5E0DA;
+  --border-light: #F0EDE8;
 }
 
 /* ========== BASE ========== */
@@ -52,7 +53,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--brand); outline
   background: var(--brand); display: flex; align-items: center; justify-content: center;
 }
 .header-nav { display: flex; align-items: center; gap: 1rem; }
-.header-nav a { font-size: 0.875rem; font-weight: 500; color: var(--text-muted); text-decoration: none; }
+.header-nav a {
+  font-size: 0.875rem; font-weight: 500; color: var(--text-muted); text-decoration: none;
+  padding: 0.75rem 0; min-height: 3rem; display: inline-flex; align-items: center;
+}
 .header-nav a:hover { color: var(--text-strong); }
 .btn-header {
   background: var(--brand); color: #fff !important;
@@ -81,8 +85,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--brand); outline
 }
 .read-time { font-size: 0.75rem; color: var(--text-muted); margin-left: 0.75rem; }
 .post-title {
-  font-size: 2rem; font-weight: 800; line-height: 1.25;
-  margin: 1rem 0 0.75rem;
+  font-size: 3rem; font-weight: 700; line-height: 1.15;
+  letter-spacing: -0.02em; margin: 1rem 0 0.75rem;
 }
 .post-byline { font-size: 0.875rem; color: var(--text-muted); margin: 0; }
 .post-byline .reviewed { color: var(--accent); font-weight: 500; }
@@ -108,20 +112,24 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--brand); outline
   letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.75rem;
 }
 .toc ol { list-style: decimal; padding-left: 1.25rem; margin: 0; }
-.toc li { margin-bottom: 0.5rem; }
-.toc a { font-size: 0.875rem; color: var(--text-muted); text-decoration: none; }
+.toc li { margin-bottom: 0.25rem; }
+.toc a {
+  font-size: 0.875rem; color: var(--text-muted); text-decoration: none;
+  display: inline-block; padding: 0.375rem 0; min-height: 2.75rem;
+  line-height: 1.5;
+}
 .toc a:hover { color: var(--text-strong); }
 
 /* ========== PROSE ========== */
 .prose h2 {
-  font-size: 1.625rem; font-weight: 700; margin: 2.5rem 0 0.75rem;
+  font-size: 2rem; font-weight: 700; line-height: 1.2; margin: 2.5rem 0 0.75rem;
   padding-top: 1.5rem; border-top: 1px solid var(--border);
 }
 .prose h2:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
-.prose h3 { font-size: 1.25rem; font-weight: 700; margin: 2rem 0 0.5rem; }
-.prose p { font-size: 1.125rem; line-height: 1.8; margin-bottom: 1.25rem; color: var(--text); }
+.prose h3 { font-size: 1.375rem; font-weight: 600; line-height: 1.3; margin: 2rem 0 0.5rem; }
+.prose p { font-size: 1.125rem; line-height: 1.65; margin-bottom: 1.25rem; color: var(--text); }
 .prose ul, .prose ol { padding-left: 1.25rem; margin-bottom: 1.25rem; }
-.prose li { font-size: 1.125rem; line-height: 1.75; margin-bottom: 0.5rem; color: var(--text); }
+.prose li { font-size: 1.125rem; line-height: 1.65; margin-bottom: 0.5rem; color: var(--text); }
 .prose ul { list-style: disc; }
 .prose ol { list-style: decimal; }
 .prose strong { color: var(--text-strong); font-weight: 600; }
@@ -183,7 +191,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--brand); outline
 
 /* ========== RESPONSIVE ========== */
 @media (min-width: 640px) {
-  .post-title { font-size: 2.5rem; }
+  .post-title { font-size: 3rem; }
   .hero-image img { height: 24rem; }
   .related-grid { grid-template-columns: 1fr 1fr; }
 }
