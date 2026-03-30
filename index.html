@@ -121,16 +121,17 @@
   }
   </script>
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231B5E7E'/%3E%3Cpath d='M16 5C13.5 6.5 11 7.2 8 7.2c0 0-.5 8.3 1.5 12.8S16 27 16 27s4-2.5 6.5-7S24 7.2 24 7.2c-3 0-5.5-.7-8-2.2z' fill='none' stroke='white' stroke-width='1.8'/%3E%3Cpath d='M12.5 16l2.5 2.5 5-5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231E5FAD'/%3E%3Cpath d='M16 5C13.5 6.5 11 7.2 8 7.2c0 0-.5 8.3 1.5 12.8S16 27 16 27s4-2.5 6.5-7S24 7.2 24 7.2c-3 0-5.5-.7-8-2.2z' fill='none' stroke='white' stroke-width='1.8'/%3E%3Cpath d='M12.5 16l2.5 2.5 5-5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="dns-prefetch" href="https://m.media-amazon.com" />
   <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
   <link href="/styles.css" rel="stylesheet" />
+  <link href="/blog.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Source+Sans+3:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; }
-    body { font-family: 'Source Sans 3', -apple-system, sans-serif; background: #FAFAF8; color: #111827; }
+    body { font-family: 'Source Sans 3', -apple-system, sans-serif; background: #FDFAF6; color: #2A2623; }
     h1, h2, h3 { font-family: 'Merriweather', Georgia, serif; }
 
     .screen { display: none; }
@@ -139,36 +140,36 @@
     @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
     .sit-card {
-      background: white; border: 1.5px solid #E5E7EB; border-radius: 10px;
+      background: white; border: 1.5px solid #E5E0DA; border-radius: 10px;
       padding: 20px; cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s;
     }
-    .sit-card:hover { border-color: #1B5E7E; box-shadow: 0 2px 14px rgba(37,99,235,0.10); }
-    .sit-card.selected { border-color: #1B5E7E; background: #EDF4F8; box-shadow: 0 2px 14px rgba(37,99,235,0.10); }
+    .sit-card:hover { border-color: #1E5FAD; box-shadow: 0 2px 14px rgba(37,99,235,0.10); }
+    .sit-card.selected { border-color: #1E5FAD; background: #EDE8F4; box-shadow: 0 2px 14px rgba(37,99,235,0.10); }
     .sit-card.disabled { opacity: 0.4; cursor: not-allowed; }
 
     .urg-card {
-      background: white; border: 1.5px solid #E5E7EB; border-radius: 10px;
+      background: white; border: 1.5px solid #E5E0DA; border-radius: 10px;
       padding: 18px 20px; cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s;
       display: flex; align-items: center; gap: 16px;
     }
-    .urg-card:hover { border-color: #1B5E7E; box-shadow: 0 2px 14px rgba(37,99,235,0.10); }
+    .urg-card:hover { border-color: #1E5FAD; box-shadow: 0 2px 14px rgba(37,99,235,0.10); }
 
     .prod-card {
-      background: white; border: 1.5px solid #E5E7EB; border-radius: 10px;
+      background: white; border: 1.5px solid #E5E0DA; border-radius: 10px;
       cursor: pointer; overflow: hidden; transition: border-color 0.15s, box-shadow 0.15s;
     }
-    .prod-card:hover { border-color: #9CA3AF; box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
-    .prod-card:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; }
+    .prod-card:hover { border-color: #B5B0AB; box-shadow: 0 4px 16px rgba(0,0,0,0.07); }
+    .prod-card:focus-visible { outline: 2px solid #1E5FAD; outline-offset: 2px; }
 
-    .sit-card:focus-visible, .urg-card:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; }
+    .sit-card:focus-visible, .urg-card:focus-visible { outline: 2px solid #1E5FAD; outline-offset: 2px; }
 
     .btn-brand {
-      background: linear-gradient(135deg, #1B5E7E 0%, #154D68 100%);
+      background: linear-gradient(135deg, #1E5FAD 0%, #154A8A 100%);
       box-shadow: 0 2px 8px rgba(27, 94, 126, 0.25);
       transition: all 0.2s;
     }
     .btn-brand:hover {
-      background: linear-gradient(135deg, #154D68 0%, #0f3d54 100%);
+      background: linear-gradient(135deg, #154A8A 0%, #0E3A6E 100%);
       box-shadow: 0 4px 14px rgba(27, 94, 126, 0.35);
       transform: translateY(-1px);
     }
@@ -176,30 +177,30 @@
     .badge-dme         { background:#DCFCE7; color:#15803D; }
     .badge-home-safety { background:#DBEAFE; color:#1D4ED8; }
     .badge-otc         { background:#F3E8FF; color:#7C3AED; }
-    .badge-oop         { background:#F3F4F6; color:#4B5563; }
-    .badge-vetted  { background:#EDF4F8; color:#1B5E7E; }
+    .badge-oop         { background:#F0EDE8; color:#4B5563; }
+    .badge-vetted  { background:#EDE8F4; color:#1E5FAD; }
 
     .filter-pill {
       padding: 10px 14px; border-radius: 6px; font-size: 14px; font-weight: 500;
-      border: 1.5px solid #E5E7EB; background: white; color: #374151;
+      border: 1.5px solid #E5E0DA; background: white; color: #3D3935;
       cursor: pointer; transition: all 0.12s; min-height: 44px;
       display: inline-flex; align-items: center;
     }
-    .filter-pill:hover { border-color: #9CA3AF; }
-    .filter-pill.active { background: #111827; color: white; border-color: #111827; }
+    .filter-pill:hover { border-color: #B5B0AB; }
+    .filter-pill.active { background: #2A2623; color: white; border-color: #2A2623; }
 
     .step-dot {
       width: 28px; height: 28px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-size: 12px; font-weight: 700; flex-shrink: 0;
     }
-    .step-dot.done { background: #111827; color: white; }
-    .step-dot.active { background: #1B5E7E; color: white; }
-    .step-dot.pending { background: #F3F4F6; color: #9CA3AF; }
+    .step-dot.done { background: #2A2623; color: white; }
+    .step-dot.active { background: #1E5FAD; color: white; }
+    .step-dot.pending { background: #F0EDE8; color: #B5B0AB; }
 
     .how-num {
       width: 36px; height: 36px; border-radius: 50%;
-      background: #EDF4F8; color: #1B5E7E;
+      background: #EDE8F4; color: #1E5FAD;
       display: flex; align-items: center; justify-content: center;
       font-size: 14px; font-weight: 700; flex-shrink: 0;
     }
@@ -208,7 +209,7 @@
     .line-clamp-2 { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
     .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
   
-    a:focus-visible, button:focus-visible { outline: 2px solid #1B5E7E; outline-offset: 2px; border-radius: 4px; }
+    a:focus-visible, button:focus-visible { outline: 2px solid #1E5FAD; outline-offset: 2px; border-radius: 4px; }
     .prod-card:active, .sit-card:active, .urg-card:active { transform: scale(0.98); transition: transform 0.1s; }
     [id] { scroll-margin-top: 4rem; }
   </style>
@@ -220,7 +221,7 @@
 <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
     <button class="flex items-center gap-3 select-none" onclick="goLanding()" type="button">
-      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1B5E7E">
+      <div class="w-7 h-7 rounded-md flex items-center justify-center" style="background:#1E5FAD">
         <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
         </svg>
@@ -241,18 +242,18 @@
 <!-- SCREEN: LANDING PAGE -->
 <main id="main-content" tabindex="-1">
 <noscript>
-  <div style="max-width:640px;margin:40px auto;padding:0 24px;font-family:'Source Sans 3',sans-serif;color:#111827;">
+  <div style="max-width:640px;margin:40px auto;padding:0 24px;font-family:'Source Sans 3',sans-serif;color:#2A2623;">
     <h1 style="font-size:24px;font-weight:800;margin-bottom:16px;">AdvantageGuide: Medicare Advantage Home Health Benefits</h1>
     <p style="color:#4B5563;line-height:1.75;margin-bottom:16px;">AdvantageGuide helps Medicare Advantage members discover covered home health products, including DME (durable medical equipment), home safety modifications, and OTC allowance items.</p>
     <p style="color:#4B5563;line-height:1.75;margin-bottom:24px;">Browse our guides to learn what your plan covers and how to claim it:</p>
     <ul style="list-style:disc;padding-left:20px;color:#4B5563;line-height:2;">
-      <li><a href="/blog/medicare-advantage-otc-benefit-items-list.html" style="color:#1B5E7E;">OTC Benefit: Full List of What You Can Buy</a></li>
-      <li><a href="/blog/medicare-advantage-home-safety-benefit.html" style="color:#1B5E7E;">Home Safety Benefit: What It Covers</a></li>
-      <li><a href="/blog/medicare-advantage-fall-prevention-benefits.html" style="color:#1B5E7E;">Fall Prevention Benefits Guide</a></li>
-      <li><a href="/blog/how-to-check-medicare-advantage-otc-balance.html" style="color:#1B5E7E;">How to Check Your OTC Balance</a></li>
-      <li><a href="/blog/medicare-advantage-benefits-most-people-dont-know.html" style="color:#1B5E7E;">Benefits Most People Don't Know About</a></li>
-      <li><a href="/blog/medicare-advantage-caregiver-guide.html" style="color:#1B5E7E;">Caregiver Guide</a></li>
-      <li><a href="/blog/" style="color:#1B5E7E;">View All 50 Guides</a></li>
+      <li><a href="/blog/medicare-advantage-otc-benefit-items-list.html" style="color:#1E5FAD;">OTC Benefit: Full List of What You Can Buy</a></li>
+      <li><a href="/blog/medicare-advantage-home-safety-benefit.html" style="color:#1E5FAD;">Home Safety Benefit: What It Covers</a></li>
+      <li><a href="/blog/medicare-advantage-fall-prevention-benefits.html" style="color:#1E5FAD;">Fall Prevention Benefits Guide</a></li>
+      <li><a href="/blog/how-to-check-medicare-advantage-otc-balance.html" style="color:#1E5FAD;">How to Check Your OTC Balance</a></li>
+      <li><a href="/blog/medicare-advantage-benefits-most-people-dont-know.html" style="color:#1E5FAD;">Benefits Most People Don't Know About</a></li>
+      <li><a href="/blog/medicare-advantage-caregiver-guide.html" style="color:#1E5FAD;">Caregiver Guide</a></li>
+      <li><a href="/blog/" style="color:#1E5FAD;">View All 50 Guides</a></li>
     </ul>
   </div>
 </noscript>
@@ -371,7 +372,7 @@
         </div>
       </div>
       <div class="mt-4 text-center">
-        <button onclick="showAllProducts()" class="text-sm font-medium underline underline-offset-2" style="color:#1B5E7E">See all 40+ covered products &rarr;</button>
+        <button onclick="showAllProducts()" class="text-sm font-medium underline underline-offset-2" style="color:#1E5FAD">See all 40+ covered products &rarr;</button>
       </div>
     </div>
   </div>
@@ -658,7 +659,7 @@
       <div>
         <h2 class="text-2xl font-bold text-gray-900" id="results-title">Recommended Products</h2>
         <p class="text-gray-500 text-sm mt-1" id="results-subtitle"></p>
-        <button onclick="goBack()" id="change-situation-btn" class="hidden mt-1 text-sm font-medium underline underline-offset-2" style="color:#1B5E7E">Change situation</button>
+        <button onclick="goBack()" id="change-situation-btn" class="hidden mt-1 text-sm font-medium underline underline-offset-2" style="color:#1E5FAD">Change situation</button>
       </div>
       <button onclick="showShareModal()"
               class="flex-shrink-0 flex items-center gap-1.5 text-sm font-medium border border-gray-200 hover:border-gray-400 text-gray-600 hover:text-gray-900 px-3 py-2 rounded-lg transition-all">
